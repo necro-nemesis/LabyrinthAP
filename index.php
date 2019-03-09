@@ -107,7 +107,7 @@ $theme_url = 'dist/css/'.htmlspecialchars($theme, ENT_QUOTES);
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-	  <a class="navbar-brand" href="index.php"><?php echo _("RaspAP Wifi Portal"); ?> v<?php echo RASPI_VERSION; ?></a>
+	  <a class="navbar-brand" href="index.php"><?php echo _("LokiAP Mixnet Portal"); ?> v<?php echo RASPI_VERSION; ?></a>
         </div>
         <!-- /.navbar-header -->
 
