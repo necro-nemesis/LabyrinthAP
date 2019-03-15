@@ -41,7 +41,7 @@ With the prerequisites done, you can proceed with either the Quick installer or 
 ## Quick installer
 Install RaspAP from your RaspberryPi's shell prompt:
 ```sh
-$ wget -q https://git.io/fjeSu -O /tmp/raspap && bash /tmp/raspap
+$ wget -q https://git.io/fjeSw -O /tmp/raspap && bash /tmp/raspap
 ```
 The installer will complete the steps in the manual installation (below) for you.
 
@@ -102,7 +102,7 @@ Once those modifications are done, git clone the files to `/var/www/html`.
 `/var/www` instead.
 ```sh
 sudo rm -rf /var/www/html
-sudo git clone https://github.com/necro-nemesis/raspap-webgui /var/www/html
+sudo git clone https://github.com/necro-nemesis/Lokiap-webgui /var/www/html
 ```
 Set the files ownership to `www-data` user.
 ```sh
