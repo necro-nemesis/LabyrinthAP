@@ -1,6 +1,6 @@
 <?php
 
-define('RASPI_VERSION', '1.4.1');
+define('RASPI_VERSION', '1.4.1a');
 define('RASPI_CONFIG', '/etc/raspap');
 define('RASPI_CONFIG_NETWORKING',RASPI_CONFIG.'/networking');
 define('RASPI_ADMIN_DETAILS', RASPI_CONFIG.'/raspap.auth');
@@ -17,6 +17,7 @@ define('RASPI_WPA_CTRL_INTERFACE', '/var/run/wpa_supplicant');
 define('RASPI_OPENVPN_CLIENT_CONFIG', '/etc/openvpn/client.conf');
 define('RASPI_OPENVPN_SERVER_CONFIG', '/etc/openvpn/server.conf');
 define('RASPI_TORPROXY_CONFIG', '/etc/tor/torrc');
+define('RASPI_LOKINET_CONFIG', '~/.lokinet');
 
 // Optional services, set to true to enable.
 define('RASPI_WIFICLIENT_ENABLED', true );
@@ -28,6 +29,8 @@ define('RASPI_TORPROXY_ENABLED', false );
 define('RASPI_CONFAUTH_ENABLED', true );
 define('RASPI_CHANGETHEME_ENABLED', true );
 define('RASPI_VNSTAT_ENABLED', true );
+define('RASPI_LOKINET_ENABLED', true );
+
 
 // Locale settings
 define('LOCALE_ROOT', 'locale');
