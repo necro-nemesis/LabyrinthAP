@@ -496,9 +496,12 @@ function SaveTORAndVPNConfig(){
       echo htmlspecialchars($line, ENT_QUOTES).'<br />' , PHP_EOL;
     }
   }
-}
 
-///////////////////LOKINET FUNCTIONS ADDED HERE TO END//////////////
+/*
+
+LOKINET FUNCTIONS ADDED HERE TO END
+
+*/
 
 
 function DisplayLokinetConfig(){
