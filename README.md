@@ -1,11 +1,19 @@
 ![](https://i.imgur.com/mXuacOH.jpg)
 # `$ Lokiap-webgui` [![Release 1.4.1](https://img.shields.io/badge/Release-1.4.1-green.svg)](https://github.com/billz/raspap-webgui/releases) [![Awesome](https://awesome.re/badge.svg)](https://github.com/thibmaek/awesome-raspberry-pi) 
 
-A simple, responsive web interface to control wifi, hostapd and related services on the Raspberry Pi.
+LokiAP interfaces witht Lokinet daemon to facilitate connections to the the Lokinet global privacy network. LokiAP provides a simple, responsive web interface to control wifi, hostapd and related services necessary to access Lokinet on the Raspberry Pi.
 
-This project was inspired by a [**blog post**](http://sirlagz.net/2013/02/06/script-web-configuration-page-for-raspberry-pi/) by SirLagz about using a web page rather than ssh to configure wifi and hostapd settings on the Raspberry Pi. I began by prettifying the UI by wrapping it in [**SB Admin 2**](https://github.com/BlackrockDigital/startbootstrap-sb-admin-2), a Bootstrap based admin theme. Since then, the project has evolved to include greater control over many aspects of a networked RPi, better security, authentication, a Quick Installer, support for themes and more. RaspAP has been featured on sites such as [Instructables](http://www.instructables.com/id/Raspberry-Pi-As-Completely-Wireless-Router/), [Adafruit](https://blog.adafruit.com/2016/06/24/raspap-wifi-configuration-portal-piday-raspberrypi-raspberry_pi/), [Raspberry Pi Weekly](https://www.raspberrypi.org/weekly/commander/) and [Awesome Raspberry Pi](https://project-awesome.org/thibmaek/awesome-raspberry-pi) and implemented in countless projects.
+### WHAT IS LOKI?
 
-We'd be curious to hear about how you use this with your own RPi-powered projects. Until then, here are some screenshots:
+https://loki.network/
+
+"Loki is a privacy network which will allow users to transact and communicate privately over the internet, providing a suite of tools to help maintain the maximum amount of anonymity possible while browsing, transacting and communication online. Using the decentralised nature of blockchain technology, Loki creates new private and secure methods of interacting with the internet, as well as building privacy-centric applications, such as messaging services, forums, online marketplaces, and social media platforms." 
+
+Loki
+
+![](https://i.imgur.com/V9coVgA.jpg)
+
+This project branches from the work of Raspap and SB Admin 2.
 
 ![](https://i.imgur.com/cxldtba.jpg)
 
@@ -36,7 +44,7 @@ sudo reboot
 With the prerequisites done, you can proceed with either the Quick installer or Manual installation steps below.
 
 ## Quick installer
-Install RaspAP from your RaspberryPi's shell prompt:
+Install LokiAP from your RaspberryPi's shell prompt:
 ```sh
 $ wget -q https://git.io/fjeSw -O /tmp/raspap && bash /tmp/raspap
 ```
@@ -53,9 +61,9 @@ configured as an access point as follows:
 
 ## Support us
 
-RaspAP is free software, but powered by your support. If you find RaspAP useful for your personal projects, please consider making a small donation. We feel strongly about creating high quality, easy-to-use software, as well as the importance of keeping it maintained. 
+LokiAP is free software, but powered by your support. If you find it beneficial or wish to contribute to inspire ongoing development your donations of any amount; be they even symbolic, are a show of approval and are greatly appreciated.
 
-[![Beerpay](https://beerpay.io/billz/raspap-webgui/badge.svg?style=flat)](https://beerpay.io/billz/raspap-webgui)
+Loki Donation Address: LK8CGQ17G9R3ys3Xf33wCeViD2B95jgdpjAhcRsjuheJ784dumXn7g3RPAzedWpFq364jJKYL9dkQ8mY66sZG9BiCwrYHPmcZin1VP8Btf
 
 ## Manual installation
 These steps apply to the latest release of Raspbian (currently [Stretch](https://www.raspberrypi.org/downloads/raspbian/)). Notes for previously released versions are provided, where applicable. Start off by installing git, lighttpd, php7, hostapd and dnsmasq. 
