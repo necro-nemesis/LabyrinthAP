@@ -1,4 +1,4 @@
-![](https://i.imgur.com/x6sGqBk.jpg)
+![](https://i.imgur.com/mXuacOH.jpg)
 # `$ raspap-webgui` [![Release 1.4.1](https://img.shields.io/badge/Release-1.4.1-green.svg)](https://github.com/billz/raspap-webgui/releases) [![Awesome](https://awesome.re/badge.svg)](https://github.com/thibmaek/awesome-raspberry-pi) 
 
 A simple, responsive web interface to control wifi, hostapd and related services on the Raspberry Pi.
