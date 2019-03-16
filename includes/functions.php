@@ -498,11 +498,11 @@ function SaveTORAndVPNConfig(){
   }
 }
 
-/*
+/**
 
 LOKINET FUNCTIONS ADDED HERE TO END
 
-*/
+
 
 
 function DisplayLokinetConfig(){
@@ -643,10 +643,7 @@ function DisplayLokinetConfig(){
 <?php 
 }
 
-/**
-*
-*
-*/
+
 function SaveTORAndVPNConfig(){
   if( isset($_POST['SaveOpenVPNSettings']) ) {
     // TODO
@@ -678,3 +675,4 @@ function SaveTORAndVPNConfig(){
     }
   }
 }
+**/
