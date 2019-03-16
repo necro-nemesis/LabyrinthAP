@@ -506,7 +506,7 @@ LOKINET FUNCTIONS ADDED HERE TO END
 
 function DisplayLokinetConfig(){
 
-	exec( 'cat '. RASPI_LOKINET_CONFIG, $return );
+	exec( 'cat '. RASPI_TORPROXY_CONFIG, $return );
 	exec( 'pidof tor | wc -l', $torproxystatus);
 
 	if( $torproxystatus[0] == 0 ) {
