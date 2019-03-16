@@ -143,6 +143,11 @@ $theme_url = 'dist/css/'.htmlspecialchars($theme, ENT_QUOTES);
                 <a href="index.php?page=openvpn_conf"><i class="fa fa-lock fa-fw"></i> <?php echo _("Configure OpenVPN"); ?></a>
               </li>
               <?php endif; ?>
+	      <?php if ( RASPI_LOKINET_ENABLED ) : ?>
+              <li>
+                 <a href="index.php?page=lokinet_conf"><i class="fa fa-eye-slash fa-fw"></i> <?php echo _("Configure Lokinet"); ?></a>
+              </li>
+              <?php endif; ?>
               <?php if ( RASPI_TORPROXY_ENABLED ) : ?>
               <li>
                  <a href="index.php?page=torproxy_conf"><i class="fa fa-eye-slash fa-fw"></i> <?php echo _("Configure TOR proxy"); ?></a>
@@ -203,6 +208,9 @@ $extraFooterScripts = array();
             break;
           case "openvpn_conf":
             DisplayOpenVPNConfig();
+            break;
+	  case "lokinet_conf":
+            DisplayLokinetConfig();
             break;
           case "torproxy_conf":
             DisplayTorProxyConfig();
