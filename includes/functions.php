@@ -357,7 +357,7 @@ function DisplayLokinetConfig(){
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#basic" data-toggle="tab">Daemon Control</a>
                 </li>
-                <li><a href="#daemon" data-toggle="tab">Adanced Console User</a>
+                <li><a href="#daemon" data-toggle="tab">Advanced Console User</a>
                 </li>
                 <li><a href="#youtube" data-toggle="tab">This is Loki</a>
                 </li>
@@ -377,8 +377,8 @@ function DisplayLokinetConfig(){
 						</div>
             <hr>
               <div class="row">
-                <div class="col-md-4">
-                  <h4>Contact Loki user groups for the latest bootstrap</h4>
+                <div class="col-md-12">
+                  <h5>Contact Loki user groups for the latest bootstrap</h5>
                   <input type="submit" class="btn btn-outline btn-primary" name="ApplyLokinetSettings" value="Apply" />
           				<?php
           				if( $lokinetstatus[0] == 0 ) {
