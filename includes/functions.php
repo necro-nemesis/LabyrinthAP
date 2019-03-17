@@ -376,12 +376,7 @@ function DisplayLokinetConfig(){
 							<input type="text" class="form-control" name="loinetbootstrap" value="<?php echo htmlspecialchars($arrConfig['lokinetbootstrap'], ENT_QUOTES); ?>" />
 						</div>
 					</div>
-          <form>
-          <div class="form-group row">
-            <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-            <div class="col-md-10">
-            <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="Contact Loki user groups for latest bootstrap">
-          </div>
+            <h3>Contact Loki user groups for the latest bootstrap</h3>
       	<div class="tab-pane fade" id="daemon">
             		<h4>Lokient Daemon</h4>
                 <div class="row">
@@ -405,13 +400,13 @@ function DisplayLokinetConfig(){
       				if( $lokinetstatus[0] == 0 ) {
       					echo '<input type="submit" class="btn btn-success" name="StartLokinet" value="Start Lokinet" />' , PHP_EOL;
       				} else {
-      					echo '<input type="submit" class="btn btn-warning" name="StopLokient" value="Stop Lokinet" />' , PHP_EOL;
+      					echo '<input type="submit" class="btn btn-danger" name="StopLokient" value="Stop Lokinet" />' , PHP_EOL;
       				};
               $filename = '/home/pi/.lokinet/lokinet.ini';
               if (!file_exists($filename)) {
                 echo '<input tpe="submit" class="btn btn-success" name="GenerateLokinet" value="Gnerate .ini" />' , PHP_EOL;
               } else {
-                echo '<input type="submit" class="btn btn-warning" name="ReGenerateLokinet" value="Regenerate .ini" />' , PHP_EOL;
+                echo '<input type="submit" class="btn btn-danger" name="ReGenerateLokinet" value="Regenerate .ini" />' , PHP_EOL;
               };
       				?>
       				</form>
