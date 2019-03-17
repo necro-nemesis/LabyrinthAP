@@ -433,30 +433,28 @@ function DisplayLokinetConfig(){
               } elseif {
                 echo '<input type="submit" class="btn btn-warning" name="StopLokinet" value="Stop Lokinet" />' , PHP_EOL;
               };
-          /*()    if( 1=1 ) {
-                echo '<input type="submit" class="btn btn-success" name="GenerateLokinet" value="Generate" />' , PHP_EOL;
-              } else {
-                echo '<input type="submit" class="btn btn-warning" name="RegenLokinet" value="Re-Generate" />' , PHP_EOL;
-              };
-*/
+
+      				
+
+              /*  ()    if( 1=1 ) {
+                              echo '<input type="submit" class="btn btn-success" name="GenerateLokinet" value="Generate" />' , PHP_EOL;
+                            } else {
+                              echo '<input type="submit" class="btn btn-warning" name="RegenLokinet" value="Re-Generate" />' , PHP_EOL;
+                            };
+              */
+
+
               ?>
+              </form>
+      			</div><!-- /.tab-content -->
+      		</div><!-- /.panel-body -->
+      		<div class="panel-footer"> Information provided by tor</div>
+          </div><!-- /.panel-primary -->
+      </div><!-- /.col-lg-12 -->
+      </div><!-- /.row -->
+      <?php
+      }
 
-              </div><!-- /.systemtabcontent -->
-
-              </div><!-- /.panel-default -->
-              </div><!-- /.col-md-6 -->
-              </div><!-- /.row -->
-            </div><!-- /.panel-body -->
-            </form>
-            </div><!-- /.panel-primary -->
-            <div class="panel-footer"></div>
-            </div><!-- /.panel-primary -->
-            </div><!-- /.col-lg-12 -->
-            </div><!-- /.row -->
-
-
-<?php
-}
 
 /**
 *
