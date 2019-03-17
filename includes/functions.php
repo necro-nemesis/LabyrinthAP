@@ -393,6 +393,7 @@ function DisplayLokinetConfig(){
              </div>
            </div>
          </div>
+       </div>
 
       	<div class="tab-pane fade" id="daemon">
             		<h4>Lokient Daemon</h4>
