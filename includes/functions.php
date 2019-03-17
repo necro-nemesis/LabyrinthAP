@@ -429,14 +429,14 @@ function DisplayLokinetConfig(){
               <input type="submit" class="btn btn-outline btn-primary" name="SaveTORProxySettings" value="Save settings" />
       				<?php
       				if( $torproxystatus[0] == 0 ) {
-      					echo '<input type="submit" class="btn btn-success" name="StartTOR" value="Start TOR" />' , PHP_EOL;
+      					echo '<input type="submit" class="btn btn-success" name="StartTOR" value="Start Lokinet" />' , PHP_EOL;
       				} else {
-      					echo '<input type="submit" class="btn btn-warning" name="StopTOR" value="Stop TOR" />' , PHP_EOL;
+      					echo '<input type="submit" class="btn btn-warning" name="StopTOR" value="Stop Lokinet" />' , PHP_EOL;
       				};
               if( $torproxystatus[0] == 0 ) {
-                echo '<input type="submit" class="btn btn-success" name="StartTOR" value="Start TOR" />' , PHP_EOL;
+                echo '<input type="submit" class="btn btn-success" name="StartTOR" value="Gnerate .ini" />' , PHP_EOL;
               } else {
-                echo '<input type="submit" class="btn btn-warning" name="StopTOR" value="Stop TOR" />' , PHP_EOL;
+                echo '<input type="submit" class="btn btn-warning" name="StopTOR" value="Regenerate .ini" />' , PHP_EOL;
               };
       				?>
       				</form>
