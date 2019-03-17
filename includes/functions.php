@@ -372,10 +372,10 @@ function DisplayLokinetConfig(){
 					<form role="form" action="?page=save_hostapd_conf" method="POST">
             <div class="row">
 						<div class="form-group col-lg-12">
-							<label for="code">lokinet-bootstrap URL</label>
+							<label for="code">Update lokinet-bootstrap settings/label>
 							<input type="text" class="form-control" name="loinetbootstrap" placeholder="http://206.81.100.174/n-st-5.signed" value="<?php echo htmlspecialchars($arrConfig['lokinetbootstrap'], ENT_QUOTES); ?>" />
-                  <h5>Contact Loki user groups for the latest bootstrap</h5>
-                  <input type="submit" class="btn btn-outline btn-primary" name="ApplyLokinetSettings" value="Apply" />
+                  <h5>Contact Loki user groups for the latest bootstrap file location</h5>
+                  <input type="submit" class="btn btn-outline btn-success" name="ApplyLokinetSettings" value="Apply Bootstrap" />
           				<?php
           				if( $lokinetstatus[0] == 0 ) {
           					echo '<input type="submit" class="btn btn-success" name="StartLokinet" value="Start Lokinet" />' , PHP_EOL;
