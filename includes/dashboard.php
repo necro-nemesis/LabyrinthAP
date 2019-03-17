@@ -173,18 +173,17 @@ function DisplayDashboard(){
     }
   } else {
     $status->addMessage(sprintf(_('Interface is %s.'), strtolower($interfaceState)), $classMsgDevicestatus);
+    function currnetLokiState(){
+      exec( 'pidof lokinet | wc -l', $lokinetstatus);
 
+      if( $lokinetstatus[0] == 0 ) {
+        $status = '<div class="alert alert-warning alert-dismissable">Lokinet daemon is not running
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>';
+      } else {
+        $status = '<div class="alert alert-success alert-dismissable">Lokinet is running
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>';
+    }
   ?>
-function currnetLokiState(){
-  exec( 'pidof lokinet | wc -l', $lokinetstatus);
-
-  if( $lokinetstatus[0] == 0 ) {
-    $status = '<div class="alert alert-warning alert-dismissable">Lokinet daemon is not running
-          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>';
-  } else {
-    $status = '<div class="alert alert-success alert-dismissable">Lokinet is running
-          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>';
-}
   <div class="row">
       <div class="col-lg-12">
           <div class="panel panel-primary">
