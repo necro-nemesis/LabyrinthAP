@@ -376,6 +376,7 @@ function DisplayLokinetConfig(){
 							<input type="text" class="form-control" name="loinetbootstrap" value="<?php echo htmlspecialchars($arrConfig['lokinetbootstrap'], ENT_QUOTES); ?>" />
 						</div>
 					</div>
+        </form>
             <h5>Contact Loki user groups for the latest bootstrap</h5>
       	<div class="tab-pane fade" id="daemon">
             		<h4>Lokient Daemon</h4>
@@ -409,7 +410,7 @@ function DisplayLokinetConfig(){
                 echo '<input type="submit" class="btn btn-danger" name="ReGenerateLokinet" value="Regenerate .ini" />' , PHP_EOL;
               };
       				?>
-      				</form>
+      				
       			</div><!-- /.tab-content -->
       		</div><!-- /.panel-body -->
       		<div class="panel-footer"> Information provided by Lokinet</div>
