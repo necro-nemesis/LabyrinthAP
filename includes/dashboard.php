@@ -173,6 +173,7 @@ function DisplayDashboard(){
     }
   } else {
     $status->addMessage(sprintf(_('Interface is %s.'), strtolower($interfaceState)), $classMsgDevicestatus);
+}
     function currnetLokiState(){
       exec( 'pidof lokinet | wc -l', $lokinetstatus);
 
@@ -183,6 +184,7 @@ function DisplayDashboard(){
         $status = '<div class="alert alert-success alert-dismissable">Lokinet is running
               <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>';
     }
+  }
   ?>
   <div class="row">
       <div class="col-lg-12">
