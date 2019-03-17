@@ -262,7 +262,7 @@ function DisplayOpenVPNConfig() {
 					<h4>Server settings</h4>
 					<div class="row">
 						<div class="form-group col-md-4">
-						<label for="code">Port</label> 
+						<label for="code">Port</label>
 						<input type="text" class="form-control" name="openvpn_port" value="<?php echo htmlspecialchars($arrServerConfig['port'], ENT_QUOTES); ?>" />
 						</div>
 					</div>
@@ -350,14 +350,14 @@ function DisplayLokinetConfig(){
 	<div class="row">
 	<div class="col-lg-12">
 		<div class="panel panel-primary">
-			<div class="panel-heading"><i class="fa fa-eye-slash fa-fw"></i> Configure TOR proxy</div>
+			<div class="panel-heading"><i class="fa fa-eye-slash fa-fw"></i> Configure Lokinet</div>
         <!-- /.panel-heading -->
         <div class="panel-body">
         	<!-- Nav tabs -->
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#basic" data-toggle="tab">Basic</a>
                 </li>
-                <li><a href="#relay" data-toggle="tab">Relay</a>
+                <li><a href="#daemon" data-toggle="tab">Lokinet Daemon Console</a>
                 </li>
             </ul>
 
@@ -385,13 +385,13 @@ function DisplayLokinetConfig(){
 							<label for="code">AutomapHostsOnResolve</label>
 							<input type="text" class="form-control" name="automaphostsonresolve" value="<?php echo htmlspecialchars($arrConfig['AutomapHostsOnResolve'], ENT_QUOTES); ?>" />
 						</div>
-					</div>	
+					</div>
 					<div class="row">
 						<div class="form-group col-md-4">
 							<label for="code">TransListenAddress</label>
 							<input type="text" class="form-control" name="translistenaddress" value="<?php echo htmlspecialchars($arrConfig['TransListenAddress'], ENT_QUOTES); ?>" />
 						</div>
-					</div>	
+					</div>
 					<div class="row">
 						<div class="form-group col-md-4">
 							<label for="code">DNSPort</label>
@@ -405,62 +405,28 @@ function DisplayLokinetConfig(){
 						</div>
 					</div>
 				</div>
-				<div class="tab-pane fade" id="relay">
-            		<h4>Relay settings</h4>
-            		<div class="row">
-						<div class="form-group col-md-4">
-							<label for="code">ORPort</label>
-							<input type="text" class="form-control" name="orport" value="<?php echo htmlspecialchars($arrConfig['ORPort'], ENT_QUOTES); ?>" />
-						</div>
-					</div>
-					<div class="row">
-						<div class="form-group col-md-4">
-							<label for="code">ORListenAddress</label>
-							<input type="text" class="form-control" name="orlistenaddress" value="<?php echo htmlspecialchars($arrConfig['ORListenAddress'], ENT_QUOTES); ?>" />
-						</div>
-					</div>
-					<div class="row">
-						<div class="form-group col-md-4">
-							<label for="code">Nickname</label>
-							<input type="text" class="form-control" name="nickname" value="<?php echo htmlspecialchars($arrConfig['Nickname'], ENT_QUOTES); ?>" />
-						</div>
-					</div>
-					<div class="row">
-						<div class="form-group col-md-4">
-							<label for="code">Address</label>
-							<input type="text" class="form-control" name="address" value="<?php echo htmlspecialchars($arrConfig['Address'], ENT_QUOTES); ?>" />
-						</div>
-					</div>
-					<div class="row">
-						<div class="form-group col-md-4">
-							<label for="code">RelayBandwidthRate</label>
-							<input type="text" class="form-control" name="relaybandwidthrate" value="<?php echo htmlspecialchars($arrConfig['RelayBandwidthRate'], ENT_QUOTES); ?>" />
-						</div>
-					</div>
-					<div class="row">
-						<div class="form-group col-md-4">
-							<label for="code">RelayBandwidthBurst</label>
-							<input type="text" class="form-control" name="relaybandwidthburst" value="<?php echo htmlspecialchars($arrConfig['RelayBandwidthBurst'], ENT_QUOTES); ?>" />
-						</div>
-					</div>
-				</div>
+				<div class="tab-pane fade" id="daemon">
+            		<h4>Lokient Daemon</h4>
+                <div class="row">
+                  <div class="col-lg-12">
+                    <iframe src="includes/webconsole.php" class="webconsole"></iframe>
+                  </div>
+                </div>
+              </div>
 
-				<input type="submit" class="btn btn-outline btn-primary" name="SaveTORProxySettings" value="Save settings" />
-				<?php 
-				if( $torproxystatus[0] == 0 ) {
-					echo '<input type="submit" class="btn btn-success" name="StartTOR" value="Start TOR" />' , PHP_EOL;
-				} else {
-					echo '<input type="submit" class="btn btn-warning" name="StopTOR" value="Stop TOR" />' , PHP_EOL;
-				};
-				?>
-				</form>
-			</div><!-- /.tab-content -->
-		</div><!-- /.panel-body -->
-		<div class="panel-footer"> Information provided by tor</div>
-    </div><!-- /.panel-primary -->
-</div><!-- /.col-lg-12 -->
-</div><!-- /.row -->
-<?php 
+              </div><!-- /.systemtabcontent -->
+
+              </div><!-- /.panel-default -->
+              </div><!-- /.col-md-6 -->
+              </div><!-- /.row -->
+            </div><!-- /.panel-body -->
+            </form>
+            </div><!-- /.panel-primary -->
+            <div class="panel-footer"></div>
+            </div><!-- /.panel-primary -->
+            </div><!-- /.col-lg-12 -->
+            </div><!-- /.row -->
+<?php
 }
 
 /**
@@ -527,13 +493,13 @@ function DisplayTorProxyConfig(){
 							<label for="code">AutomapHostsOnResolve</label>
 							<input type="text" class="form-control" name="automaphostsonresolve" value="<?php echo htmlspecialchars($arrConfig['AutomapHostsOnResolve'], ENT_QUOTES); ?>" />
 						</div>
-					</div>	
+					</div>
 					<div class="row">
 						<div class="form-group col-md-4">
 							<label for="code">TransListenAddress</label>
 							<input type="text" class="form-control" name="translistenaddress" value="<?php echo htmlspecialchars($arrConfig['TransListenAddress'], ENT_QUOTES); ?>" />
 						</div>
-					</div>	
+					</div>
 					<div class="row">
 						<div class="form-group col-md-4">
 							<label for="code">DNSPort</label>
@@ -588,7 +554,7 @@ function DisplayTorProxyConfig(){
 				</div>
 
 				<input type="submit" class="btn btn-outline btn-primary" name="SaveTORProxySettings" value="Save settings" />
-				<?php 
+				<?php
 				if( $torproxystatus[0] == 0 ) {
 					echo '<input type="submit" class="btn btn-success" name="StartTOR" value="Start TOR" />' , PHP_EOL;
 				} else {
@@ -602,7 +568,7 @@ function DisplayTorProxyConfig(){
     </div><!-- /.panel-primary -->
 </div><!-- /.col-lg-12 -->
 </div><!-- /.row -->
-<?php 
+<?php
 }
 
 /**
@@ -638,5 +604,5 @@ function SaveTORAndVPNConfig(){
     foreach( $return as $line ) {
       echo htmlspecialchars($line, ENT_QUOTES).'<br />' , PHP_EOL;
     }
-  }	
+  }
 }
