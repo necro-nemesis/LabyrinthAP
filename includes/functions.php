@@ -430,17 +430,6 @@ function DisplayLokinetConfig(){
             </div><!-- /.row -->
             <div class="tab-pane fade" id="youtube">
               <div class="container">
-                <!DOCTYPE html>
-                <html lang="en">
-                <head>
-                  <title>Bootstrap Example</title>
-                  <meta charset="utf-8">
-                  <meta name="viewport" content="width=device-width, initial-scale=1">
-                  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-                  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-                  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-                </head>
-                <body>
   <h2>This is Loki</h2>
   <div class="embed-responsive embed-responsive-16by9">
     <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/Lykh-NqkKys"></iframe>
