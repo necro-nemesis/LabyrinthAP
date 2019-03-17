@@ -496,12 +496,13 @@ function SaveTORAndVPNConfig(){
       echo htmlspecialchars($line, ENT_QUOTES).'<br />' , PHP_EOL;
     }
   }
+	?>
 /**
 *
 *
 */
 /*LOKINET FUNCTIONS ADDED HERE*/
-
+<?php
 function DisplayLokinetConfig(){
 
 	/*exec( 'cat '. RASPI_LOKINET_CONFIG, $return );*/
@@ -514,4 +515,5 @@ function DisplayLokinetConfig(){
 		$status = '<div class="alert alert-success alert-dismissable">Lokinet is running
 					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>';
 	}
+	?>
     }
