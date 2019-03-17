@@ -435,7 +435,9 @@ function DisplayLokinetConfig(){
               };
               if( cat ~/.lokinet/lokinet.ini != 0 ) {
                 echo '<input type="submit" class="btn btn-success" name="GenerateLokinet" value="Generate Lokinet" />' , PHP_EOL;
-              };
+              } else {
+                echo '<input type="submit" class="btn btn-warning" name="StopLokinet" value="Re-Generate Lokinet" />' , PHP_EOL;
+              }
               ?>
 
               </div><!-- /.systemtabcontent -->
