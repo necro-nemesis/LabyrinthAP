@@ -519,3 +519,4 @@ function DisplayLokinetConfig(){
 	}
     }
 }
+}
