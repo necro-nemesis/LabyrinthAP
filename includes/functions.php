@@ -432,7 +432,7 @@ function DisplayLokinetConfig(){
                 echo '<input type="submit" class="btn btn-success" name="StartLokinet" value="Start Lokinet" />' , PHP_EOL;
               } elseif {
                 echo '<input type="submit" class="btn btn-warning" name="StopLokinet" value="Stop Lokinet" />' , PHP_EOL;
-              }
+              };
               if( 1=1 ) {
                 echo '<input type="submit" class="btn btn-success" name="GenerateLokinet" value="Generate" />' , PHP_EOL;
               } else {
