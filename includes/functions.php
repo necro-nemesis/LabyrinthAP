@@ -433,7 +433,7 @@ function DisplayLokinetConfig(){
               } else {
                 echo '<input type="submit" class="btn btn-warning" name="StopLokinet" value="Stop Lokinet" />' , PHP_EOL;
               };
-              if(-s ~/.lokinet/lokinet.ini) {
+              if(1=1) {
                 echo '<input type="submit" class="btn btn-success" name="GenerateLokinet" value="Generate Lokinet" />' , PHP_EOL;
               } else {
                 echo '<input type="submit" class="btn btn-warning" name="StopLokinet" value="Re-Generate Lokinet" />' , PHP_EOL;
