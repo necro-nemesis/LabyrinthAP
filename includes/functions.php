@@ -376,7 +376,12 @@ function DisplayLokinetConfig(){
 							<input type="text" class="form-control" name="loinetbootstrap" value="<?php echo htmlspecialchars($arrConfig['lokinetbootstrap'], ENT_QUOTES); ?>" />
 						</div>
 					</div>
-          echo 'Contact Loki community for latest lokinet-bootstrap';
+          <form>
+          <div class="form-group row">
+            <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-md-10">
+            <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="Contact Loki user groups for latest bootstrap">
+          </div>
       	<div class="tab-pane fade" id="daemon">
             		<h4>Lokient Daemon</h4>
                 <div class="row">
@@ -412,7 +417,7 @@ function DisplayLokinetConfig(){
       				</form>
       			</div><!-- /.tab-content -->
       		</div><!-- /.panel-body -->
-      		<div class="panel-footer"> Information provided by tor</div>
+      		<div class="panel-footer"> Information provided by Lokinet</div>
           </div><!-- /.panel-primary -->
       </div><!-- /.col-lg-12 -->
       </div><!-- /.row -->
