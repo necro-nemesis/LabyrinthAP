@@ -505,7 +505,7 @@ function SaveTORAndVPNConfig(){
 
 function DisplayLokinetConfig(){
 
-	/*exec( 'cat '. RASPI_LOKINET_CONFIG, $return );*/
+	exec( 'cat '. RASPI_TORPROXY_CONFIG, $return );
 	exec( 'pidof lokinet | wc -l', $lokinetstatus);
 
 	if( $lokinetstatus[0] == 0 ) {
