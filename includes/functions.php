@@ -430,10 +430,9 @@ function DisplayLokinetConfig(){
               <?php
               if( $lokinetstatus[0] == 0 ) {
                 echo '<input type="submit" class="btn btn-success" name="StartLokinet" value="Start Lokinet" />' , PHP_EOL;
-              } else {
+              } elseif {
                 echo '<input type="submit" class="btn btn-warning" name="StopLokinet" value="Stop Lokinet" />' , PHP_EOL;
-              }
-              if(1=1) {
+              } elsif( 1=1 ) {
                 echo '<input type="submit" class="btn btn-success" name="GenerateLokinet" value="Generate Lokinet" />' , PHP_EOL;
               } else {
                 echo '<input type="submit" class="btn btn-warning" name="RegenLokinet" value="Re-Generate Lokinet" />' , PHP_EOL;
