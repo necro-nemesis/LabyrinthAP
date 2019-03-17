@@ -379,7 +379,22 @@ function DisplayLokinetConfig(){
               <div class="row">
                 <div class="col-lg-12">
                   <h5>Contact Loki user groups for the latest bootstrap</h5>
-					     </div>
+                  <input type="submit" class="btn btn-outline btn-primary" name="ApplyLokinetSettings" value="Apply" />
+          				<?php
+          				if( $lokinetstatus[0] == 0 ) {
+          					echo '<input type="submit" class="btn btn-success" name="StartLokinet" value="Start Lokinet" />' , PHP_EOL;
+          				} else {
+          					echo '<input type="submit" class="btn btn-danger" name="StopLokient" value="Stop Lokinet" />' , PHP_EOL;
+          				};
+                  $filename = '/home/pi/.lokinet/lokinet.ini';
+                  if (!file_exists($filename)) {
+                    echo '<input tpe="submit" class="btn btn-success" name="GenerateLokinet" value="Gnerate .ini" />' , PHP_EOL;
+                  } else {
+                    echo '<inpu
+                    t type="submit" class="btn btn-danger" name="ReGenerateLokinet" value="Regenerate .ini" />' , PHP_EOL;
+                  };
+          				?>
+  				     </div>
              </div>
            </div>
          </div>
@@ -403,21 +418,7 @@ function DisplayLokinetConfig(){
               </div>
 
 
-              <input type="submit" class="btn btn-outline btn-primary" name="ApplyLokinetSettings" value="Apply" />
-      				<?php
-      				if( $lokinetstatus[0] == 0 ) {
-      					echo '<input type="submit" class="btn btn-success" name="StartLokinet" value="Start Lokinet" />' , PHP_EOL;
-      				} else {
-      					echo '<input type="submit" class="btn btn-danger" name="StopLokient" value="Stop Lokinet" />' , PHP_EOL;
-      				};
-              $filename = '/home/pi/.lokinet/lokinet.ini';
-              if (!file_exists($filename)) {
-                echo '<input tpe="submit" class="btn btn-success" name="GenerateLokinet" value="Gnerate .ini" />' , PHP_EOL;
-              } else {
-                echo '<inpu
-                t type="submit" class="btn btn-danger" name="ReGenerateLokinet" value="Regenerate .ini" />' , PHP_EOL;
-              };
-      				?>
+
             </form>
       			</div><!-- /.tab-content -->
       		</div><!-- /.panel-body -->
