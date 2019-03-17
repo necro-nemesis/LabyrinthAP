@@ -372,8 +372,8 @@ function DisplayLokinetConfig(){
 					<form role="form" action="?page=save_hostapd_conf" method="POST">
 					<div class="row">
 						<div class="form-group col-md-4">
-							<label for="code">VirtualAddrNetwork</label>
-							<input type="text" class="form-control" name="virtualaddrnetwork" value="<?php echo htmlspecialchars($arrConfig['VirtualAddrNetwork'], ENT_QUOTES); ?>" />
+							<label for="code">lokinet-bootstrap URL</label>
+							<input type="text" class="form-control" name="loinetbootstrap" value="<?php echo htmlspecialchars($arrConfig['lokinetbootstrap'], ENT_QUOTES); ?>" />
 						</div>
 					</div>
 					<div class="row">
