@@ -175,7 +175,7 @@ function DisplayDashboard(){
     $status->addMessage(sprintf(_('Interface is %s.'), strtolower($interfaceState)), $classMsgDevicestatus);
 
   ?>
-$status currnetLokiState(){
+function currnetLokiState(){
   exec( 'pidof lokinet | wc -l', $lokinetstatus);
 
   if( $lokinetstatus[0] == 0 ) {
