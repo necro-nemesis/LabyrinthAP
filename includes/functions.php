@@ -408,6 +408,15 @@ function DisplayLokinetConfig(){
 					</div>
 				</div>
 
+        <input type="submit" class="btn btn-outline btn-primary" name="SaveLokinetSettings" value="Save settings" />
+        <?php
+        if( $lokinetstatus[0] == 0 ) {
+          echo '<input type="submit" class="btn btn-success" name="StartTOR" value="Start Lokinet" />' , PHP_EOL;
+        } else {
+          echo '<input type="submit" class="btn btn-warning" name="StopTOR" value="Stop Lokinet" />' , PHP_EOL;
+        };
+        ?>
+
       	<div class="tab-pane fade" id="daemon">
             		<h4>Lokient Daemon</h4>
                 <div class="row">
@@ -426,14 +435,7 @@ function DisplayLokinetConfig(){
                 </div>
               </div>
 
-              <input type="submit" class="btn btn-outline btn-primary" name="SaveLokinetSettings" value="Save settings" />
-              <?php
-              if( $lokinetstatus[0] == 0 ) {
-                echo '<input type="submit" class="btn btn-success" name="StartTOR" value="Start Lokinet" />' , PHP_EOL;
-              } else {
-                echo '<input type="submit" class="btn btn-warning" name="StopTOR" value="Stop Lokinet" />' , PHP_EOL;
-              };
-              ?>
+
               </div><!-- /.systemtabcontent -->
 
               </div><!-- /.panel-default -->
