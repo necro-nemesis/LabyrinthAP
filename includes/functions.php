@@ -433,7 +433,8 @@ function DisplayLokinetConfig(){
       				} else {
       					echo '<input type="submit" class="btn btn-warning" name="StopTOR" value="Stop Lokinet" />' , PHP_EOL;
       				};
-              if( $torproxystatus[0] == 0 ) {
+              $filename = '~/.lokinet/lokinet.ini';
+              if (file_exists($filename)) {
                 echo '<input type="submit" class="btn btn-success" name="StartTOR" value="Gnerate .ini" />' , PHP_EOL;
               } else {
                 echo '<input type="submit" class="btn btn-warning" name="StopTOR" value="Regenerate .ini" />' , PHP_EOL;
