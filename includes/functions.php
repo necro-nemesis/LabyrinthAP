@@ -377,7 +377,7 @@ function DisplayLokinetConfig(){
 						</div>
             <hr>
               <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-16">
                   <h5>Contact Loki user groups for the latest bootstrap</h5>
                   <input type="submit" class="btn btn-outline btn-primary" name="ApplyLokinetSettings" value="Apply" />
           				<?php
