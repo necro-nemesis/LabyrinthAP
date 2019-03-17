@@ -433,11 +433,12 @@ function DisplayLokinetConfig(){
               } elseif {
                 echo '<input type="submit" class="btn btn-warning" name="StopLokinet" value="Stop Lokinet" />' , PHP_EOL;
               };
-              if( 1=1 ) {
+          /*()    if( 1=1 ) {
                 echo '<input type="submit" class="btn btn-success" name="GenerateLokinet" value="Generate" />' , PHP_EOL;
               } else {
                 echo '<input type="submit" class="btn btn-warning" name="RegenLokinet" value="Re-Generate" />' , PHP_EOL;
               };
+*/
               ?>
 
               </div><!-- /.systemtabcontent -->
