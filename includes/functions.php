@@ -502,8 +502,6 @@ function SaveTORAndVPNConfig(){
 */
 /*LOKINET FUNCTIONS ADDED HERE*/
 
-<?php 
-}
 function DisplayLokinetConfig(){
 
 	/*exec( 'cat '. RASPI_TORPROXY_CONFIG, $return );*/
@@ -516,6 +514,5 @@ function DisplayLokinetConfig(){
 		$status = '<div class="alert alert-success alert-dismissable">Lokinet is running
 					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>';
 	}
-	?>
-}
+	}
 }
