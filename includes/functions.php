@@ -407,7 +407,8 @@ function DisplayLokinetConfig(){
 						</div>
 					</div>
 				</div>
-				<div class="tab-pane fade" id="daemon">
+
+      	<div class="tab-pane fade" id="daemon">
             		<h4>Lokient Daemon</h4>
                 <div class="row">
                   <div class="col-lg-12">
@@ -428,13 +429,19 @@ function DisplayLokinetConfig(){
             </div><!-- /.panel-primary -->
             </div><!-- /.col-lg-12 -->
             </div><!-- /.row -->
-            <div class="tab-pane fade" id="youtube">
+
+          <div class="tab-pane fade" id="youtube">
               <div class="container">
-  <h2>This is Loki</h2>
-  <div class="embed-responsive embed-responsive-16by9">
-    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/Lykh-NqkKys"></iframe>
-  </div>
-</div>
+                <h2>This is Loki</h2>
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="embed-responsive embed-responsive-16by9">
+                      <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/Lykh-NqkKys"></iframe>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 <?php
 }
 
