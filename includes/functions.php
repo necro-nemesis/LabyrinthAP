@@ -417,6 +417,15 @@ function DisplayLokinetConfig(){
                 </div>
               </div>
 
+              <div class="tab-pane fade" id="youtube">
+                <div class="container">
+                    <h2>This is Loki</h2>
+                    <div class="embed-responsive embed-responsive-16by9">
+                          <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/Lykh-NqkKys"></iframe>
+                    </div>
+                </div>
+              </div>
+
               </div><!-- /.systemtabcontent -->
 
               </div><!-- /.panel-default -->
@@ -430,14 +439,7 @@ function DisplayLokinetConfig(){
             </div><!-- /.col-lg-12 -->
             </div><!-- /.row -->
 
-          <div class="tab-pane fade" id="youtube">
-            <div class="container">
-                <h2>This is Loki</h2>
-                <div class="embed-responsive embed-responsive-16by9">
-                      <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/Lykh-NqkKys"></iframe>
-                </div>
-            </div>
-          </div>
+
 <?php
 }
 
