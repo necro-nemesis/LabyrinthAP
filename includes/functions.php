@@ -433,6 +433,11 @@ function DisplayLokinetConfig(){
       				} else {
       					echo '<input type="submit" class="btn btn-warning" name="StopTOR" value="Stop TOR" />' , PHP_EOL;
       				};
+              if( $torproxystatus[0] == 0 ) {
+                echo '<input type="submit" class="btn btn-success" name="StartTOR" value="Start TOR" />' , PHP_EOL;
+              } else {
+                echo '<input type="submit" class="btn btn-warning" name="StopTOR" value="Stop TOR" />' , PHP_EOL;
+              };
       				?>
       				</form>
       			</div><!-- /.tab-content -->
