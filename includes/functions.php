@@ -376,38 +376,7 @@ function DisplayLokinetConfig(){
 							<input type="text" class="form-control" name="loinetbootstrap" value="<?php echo htmlspecialchars($arrConfig['lokinetbootstrap'], ENT_QUOTES); ?>" />
 						</div>
 					</div>
-					<div class="row">
-						<div class="form-group col-md-4">
-							<label for="code">AutomapHostsSuffixes</label>
-							<input type="text" class="form-control" name="automaphostssuffixes" value="<?php echo htmlspecialchars($arrConfig['AutomapHostsSuffixes'], ENT_QUOTES); ?>" />
-						</div>
-					</div>
-					<div class="row">
-						<div class="form-group col-md-4">
-							<label for="code">AutomapHostsOnResolve</label>
-							<input type="text" class="form-control" name="automaphostsonresolve" value="<?php echo htmlspecialchars($arrConfig['AutomapHostsOnResolve'], ENT_QUOTES); ?>" />
-						</div>
-					</div>
-					<div class="row">
-						<div class="form-group col-md-4">
-							<label for="code">TransListenAddress</label>
-							<input type="text" class="form-control" name="translistenaddress" value="<?php echo htmlspecialchars($arrConfig['TransListenAddress'], ENT_QUOTES); ?>" />
-						</div>
-					</div>
-					<div class="row">
-						<div class="form-group col-md-4">
-							<label for="code">DNSPort</label>
-							<input type="text" class="form-control" name="dnsport" value="<?php echo htmlspecialchars($arrConfig['DNSPort'], ENT_QUOTES); ?>" />
-						</div>
-					</div>
-					<div class="row">
-						<div class="form-group col-md-4">
-							<label for="code">DNSListenAddress</label>
-							<input type="text" class="form-control" name="dnslistenaddress" value="<?php echo htmlspecialchars($arrConfig['DNSListenAddress'], ENT_QUOTES); ?>" />
-						</div>
-					</div>
-				</div>
-
+          echo 'Contact Loki community for latest lokinet-bootstrap';
       	<div class="tab-pane fade" id="daemon">
             		<h4>Lokient Daemon</h4>
                 <div class="row">
@@ -426,18 +395,18 @@ function DisplayLokinetConfig(){
                 </div>
               </div>
 
-              <input type="submit" class="btn btn-outline btn-primary" name="SaveTORProxySettings" value="Save settings" />
+              <input type="submit" class="btn btn-outline btn-primary" name="ApplyLokinetSettings" value="Apply" />
       				<?php
-      				if( $torproxystatus[0] == 0 ) {
-      					echo '<input type="submit" class="btn btn-success" name="StartTOR" value="Start Lokinet" />' , PHP_EOL;
+      				if( $lokinetstatus[0] == 0 ) {
+      					echo '<input type="submit" class="btn btn-success" name="StartLokinet" value="Start Lokinet" />' , PHP_EOL;
       				} else {
-      					echo '<input type="submit" class="btn btn-warning" name="StopTOR" value="Stop Lokinet" />' , PHP_EOL;
+      					echo '<input type="submit" class="btn btn-warning" name="StopLokient" value="Stop Lokinet" />' , PHP_EOL;
       				};
               $filename = '/home/pi/.lokinet/lokinet.ini';
-              if (file_exists($filename)) {
-                echo '<input tpe="submit" class="btn btn-success" name="StartTOR" value="Gnerate .ini" />' , PHP_EOL;
+              if (!file_exists($filename)) {
+                echo '<input tpe="submit" class="btn btn-success" name="GenerateLokinet" value="Gnerate .ini" />' , PHP_EOL;
               } else {
-                echo '<input type="submit" class="btn btn-warning" name="StopTOR" value="Regenerate .ini" />' , PHP_EOL;
+                echo '<input type="submit" class="btn btn-warning" name="ReGenerateLokinet" value="Regenerate .ini" />' , PHP_EOL;
               };
       				?>
       				</form>
