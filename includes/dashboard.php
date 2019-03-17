@@ -184,7 +184,6 @@ function DisplayDashboard(){
         $status = '<div class="alert alert-success alert-dismissable">Lokinet is running
               <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>';
     }
-  }
   ?>
   <div class="row">
       <div class="col-lg-12">
@@ -192,7 +191,7 @@ function DisplayDashboard(){
             <div class="panel-heading"><i class="fa fa-dashboard fa-fw"></i> <?php echo _("Dashboard"); ?></div>
               <div class="panel-body">
                 <p><?php $status->showMessages(); ?></p>
-                	<p><?php echo $status; ?></p>
+                  <p><?php echo $status; ?></p>
                   <div class="row">
                       <div class="col-md-6">
                         <div class="panel panel-default">
@@ -256,7 +255,7 @@ function DisplayDashboard(){
   <?php
 }
 
-
+}
 /**
  * Get a human readable data size string from a number of bytes.
  *
