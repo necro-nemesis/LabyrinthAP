@@ -376,7 +376,7 @@ function DisplayLokinetConfig(){
 							<input type="text" class="form-control" name="loinetbootstrap" value="<?php echo htmlspecialchars($arrConfig['lokinetbootstrap'], ENT_QUOTES); ?>" />
 						</div>
 					</div>
-            <h3>Contact Loki user groups for the latest bootstrap</h3>
+            <h5>Contact Loki user groups for the latest bootstrap</h5>
       	<div class="tab-pane fade" id="daemon">
             		<h4>Lokient Daemon</h4>
                 <div class="row">
