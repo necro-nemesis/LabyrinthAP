@@ -374,9 +374,6 @@ function DisplayLokinetConfig(){
 						<div class="form-group col-lg-12">
 							<label for="code">lokinet-bootstrap URL</label>
 							<input type="text" class="form-control" name="loinetbootstrap" value="<?php echo htmlspecialchars($arrConfig['lokinetbootstrap'], ENT_QUOTES); ?>" />
-						</div>
-              <div class="row">
-                <div class="col-lg-12">
                   <h5>Contact Loki user groups for the latest bootstrap</h5>
                   <input type="submit" class="btn btn-outline btn-primary" name="ApplyLokinetSettings" value="Apply" />
           				<?php
