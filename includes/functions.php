@@ -377,7 +377,7 @@ function DisplayLokinetConfig(){
 						</div>
             <hr>
               <div class="row">
-                <div class="col-lg-16">
+                <div class="col-lg-12">
                   <h5>Contact Loki user groups for the latest bootstrap</h5>
                   <input type="submit" class="btn btn-outline btn-primary" name="ApplyLokinetSettings" value="Apply" />
           				<?php
@@ -390,8 +390,7 @@ function DisplayLokinetConfig(){
                   if (!file_exists($filename)) {
                     echo '<input tpe="submit" class="btn btn-success" name="GenerateLokinet" value="Gnerate .ini" />' , PHP_EOL;
                   } else {
-                    echo '<inpu
-                    t type="submit" class="btn btn-danger" name="ReGenerateLokinet" value="Regenerate .ini" />' , PHP_EOL;
+                    echo '<input type="submit" class="btn btn-danger" name="ReGenerateLokinet" value="Regenerate .ini" />' , PHP_EOL;
                   };
           				?>
   				     </div>
