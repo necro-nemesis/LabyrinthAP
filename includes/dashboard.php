@@ -181,7 +181,6 @@ function DisplayDashboard(){
             <div class="panel-heading"><i class="fa fa-dashboard fa-fw"></i> <?php echo _("Dashboard"); ?></div>
               <div class="panel-body">
                 <p><?php $status->showMessages(); ?></p>
-                  <p><?php echo $status; ?></p>
                   <div class="row">
                       <div class="col-md-6">
                         <div class="panel panel-default">
