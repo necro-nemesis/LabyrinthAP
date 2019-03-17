@@ -429,9 +429,12 @@ function DisplayLokinetConfig(){
               <input type="submit" class="btn btn-outline btn-primary" name="SaveLokinetSettings" value="Save settings" />
               <?php
               if( $lokinetstatus[0] == 0 ) {
-                echo '<input type="submit" class="btn btn-success" name="StartTOR" value="Start Lokinet" />' , PHP_EOL;
+                echo '<input type="submit" class="btn btn-success" name="StartLokinet" value="Start Lokinet" />' , PHP_EOL;
               } else {
-                echo '<input type="submit" class="btn btn-warning" name="StopTOR" value="Stop Lokinet" />' , PHP_EOL;
+                echo '<input type="submit" class="btn btn-warning" name="StopLokinet" value="Stop Lokinet" />' , PHP_EOL;
+              };
+              if( cat ~/.lokinet/lokinet.ini == 0 ) {
+                echo '<input type="submit" class="btn btn-success" name="GenerateLokinet" value="Generate Lokinet" />' , PHP_EOL;
               };
               ?>
 
