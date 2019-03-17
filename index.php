@@ -9,7 +9,7 @@
  * lighttpd (I have version 1.4.31-2 installed via apt)
  * php5-cgi (I have version 5.4.4-12 installed via apt)
  * along with their supporting packages, php5 will also need to be enabled.
- * 
+ *
  * @author     Lawrence Yau <sirlagz@gmail.com>
  * @author     Bill Zimmerman <billzimmerman@gmail.com>
  * @license    GNU General Public License, version 3 (GPL-3.0)
@@ -131,7 +131,7 @@ $theme_url = 'dist/css/'.htmlspecialchars($theme, ENT_QUOTES);
               <?php if ( RASPI_NETWORK_ENABLED ) : ?>
               <li>
 	             <a href="index.php?page=network_conf"><i class="fa fa-sitemap fa-fw"></i> <?php echo _("Configure networking"); ?></a>
-              </li> 
+              </li>
               <?php endif; ?>
               <?php if ( RASPI_DHCP_ENABLED ) : ?>
               <li>
@@ -187,7 +187,7 @@ $theme_url = 'dist/css/'.htmlspecialchars($theme, ENT_QUOTES);
           </div>
         </div><!-- /.row -->
 
-        <?php 
+        <?php
 $extraFooterScripts = array();
         // handle page actions
         switch( $page ) {
@@ -209,7 +209,7 @@ $extraFooterScripts = array();
           case "openvpn_conf":
             DisplayOpenVPNConfig();
             break;
-	  case "lokinet_conf":
+	        case "lokinet_conf":
             DisplayLokinetConfig();
             break;
           case "torproxy_conf":
@@ -235,7 +235,7 @@ $extraFooterScripts = array();
         }
 
 ?>
-      </div><!-- /#page-wrapper --> 
+      </div><!-- /#page-wrapper -->
     </div><!-- /#wrapper -->
 
     <!-- RaspAP JavaScript -->
