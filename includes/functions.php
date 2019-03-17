@@ -375,7 +375,7 @@ function DisplayLokinetConfig(){
 							<label for="code">Update lokinet-bootstrap settings</label>
 							<input type="text" class="form-control" name="loinetbootstrap" placeholder="http://206.81.100.174/n-st-5.signed" value="<?php echo htmlspecialchars($arrConfig['lokinetbootstrap'], ENT_QUOTES); ?>" />
                   <h5>Contact Loki user groups for the latest bootstrap file location</h5>
-                  <input type="submit" class="btn btn-outline btn-success" name="ApplyLokinetSettings" value="Apply Bootstrap" />
+                  <input type="submit" class="btn btn-dark" name="ApplyLokinetSettings" value="Apply Bootstrap" />
           				<?php
           				if( $lokinetstatus[0] == 0 ) {
           					echo '<input type="submit" class="btn btn-success" name="StartLokinet" value="Start Lokinet" />' , PHP_EOL;
