@@ -426,26 +426,15 @@ function DisplayLokinetConfig(){
                 </div>
               </div>
 
-              <input type="submit" class="btn btn-outline btn-primary" name="SaveLokinetSettings" value="Save settings" />
-              <?php
-              if( $lokinetstatus[0] == 0 ) {
-                echo '<input type="submit" class="btn btn-success" name="StartLokinet" value="Start Lokinet" />' , PHP_EOL;
-              } elseif {
-                echo '<input type="submit" class="btn btn-warning" name="StopLokinet" value="Stop Lokinet" />' , PHP_EOL;
-              };
-
-      				
-
-              /*  ()    if( 1=1 ) {
-                              echo '<input type="submit" class="btn btn-success" name="GenerateLokinet" value="Generate" />' , PHP_EOL;
-                            } else {
-                              echo '<input type="submit" class="btn btn-warning" name="RegenLokinet" value="Re-Generate" />' , PHP_EOL;
-                            };
-              */
-
-
-              ?>
-              </form>
+              <input type="submit" class="btn btn-outline btn-primary" name="SaveTORProxySettings" value="Save settings" />
+      				<?php
+      				if( $torproxystatus[0] == 0 ) {
+      					echo '<input type="submit" class="btn btn-success" name="StartTOR" value="Start TOR" />' , PHP_EOL;
+      				} else {
+      					echo '<input type="submit" class="btn btn-warning" name="StopTOR" value="Stop TOR" />' , PHP_EOL;
+      				};
+      				?>
+      				</form>
       			</div><!-- /.tab-content -->
       		</div><!-- /.panel-body -->
       		<div class="panel-footer"> Information provided by tor</div>
