@@ -514,5 +514,11 @@ function DisplayLokinetConfig(){
 		$status = '<div class="alert alert-success alert-dismissable">Lokinet is running
 					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>';
 	}
+	<div class="row">
+	<div class="col-lg-12">
+		<div class="panel panel-primary">
+			<div class="panel-heading"><i class="fa fa-eye-slash fa-fw"></i> Configure Lokinet</div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
 	}
 }
