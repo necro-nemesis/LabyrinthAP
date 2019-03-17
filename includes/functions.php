@@ -674,3 +674,4 @@ function SaveTORAndVPNConfig(){
       echo htmlspecialchars($line, ENT_QUOTES).'<br />' , PHP_EOL;
     }
   }
+}
