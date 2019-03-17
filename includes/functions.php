@@ -498,7 +498,7 @@ function SaveTORAndVPNConfig(){
   }
 
 <?php
-{
+{	
 /**
 *
 *
