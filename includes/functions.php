@@ -392,10 +392,8 @@ function DisplayLokinetConfig(){
 				       </div>
              </div>
            </div>
-         </div>
-       </div>
 
-      	<div class="tab-pane fade" id="daemon">
+             	<div class="tab-pane fade" id="daemon">
             		<h4>Lokient Daemon</h4>
                 <div class="row">
                   <div class="col-lg-12">
@@ -421,7 +419,7 @@ function DisplayLokinetConfig(){
       		<div class="panel-footer"> Information provided by Lokinet</div>
           </div><!-- /.panel-primary -->
       </div><!-- /.col-lg-12 -->
-      </div><!-- /.row -->
+    </div><!-- /.row -->
       <?php
       }
 
