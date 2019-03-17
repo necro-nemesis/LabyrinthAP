@@ -433,7 +433,7 @@ function DisplayLokinetConfig(){
               } else {
                 echo '<input type="submit" class="btn btn-warning" name="StopTOR" value="Stop Lokinet" />' , PHP_EOL;
               };
-
+              ?>
               </div><!-- /.systemtabcontent -->
 
               </div><!-- /.panel-default -->
