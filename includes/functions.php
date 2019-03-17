@@ -378,8 +378,8 @@ function DisplayLokinetConfig(){
             <hr>
               <div class="row">
                 <div class="col-md-4">
-                  <h5>Contact Loki user groups for the latest bootstrap</h5>
-                  <input type="submit" class="btn btn-outline btn-primary mr-1" name="ApplyLokinetSettings" value="Apply" />
+                  <h4>Contact Loki user groups for the latest bootstrap</h4>
+                  <input type="submit" class="btn btn-outline btn-primary" name="ApplyLokinetSettings" value="Apply" />
           				<?php
           				if( $lokinetstatus[0] == 0 ) {
           					echo '<input type="submit" class="btn btn-success" name="StartLokinet" value="Start Lokinet" />' , PHP_EOL;
