@@ -376,9 +376,13 @@ function DisplayLokinetConfig(){
 							<input type="text" class="form-control" name="loinetbootstrap" value="<?php echo htmlspecialchars($arrConfig['lokinetbootstrap'], ENT_QUOTES); ?>" />
 						</div>
             <hr>
-            <h5>Contact Loki user groups for the latest bootstrap</h5>
-					</div>
-        </div>
+              <div class="row">
+                <div class="col-lg-12">
+                  <h5>Contact Loki user groups for the latest bootstrap</h5>
+					     </div>
+             </div>
+           </div>
+         </div>
 
       	<div class="tab-pane fade" id="daemon">
             		<h4>Lokient Daemon</h4>
@@ -394,7 +398,6 @@ function DisplayLokinetConfig(){
                     <h2>This is Loki</h2>
                     <div class="embed-responsive embed-responsive-16by9">
                           <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/Lykh-NqkKys"></iframe>
-                          <hr>
                     </div>
                 </div>
               </div>
@@ -411,7 +414,8 @@ function DisplayLokinetConfig(){
               if (!file_exists($filename)) {
                 echo '<input tpe="submit" class="btn btn-success" name="GenerateLokinet" value="Gnerate .ini" />' , PHP_EOL;
               } else {
-                echo '<input type="submit" class="btn btn-danger" name="ReGenerateLokinet" value="Regenerate .ini" />' , PHP_EOL;
+                echo '<inpu
+                t type="submit" class="btn btn-danger" name="ReGenerateLokinet" value="Regenerate .ini" />' , PHP_EOL;
               };
       				?>
             </form>
