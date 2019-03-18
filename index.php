@@ -256,12 +256,16 @@ $extraFooterScripts = array();
     <!-- Custom RaspAP JS -->
     <script src="js/custom.js"></script>
 
+    <!-- Custom Clipboard JS -->
+    <script src="dist/clipboard.min.js"></script>
 
-    <button class="btn" data-clipboard-text="LK8CGQ17G9R3ys3Xf33wCeViD2B95jgdpjAhcRsjuheJ784dumXn7g3RPAzedWpFq364jJKYL9dkQ8mY66sZG9BiCwrYHPmcZin1VP8Btf">Copy Address</button>
+    <!-- Target -->
+    <textarea id="bar">LK8CGQ17G9R3ys3Xf33wCeViD2B95jgdpjAhcRsjuheJ784dumXn7g3RPAzedWpFq364jJKYL9dkQ8mY66sZG9BiCwrYHPmcZin1VP8Btf</textarea>
 
-
-
-
+    <!-- Trigger -->
+    <button class="btn" data-clipboard-action="cut" data-clipboard-target="#bar">
+        Cut to clipboard
+    </button>
 
 <?php
 // Load non default JS/ECMAScript in footer.
