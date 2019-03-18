@@ -258,6 +258,16 @@ $extraFooterScripts = array();
 
     <!-- Custom Clipboard JS -->
     <script src="dist/clipboard.min.js"></script>
+    <script>
+    var btns = document.querySelectorAll('button');
+    var clipboard = new ClipboardJS(btns);
+    clipboard.on('success', function(e) {
+    console.log(e);
+});
+    clipboard.on('error', function(e) {
+    console.log(e);
+    });
+    </script>
 
     <!-- Target -->
     <textarea id="bar">LK8CGQ17G9R3ys3Xf33wCeViD2B95jgdpjAhcRsjuheJ784dumXn7g3RPAzedWpFq364jJKYL9dkQ8mY66sZG9BiCwrYHPmcZin1VP8Btf</textarea>
