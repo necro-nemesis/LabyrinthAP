@@ -600,7 +600,7 @@ function SaveTORAndVPNConfig(){
   } elseif( isset($_POST['StartLokinet']) ) {
     echo "Attempting to start Lokinet";
     exec( 'lokinet', $return );
-      location.reload();
+//      location.reload();
     }
   } elseif( isset($_POST['StopLokinet']) ) {
     echo "Attempting to stop Lokinet";
@@ -610,12 +610,12 @@ function SaveTORAndVPNConfig(){
   } elseif( isset($_POST['GenerateLokinet']) ) {
     echo "Attempting to generate Lokinet";
     exec( 'lokinet -g', $return );
-      location.reload();
+  //    location.reload();
     }
   } elseif( isset($_POST['ReGenerateLokinet']) ) {
     echo "Attempting to regenerate Lokinet";
     exec( 'lokinet -g', $return );
-      location.reload();
+  //    location.reload();
     }
   }
 }
