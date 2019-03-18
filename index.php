@@ -259,22 +259,7 @@ $extraFooterScripts = array();
 
     <button class="btn" data-clipboard-text="LK8CGQ17G9R3ys3Xf33wCeViD2B95jgdpjAhcRsjuheJ784dumXn7g3RPAzedWpFq364jJKYL9dkQ8mY66sZG9BiCwrYHPmcZin1VP8Btf">Copy Address</button>
 
-<script>
-var clipboard = new Clipboard('.btn');
 
-clipboard.on('success', function(e) {
-    console.info('Accion:', e.action);
-    console.info('Texto:', e.text);
-    console.info('Trigger:', e.trigger);
-
-    e.clearSelection();
-});
-
-clipboard.on('error', function(e) {
-    console.error('Accion:', e.action);
-    console.error('Trigger:', e.trigger);
-});
-</script>
 
 
 
