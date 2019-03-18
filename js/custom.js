@@ -148,20 +148,3 @@ $().ready(function(){
         break;
     }
 });
-
-<script>
-var clipboard = new Clipboard('.btn');
-
-clipboard.on('success', function(e) {
-    console.info('Accion:', e.action);
-    console.info('Texto:', e.text);
-    console.info('Trigger:', e.trigger);
-
-    e.clearSelection();
-});
-
-clipboard.on('error', function(e) {
-    console.error('Accion:', e.action);
-    console.error('Trigger:', e.trigger);
-});
-</script>
