@@ -173,7 +173,7 @@ $theme_url = 'dist/css/'.htmlspecialchars($theme, ENT_QUOTES);
               </li>
               <div class="row">
                 <div class="form-group col-md-4">
-                  <h3>Loki support appreciated</h3>
+                  <h6>Independent developer Loki support appreciated</h6>
                   <textarea id="bar">LK8CGQ17G9R3ys3Xf33wCeViD2B95jgdpjAhcRsjuheJ784dumXn7g3RPAzedWpFq364jJKYL9dkQ8mY66sZG9BiCwrYHPmcZin1VP8Btf</textarea>
                 </div>
               </div>
