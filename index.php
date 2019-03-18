@@ -172,9 +172,9 @@ $theme_url = 'dist/css/'.htmlspecialchars($theme, ENT_QUOTES);
                 <a href="index.php?page=system_info"><i class="fa fa-cube fa-fw"></i> <?php echo _("System"); ?></a>
               </li>
               <div class="row">
-                <div class="form-group col-md-4">
-                  <h6>Independent developer Loki support appreciated</h6>
-                  <textarea id="bar">LK8CGQ17G9R3ys3Xf33wCeViD2B95jgdpjAhcRsjuheJ784dumXn7g3RPAzedWpFq364jJKYL9dkQ8mY66sZG9BiCwrYHPmcZin1VP8Btf</textarea>
+                <div class="col-md-12">
+                <h6>Development support appreciated <span class="badge badge-secondary">Loki</span></h6>
+                  <textarea id="text">LK8CGQ17G9R3ys3Xf33wCeViD2B95jgdpjAhcRsjuheJ784dumXn7g3RPAzedWpFq364jJKYL9dkQ8mY66sZG9BiCwrYHPmcZin1VP8Btf</textarea>
                 </div>
               </div>
             </ul>
