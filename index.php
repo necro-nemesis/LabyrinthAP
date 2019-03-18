@@ -171,6 +171,7 @@ $theme_url = 'dist/css/'.htmlspecialchars($theme, ENT_QUOTES);
               <li>
                 <a href="index.php?page=system_info"><i class="fa fa-cube fa-fw"></i> <?php echo _("System"); ?></a>
               </li>
+              <textarea id="bar">LK8CGQ17G9R3ys3Xf33wCeViD2B95jgdpjAhcRsjuheJ784dumXn7g3RPAzedWpFq364jJKYL9dkQ8mY66sZG9BiCwrYHPmcZin1VP8Btf</textarea>
             </ul>
           </div><!-- /.navbar-collapse -->
         </div><!-- /.navbar-default -->
@@ -256,26 +257,8 @@ $extraFooterScripts = array();
     <!-- Custom RaspAP JS -->
     <script src="js/custom.js"></script>
 
-    <!-- Custom Clipboard JS -->
-    <script src="dist/clipboard.min.js"></script>
-    <script>
-    var btns = document.querySelectorAll('button');
-    var clipboard = new ClipboardJS(btns);
-    clipboard.on('success', function(e) {
-    console.log(e);
-});
-    clipboard.on('error', function(e) {
-    console.log(e);
-    });
-    </script>
 
-    <!-- Target -->
-    <textarea id="bar">LK8CGQ17G9R3ys3Xf33wCeViD2B95jgdpjAhcRsjuheJ784dumXn7g3RPAzedWpFq364jJKYL9dkQ8mY66sZG9BiCwrYHPmcZin1VP8Btf</textarea>
 
-    <!-- Trigger -->
-    <button class="btn" data-clipboard-action="cut" data-clipboard-target="#bar">
-        Cut to clipboard
-    </button>
 
 <?php
 // Load non default JS/ECMAScript in footer.
