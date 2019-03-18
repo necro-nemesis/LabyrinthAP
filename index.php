@@ -171,11 +171,14 @@ $theme_url = 'dist/css/'.htmlspecialchars($theme, ENT_QUOTES);
               <li>
                 <a href="index.php?page=system_info"><i class="fa fa-cube fa-fw"></i> <?php echo _("System"); ?></a>
               </li>
+                <a href="index.php?page=system_info"><i class="fa fa-cube fa-fw"></i> <?php echo _("Development support appreciated"); ?></a>
+              </ln>
               <div class="row">
-                <div class="col-md-12">
-                   <p class="Development support appreciated">Center-aligned text.</p>
+                <div class="span12">
                   <textarea id="textarea">LK8CGQ17G9R3ys3Xf33wCeViD2B95jgdpjAhcRsjuheJ784dumXn7g3RPAzedWpFq364jJKYL9dkQ8mY66sZG9BiCwrYHPmcZin1VP8Btf</textarea>
                 </div>
+              </div>
+              </div>
               </div>
             </ul>
           </div><!-- /.navbar-collapse -->
