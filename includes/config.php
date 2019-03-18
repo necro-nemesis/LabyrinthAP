@@ -33,4 +33,4 @@ define('RASPI_VNSTAT_ENABLED', true );
 
 // Locale settings
 define('LOCALE_ROOT', 'locale');
-define('LOCALE_DOMAIN', 'messages'); 
+define('LOCALE_DOMAIN', 'messages');

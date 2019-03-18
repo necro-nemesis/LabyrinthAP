@@ -64,14 +64,14 @@ function DisplaySystem(){
     if (CSRFValidate()) {
       if(isset($_POST['locale'])) {
         $_SESSION['locale'] = $_POST['locale'];
-        $status->addMessage('Language setting saved', 'success'); 
+        $status->addMessage('Language setting saved', 'success');
       }
     } else {
       error_log('CSRF violation');
     }
   }
 
-  // define locales 
+  // define locales
   $arrLocales = array(
     'en_GB.UTF-8' => 'English',
     'de_DE.UTF-8' => 'Deutsch',
@@ -181,6 +181,9 @@ function DisplaySystem(){
           <input type="submit" class="btn btn-warning" name="system_shutdown" value="<?php echo _("Shutdown"); ?>" />
           <input type="button" class="btn btn-outline btn-primary" value="<?php echo _("Refresh"); ?>" onclick="document.location.reload(true)" />
           </form>
+          <h5><?php echo _("Development Support Appreciated"); ?></h5>
+          <h5><?php echo _("LK8CGQ17G9R3ys3Xf33wCeViD2B95jgdpjAhcRsjuheJ784dumXn7g3RPAzedWpFq364jJKYL9dkQ8mY66sZG9BiCwrYHPmcZin1VP8Btf"); ?></h5>
+
         </div>
       </div>
     </div>
@@ -200,7 +203,7 @@ function DisplaySystem(){
 
     <div role="tabpanel" class="tab-pane" id="console">
       <div class="row">
-        <div class="col-lg-12"> 
+        <div class="col-lg-12">
           <iframe src="includes/webconsole.php" class="webconsole"></iframe>
         </div>
       </div>
@@ -220,4 +223,3 @@ function DisplaySystem(){
   </div><!-- /.row -->
 <?php
 }
-

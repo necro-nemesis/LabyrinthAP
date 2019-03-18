@@ -9,7 +9,7 @@
  * lighttpd (I have version 1.4.31-2 installed via apt)
  * php5-cgi (I have version 5.4.4-12 installed via apt)
  * along with their supporting packages, php5 will also need to be enabled.
- * 
+ *
  * @author     Lawrence Yau <sirlagz@gmail.com>
  * @author     Bill Zimmerman <billzimmerman@gmail.com>
  * @license    GNU General Public License, version 3 (GPL-3.0)
@@ -118,10 +118,10 @@ $theme_url = 'dist/css/'.htmlspecialchars($theme, ENT_QUOTES);
               <li>
                 <a href="index.php?page=wlan0_info"><i class="fa fa-dashboard fa-fw"></i> <?php echo _("Dashboard"); ?></a>
               </li>
-	      <?php if ( RASPI_WIFICLIENT_ENABLED ) : ?>
+	            <?php if ( RASPI_WIFICLIENT_ENABLED ) : ?>
               <li>
                 <a href="index.php?page=wpa_conf"><i class="fa fa-signal fa-fw"></i> <?php echo _("Configure WiFi client"); ?></a>
-	      </li>
+	            </li>
               <?php endif; ?>
               <?php if ( RASPI_HOTSPOT_ENABLED ) : ?>
               <li>
@@ -131,7 +131,7 @@ $theme_url = 'dist/css/'.htmlspecialchars($theme, ENT_QUOTES);
               <?php if ( RASPI_NETWORK_ENABLED ) : ?>
               <li>
 	             <a href="index.php?page=network_conf"><i class="fa fa-sitemap fa-fw"></i> <?php echo _("Configure networking"); ?></a>
-              </li> 
+              </li>
               <?php endif; ?>
               <?php if ( RASPI_DHCP_ENABLED ) : ?>
               <li>
@@ -143,7 +143,7 @@ $theme_url = 'dist/css/'.htmlspecialchars($theme, ENT_QUOTES);
                 <a href="index.php?page=openvpn_conf"><i class="fa fa-lock fa-fw"></i> <?php echo _("Configure OpenVPN"); ?></a>
               </li>
               <?php endif; ?>
-	      <?php if ( RASPI_LOKINET_ENABLED ) : ?>
+	            <?php if ( RASPI_LOKINET_ENABLED ) : ?>
               <li>
                  <a href="index.php?page=lokinet_conf"><i class="fa fa-eye-slash fa-fw"></i> <?php echo _("Configure Lokinet"); ?></a>
               </li>
@@ -171,6 +171,8 @@ $theme_url = 'dist/css/'.htmlspecialchars($theme, ENT_QUOTES);
               <li>
                 <a href="index.php?page=system_info"><i class="fa fa-cube fa-fw"></i> <?php echo _("System"); ?></a>
               </li>
+              </div>
+              </div>
             </ul>
           </div><!-- /.navbar-collapse -->
         </div><!-- /.navbar-default -->
@@ -187,7 +189,7 @@ $theme_url = 'dist/css/'.htmlspecialchars($theme, ENT_QUOTES);
           </div>
         </div><!-- /.row -->
 
-        <?php 
+        <?php
 $extraFooterScripts = array();
         // handle page actions
         switch( $page ) {
@@ -209,7 +211,7 @@ $extraFooterScripts = array();
           case "openvpn_conf":
             DisplayOpenVPNConfig();
             break;
-	  case "lokinet_conf":
+	        case "lokinet_conf":
             DisplayLokinetConfig();
             break;
           case "torproxy_conf":
@@ -235,7 +237,7 @@ $extraFooterScripts = array();
         }
 
 ?>
-      </div><!-- /#page-wrapper --> 
+      </div><!-- /#page-wrapper -->
     </div><!-- /#wrapper -->
 
     <!-- RaspAP JavaScript -->
@@ -255,6 +257,9 @@ $extraFooterScripts = array();
 
     <!-- Custom RaspAP JS -->
     <script src="js/custom.js"></script>
+
+
+
 
 <?php
 // Load non default JS/ECMAScript in footer.
