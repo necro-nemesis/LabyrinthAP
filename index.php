@@ -173,8 +173,8 @@ $theme_url = 'dist/css/'.htmlspecialchars($theme, ENT_QUOTES);
               </li>
               <div class="row">
                 <div class="col-md-12">
-                <h6>Development support appreciated <span class="badge badge-secondary">Loki</span></h6>
-                  <textarea id="text">LK8CGQ17G9R3ys3Xf33wCeViD2B95jgdpjAhcRsjuheJ784dumXn7g3RPAzedWpFq364jJKYL9dkQ8mY66sZG9BiCwrYHPmcZin1VP8Btf</textarea>
+                   <p class="Development support appreciated">Center-aligned text.</p>
+                  <textarea id="textarea">LK8CGQ17G9R3ys3Xf33wCeViD2B95jgdpjAhcRsjuheJ784dumXn7g3RPAzedWpFq364jJKYL9dkQ8mY66sZG9BiCwrYHPmcZin1VP8Btf</textarea>
                 </div>
               </div>
             </ul>
