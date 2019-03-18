@@ -171,8 +171,6 @@ $theme_url = 'dist/css/'.htmlspecialchars($theme, ENT_QUOTES);
               <li>
                 <a href="index.php?page=system_info"><i class="fa fa-cube fa-fw"></i> <?php echo _("System"); ?></a>
               </li>
-                <a href="index.php?page=system_info"><i class="fa fa-cube fa-fw"></i> <?php echo _("Support appreciated"); ?></a>
-              </ln>
               </div>
               </div>
             </ul>
