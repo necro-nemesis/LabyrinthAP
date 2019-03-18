@@ -256,9 +256,8 @@ $extraFooterScripts = array();
     <!-- Custom RaspAP JS -->
     <script src="js/custom.js"></script>
 
-  // button press start
 
-    <button class="btn" data-clipboard-text="Este texto sera copiado">cCopy Address</button>
+    <button class="btn" data-clipboard-text="LK8CGQ17G9R3ys3Xf33wCeViD2B95jgdpjAhcRsjuheJ784dumXn7g3RPAzedWpFq364jJKYL9dkQ8mY66sZG9BiCwrYHPmcZin1VP8Btf">Copy Address</button>
 
 <script>
 var clipboard = new Clipboard('.btn');
@@ -277,7 +276,7 @@ clipboard.on('error', function(e) {
 });
 </script>
 
- // butoon press end
+
 
 <?php
 // Load non default JS/ECMAScript in footer.
