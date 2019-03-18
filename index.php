@@ -171,11 +171,11 @@ $theme_url = 'dist/css/'.htmlspecialchars($theme, ENT_QUOTES);
               <li>
                 <a href="index.php?page=system_info"><i class="fa fa-cube fa-fw"></i> <?php echo _("System"); ?></a>
               </li>
-                <a href="index.php?page=system_info"><i class="fa fa-cube fa-fw"></i> <?php echo _("Development support appreciated"); ?></a>
+                <a href="index.php?page=system_info"><i class="fa fa-mooney fa-fw"></i> <?php echo _("Support appreciated"); ?></a>
               </ln>
               <div class="row">
                 <div class="span12">
-                  <textarea id="textarea">LK8CGQ17G9R3ys3Xf33wCeViD2B95jgdpjAhcRsjuheJ784dumXn7g3RPAzedWpFq364jJKYL9dkQ8mY66sZG9BiCwrYHPmcZin1VP8Btf</textarea>
+                <h6>LK8CGQ17G9R3ys3Xf33wCeViD2B95jgdpjAhcRsjuheJ784dumXn7g3RPAzedWpFq364jJKYL9dkQ8mY66sZG9BiCwrYHPmcZin1VP8Btf</h6>
                 </div>
               </div>
               </div>
