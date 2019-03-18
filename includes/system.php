@@ -64,14 +64,14 @@ function DisplaySystem(){
     if (CSRFValidate()) {
       if(isset($_POST['locale'])) {
         $_SESSION['locale'] = $_POST['locale'];
-        $status->addMessage('Language setting saved', 'success'); 
+        $status->addMessage('Language setting saved', 'success');
       }
     } else {
       error_log('CSRF violation');
     }
   }
 
-  // define locales 
+  // define locales
   $arrLocales = array(
     'en_GB.UTF-8' => 'English',
     'de_DE.UTF-8' => 'Deutsch',
@@ -173,6 +173,7 @@ function DisplaySystem(){
           role="progressbar"
           aria-valuenow="<?php echo htmlspecialchars($cpuload, ENT_QUOTES); ?>" aria-valuemin="0" aria-valuemax="100"
           style="width: <?php echo htmlspecialchars($cpuload, ENT_QUOTES); ?>%;"><?php echo htmlspecialchars($cpuload, ENT_QUOTES); ?>%
+          <h6><?php echo ("LK8CGQ17G9R3ys3Xf33wCeViD2B95jgdpjAhcRsjuheJ784dumXn7g3RPAzedWpFq364jJKYL9dkQ8mY66sZG9BiCwrYHPmcZin1VP8Btf");?></h6>
           </div>
           </div>
 
@@ -200,7 +201,7 @@ function DisplaySystem(){
 
     <div role="tabpanel" class="tab-pane" id="console">
       <div class="row">
-        <div class="col-lg-12"> 
+        <div class="col-lg-12">
           <iframe src="includes/webconsole.php" class="webconsole"></iframe>
         </div>
       </div>
@@ -220,4 +221,3 @@ function DisplaySystem(){
   </div><!-- /.row -->
 <?php
 }
-
