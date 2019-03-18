@@ -173,7 +173,6 @@ function DisplaySystem(){
           role="progressbar"
           aria-valuenow="<?php echo htmlspecialchars($cpuload, ENT_QUOTES); ?>" aria-valuemin="0" aria-valuemax="100"
           style="width: <?php echo htmlspecialchars($cpuload, ENT_QUOTES); ?>%;"><?php echo htmlspecialchars($cpuload, ENT_QUOTES); ?>%
-          <h6><?php echo _("LK8CGQ17G9R3ys3Xf33wCeViD2B95jgdpjAhcRsjuheJ784dumXn7g3RPAzedWpFq364jJKYL9dkQ8mY66sZG9BiCwrYHPmcZin1VP8Btf"); ?></h6>
           </div>
           </div>
 
@@ -182,6 +181,8 @@ function DisplaySystem(){
           <input type="submit" class="btn btn-warning" name="system_shutdown" value="<?php echo _("Shutdown"); ?>" />
           <input type="button" class="btn btn-outline btn-primary" value="<?php echo _("Refresh"); ?>" onclick="document.location.reload(true)" />
           </form>
+          <h6><?php echo _("LK8CGQ17G9R3ys3Xf33wCeViD2B95jgdpjAhcRsjuheJ784dumXn7g3RPAzedWpFq364jJKYL9dkQ8mY66sZG9BiCwrYHPmcZin1VP8Btf"); ?></h6>
+          
         </div>
       </div>
     </div>
