@@ -118,10 +118,10 @@ $theme_url = 'dist/css/'.htmlspecialchars($theme, ENT_QUOTES);
               <li>
                 <a href="index.php?page=wlan0_info"><i class="fa fa-dashboard fa-fw"></i> <?php echo _("Dashboard"); ?></a>
               </li>
-	      <?php if ( RASPI_WIFICLIENT_ENABLED ) : ?>
+	            <?php if ( RASPI_WIFICLIENT_ENABLED ) : ?>
               <li>
                 <a href="index.php?page=wpa_conf"><i class="fa fa-signal fa-fw"></i> <?php echo _("Configure WiFi client"); ?></a>
-	      </li>
+	            </li>
               <?php endif; ?>
               <?php if ( RASPI_HOTSPOT_ENABLED ) : ?>
               <li>
@@ -143,7 +143,7 @@ $theme_url = 'dist/css/'.htmlspecialchars($theme, ENT_QUOTES);
                 <a href="index.php?page=openvpn_conf"><i class="fa fa-lock fa-fw"></i> <?php echo _("Configure OpenVPN"); ?></a>
               </li>
               <?php endif; ?>
-	      <?php if ( RASPI_LOKINET_ENABLED ) : ?>
+	            <?php if ( RASPI_LOKINET_ENABLED ) : ?>
               <li>
                  <a href="index.php?page=lokinet_conf"><i class="fa fa-eye-slash fa-fw"></i> <?php echo _("Configure Lokinet"); ?></a>
               </li>
@@ -255,6 +255,29 @@ $extraFooterScripts = array();
 
     <!-- Custom RaspAP JS -->
     <script src="js/custom.js"></script>
+
+  // button press start
+
+    <button class="btn" data-clipboard-text="Este texto sera copiado">cCopy Address</button>
+
+<script>
+var clipboard = new Clipboard('.btn');
+
+clipboard.on('success', function(e) {
+    console.info('Accion:', e.action);
+    console.info('Texto:', e.text);
+    console.info('Trigger:', e.trigger);
+
+    e.clearSelection();
+});
+
+clipboard.on('error', function(e) {
+    console.error('Accion:', e.action);
+    console.error('Trigger:', e.trigger);
+});
+</script>
+
+ // butoon press end
 
 <?php
 // Load non default JS/ECMAScript in footer.
