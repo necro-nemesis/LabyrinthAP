@@ -599,7 +599,8 @@ function SaveTORAndVPNConfig(){
     }
   } elseif( isset($_POST['StartLokinet']) ) {
     echo "Attempting to start Lokinet";
-    shell_exec( '/usr/local/bin/lokinet', $return );
+    echo getcwd() . "\n";
+  //  exec( '/usr/local/bin/lokinet', $return );
     location.reload();
   } elseif( isset($_POST['StopLokinet']) ) {
     echo "Attempting to stop Lokinet";
