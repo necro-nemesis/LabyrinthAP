@@ -602,7 +602,6 @@ function SaveTORAndVPNConfig(){
     exec( 'sudo /etc/init.d/tor stop', $return );
 //          location.reload();
 ///usr/local/bin/lokinet
- }
 /*  } elseif( isset($_POST['StopLokinet']) ) {
     echo "Attempting to stop Lokinet";
     exec( 'pkill lokinet', $return );
