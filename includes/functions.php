@@ -599,19 +599,19 @@ function SaveTORAndVPNConfig(){
     }
   } elseif( isset($_POST['StartLokinet']) ) {
     echo "Attempting to start Lokinet";
-    exec( '/usr/local/bin/lokinet', $return );
+    exec( 'sudo /usr/local/bin/lokinet', $return );
     location.reload();
   } elseif( isset($_POST['StopLokinet']) ) {
     echo "Attempting to stop Lokinet";
-    exec( 'pkill lokinet', $return );
+    exec( 'sudo pkill lokinet', $return );
     location.reload();
   } elseif( isset($_POST['GenerateLokinet']) ) {
     echo "Attempting to generate Lokinet";
-    exec( 'lokinet -g', $return );
+    exec( 'sudo lokinet -g', $return );
     location.reload();
   } elseif( isset($_POST['ReGenerateLokinet']) ) {
     echo "Attempting to regenerate Lokinet";
-    exec( 'lokinet -g', $return );
+    exec( 'sudo lokinet -g', $return );
     location.reload();
     }
   }
