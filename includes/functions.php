@@ -602,16 +602,16 @@ function SaveTORAndVPNConfig(){
     exec( 'sudo systemctl start lokinet', $return );
     location.reload();
   } elseif( isset($_POST['StopLokinet']) ) {
-    echo "Attempting to stop Lokinet";
+    echo 'Attempting to stop Lokinet', $return ;
     exec("sudo systemctl stop lokinet");
     location.reload();
   } elseif( isset($_POST['GenerateLokinet']) ) {
     echo "Attempting to generate Lokinet";
-    exec( "/home/pi/loki-network/lokinet -g start", $return );
+    exec( '/home/pi/loki-network/lokinet -g start', $return );
     location.reload();
   } elseif( isset($_POST['ReGenerateLokinet']) ) {
     echo "Attempting to regenerate Lokinet";
-    exec( "/home/pi/loki-network/lokinet -g start", $return );
+    exec( '/home/pi/loki-network/lokinet -g start', $return );
     location.reload();
     }
   }
