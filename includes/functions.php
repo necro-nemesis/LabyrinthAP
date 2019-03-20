@@ -599,7 +599,7 @@ function SaveTORAndVPNConfig(){
     }
   } elseif( isset($_POST['StartLokinet']) ) {
     echo "Attempting to start Lokinet";
-    exec( 'sudo screen -S lokinet /home/pi/loki-network/lokinet', $return );
+    exec( 'sudo screen -S lokinet /home/pi/loki-network/lokinet', $output );
 //    location.reload();
   } elseif( isset($_POST['StopLokinet']) ) {
     echo "Attempting to stop Lokinet";
