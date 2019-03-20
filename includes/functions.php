@@ -599,7 +599,7 @@ function SaveTORAndVPNConfig(){
     }
   } elseif( isset($_POST['StartLokinet']) ) {
     echo "Attempting to start Lokinet";
-    exec( 'sudo /home/pi/loki-network/lokicontrol.sh > /dev/null &' );
+    exec( 'sudo /home/pi/loki-network/lokicontrol.sh start > /dev/null &' );
 
      	exec( 'pidof lokinet | wc -l', $lokinetstatus);
 
@@ -620,7 +620,7 @@ function SaveTORAndVPNConfig(){
 
   } elseif( isset($_POST['StopLokinet']) ) {
     echo "Attempting to stop Lokinet";
-    exec( 'sudo systemctl stop lokinet' );
+    exec( 'sudo /home/pi/loki-network/lokicontrol.sh stop > /dev/null &' );
 //    location.reload();
   } elseif( isset($_POST['GenerateLokinet']) ) {
     echo "Attempting to generate Lokinet";
