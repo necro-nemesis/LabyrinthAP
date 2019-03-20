@@ -599,7 +599,7 @@ function SaveTORAndVPNConfig(){
     }
   } elseif( isset($_POST['StartLokinet']) ) {
     echo "Attempting to start Lokinet";
-    exec( 'sudo lokicontrol.sh > /dev/null &' );
+    exec( 'sudo /home/pi/loki-network/lokicontrol.sh > /dev/null &' );
 
     /*  	exec( 'pidof lokinet | wc -l', $lokinetstatus);
 
