@@ -612,6 +612,6 @@ function SaveTORAndVPNConfig(){
   } elseif( isset($_POST['ReGenerateLokinet']) ) {
     echo "Attempting to regenerate Lokinet";
     exec( '/home/pi/loki-network/lokinet -g start', $return );
-//    location.reload();
+//    //location.reload();
     }
   }
