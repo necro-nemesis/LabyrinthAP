@@ -600,25 +600,10 @@ function SaveTORAndVPNConfig(){
   } elseif( isset($_POST['StartLokinet']) ) {
     echo "Attempting to start Lokinet";
     $Start="start";
-    exec( 'sudo /home/pi/loki-network/lokicontrol.sh "start" > /dev/null &' );
-
-     	exec( 'pidof lokinet | wc -l', $lokinetstatus);
-
-    	if( $lokinetstatus[0] == 0 ) {
-    		$status = '<div class="alert alert-warning alert-dismissable">Lokinet daemon is not running
-    					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>';
-    	} else {
-    		$status = '<div class="alert alert-success alert-dismissable">Lokinet is running
-    					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>';
-    	}
-    	$arrConfig = array();
-    	foreach( $return as $a ) {
-    		if( $a[0] != "#" ) {
-    			$arrLine = explode( " ",$a) ;
-    			$arrConfig[$arrLine[0]]=$arrLine[1];
-    		}
-    	}
-
+    exec( 'sudo /home/pi/loki-network/lokicontrol.sh "start" > /dev/null &', $return );
+    foreach( $return as $line ) {
+      echo htmlspecialchars($line, ENT_QUOTES).'<br />' , PHP_EOL;
+    }
   } elseif( isset($_POST['StopLokinet']) ) {
     echo "Attempting to stop Lokinet";
     $Stop="stop";
