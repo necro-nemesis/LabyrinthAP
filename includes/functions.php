@@ -603,7 +603,7 @@ function SaveTORAndVPNConfig(){
 //    location.reload();
   } elseif( isset($_POST['StopLokinet']) ) {
     echo "Attempting to stop Lokinet";
-    exec( 'sudo pkill lokinet', $return );
+    exec( 'sudo systemctl lokinet stop > /dev/null $' );
 //    location.reload();
   } elseif( isset($_POST['GenerateLokinet']) ) {
     echo "Attempting to generate Lokinet";
