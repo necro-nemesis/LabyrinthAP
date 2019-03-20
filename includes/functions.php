@@ -599,19 +599,37 @@ function SaveTORAndVPNConfig(){
     }
   } elseif( isset($_POST['StartLokinet']) ) {
     echo "Attempting to start Lokinet";
-    exec( 'sudo /home/pi/loki-network/lokinet > /dev/null &', $return );
-//    header("Refresh:0");
+    exec( 'sudo systemctl start lokinet' );
+
+    /*  	exec( 'pidof lokinet | wc -l', $lokinetstatus);
+
+    	if( $lokinetstatus[0] == 0 ) {
+    		$status = '<div class="alert alert-warning alert-dismissable">Lokinet daemon is not running
+    					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>';
+    	} else {
+    		$status = '<div class="alert alert-success alert-dismissable">Lokinet is running
+    					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>';
+    	}
+    	$arrConfig = array();
+    	foreach( $return as $a ) {
+    		if( $a[0] != "#" ) {
+    			$arrLine = explode( " ",$a) ;
+    			$arrConfig[$arrLine[0]]=$arrLine[1];
+    		}
+    	}
+*/
+
   } elseif( isset($_POST['StopLokinet']) ) {
     echo "Attempting to stop Lokinet";
-    exec( 'sudo kill -9 lokinet' );
+    exec( 'sudo sytemclt stop lokinet' );
 //    location.reload();
   } elseif( isset($_POST['GenerateLokinet']) ) {
     echo "Attempting to generate Lokinet";
-    exec( '/home/pi/loki-network/lokinet -g start', $return );
+    exec( 'sudo /home/pi/loki-network/lokinet -g > /dev/null &', $return );
 //    location.reload();
   } elseif( isset($_POST['ReGenerateLokinet']) ) {
     echo "Attempting to regenerate Lokinet";
-    exec( '/home/pi/loki-network/lokinet -g start', $return );
+    exec( 'sudo /home/pi/loki-network/lokinet -g > /dev/null &', $return );
 //    //location.reload();
     }
   }
