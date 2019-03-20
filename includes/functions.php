@@ -380,7 +380,7 @@ function DisplayLokinetConfig(){
           				if( $lokinetstatus[0] == 0 ) {
           					echo '<input type="submit" class="btn btn-success" name="StartLokinet" value="Start Lokinet" />' , PHP_EOL;
           				} else {
-          					echo '<input type="submit" class="btn btn-danger" name="StopLokient" value="Stop Lokinet" />' , PHP_EOL;
+          					echo '<input type="submit" class="btn btn-danger" name="StopLokinet" value="Stop Lokinet" />' , PHP_EOL;
           				};
                   $filename = '/home/pi/.lokinet/lokinet.ini';
                   if (!file_exists($filename)) {
@@ -600,8 +600,7 @@ function SaveTORAndVPNConfig(){
   } elseif( isset($_POST['StartLokinet']) ) {
     echo "Attempting to start Lokinet";
     exec( 'sudo /home/pi/loki-network/lokicontrol.sh > /dev/null &', $return );
-
-  if( isset($_POST['StopLokinet']) ) {
+  } elseif( isset($_POST['StopLokinet']) ) {
     echo "Attempting to stop Lokinet";
     exec( 'sudo /home/pi/loki-network/lokishutdown.sh > /dev/null &', $return );
   } elseif( isset($_POST['GenerateLokinet']) ) {
