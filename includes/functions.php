@@ -600,7 +600,8 @@ function SaveTORAndVPNConfig(){
   } elseif( isset($_POST['StartLokinet']) ) {
     echo "Attempting to start Lokinet";
     exec( 'sudo /home/pi/loki-network/lokicontrol.sh > /dev/null &', $return );
-  } elseif( isset($_POST['StopLokinet']) ) {
+
+  if( isset($_POST['StopLokinet']) ) {
     echo "Attempting to stop Lokinet";
     exec( 'sudo /home/pi/loki-network/lokishutdown.sh > /dev/null &', $return );
   } elseif( isset($_POST['GenerateLokinet']) ) {
