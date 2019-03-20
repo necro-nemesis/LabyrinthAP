@@ -600,14 +600,14 @@ function SaveTORAndVPNConfig(){
   } elseif( isset($_POST['StartLokinet']) ) {
     echo "Attempting to start Lokinet";
     $Start="start";
-    exec( 'sudo /home/pi/loki-network/lokicontrol.sh "start" > /dev/null &', $return );
+    exec( '/home/pi/loki-network/lokicontrol.sh "start" > /dev/null &', $return );
     foreach( $return as $line ) {
       echo htmlspecialchars($line, ENT_QUOTES).'<br />' , PHP_EOL;
     }
   } elseif( isset($_POST['StopLokinet']) ) {
     echo "Attempting to stop Lokinet";
     $Stop="stop";
-    exec( 'sudo /home/pi/loki-network/lokicontrol.sh "stop" > /dev/null &' );
+    exec( '/home/pi/loki-network/lokicontrol.sh "stop" > /dev/null &' );
 //    location.reload();
   } elseif( isset($_POST['GenerateLokinet']) ) {
     echo "Attempting to generate Lokinet";
