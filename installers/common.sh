@@ -44,7 +44,6 @@ function install_warning() {
 function display_welcome() {
     raspberry='\033[0;35m'
     green='\033[1;32m'
-
     echo -e "${green}\n"
     echo -e   ooooo                  oooo         o8o        .o.       ooooooooo.""
     echo -e   `888'                  `888         `"'       .888.      `888   `Y88.""

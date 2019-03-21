@@ -6,7 +6,7 @@ LokiAP interfaces witht Lokinet daemon to facilitate connections to the the Loki
 
 https://loki.network/
 
-"Loki is a privacy network which will allow users to transact and communicate privately over the internet, providing a suite of tools to help maintain the maximum amount of anonymity possible while browsing, transacting and communication online. Using the decentralised nature of blockchain technology, Loki creates new private and secure methods of interacting with the internet, as well as building privacy-centric applications, such as messaging services, forums, online marketplaces, and social media platforms." 
+"Loki is a privacy network which will allow users to transact and communicate privately over the internet, providing a suite of tools to help maintain the maximum amount of anonymity possible while browsing, transacting and communication online. Using the decentralised nature of blockchain technology, Loki creates new private and secure methods of interacting with the internet, as well as building privacy-centric applications, such as messaging services, forums, online marketplaces, and social media platforms."
 
 Loki
 
@@ -65,7 +65,7 @@ LokiAP is free software, but powered by your support. If you find it beneficial 
 Loki Donation Address: LK8CGQ17G9R3ys3Xf33wCeViD2B95jgdpjAhcRsjuheJ784dumXn7g3RPAzedWpFq364jJKYL9dkQ8mY66sZG9BiCwrYHPmcZin1VP8Btf
 
 ## Manual installation
-These steps apply to the latest release of Raspbian (currently [Stretch](https://www.raspberrypi.org/downloads/raspbian/)). Notes for previously released versions are provided, where applicable. Start off by installing git, lighttpd, php7, hostapd and dnsmasq. 
+These steps apply to the latest release of Raspbian (currently [Stretch](https://www.raspberrypi.org/downloads/raspbian/)). Notes for previously released versions are provided, where applicable. Start off by installing git, lighttpd, php7, hostapd and dnsmasq.
 ```sh
 $ sudo apt-get install git lighttpd php7.0-cgi hostapd dnsmasq vnstat
 ```
@@ -75,9 +75,12 @@ sudo lighttpd-enable-mod fastcgi-php
 sudo service lighttpd restart
 ```
 Now comes the fun part. For security reasons, the `www-data` user which lighttpd runs under is not allowed to start or stop daemons, or run commands like ifdown and ifup, all of which we want our page to do.
-So what I have done is added the `www-data` user to the sudoers file, but with restrictions on what commands the user can run. Add the following to the end of `/etc/sudoers`, substituting your wireless interface for `wlan0` if needed: 
+So what I have done is added the `www-data` user to the sudoers file, but with restrictions on what commands the user can run. Add the following to the end of `/etc/sudoers`, substituting your wireless interface for `wlan0` if needed:
 
 ```sh
+www-data ALL=(ALL) NOPASSWD:/home/pi/loki-network/lokilaunch.sh gen
+www-data ALL=(ALL) NOPASSWD:/home/pi/loki-network/lokilaunch.sh start
+www-data ALL=(ALL) NOPASSWD:/home/pi/loki-network/lokilaunch.sh stop
 www-data ALL=(ALL) NOPASSWD:/sbin/ifdown wlan0
 www-data ALL=(ALL) NOPASSWD:/sbin/ifup wlan0
 www-data ALL=(ALL) NOPASSWD:/bin/cat /etc/wpa_supplicant/wpa_supplicant.conf
@@ -121,7 +124,7 @@ sudo chown -R www-data:www-data /etc/raspap
 Move the HostAPD logging scripts to the correct location
 ```sh
 sudo mkdir /etc/raspap/hostapd
-sudo mv /var/www/html/installers/*log.sh /etc/raspap/hostapd 
+sudo mv /var/www/html/installers/*log.sh /etc/raspap/hostapd
 ```
 Reboot and it should be up and running!
 ```sh
@@ -131,7 +134,7 @@ sudo reboot
 The default username is 'admin' and the default password is 'secret'.
 
 ## Multilingual support
-RaspAP uses [GNU Gettext](https://www.gnu.org/software/gettext/) to manage multilingual messages. In order to use RaspAP with one of our supported translations, you must configure a corresponding language package on your RPi. To list languages currently installed on your system, use `locale -a` at the shell prompt. To generate new locales, run `sudo dpkg-reconfigure locales` and select any other desired locales. Details are provided on our [wiki](https://github.com/billz/raspap-webgui/wiki/Translations#raspap-in-your-language). 
+RaspAP uses [GNU Gettext](https://www.gnu.org/software/gettext/) to manage multilingual messages. In order to use RaspAP with one of our supported translations, you must configure a corresponding language package on your RPi. To list languages currently installed on your system, use `locale -a` at the shell prompt. To generate new locales, run `sudo dpkg-reconfigure locales` and select any other desired locales. Details are provided on our [wiki](https://github.com/billz/raspap-webgui/wiki/Translations#raspap-in-your-language).
 
 The following translations are currently maintained by the project:
 
@@ -173,4 +176,3 @@ Please note that these are only UI's for now. If there's enough interest I'll co
 
 ## License
 See the [LICENSE](./LICENSE) file.
-
