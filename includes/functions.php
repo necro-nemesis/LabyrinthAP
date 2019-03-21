@@ -609,6 +609,8 @@ function SaveTORAndVPNConfig(){
   } elseif( isset($_POST['ReGenerateLokinet']) ) {
   //  echo "Attempting to regenerate Lokinet";
     exec( 'sudo /home/pi/loki-network/lokilaunch.sh "gen" > /dev/null &', $return );
+  } else {
+    DisplayLokinetConfig();
   }
 }
 ?>
