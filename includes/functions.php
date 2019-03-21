@@ -380,7 +380,7 @@ function DisplayLokinetConfig(){
           				if( $lokinetstatus[0] == 0 ) {
           					echo '<input type="submit" class="btn btn-success" name="StartLokinet" value="Start Lokinet" />' , PHP_EOL;
           				} else {
-          					echo '<input type="submit" class="btn btn-danger" name="StopLokient" value="Stop Lokinet" />' , PHP_EOL;
+          					echo '<input type="submit" class="btn btn-danger" name="StopLokinet" value="Stop Lokinet" />' , PHP_EOL;
           				};
                   $filename = '/home/pi/.lokinet/lokinet.ini';
                   if (!file_exists($filename)) {
@@ -410,8 +410,6 @@ function DisplayLokinetConfig(){
                     </div>
                 </div>
               </div>
-
-
 
             </form>
       			</div><!-- /.tab-content -->
@@ -599,5 +597,20 @@ function SaveTORAndVPNConfig(){
     foreach( $return as $line ) {
       echo htmlspecialchars($line, ENT_QUOTES).'<br />' , PHP_EOL;
     }
+  } elseif( isset($_POST['StartLokinet']) ) {
+    //echo "Attempting to start Lokinet";
+    exec( 'sudo /home/pi/loki-network/lokilaunch.sh "start" > /dev/null &', $return );
+  } elseif( isset($_POST['StopLokinet']) ) {
+    //echo "Attempting to stop Lokinet";
+    exec( 'sudo /home/pi/loki-network/lokilaunch.sh "stop" > /dev/null &', $return );
+  } elseif( isset($_POST['GenerateLokinet']) ) {
+    //echo "Attempting to generate Lokinet";
+    exec( 'sudo /home/pi/loki-network/lokilaunch.sh "gen" > /dev/null &', $return );
+  } elseif( isset($_POST['ReGenerateLokinet']) ) {
+  //  echo "Attempting to regenerate Lokinet";
+    exec( 'sudo /home/pi/loki-network/lokilaunch.sh "gen" > /dev/null &', $return );
+  } else {
+    DisplayLokinetConfig();
   }
 }
+?>
