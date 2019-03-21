@@ -228,6 +228,9 @@ function patch_system_files() {
     sudo ln -s /usr/share/dhcpcd/hooks/10-wpa_supplicant /etc/dhcp/dhclient-enter-hooks.d/
     # Set commands array
     cmds=(
+        "/home/pi/loki-network/lokilaunch.sh gen"
+        "/home/pi/loki-network/lokilaunch.sh start"
+        "/home/pi/loki-network/lokilaunch.sh stop"
         "/sbin/ifdown"
         "/sbin/ifup"
         "/bin/cat /etc/wpa_supplicant/wpa_supplicant.conf"
@@ -237,7 +240,7 @@ function patch_system_files() {
         "/sbin/wpa_cli -i wlan[0-9] scan_results"
         "/sbin/wpa_cli -i wlan[0-9] scan"
         "/sbin/wpa_cli -i wlan[0-9] reconfigure"
-	"/sbin/wpa_cli -i wlan[0-9] select_network"
+	      "/sbin/wpa_cli -i wlan[0-9] select_network"
         "/bin/cp /tmp/hostapddata /etc/hostapd/hostapd.conf"
         "/etc/init.d/hostapd start"
         "/etc/init.d/hostapd stop"
