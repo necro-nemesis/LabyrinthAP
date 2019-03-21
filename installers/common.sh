@@ -2,19 +2,19 @@ raspap_dir="/etc/raspap"
 raspap_user="www-data"
 version=`sed 's/\..*//' /etc/debian_version`
 
-# Determine version, set default home location for lighttpd and 
-# php package to install 
-webroot_dir="/var/www/html" 
-if [ $version -eq 9 ]; then 
-    version_msg="Raspian 9.0 (Stretch)" 
-    php_package="php7.0-cgi" 
-elif [ $version -eq 8 ]; then 
-    version_msg="Raspian 8.0 (Jessie)" 
-    php_package="php5-cgi" 
-else 
+# Determine version, set default home location for lighttpd and
+# php package to install
+webroot_dir="/var/www/html"
+if [ $version -eq 9 ]; then
+    version_msg="Raspian 9.0 (Stretch)"
+    php_package="php7.0-cgi"
+elif [ $version -eq 8 ]; then
+    version_msg="Raspian 8.0 (Jessie)"
+    php_package="php5-cgi"
+else
     version_msg="Raspian earlier than 8.0 (Wheezy)"
-    webroot_dir="/var/www" 
-    php_package="php5-cgi" 
+    webroot_dir="/var/www"
+    php_package="php5-cgi"
 fi
 
 phpcgiconf=""
@@ -45,16 +45,15 @@ function display_welcome() {
     raspberry='\033[0;35m'
     green='\033[1;32m'
 
-    echo -e "${raspberry}\n"
-    echo -e " 888888ba                              .d888888   888888ba" 
-    echo -e " 88     8b                            d8     88   88     8b" 
-    echo -e "a88aaaa8P' .d8888b. .d8888b. 88d888b. 88aaaaa88a a88aaaa8P" 
-    echo -e " 88    8b. 88    88 Y8ooooo. 88    88 88     88   88" 
-    echo -e " 88     88 88.  .88       88 88.  .88 88     88   88" 
-    echo -e " dP     dP  88888P8  88888P  88Y888P  88     88   dP" 
-    echo -e "                             88"                             
-    echo -e "                             dP"                             
-    echo -e "${green}"
+    echo -e "${green}\n"
+    echo -e   ooooo                  oooo         o8o        .o.       ooooooooo.""
+    echo -e   `888'                  `888         `"'       .888.      `888   `Y88.""
+    echo -e    888          .ooooo.   888  oooo  oooo      .8"888.      888   .d88'""
+    echo -e    888         d88' `88b  888 .8P'   `888     .8' `888.     888ooo88P'""
+    echo -e    888         888   888  888888.     888    .88ooo8888.    888"
+    echo -e    888       o 888   888  888 `88b.   888   .8'     `888.   888"
+    echo -e   o888ooooood8 `Y8bod8P' o888o o888o o888o o88o     o8888o o888o"
+    echo -e "${raspberry}"
     echo -e "The Quick Installer will guide you through a few easy steps\n\n"
 }
 
@@ -63,7 +62,7 @@ function display_welcome() {
 
 function config_installation() {
     install_log "Configure installation"
-    echo "Detected ${version_msg}" 
+    echo "Detected ${version_msg}"
     echo "Install directory: ${raspap_dir}"
     echo "Lighttpd directory: ${webroot_dir}"
     echo -n "Complete installation with these values? [y/N]: "
@@ -90,7 +89,7 @@ function install_dependencies() {
 function enable_php_lighttpd() {
     install_log "Enabling PHP for lighttpd"
 
-    sudo lighttpd-enable-mod fastcgi-php    
+    sudo lighttpd-enable-mod fastcgi-php
     sudo service lighttpd force-reload
     sudo /etc/init.d/lighttpd restart || install_error "Unable to restart lighttpd"
 }
@@ -119,7 +118,7 @@ function create_logging_scripts() {
     install_log "Creating logging scripts"
     sudo mkdir $raspap_dir/hostapd || install_error "Unable to create directory '$raspap_dir/hostapd'"
 
-    # Move existing shell scripts 
+    # Move existing shell scripts
     sudo mv "$webroot_dir/installers/"*log.sh "$raspap_dir/hostapd" || install_error "Unable to move logging scripts"
     # Make enablelog.sh and disablelog.sh not writable by www-data group.
     sudo chown -c root:"$raspap_user" "$raspap_dir/hostapd/"*log.sh || install_error "Unable change owner and/or group."
@@ -205,7 +204,7 @@ function default_configuration() {
     'iptables -t nat -A POSTROUTING -j MASQUERADE #RASPAP'
 
     )
-    
+
     for line in "${lines[@]}"; do
         if grep "$line" /etc/rc.local > /dev/null; then
             echo "$line: Line already added"
