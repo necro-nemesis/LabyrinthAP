@@ -598,16 +598,16 @@ function SaveTORAndVPNConfig(){
       echo htmlspecialchars($line, ENT_QUOTES).'<br />' , PHP_EOL;
     }
   } elseif( isset($_POST['StartLokinet']) ) {
-    echo "Attempting to start Lokinet";
+    //echo "Attempting to start Lokinet";
     exec( 'sudo /home/pi/loki-network/lokilaunch.sh "start" > /dev/null &', $return );
   } elseif( isset($_POST['StopLokinet']) ) {
-    echo "Attempting to stop Lokinet";
+    //echo "Attempting to stop Lokinet";
     exec( 'sudo /home/pi/loki-network/lokilaunch.sh "stop" > /dev/null &', $return );
   } elseif( isset($_POST['GenerateLokinet']) ) {
-    echo "Attempting to generate Lokinet";
-    exec( 'sudo /home/pi/loki-network/lokilaunch "-g" > /dev/null &', $return );
+    //echo "Attempting to generate Lokinet";
+    exec( 'sudo /home/pi/loki-network/lokilaunch "gen" > /dev/null &', $return );
   } elseif( isset($_POST['ReGenerateLokinet']) ) {
-    echo "Attempting to regenerate Lokinet";
-    exec( 'sudo /home/pi/loki-network/lokilaunch "-g" > /dev/null &', $return );
+  //  echo "Attempting to regenerate Lokinet";
+    exec( 'sudo /home/pi/loki-network/lokilaunch "gen" > /dev/null &', $return );
   }
 }
