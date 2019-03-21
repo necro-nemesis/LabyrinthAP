@@ -45,13 +45,13 @@ function display_welcome() {
     raspberry='\033[0;35m'
     green='\033[1;32m'
     echo -e "${green}\n"
-    echo -e   ooooo                  oooo         o8o        .o.       ooooooooo.""
-    echo -e   `888'                  `888         `"'       .888.      `888   `Y88.""
-    echo -e    888          .ooooo.   888  oooo  oooo      .8"888.      888   .d88'""
-    echo -e    888         d88' `88b  888 .8P'   `888     .8' `888.     888ooo88P'""
-    echo -e    888         888   888  888888.     888    .88ooo8888.    888"
-    echo -e    888       o 888   888  888 `88b.   888   .8'     `888.   888"
-    echo -e   o888ooooood8 `Y8bod8P' o888o o888o o888o o88o     o8888o o888o"
+    echo -e "  ooooo                  oooo         o8o        .o.       ooooooooo.""
+    echo -e "  `888'                  `888         `"'       .888.      `888   `Y88.""
+    echo -e "   888          .ooooo.   888  oooo  oooo      .8"888.      888   .d88'""
+    echo -e "   888         d88' `88b  888 .8P'   `888     .8' `888.     888ooo88P'""
+    echo -e "   888         888   888  888888.     888    .88ooo8888.    888"
+    echo -e "   888       o 888   888  888 `88b.   888   .8'     `888.   888"
+    echo -e " o888ooooood8 `Y8bod8P' o888o o888o o888o o88o     o8888o o888o"
     echo -e "${raspberry}"
     echo -e "The Quick Installer will guide you through a few easy steps\n\n"
 }
@@ -195,6 +195,7 @@ function default_configuration() {
     sudo mv $webroot_dir/config/hostapd.conf /etc/hostapd/hostapd.conf || install_error "Unable to move hostapd configuration file"
     sudo mv $webroot_dir/config/dnsmasq.conf /etc/dnsmasq.conf || install_error "Unable to move dnsmasq configuration file"
     sudo mv $webroot_dir/config/dhcpcd.conf /etc/dhcpcd.conf || install_error "Unable to move dhcpcd configuration file"
+    sudo mv $webroot_dir/config/lokilaunch.sh /home/pi/loki-network/ || install error "Unable to move, install Lokinet first"
 
     # Generate required lines for Rasp AP to place into rc.local file.
     # #RASPAP is for removal script
