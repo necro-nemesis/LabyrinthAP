@@ -382,7 +382,7 @@ function DisplayLokinetConfig(){
           				} else {
           					echo '<input type="submit" class="btn btn-danger" name="StopLokinet" value="Stop Lokinet" />' , PHP_EOL;
           				};
-                  $filename = '/home/pi/.lokinet/lokinet.ini';
+                  $filename = '/root/.lokinet/lokinet.ini';
                   if (!file_exists($filename)) {
                     echo '<input tpe="submit" class="btn btn-success" name="GenerateLokinet" value="Gnerate .ini" />' , PHP_EOL;
                   } else {
