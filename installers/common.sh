@@ -44,11 +44,12 @@ function install_warning() {
 function display_welcome() {
     raspberry='\033[0;35m'
     green='\033[1;32m'
+
     echo -e "${green}\n"
-    echo -e "  ooooo                  oooo         o8o        .o.       ooooooooo.""
-    echo -e "  `888'                  `888         `"'       .888.      `888   `Y88.""
-    echo -e "   888          .ooooo.   888  oooo  oooo      .8"888.      888   .d88'""
-    echo -e "   888         d88' `88b  888 .8P'   `888     .8' `888.     888ooo88P'""
+    echo -e "  ooooo                  oooo         o8o        .o.       ooooooooo."
+    echo -e "  `888'                  `888         `"'       .888.      `888   `Y88."
+    echo -e "   888          .ooooo.   888  oooo  oooo      .8"888.      888   .d88'"
+    echo -e "   888         d88' `88b  888 .8P'   `888     .8' `888.     888ooo88P'"
     echo -e "   888         888   888  888888.     888    .88ooo8888.    888"
     echo -e "   888       o 888   888  888 `88b.   888   .8'     `888.   888"
     echo -e " o888ooooood8 `Y8bod8P' o888o o888o o888o o88o     o8888o o888o"
