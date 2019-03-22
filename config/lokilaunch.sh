@@ -17,3 +17,5 @@ case "$1" in
   *)
         echo "Usage: "$1" {start|stop|gen}"
         exit 1
+        ;;
+        esac
