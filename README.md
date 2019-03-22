@@ -1,5 +1,7 @@
 ![](https://i.imgur.com/mXuacOH.jpg)
+
 # `$ Lokiap-webgui` [![Release 1.41a1](https://img.shields.io/badge/Release-1.4.1a1-green.svg)](https://github.com/necro-nemesis/raspap-webgui/releases)
+
 LokiAP interfaces witht Lokinet daemon to facilitate connections to the the Lokinet global privacy network. LokiAP provides a simple, responsive web interface to control wifi, hostapd and related services necessary to access Lokinet on the Raspberry Pi.
 
 ### WHAT IS LOKI?
@@ -134,6 +136,7 @@ sudo reboot
 The default username is 'admin' and the default password is 'secret'.
 
 ## Multilingual support
+
 LokiAP uses [GNU Gettext](https://www.gnu.org/software/gettext/) to manage multilingual messages. In order to use LokiAP with one of our supported translations, you must configure a corresponding language package on your RPi. To list languages currently installed on your system, use `locale -a` at the shell prompt. To generate new locales, run `sudo dpkg-reconfigure locales` and select any other desired locales. Details are provided on our [wiki](https://github.com/billz/raspap-webgui/wiki/Translations#raspap-in-your-language).
 
 The following translations are currently maintained by the project:
