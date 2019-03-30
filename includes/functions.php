@@ -328,7 +328,6 @@ function DisplayOpenVPNConfig() {
 
 function DisplayLokinetConfig(){
 
-	exec( 'cat '. RASPI_TORPROXY_CONFIG, $return );
 	exec( 'pidof lokinet | wc -l', $lokinetstatus);
 
 	if( $lokinetstatus[0] == 0 ) {
@@ -603,6 +602,15 @@ function SaveTORAndVPNConfig(){
         <strong>Starting Lokinet</strong>
     </div>
     <?php
+    exec( 'pidof lokinet | wc -l', $lokinetstatus);
+
+    if( $lokinetstatus[0] == 0 ) {
+      $status = '<div class="alert alert-warning alert-dismissable">Lokinet daemon is not running
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>';
+    } else {
+      $status = '<div class="alert alert-success alert-dismissable">Lokinet is running
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>';
+    }
     exec( 'sudo /home/pi/loki-network/lokilaunch.sh "start" > /dev/null &', $return );
   } elseif( isset($_POST['StopLokinet']) ) {
     ?>
@@ -611,6 +619,15 @@ function SaveTORAndVPNConfig(){
     </div>
     <?php
     exec( 'sudo /home/pi/loki-network/lokilaunch.sh "stop" > /dev/null &', $return );
+    exec( 'pidof lokinet | wc -l', $lokinetstatus);
+
+    if( $lokinetstatus[0] == 0 ) {
+      $status = '<div class="alert alert-warning alert-dismissable">Lokinet daemon is not running
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>';
+    } else {
+      $status = '<div class="alert alert-success alert-dismissable">Lokinet is running
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>';
+    }
   } elseif( isset($_POST['GenerateLokinet']) ) {
     ?>
     <div class="alert alert-warning">
