@@ -7,7 +7,7 @@ case "$1" in
         ;;
   stop)
         echo -n "Stopping daemon"
-        kill pidof lokinet
+        pkill lokinet
         ;;
   gen)
         echo -n "Initializing"
