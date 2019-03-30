@@ -598,7 +598,12 @@ function SaveTORAndVPNConfig(){
       echo htmlspecialchars($line, ENT_QUOTES).'<br />' , PHP_EOL;
     }
   } elseif( isset($_POST['StartLokinet']) ) {
-    //echo "Attempting to start Lokinet";
+    ?>
+    <div class="alert alert-info">
+        <strong>Starting Lokinet</strong>
+    </div>
+    <?php
+//echo "Attempting to start Lokinet";
     exec( 'sudo /home/pi/loki-network/lokilaunch.sh "start" > /dev/null &', $return );
   } elseif( isset($_POST['StopLokinet']) ) {
     //echo "Attempting to stop Lokinet";
