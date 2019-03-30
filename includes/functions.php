@@ -599,25 +599,31 @@ function SaveTORAndVPNConfig(){
     }
   } elseif( isset($_POST['StartLokinet']) ) {
     ?>
-    <div class="alert alert-info">
+    <div class="alert alert-success">
         <strong>Starting Lokinet</strong>
     </div>
     <?php
-//echo "Attempting to start Lokinet";
     exec( 'sudo /home/pi/loki-network/lokilaunch.sh "start" > /dev/null &', $return );
   } elseif( isset($_POST['StopLokinet']) ) {
     ?>
-    <div class="alert alert-success">
-      <strong>Lokine Starting</strong>
+    <div class="alert alert-danger">
+      <strong>Stopping Lokinet</strong>
     </div>
     <?php
-    //echo "Attempting to stop Lokinet";
     exec( 'sudo /home/pi/loki-network/lokilaunch.sh "stop" > /dev/null &', $return );
   } elseif( isset($_POST['GenerateLokinet']) ) {
-    //echo "Attempting to generate Lokinet";
+    ?>
+    <div class="alert alert-warning">
+      <strong>Generating Lokinet Configuration</strong>
+    </div>
+    <?php
     exec( 'sudo /home/pi/loki-network/lokilaunch.sh "gen" > /dev/null &', $return );
   } elseif( isset($_POST['ReGenerateLokinet']) ) {
-  //  echo "Attempting to regenerate Lokinet";
+    ?>
+    <div class="alert alert-warning">
+      <strong>Regenerating Lokinet Configuration</strong>
+    </div>
+    <?php
     exec( 'sudo /home/pi/loki-network/lokilaunch.sh "gen" > /dev/null &', $return );
   } else {
     DisplayLokinetConfig();
