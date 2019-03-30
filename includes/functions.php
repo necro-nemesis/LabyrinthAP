@@ -617,7 +617,7 @@ function SaveTORAndVPNConfig(){
     <div class="alert alert-danger">
       <strong>Stopping Lokinet</strong>
     </div>
-    <?php
+
     exec( 'sudo /home/pi/loki-network/lokilaunch.sh "stop" > /dev/null &', $return );
     exec( 'pidof lokinet | wc -l', $lokinetstatus);
 
@@ -629,14 +629,14 @@ function SaveTORAndVPNConfig(){
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>';
     }
   } elseif( isset($_POST['GenerateLokinet']) ) {
-    ?>
+
     <div class="alert alert-warning">
       <strong>Generating Lokinet Configuration</strong>
     </div>
-    <?php
+
     exec( 'sudo /home/pi/loki-network/lokilaunch.sh "gen" > /dev/null &', $return );
   } elseif( isset($_POST['ReGenerateLokinet']) ) {
-    ?>
+
     <div class="alert alert-warning">
       <strong>Regenerating Lokinet Configuration</strong>
     </div>
