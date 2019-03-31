@@ -375,6 +375,8 @@ function DisplayLokinetConfig(){
                   <h5>Contact Loki user groups for the latest bootstrap file location</h5>
                   <input type="submit" class="btn btn-success" name="ApplyLokinetSettings" value="Apply Bootstrap" />
           				<?php
+                  global $bootstrap;
+                  $bootstrap = $_POST['lokinetbootstrap'];
           				if( $lokinetstatus[0] == 0 ) {
           					echo '<input type="submit" class="btn btn-success" name="StartLokinet" value="Start Lokinet Service" />' , PHP_EOL;
           				} else {
@@ -387,17 +389,6 @@ function DisplayLokinetConfig(){
                       echo '<input type="submit" class="btn btn-danger" name="ReGenerateLokinet" value="Regenerate Lokinet.ini" />' , PHP_EOL;
                   } else {
                       echo '<input type="submit" class="btn btn-success" name="GenerateLokinet" value="Generate Lokinet.ini" />' , PHP_EOL;
-                  }
-                  if( isset($_POST['ApplyLokinetSettings']) ) {
-                  //exec( 'sudo /home/pi/loki-network/lokilaunch.sh "gen" > /dev/null &', $return);
-
-                    ?>
-                    <div class="alert alert-warning">
-                    Applying Bootstrap
-                    </div>
-
-                    <?php
-                  echo $_POST['lokinetbootstrap'];
                   }
             				?>
 				       </div>
@@ -636,16 +627,15 @@ function SaveTORAndVPNConfig(){
       Regenerating Lokinet Configuration
     </div>
     <?php
-  } /*elseif( isset($_POST['ApplyLokinetSettings']) ) {
+  } elseif( isset($_POST['ApplyLokinetSettings']) ) {
   //exec( 'sudo /home/pi/loki-network/lokilaunch.sh "gen" > /dev/null &', $return);
 
     ?>
     <div class="alert alert-warning">
     Applying Bootstrap
     </div>
-
     <?php
-  echo $_POST['lokinetbootstrap'];
-}*/
+  echo $bootstrap;
+}
 }
 ?>
