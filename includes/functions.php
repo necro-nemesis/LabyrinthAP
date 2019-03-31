@@ -611,7 +611,7 @@ function SaveTORAndVPNConfig(){
       Generating Lokinet Configuration
     </div>
     <?php
-  } else ( isset($_POST['ReGenerateLokinet']) ) {
+  } elseif( isset($_POST['ReGenerateLokinet']) ) {
     exec( 'sudo /home/pi/loki-network/lokilaunch.sh "gen" > /dev/null &', $return);
     ?>
     <div class="alert alert-warning">
