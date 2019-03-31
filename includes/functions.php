@@ -364,7 +364,7 @@ function DisplayLokinetConfig(){
             <div class="row">
 						<div class="form-group col-lg-12">
 							<label for="code">Update lokinet-bootstrap settings</label>
-							<input type="text" class="form-control" name="loinetbootstrap" placeholder="http://206.81.100.174/n-st-5.signed" value="<?php echo htmlspecialchars($arrConfig['lokinetbootstrap'], ENT_QUOTES); ?>" />
+							<input type="text" class="form-control" name="lokinetbootstrap" placeholder="http://206.81.100.174/n-st-5.signed" value="<?php echo htmlspecialchars($arrConfig['lokinetbootstrap'], ENT_QUOTES); ?>" />
                   <h5>Contact Loki user groups for the latest bootstrap file location</h5>
                   <input type="submit" class="btn btn-success" name="ApplyLokinetSettings" value="Apply Bootstrap" />
           				<?php
@@ -611,7 +611,7 @@ function SaveTORAndVPNConfig(){
       Generating Lokinet Configuration
     </div>
     <?php
-  } elseif( isset($_POST['ReGenerateLokinet']) ) {
+  } else ( isset($_POST['ReGenerateLokinet']) ) {
     exec( 'sudo /home/pi/loki-network/lokilaunch.sh "gen" > /dev/null &', $return);
     ?>
     <div class="alert alert-warning">
