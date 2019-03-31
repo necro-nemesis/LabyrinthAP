@@ -630,15 +630,16 @@ function SaveTORAndVPNConfig(){
     <?php
 
   }
-  exec( 'pidof lokinet | wc -l', $lokinetstatus);
-  if( $lokinetstatus[0] == 0 ) {
-    $status = '<div class="alert alert-warning alert-dismissable">Lokinet daemon is not running
-          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>';
-  } else {
-    $status = '<div class="alert alert-success alert-dismissable">Lokinet is running
-          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>';
-  }
 
+
+}
+exec( 'pidof lokinet | wc -l', $lokinetstatus);
+if( $lokinetstatus[0] == 0 ) {
+  $status = '<div class="alert alert-warning alert-dismissable">Lokinet daemon is not running
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>';
+} else {
+  $status = '<div class="alert alert-success alert-dismissable">Lokinet is running
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>';
 }
 sleep (5);
 echo $status;
