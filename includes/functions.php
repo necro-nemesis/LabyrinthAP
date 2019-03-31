@@ -618,6 +618,13 @@ function SaveTORAndVPNConfig(){
       Regenerating Lokinet Configuration
     </div>
     <?php
+  } elseif( isset($_POST['ApplyLokinetSettings']) ) {
+  //exec( 'sudo /home/pi/loki-network/lokilaunch.sh "gen" > /dev/null &', $return);
+    ?>
+    <div class="alert alert-warning">
+    Applying Bootstrap
+    </div>
+    <?php
   }
 }
 ?>
