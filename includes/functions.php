@@ -376,7 +376,7 @@ function DisplayLokinetConfig(){
                   <input type="submit" class="btn btn-success" name="ApplyLokinetSettings" value="Apply Bootstrap" />
           				<?php
                   global $bootstrap;
-                  $bootstrap = $_POST['lokinetbootstrap'];
+                  $bootstrap = 'lokinetbootstrap';
           				if( $lokinetstatus[0] == 0 ) {
           					echo '<input type="submit" class="btn btn-success" name="StartLokinet" value="Start Lokinet Service" />' , PHP_EOL;
           				} else {
