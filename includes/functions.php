@@ -596,54 +596,48 @@ function SaveTORAndVPNConfig(){
     foreach( $return as $line ) {
       echo htmlspecialchars($line, ENT_QUOTES).'<br />' , PHP_EOL;
     }
+
   } elseif( isset($_POST['StartLokinet']) ) {
+    exec( 'sudo /home/pi/loki-network/lokilaunch.sh "start" > /dev/null &', $return );
     ?>
     <div class="alert alert-success">
         <strong>Starting Lokinet</strong>
     </div>
     <?php
-    exec( 'pidof lokinet | wc -l', $lokinetstatus);
 
-    if( $lokinetstatus[0] == 0 ) {
-      $status = '<div class="alert alert-warning alert-dismissable">Lokinet daemon is not running
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>';
-    } else {
-      $status = '<div class="alert alert-success alert-dismissable">Lokinet is running
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>';
-    }
-    exec( 'sudo /home/pi/loki-network/lokilaunch.sh "start" > /dev/null &', $return );
   } elseif( isset($_POST['StopLokinet']) ) {
+    exec( 'sudo /home/pi/loki-network/lokilaunch.sh "stop" > /dev/null &', $return );
     ?>
     <div class="alert alert-danger">
       <strong>Stopping Lokinet</strong>
     </div>
+    <?php
 
-    exec( 'sudo /home/pi/loki-network/lokilaunch.sh "stop" > /dev/null &', $return );
-    exec( 'pidof lokinet | wc -l', $lokinetstatus);
-
-    if( $lokinetstatus[0] == 0 ) {
-      $status = '<div class="alert alert-warning alert-dismissable">Lokinet daemon is not running
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>';
-    } else {
-      $status = '<div class="alert alert-success alert-dismissable">Lokinet is running
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>';
-    }
   } elseif( isset($_POST['GenerateLokinet']) ) {
-
+    exec( 'sudo /home/pi/loki-network/lokilaunch.sh "gen" > /dev/null &', $return );
+    ?>
     <div class="alert alert-warning">
       <strong>Generating Lokinet Configuration</strong>
     </div>
+    <?php
 
-    exec( 'sudo /home/pi/loki-network/lokilaunch.sh "gen" > /dev/null &', $return );
   } elseif( isset($_POST['ReGenerateLokinet']) ) {
-
+    exec( 'sudo /home/pi/loki-network/lokilaunch.sh "gen" > /dev/null &', $return );
+    ?>
     <div class="alert alert-warning">
       <strong>Regenerating Lokinet Configuration</strong>
     </div>
     <?php
-    exec( 'sudo /home/pi/loki-network/lokilaunch.sh "gen" > /dev/null &', $return );
+
+  }
+  exec( 'pidof lokinet | wc -l', $lokinetstatus);
+  if( $lokinetstatus[0] == 0 ) {
+    $status = '<div class="alert alert-warning alert-dismissable">Lokinet daemon is not running
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>';
   } else {
-    DisplayLokinetConfig();
+    $status = '<div class="alert alert-success alert-dismissable">Lokinet is running
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>';
+          	echo $status;
   }
 }
 ?>
