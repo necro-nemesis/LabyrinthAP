@@ -343,8 +343,8 @@ function DisplayLokinetConfig(){
 			$arrLine = explode( " ",$a) ;
 			$arrConfig[$arrLine[0]]=$arrLine[1];
 		}
+    */
 	}
-*/
 ?>
 	<div class="row">
 	<div class="col-lg-12">
