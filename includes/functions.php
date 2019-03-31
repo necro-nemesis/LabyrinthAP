@@ -638,7 +638,8 @@ function SaveTORAndVPNConfig(){
     $status = '<div class="alert alert-success alert-dismissable">Lokinet is running
           <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>';
   }
-  sleep (5);
-  echo $status;
+
 }
+sleep (5);
+echo $status;
 ?>
