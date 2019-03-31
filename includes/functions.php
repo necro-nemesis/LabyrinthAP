@@ -336,7 +336,7 @@ function DisplayLokinetConfig(){
 	} else {
 		$status = '<div class="alert alert-success alert-dismissable">Lokinet is running
 					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>';
-	}
+/*	}
 	$arrConfig = array();
 	foreach( $return as $a ) {
 		if( $a[0] != "#" ) {
@@ -344,7 +344,7 @@ function DisplayLokinetConfig(){
 			$arrConfig[$arrLine[0]]=$arrLine[1];
 		}
 	}
-
+*/
 ?>
 	<div class="row">
 	<div class="col-lg-12">
