@@ -357,9 +357,8 @@ function DisplayLokinetConfig(){
             <!-- Tab panes -->
            	<div class="tab-content">
            		<p><?php echo $status; ?></p>
-
             	<div class="tab-pane fade in active" id="basic">
-            		<h4>Basic settings</h4>
+            		<h4>Main Settings</h4>
 					<form role="form" action="?page=save_hostapd_conf" method="POST">
             <div class="row">
 						<div class="form-group col-lg-12">
@@ -368,7 +367,7 @@ function DisplayLokinetConfig(){
                 <p>Submitting a valid bootstrap url below overwrites the current bootstrap settings:</p>
                   <form>
                     <div class="form-group">
-                      <label for="usr">Bootstrap:</label>
+                      <label for="usr">Bootstrap url:</label>
                       <input type="url" class="form-control" placeholder="http://206.81.100.174/n-st-5.signed" id="lokinetbootstrap">
                     </div>
                   </form>
@@ -377,9 +376,9 @@ function DisplayLokinetConfig(){
                   <input type="submit" class="btn btn-success" name="ApplyLokinetSettings" value="Apply Bootstrap" />
           				<?php
           				if( $lokinetstatus[0] == 0 ) {
-          					echo '<input type="submit" class="btn btn-success" name="StartLokinet" value="Start Lokinet" />' , PHP_EOL;
+          					echo '<input type="submit" class="btn btn-success" name="StartLokinet" value="Start Lokinet Service" />' , PHP_EOL;
           				} else {
-          					echo '<input type="submit" class="btn btn-danger" name="StopLokinet" value="Stop Lokinet" />' , PHP_EOL;
+          					echo '<input type="submit" class="btn btn-danger" name="StopLokinet" value="Stop Lokinet Service" />' , PHP_EOL;
           				}
 
                   $filename = '/home/pi/loki-network/lokinet.ini';
@@ -629,9 +628,8 @@ function SaveTORAndVPNConfig(){
   } elseif( isset($_POST['ApplyLokinetSettings']) ) {
   //exec( 'sudo /home/pi/loki-network/lokilaunch.sh "gen" > /dev/null &', $return);
     ?>
-    echo 'lokinetbootstrap';
     <div class="alert alert-warning">
-    Applying Bootstrap
+    Applying Bootstrap $lokinetbootstrap
     </div>
     <?php
   }
