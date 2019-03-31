@@ -11,7 +11,8 @@ case "$1" in
         ;;
   gen)
         echo -n "Initializing"
-        /home/pi/loki-network/lokinet -g
+        /home/pi/loki-network/lokinet "-g"
+        sudo cp /root/.lokinet/lokinet.ini /home/pi/loki-network
         ;;
 
   *)
