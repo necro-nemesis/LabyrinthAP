@@ -388,6 +388,7 @@ function DisplayLokinetConfig(){
                   } else {
                       echo '<input type="submit" class="btn btn-success" name="GenerateLokinet" value="Generate Lokinet.ini" />' , PHP_EOL;
                   }
+                  $GLOBALS['lokinetbootstrap'] = $_POST['lokinetbootstrap'];
           				?>
 				       </div>
              </div>
@@ -630,7 +631,7 @@ function SaveTORAndVPNConfig(){
 
     ?>
     <div class="alert alert-warning">
-    Applying Bootstrap <?php print_r($_POST["lokinetbootstrap"]); ?>
+    Applying Bootstrap <?php echo $lokinetbootstrap; ?>
     </div>
     <?php
   }
