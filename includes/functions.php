@@ -630,9 +630,11 @@ function SaveTORAndVPNConfig(){
 
     ?>
     <div class="alert alert-warning">
-    Applying Bootstrap <?php echo $_POST['lokinetbootstrap']; ?>
+    Applying Bootstrap
     </div>
+
     <?php
+  echo $_POST['lokinetbootstrap'];
   }
 }
 ?>
