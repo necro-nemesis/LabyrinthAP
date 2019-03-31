@@ -615,7 +615,7 @@ function SaveTORAndVPNConfig(){
     <?php
 
   } elseif( isset($_POST['GenerateLokinet']) ) {
-    exec( 'sudo /home/pi/loki-network/lokilaunch.sh "gen"', $return );
+    passthru( 'sudo /home/pi/loki-network/lokilaunch.sh "gen" > /dev/null &', $return );
     ?>
 
     <div class="alert alert-warning">
@@ -624,7 +624,7 @@ function SaveTORAndVPNConfig(){
     <?php
 
   } elseif( isset($_POST['ReGenerateLokinet']) ) {
-    exec( 'sudo /home/pi/loki-network/lokilaunch.sh "gen"', $return );
+    passthru( 'sudo /home/pi/loki-network/lokilaunch.sh "gen" > /dev/null &', $return );
     ?>
 
     <div class="alert alert-warning">
