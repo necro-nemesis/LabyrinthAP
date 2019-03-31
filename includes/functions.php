@@ -336,14 +336,6 @@ function DisplayLokinetConfig(){
 	} else {
 		$status = '<div class="alert alert-success alert-dismissable">Lokinet is running
 					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>';
-/*	}
-	$arrConfig = array();
-	foreach( $return as $a ) {
-		if( $a[0] != "#" ) {
-			$arrLine = explode( " ",$a) ;
-			$arrConfig[$arrLine[0]]=$arrLine[1];
-		}
-    */
 	}
 ?>
 	<div class="row">
@@ -379,7 +371,7 @@ function DisplayLokinetConfig(){
           				if( $lokinetstatus[0] == 0 ) {
           					echo '<input type="submit" class="btn btn-success" name="StartLokinet" value="Start Lokinet" />' , PHP_EOL;
           				}
-                  if ($lokinetstatus[0] != 0 ) {
+                  if($lokinetstatus[0] != 0 ) {
           					echo '<input type="submit" class="btn btn-danger" name="StopLokinet" value="Stop Lokinet" />' , PHP_EOL;
           				}
                   $filename = '/root/.lokinet/lokinet.ini';
@@ -597,42 +589,35 @@ function SaveTORAndVPNConfig(){
     foreach( $return as $line ) {
       echo htmlspecialchars($line, ENT_QUOTES).'<br />' , PHP_EOL;
     }
-
   } elseif( isset($_POST['StartLokinet']) ) {
     exec( 'sudo /home/pi/loki-network/lokilaunch.sh "start" > /dev/null &', $return);
    ?>
 
    <div class="alert alert-success">
      Starting Lokinet background daemon process.
-    </div>
+   </div>
    <?php
   } elseif( isset($_POST['StopLokinet']) ) {
     exec( 'sudo /home/pi/loki-network/lokilaunch.sh "stop" > /dev/null &', $return);
     ?>
-
     <div class="alert alert-danger">
       Stopping Lokinet background daemon process.
     </div>
     <?php
-
   } elseif( isset($_POST['GenerateLokinet']) ) {
     exec( 'sudo /home/pi/loki-network/lokilaunch.sh "gen" > /dev/null &', $return);
     ?>
-
     <div class="alert alert-warning">
       Generating Lokinet Configuration
     </div>
     <?php
-
   } elseif( isset($_POST['ReGenerateLokinet']) ) {
     exec( 'sudo /home/pi/loki-network/lokilaunch.sh "gen" > /dev/null &', $return);
     ?>
-
     <div class="alert alert-warning">
       Regenerating Lokinet Configuration
     </div>
     <?php
-
   }
 }
 ?>
