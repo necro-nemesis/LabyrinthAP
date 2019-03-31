@@ -380,13 +380,13 @@ function DisplayLokinetConfig(){
           					echo '<input type="submit" class="btn btn-success" name="StartLokinet" value="Start Lokinet" />' , PHP_EOL;
           				} else {
           					echo '<input type="submit" class="btn btn-danger" name="StopLokinet" value="Stop Lokinet" />' , PHP_EOL;
-          				}
+          				};
                   $filename = '/root/.lokinet/lokinet.ini';
                   if (file_exists($filename)) {
                       echo '<input type="submit" class="btn btn-danger" name="ReGenerateLokinet" value="Regenerate .ini" />' , PHP_EOL;
                   } else {
                       echo '<input tpe="submit" class="btn btn-success" name="GenerateLokinet" value="Generate .ini" />' , PHP_EOL;
-                  }
+                  };
           				?>
 				       </div>
              </div>
@@ -598,7 +598,7 @@ function SaveTORAndVPNConfig(){
     }
 
   } elseif( isset($_POST['StartLokinet']) ) {
-    exec( 'sudo /home/pi/loki-network/lokilaunch.sh "start" > /dev/null &', $return );
+    exec( 'sudo /home/pi/loki-network/lokilaunch.sh "start" > /dev/null &', PHP_EOL);
    ?>
 
    <div class="alert alert-success">
@@ -606,7 +606,7 @@ function SaveTORAndVPNConfig(){
     </div>
    <?php
   } elseif( isset($_POST['StopLokinet']) ) {
-    exec( 'sudo /home/pi/loki-network/lokilaunch.sh "stop" > /dev/null &', $return );
+    exec( 'sudo /home/pi/loki-network/lokilaunch.sh "stop" > /dev/null &', PHP_EOL);
     ?>
 
     <div class="alert alert-danger">
@@ -615,7 +615,7 @@ function SaveTORAndVPNConfig(){
     <?php
 
   } elseif( isset($_POST['GenerateLokinet']) ) {
-    passthru( 'sudo /home/pi/loki-network/lokilaunch.sh "gen" > /dev/null &', $return );
+    passthru( 'sudo /home/pi/loki-network/lokilaunch.sh "gen" > /dev/null &', PHP_EOL);
     ?>
 
     <div class="alert alert-warning">
@@ -624,7 +624,7 @@ function SaveTORAndVPNConfig(){
     <?php
 
   } elseif( isset($_POST['ReGenerateLokinet']) ) {
-    passthru( 'sudo /home/pi/loki-network/lokilaunch.sh "gen" > /dev/null &', $return );
+    passthru( 'sudo /home/pi/loki-network/lokilaunch.sh "gen" > /dev/null &', PHP_EOL);
     ?>
 
     <div class="alert alert-warning">
