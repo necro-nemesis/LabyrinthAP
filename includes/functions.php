@@ -370,11 +370,12 @@ function DisplayLokinetConfig(){
           				<?php
           				if( $lokinetstatus[0] == 0 ) {
           					echo '<input type="submit" class="btn btn-success" name="StartLokinet" value="Start Lokinet" />' , PHP_EOL;
-          				}
-                  if( $lokinetstatus[0] != 0 ) {
+          				} else {
           					echo '<input type="submit" class="btn btn-danger" name="StopLokinet" value="Stop Lokinet" />' , PHP_EOL;
           				}
+
                   $filename = '/home/pi/loki-network/lokinet.ini';
+
                   if ( file_exists($filename)) {
                       echo '<input type="submit" class="btn btn-danger" name="ReGenerateLokinet" value="Regenerate ini" />' , PHP_EOL;
                   } else {
@@ -592,7 +593,6 @@ function SaveTORAndVPNConfig(){
   } elseif( isset($_POST['StartLokinet']) ) {
     exec( 'sudo /home/pi/loki-network/lokilaunch.sh "start" > /dev/null &', $return);
    ?>
-
    <div class="alert alert-success">
      Starting Lokinet background daemon process.
    </div>
