@@ -378,7 +378,8 @@ function DisplayLokinetConfig(){
           				<?php
           				if( $lokinetstatus[0] == 0 ) {
           					echo '<input type="submit" class="btn btn-success" name="StartLokinet" value="Start Lokinet" />' , PHP_EOL;
-          				} else {
+          				}
+                  if ($lokinetstatus[0] != 0 ) {
           					echo '<input type="submit" class="btn btn-danger" name="StopLokinet" value="Stop Lokinet" />' , PHP_EOL;
           				}
                   $filename = '/root/.lokinet/lokinet.ini';
