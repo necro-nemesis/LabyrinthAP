@@ -599,11 +599,11 @@ function SaveTORAndVPNConfig(){
 
   } elseif( isset($_POST['StartLokinet']) ) {
     exec( 'sudo /home/pi/loki-network/lokilaunch.sh "start" > /dev/null &', $return );
-  //  ?>
+  /* ?>
   //  <div class="alert alert-success">
   //      <strong>Starting Lokinet</strong>
   //  </div>
-  //  <?php
+  //  <?php */
   $status = '<div class="alert alert-warning alert-dismissable">Lokinet is starting
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>';
 
