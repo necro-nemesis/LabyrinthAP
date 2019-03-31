@@ -371,11 +371,11 @@ function DisplayLokinetConfig(){
           				if( $lokinetstatus[0] == 0 ) {
           					echo '<input type="submit" class="btn btn-success" name="StartLokinet" value="Start Lokinet" />' , PHP_EOL;
           				}
-                  if($lokinetstatus[0] != 0 ) {
+                  if( $lokinetstatus[0] != 0 ) {
           					echo '<input type="submit" class="btn btn-danger" name="StopLokinet" value="Stop Lokinet" />' , PHP_EOL;
           				}
-                  $filename = '/root/.lokinet/lokinet.ini';
-                  if (file_exists($filename)) {
+                  $filename = 'sudo /root/.lokinet/lokinet.ini';
+                  if ( file_exists($filename)) {
                       echo '<input type="submit" class="btn btn-danger" name="ReGenerateLokinet" value="Regenerate ini" />' , PHP_EOL;
                   } else {
                       echo '<input tpe="submit" class="btn btn-success" name="GenerateLokinet" value="Generate ini" />' , PHP_EOL;
