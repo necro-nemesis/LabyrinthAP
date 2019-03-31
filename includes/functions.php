@@ -364,7 +364,7 @@ function DisplayLokinetConfig(){
 						<div class="form-group col-lg-12">
 							<label for="code">Update lokinet-bootstrap settings</label>
               <div class="container">
-                <p>Submitting a valid bootstrap url below overwrites the current bootstrap settings:</p>
+                <h5>Entering and applying a valid bootstrap url below overwrites the current bootstrap settings:</h5>
                   <form>
                     <div class="form-group">
                       <label for="usr">Bootstrap url:</label>
@@ -384,9 +384,9 @@ function DisplayLokinetConfig(){
                   $filename = '/home/pi/loki-network/lokinet.ini';
 
                   if ( file_exists($filename)) {
-                      echo '<input type="submit" class="btn btn-danger" name="ReGenerateLokinet" value="Regenerate ini" />' , PHP_EOL;
+                      echo '<input type="submit" class="btn btn-danger" name="ReGenerateLokinet" value="Regenerate Lokinet.ini" />' , PHP_EOL;
                   } else {
-                      echo '<input type="submit" class="btn btn-success" name="GenerateLokinet" value="Generate ini" />' , PHP_EOL;
+                      echo '<input type="submit" class="btn btn-success" name="GenerateLokinet" value="Generate Lokinet.ini" />' , PHP_EOL;
                   }
           				?>
 				       </div>
@@ -627,9 +627,10 @@ function SaveTORAndVPNConfig(){
     <?php
   } elseif( isset($_POST['ApplyLokinetSettings']) ) {
   //exec( 'sudo /home/pi/loki-network/lokilaunch.sh "gen" > /dev/null &', $return);
+    echo $_POST['lokinetbootstrap'];
     ?>
     <div class="alert alert-warning">
-    Applying Bootstrap $lokinetbootstrap
+    Applying Bootstrap
     </div>
     <?php
   }
