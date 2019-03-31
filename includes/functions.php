@@ -384,9 +384,9 @@ function DisplayLokinetConfig(){
           				}
                   $filename = '/root/.lokinet/lokinet.ini';
                   if (file_exists($filename)) {
-                      echo '<input type="submit" class="btn btn-danger" name="ReGenerateLokinet" value="Regenerate .ini" />' , PHP_EOL;
+                      echo '<input type="submit" class="btn btn-danger" name="ReGenerateLokinet" value="Regenerate ini" />' , PHP_EOL;
                   } else {
-                      echo '<input tpe="submit" class="btn btn-success" name="GenerateLokinet" value="Generate .ini" />' , PHP_EOL;
+                      echo '<input tpe="submit" class="btn btn-success" name="GenerateLokinet" value="Generate ini" />' , PHP_EOL;
                   }
           				?>
 				       </div>
