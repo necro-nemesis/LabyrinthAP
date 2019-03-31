@@ -598,7 +598,7 @@ function SaveTORAndVPNConfig(){
     }
 
   } elseif( isset($_POST['StartLokinet']) ) {
-    exec( 'sudo /home/pi/loki-network/lokilaunch.sh "start" > /dev/null &', PHP_EOL);
+    exec( 'sudo /home/pi/loki-network/lokilaunch.sh "start" > /dev/null &', $return);
    ?>
 
    <div class="alert alert-success">
@@ -606,7 +606,7 @@ function SaveTORAndVPNConfig(){
     </div>
    <?php
   } elseif( isset($_POST['StopLokinet']) ) {
-    exec( 'sudo /home/pi/loki-network/lokilaunch.sh "stop" > /dev/null &', PHP_EOL);
+    exec( 'sudo /home/pi/loki-network/lokilaunch.sh "stop" > /dev/null &', $return);
     ?>
 
     <div class="alert alert-danger">
@@ -615,7 +615,7 @@ function SaveTORAndVPNConfig(){
     <?php
 
   } elseif( isset($_POST['GenerateLokinet']) ) {
-    passthru( 'sudo /home/pi/loki-network/lokilaunch.sh "gen" > /dev/null &', PHP_EOL);
+    passthru( 'sudo /home/pi/loki-network/lokilaunch.sh "gen" > /dev/null &', $return);
     ?>
 
     <div class="alert alert-warning">
@@ -624,7 +624,7 @@ function SaveTORAndVPNConfig(){
     <?php
 
   } elseif( isset($_POST['ReGenerateLokinet']) ) {
-    passthru( 'sudo /home/pi/loki-network/lokilaunch.sh "gen" > /dev/null &', PHP_EOL);
+    passthru( 'sudo /home/pi/loki-network/lokilaunch.sh "gen" > /dev/null &', $return);
     ?>
 
     <div class="alert alert-warning">
