@@ -634,7 +634,7 @@ function SaveTORAndVPNConfig(){
     </div>
 
     <?php
-  echo $_POST['lokinetbootstrap'];
+  echo 'shit' $_POST['lokinetbootstrap'];
   }
 }
 ?>
