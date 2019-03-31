@@ -388,6 +388,17 @@ function DisplayLokinetConfig(){
                   } else {
                       echo '<input type="submit" class="btn btn-success" name="GenerateLokinet" value="Generate Lokinet.ini" />' , PHP_EOL;
                   }
+                  if( isset($_POST['ApplyLokinetSettings']) ) {
+                  //exec( 'sudo /home/pi/loki-network/lokilaunch.sh "gen" > /dev/null &', $return);
+
+                    ?>
+                    <div class="alert alert-warning">
+                    Applying Bootstrap
+                    </div>
+
+                    <?php
+                  echo $_POST['lokinetbootstrap'];
+                  }
             				?>
 				       </div>
              </div>
@@ -625,7 +636,7 @@ function SaveTORAndVPNConfig(){
       Regenerating Lokinet Configuration
     </div>
     <?php
-  } elseif( isset($_POST['ApplyLokinetSettings']) ) {
+  } /*elseif( isset($_POST['ApplyLokinetSettings']) ) {
   //exec( 'sudo /home/pi/loki-network/lokilaunch.sh "gen" > /dev/null &', $return);
 
     ?>
@@ -634,7 +645,7 @@ function SaveTORAndVPNConfig(){
     </div>
 
     <?php
-  echo "shit"; //$_POST['lokinetbootstrap'];
-  }
+  echo $_POST['lokinetbootstrap'];
+}*/
 }
 ?>
