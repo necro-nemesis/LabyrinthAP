@@ -365,8 +365,7 @@ function DisplayLokinetConfig(){
 						<div class="form-group col-lg-12">
 							<label for="code">Update lokinet-bootstrap settings</label>
               <div class="container">
-                <h2>Form control: input</h2>
-                  <p>The form below contains two input elements; one of type text and one of type password:</p>
+                <p>Submitting a valid bootstrap url below overwrites the current bootstrap settings:</p>
                   <form>
                     <div class="form-group">
                       <label for="usr">Bootstrap:</label>
@@ -374,9 +373,6 @@ function DisplayLokinetConfig(){
                     </div>
                   </form>
                 </div>
-
-//	<input type="url" class="form-control" name="lokinetbootstrap" placeholder="http://206.81.100.174/n-st-5.signed" value="<?php echo htmlspecialchars($arrConfig['lokinetbootstrap'], ENT_QUOTES); ?>" />
-
                   <h5>Contact Loki user groups for the latest bootstrap file location</h5>
                   <input type="submit" class="btn btn-success" name="ApplyLokinetSettings" value="Apply Bootstrap" />
           				<?php
