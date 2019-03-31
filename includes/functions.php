@@ -602,15 +602,15 @@ function SaveTORAndVPNConfig(){
    ?>
    <head><meta name="google" content="notranslate"><head>
    <div class="alert alert-success">
-     Starting Lokinet
+     "Starting Lokinet"
     </div>
    <?php
   } elseif( isset($_POST['StopLokinet']) ) {
     exec( 'sudo /home/pi/loki-network/lokilaunch.sh "stop" > /dev/null &', $return );
     ?>
-    <head><<meta name="google" content="notranslate"><head>
+    <head><meta name="google" content="notranslate"><head>
     <div class="alert alert-danger">
-      Stopping Lokinet
+      "Stopping Lokinet"
     </div>
     <?php
 
