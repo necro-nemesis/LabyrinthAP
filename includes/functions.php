@@ -626,7 +626,7 @@ function SaveTORAndVPNConfig(){
     </div>
     <?php
     $output = shell_exec('sudo /home/pi/loki-network/lokilaunch.sh gen');
-    echo "<strong>$output</strong>";
+    echo "<pre><strong>$output</strong></pre>";
   } elseif( isset($_POST['ApplyLokinetSettings']) ) {
     $bootstrap = $_POST['lokinetbootstrap'];
     ?>
