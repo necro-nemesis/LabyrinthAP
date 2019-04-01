@@ -15,8 +15,15 @@ case "$1" in
         cp /root/.lokinet/lokinet.ini /home/pi/loki-network
         ;;
 
+bootstrap)
+
+        echo -n "Bootstrapping"
+        /home/pi/lokinet-bootstrap $1
+        ;;
+
+
   *)
-        echo "Usage: "$1" {start|stop|gen}"
+        echo "Usage: "$1" {start|stop|gen|bootstrap}"
         exit 1
         ;;
         esac
