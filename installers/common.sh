@@ -197,7 +197,7 @@ function default_configuration() {
     sudo mv $webroot_dir/config/dnsmasq.conf /etc/dnsmasq.conf || install_error "Unable to move dnsmasq configuration file"
     sudo mv $webroot_dir/config/dhcpcd.conf /etc/dhcpcd.conf || install_error "Unable to move dhcpcd configuration file"
     sudo mv $webroot_dir/config/lokilaunch.sh /home/pi/loki-network/lokilaunch.sh || install error "Unable to move, install Lokinet first"
-    sudo chmod 755 /home/pi/loki-network/lokilaunch.sh 
+    sudo chmod 755 /home/pi/loki-network/lokilaunch.sh
     sudo chown pi:pi lokilaunch.sh
 
     # Generate required lines for Rasp AP to place into rc.local file.
@@ -232,6 +232,7 @@ function patch_system_files() {
     sudo ln -s /usr/share/dhcpcd/hooks/10-wpa_supplicant /etc/dhcp/dhclient-enter-hooks.d/
     # Set commands array
     cmds=(
+        "/home/pi/loki-network/lokilaunch.sh bootstrap"
         "/home/pi/loki-network/lokilaunch.sh gen"
         "/home/pi/loki-network/lokilaunch.sh start"
         "/home/pi/loki-network/lokilaunch.sh stop"
