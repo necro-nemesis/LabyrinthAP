@@ -232,10 +232,7 @@ function patch_system_files() {
     sudo ln -s /usr/share/dhcpcd/hooks/10-wpa_supplicant /etc/dhcp/dhclient-enter-hooks.d/
     # Set commands array
     cmds=(
-        "/home/pi/loki-network/lokilaunch.sh bootstrap"
-        "/home/pi/loki-network/lokilaunch.sh gen"
-        "/home/pi/loki-network/lokilaunch.sh start"
-        "/home/pi/loki-network/lokilaunch.sh stop"
+        "/home/pi/loki-network/lokilaunch.sh*"
         "/sbin/ifdown"
         "/sbin/ifup"
         "/bin/cat /etc/wpa_supplicant/wpa_supplicant.conf"
