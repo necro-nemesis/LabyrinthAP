@@ -635,8 +635,9 @@ function SaveTORAndVPNConfig(){
     <?php
   //echo "lokinet-bootstrap ", $bootstrap;
   $bootstrap = escapeshellarg($bootstrap);
+  trim($bootstrap, '"');
   echo "sudo /home/pi/loki-network/lokilaunch.sh bootstrap $bootstrap";
-  $output = shell_exec("sudo /home/pi/loki-network/lokilaunch.sh bootstrap ,$bootstrap");
+  $output = shell_exec("sudo /home/pi/loki-network/lokilaunch.sh bootstrap $bootstrap");
   echo "<pre>$output</pre>";
 
 }
