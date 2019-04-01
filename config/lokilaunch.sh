@@ -18,7 +18,7 @@ case "$1" in
 bootstrap)
 
         echo -n "Bootstrapping"
-        /home/pi/lokinet-bootstrap $1
+        /home/pi/lokinet-bootstrap $2
         ;;
 
 
