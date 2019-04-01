@@ -16,12 +16,10 @@ case "$1" in
         ;;
 
 bootstrap)
-
-        echo -n "Bootstrapping"
-        /home/pi/lokinet-bootstrap $2
+        echo -n "Bootstrapping ---->  "
+        /home/pi/loki-network/lokinet-bootstrap $2
+        echo -n "Bootstrapped  <--- $2"
         ;;
-
-
   *)
         echo "Usage: "$1" {start|stop|gen|bootstrap}"
         exit 1
