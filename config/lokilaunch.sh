@@ -10,15 +10,16 @@ case "$1" in
         pkill lokinet
         ;;
   gen)
-        echo -n "Initializing"
+        echo -n "NEW lokinet.ini FILE CREATED\n"
+        cat /root/.lokinet/lokinet.ini
         /home/pi/loki-network/lokinet "-g"
         cp /root/.lokinet/lokinet.ini /home/pi/loki-network
         ;;
 
 bootstrap)
-        echo -n "Bootstrapping ---->  "
-        /home/pi/loki-network/lokinet-bootstrap $2
-        echo -n "Bootstrapped  <--- $2"
+        echo -n "FETCH BOOTSTRAP <---- "
+        /home/pi/loki-network/lokinet-bootstrap "$2"
+        echo -n "SUCCESS! BOOTSTRAPPED WTIH ---> $2"
         ;;
   *)
         echo "Usage: "$1" {start|stop|gen|bootstrap}"
