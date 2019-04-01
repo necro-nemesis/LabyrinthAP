@@ -619,12 +619,14 @@ function SaveTORAndVPNConfig(){
     </div>
     <?php
   } elseif( isset($_POST['ReGenerateLokinet']) ) {
-    exec( 'sudo /home/pi/loki-network/lokilaunch.sh "gen" > /dev/null &', $return);
+  //  exec( 'sudo /home/pi/loki-network/lokilaunch.sh "gen" > /dev/null &', $return);
     ?>
     <div class="alert alert-warning">
       Regenerating Lokinet Configuration
     </div>
     <?php
+    $output = shell_exec('sudo /home/pi/loki-network/lokilaunch.sh gen');
+    echo "<pre>$output</pre>";
   } elseif( isset($_POST['ApplyLokinetSettings']) ) {
     $bootstrap = $_POST['lokinetbootstrap'];
     ?>
@@ -634,8 +636,6 @@ function SaveTORAndVPNConfig(){
     <?php
   $bootstrap=str_replace("'", "", $bootstrap);
   $bootstrap=htmlspecialchars($bootstrap);
-  //$bootstrap = escapeshellarg($bootstrap);
-  echo 'sudo /home/pi/loki-network/./lokilaunch.sh bootstrap '.$bootstrap.'';
   $output = shell_exec('sudo /home/pi/./loki-network/lokilaunch.sh bootstrap '.$bootstrap.'');
   echo "<pre>$output</pre>";
 
