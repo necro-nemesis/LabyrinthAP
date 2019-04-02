@@ -20,6 +20,7 @@ bootstrap)
         echo -n "FETCH BOOTSTRAP <---- "
         /home/pi/loki-network/lokinet-bootstrap "$2"
         echo -n "SUCCESS! BOOTSTRAPPED WTIH ---> $2"
+        cp /home/pi/loki-network/lokinet-bootstrap.exe /root/.lokinet/
         ;;
   *)
         echo "Usage: "$1" {start|stop|gen|bootstrap}"
