@@ -10,12 +10,10 @@
  * php5-cgi (I have version 5.4.4-12 installed via apt)
  * along with their supporting packages, php5 will also need to be enabled.
  *
- * @author     Lawrence Yau <sirlagz@gmail.com>
- * @author     Bill Zimmerman <billzimmerman@gmail.com>
+ * @author     TechnicalTumbleweed (Loki->Discord/Telegram)
  * @license    GNU General Public License, version 3 (GPL-3.0)
- * @version    1.3.1
- * @link       https://github.com/billz/raspap-webgui
- * @see        http://sirlagz.net/2013/02/08/raspap-webgui/
+ * @version    1.5a
+ * @link       https://github.com/necro-nemesis/Lokiap-webgui
  */
 
 session_start();
