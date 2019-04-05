@@ -368,7 +368,20 @@ function DisplayLokinetConfig(){
                   <form>
                     <div class="form-group">
                       <label for="usr">Bootstrap url:</label>
-                      <input type="url" class="form-control" placeholder="http://206.81.100.174/n-st-5.signed" id="lokinetbootstrap" name="lokinetbootstrap">
+                      <?php
+$file = "/root/.lokinet/lokinet.ini";
+$test = file_get_contents('1.jpg', 'a');
+if (isset($_POST['test'])) {
+file_put_contents($file, $_POST["test"]);
+};
+?>
+<form action="" method="post">
+<textarea id="test" name="test" style="width:100%; height:50%;"><? echo "$test"; ?></textarea>
+<input type="submit" value="submit">
+</form>
+
+/*  <input type="url" class="form-control" placeholder="http://206.81.100.174/n-st-5.signed" id="lokinetbootstrap" name="lokinetbootstrap">
+*?
                     </div>
                   </form>
                 </div>
