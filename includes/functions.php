@@ -403,28 +403,11 @@ function DisplayLokinetConfig(){
                   </div>
                 </div>
               </div>
-              <div class="tab-pane fade" id="youtube">
-                <div class="row"> //added
-                  <div class="col-lg-12"> //added
-//               <div class="container">
+                <div class="tab-pane fade" id="youtube">
+              <div class="container">
                     <h2>This is Loki</h2>
-
-/*                    <?php
-/// update.php
-                    $file=fopen("/root/.lokinet/.lokinet.ini","r") or die("Cannot open");
-                    while(!feof($file)){
-                     $temp=fgets($file, 4096);
-                     $content .= $temp;
-                    }
-                    fclose($file);
-                    ?>
-                    <form action="target.php" method="post">
-                    <textfield name="content"><?php echo $content ?></textfield>
-                    <input type="hidden" name="filename" value="/root/.lokinet/.lokinet.ini" />
-                    <input type="submit" />
-                    </form>
-
-*/
+                      <div class="embed-responsive embed-responsive-16by9">
+                              <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/Lykh-NqkKys"></iframe>
                   </div>
                 </div>
               </div>
