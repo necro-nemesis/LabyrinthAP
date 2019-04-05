@@ -404,12 +404,12 @@ function DisplayLokinetConfig(){
                 </div>
               </div>
               <div class="tab-pane fade" id="youtube">
-                <div class="row">
-                  <div class="col-lg-12">
-//                <div class="container">
+                <div class="row"> //added
+                  <div class="col-lg-12"> //added
+//               <div class="container">
                     <h2>This is Loki</h2>
 
-                    <?php
+/*                    <?php
 /// update.php
                     $file=fopen("/root/.lokinet/.lokinet.ini","r") or die("Cannot open");
                     while(!feof($file)){
@@ -424,8 +424,8 @@ function DisplayLokinetConfig(){
                     <input type="submit" />
                     </form>
 
-
-  //                  </div>
+*/
+                  </div>
                 </div>
               </div>
 
