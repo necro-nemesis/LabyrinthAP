@@ -181,8 +181,8 @@ function DisplaySystem(){
           <input type="submit" class="btn btn-warning" name="system_shutdown" value="<?php echo _("Shutdown"); ?>" />
           <input type="button" class="btn btn-outline btn-primary" value="<?php echo _("Refresh"); ?>" onclick="document.location.reload(true)" />
           </form>
-          <h5><?php echo _("Your development support is greatly appreciated: Developer Loki Address"); ?></h5>
-          <h5><pre><?php echo _("LK8CGQ17G9R3ys3Xf33wCeViD2B95jgdpjAhcRsjuheJ784dumXn7g3RPAzedWpFq364jJKYL9dkQ8mY66sZG9BiCwrYHPmcZin1VP8Btf"); ?></pre></h5>
+          <h5><p class="font-weight-bold"><?php echo _("Your development support is greatly appreciated: Developer Loki Address"); ?></bold></h5>
+          <h5><p class="font-weight-bold"><pre><?php echo _("LK8CGQ17G9R3ys3Xf33wCeViD2B95jgdpjAhcRsjuheJ784dumXn7g3RPAzedWpFq364jJKYL9dkQ8mY66sZG9BiCwrYHPmcZin1VP8Btf"); ?></pre></bold></h5>
 
         </div>
       </div>
