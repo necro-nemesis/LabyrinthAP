@@ -408,18 +408,22 @@ function DisplayLokinetConfig(){
                 <div class="container">
                     <h2>This is Loki</h2>
 
+                    <?php
+                    $fn = "/root/.lokinet/lokinet.ini"; 
+                    $file = fopen($fn, "a+");
+                    $size = filesize($fn);
 
-                          <?php
-                          $file = "/root/.lokinet/lokinet.ini";
-                          $test = file_get_contents($file);
-                          if (isset($_POST['test'])) {
-                          file_put_contents($file, $_POST["test"]);
-                          };
-                          ?>
-                          <form action="" method="post">
-                          <textarea id="test" name="test" style="width:100%; height:50%;"><? echo "$test"; ?></textarea>
-                          <input type="submit" value="submit">
-                          </form>
+                    if($_POST['addition']) fwrite($file, $_POST['addition']);
+
+                    $text = fread($file, $size);
+                    fclose($file);
+                    ?>
+                    <form action="<?=$PHP_SELF?>" method="post">
+                    <textarea><?=$text?></textarea><br/>
+                    <input type="text" name="addition"/>
+                    <input type="submit"/>
+                    </form>
+
 
                     </div>
                 </div>
