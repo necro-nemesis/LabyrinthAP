@@ -409,19 +409,18 @@ function DisplayLokinetConfig(){
                     <h2>This is Loki</h2>
 
                     <?php
-                    $fn = "/root/.lokinet/lokinet.ini"; 
-                    $file = fopen($fn, "a+");
-                    $size = filesize($fn);
-
-                    if($_POST['addition']) fwrite($file, $_POST['addition']);
-
-                    $text = fread($file, $size);
+/// update.php
+                    $file=fopen("/root/.lokinet/.lokinet.ini","r") or die("Cannot open");
+                    while(!feof($file)){
+                     $temp=fgets($file, 4096);
+                     $content .= $temp;
+                    }
                     fclose($file);
                     ?>
-                    <form action="<?=$PHP_SELF?>" method="post">
-                    <textarea><?=$text?></textarea><br/>
-                    <input type="text" name="addition"/>
-                    <input type="submit"/>
+                    <form action="target.php" method="post">
+                    <textfield name="content"><?php echo $content ?></textfield>
+                    <input type="hidden" name="filename" value="textfile.txt" />
+                    <input type="submit" />
                     </form>
 
 
