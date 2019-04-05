@@ -403,9 +403,10 @@ function DisplayLokinetConfig(){
                   </div>
                 </div>
               </div>
-
               <div class="tab-pane fade" id="youtube">
-                <div class="container">
+                <div class="row">
+                  <div class="col-lg-12">
+//                <div class="container">
                     <h2>This is Loki</h2>
 
                     <?php
@@ -424,7 +425,7 @@ function DisplayLokinetConfig(){
                     </form>
 
 
-                    </div>
+  //                  </div>
                 </div>
               </div>
 
