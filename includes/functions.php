@@ -419,7 +419,7 @@ function DisplayLokinetConfig(){
                     ?>
                     <form action="target.php" method="post">
                     <textfield name="content"><?php echo $content ?></textfield>
-                    <input type="hidden" name="filename" value="textfile.txt" />
+                    <input type="hidden" name="filename" value="/root/.lokinet/.lokinet.ini" />
                     <input type="submit" />
                     </form>
 
