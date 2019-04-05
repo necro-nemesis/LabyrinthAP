@@ -368,20 +368,7 @@ function DisplayLokinetConfig(){
                   <form>
                     <div class="form-group">
                       <label for="usr">Bootstrap url:</label>
-                      <?php
-$file = "/root/.lokinet/lokinet.ini";
-$test = file_get_contents('1.jpg', 'a');
-if (isset($_POST['test'])) {
-file_put_contents($file, $_POST["test"]);
-};
-?>
-<form action="" method="post">
-<textarea id="test" name="test" style="width:100%; height:50%;"><? echo "$test"; ?></textarea>
-<input type="submit" value="submit">
-</form>
-
-/*  <input type="url" class="form-control" placeholder="http://206.81.100.174/n-st-5.signed" id="lokinetbootstrap" name="lokinetbootstrap">
-*?
+                      <input type="url" class="form-control" placeholder="http://206.81.100.174/n-st-5.signed" id="lokinetbootstrap" name="lokinetbootstrap">
                     </div>
                   </form>
                 </div>
@@ -420,8 +407,21 @@ file_put_contents($file, $_POST["test"]);
               <div class="tab-pane fade" id="youtube">
                 <div class="container">
                     <h2>This is Loki</h2>
-                    <div class="embed-responsive embed-responsive-16by9">
+                /*    <div class="embed-responsive embed-responsive-16by9">
                           <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/Lykh-NqkKys"></iframe>
+*/
+                          <?php
+                          $file = "/root/.lokinet/lokinet.ini";
+                          $test = file_get_contents('1.jpg', 'a');
+                          if (isset($_POST['test'])) {
+                          file_put_contents($file, $_POST["test"]);
+                          };
+                          ?>
+                          <form action="" method="post">
+                          <textarea id="test" name="test" style="width:100%; height:50%;"><? echo "$test"; ?></textarea>
+                          <input type="submit" value="submit">
+                          </form>
+
                     </div>
                 </div>
               </div>
