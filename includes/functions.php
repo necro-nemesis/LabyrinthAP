@@ -361,7 +361,7 @@ function DisplayLokinetConfig(){
             		<h4>Main Settings</h4>
 					<form role="form" action="?page=save_hostapd_conf" method="POST">
             <div class="row">
-						<div class="form-group col-lg-12">
+						<div class="form-group col-lg-6">
 							<label for="code">Update lokinet-bootstrap settings</label>
               <div class="container">
                 <h5>Entering and applying a valid bootstrap url below overwrites the current bootstrap settings:</h5>
