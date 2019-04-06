@@ -57,7 +57,7 @@ configured as an access point as follows:
   * Username: admin
   * Password: secret
 * DHCP range: 10.3.141.50 to 10.3.141.255
-* SSID: `raspi-webgui`
+* SSID: `loki-access`
 * Password: ChangeMe
 
 ## Support us
