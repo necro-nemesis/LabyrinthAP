@@ -182,7 +182,7 @@ function DisplaySystem(){
           <input type="button" class="btn btn-outline btn-primary" value="<?php echo _("Refresh"); ?>" onclick="document.location.reload(true)" />
           </form>
           <h5><strong><?php echo _("Your development support is greatly appreciated: Developer Loki Address"); ?></strong></h5>
-          <h5><strong><pre><?php echo _("LK8CGQ17G9R3ys3Xf33wCeViD2B95jgdpjAhcRsjuheJ784dumXn7g3RPAzedWpFq364jJKYL9dkQ8mY66sZG9BiCwrYHPmcZin1VP8Btf"); ?></pre></strong></h5>
+          <h5><strong><pre><?php echo _("LA8VDcoJgiv2bSiVqyaT6hJ67LXbnQGpf9Uk3zh9ikUKPJUWeYbgsd9gxQ5ptM2hQNSsCaRETQ3GM9FLDe7BGqcm4ve69bh"); ?></pre></strong></h5>
 
         </div>
       </div>
