@@ -2,22 +2,35 @@
 
 case "$1" in
   start)
-        echo -n "Starting LOKINET"
+        echo -n "Starting LOKINET\n"
         /home/pi/loki-network/lokinet > /dev/null 2>&1 &
-        sudo iptables -t nat -A POSTROUTING -s 10.3.141.0/24 -o lokitun0 -j MASQUERADE #LOKI$
-        ehco -n "rerouted iptables"
-        sudo ip rule add from 10.3.141.1 lookup main prio 1000 #LOKIPAP
-        echo -n "added wlan0 address rule"
-        sudo ip rule add from 10.3.141.0/24 lookup lokinet prio 1000 #LOKIPAP
-        echo -n "added wifi-clients rule"
+        sudo iptables -t nat -A POSTROUTING -s 10.3.141.0/24 -o lokitun0 -j MASQUERADE #LOKIPAP
+        ehco -n "rerouted iptables\n"
+        sudo ip rule add from 10.3.141.1 lookup main prio 1000
+        echo -n "added wlan0 address rule\n"
+        sudo ip rule add from 10.3.141.0/24 lookup lokinet prio 1000
+        echo -n "added wifi-clients rule\n"
         sudo ip route add default dev lokitun0 table lokinet
-        echo -n "added lokitun0 route"
-        echo -n "Restarting DNSMASQ"
+        echo -n "added lokitun0 route\n"
+        echo -n "Restarting DNSMASQ\n"
         sudo /etc/init.d/dnsmasq restart
         ;;
+
   stop)
-        echo -n "Stopping daemon"
+        echo -n "Stopping daemon\n"
         pkill lokinet
+        sudo iptables -t nat -F
+        sudo iptables -F
+        sudo iptables -t nat -A POSTROUTING -j MASQUERADE
+        ehco -n "rerouted iptables\n"
+        sudo ip rule del from 10.3.141.1 lookup main prio 1000 #LOKIPAP
+        echo -n "removed wlan0 address rule\n"
+        sudo ip rule del from 10.3.141.0/24 lookup lokinet prio 1000 #LOKIPAP
+        echo -n "removed wifi-clients rule\n"
+        sudo ip route del default dev lokitun0 table lokinet
+        echo -n "removed lokitun0 route\m"
+        echo -n "Restarting DNSMASQ\n"
+        sudo /etc/init.d/dnsmasq restart
         ;;
   gen)
         echo -n "NEW lokinet.ini FILE CREATED\n"

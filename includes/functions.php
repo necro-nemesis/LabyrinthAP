@@ -610,18 +610,20 @@ function SaveTORAndVPNConfig()
         }
     } elseif (isset($_POST['StartLokinet'])) {
         ?>
-        <div class="alert alert-success">
-          Starting Lokinet background daemon process.
-        </div>
-        <?php
+    <div class="alert alert-success">
+      Starting Lokinet background daemon process.
+    </div>
+    <?php
     $output = shell_exec('sudo /home/pi/loki-network/lokilaunch.sh start');
     echo "<pre><strong>$output</strong></pre>";
     } elseif (isset($_POST['StopLokinet'])) {
-        exec('sudo /home/pi/loki-network/lokilaunch.sh "stop" > /dev/null &', $return); ?>
+        ?>
     <div class="alert alert-danger">
       Stopping Lokinet background daemon process.
     </div>
     <?php
+    $output = shell_exec('sudo /home/pi/loki-network/lokilaunch.sh stop');
+    echo "<pre><strong>$output</strong></pre>";
     } elseif (isset($_POST['GenerateLokinet'])) {
         ?>
     <div class="alert alert-warning">
