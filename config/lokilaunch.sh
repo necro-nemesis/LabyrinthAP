@@ -28,7 +28,7 @@ case "$1" in
         sudo ip rule del from 10.3.141.0/24 lookup lokinet prio 1000 #LOKIPAP
         echo -n "removed wifi-clients rule\n"
         sudo ip route del default dev lokitun0 table lokinet
-        echo -n "removed lokitun0 route\m"
+        echo -n "removed lokitun0 route\n"
         echo -n "Restarting DNSMASQ\n"
         sudo /etc/init.d/dnsmasq restart
         ;;
