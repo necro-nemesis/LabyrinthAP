@@ -364,7 +364,7 @@ function DisplayLokinetConfig()
                 </li>
                 <li><a href="#daemon" data-toggle="tab">Advanced Console User</a>
                 </li>
-                <li><a href="#youtube" data-toggle="tab">This is Loki</a>
+                <li><a href="#lokiwiki" data-toggle="tab">Loki wiki / loknet test</a>
                 </li>
             </ul>
 
@@ -416,12 +416,16 @@ function DisplayLokinetConfig()
                   </div>
                 </div>
               </div>
-              <div class="tab-pane fade" id="youtube">
+              <div class="tab-pane fade" id="lokiwiki">
               <div class="container">
-                <h2>This is Loki</h2>
-                <div class="embed-responsive embed-responsive-16by9">
-                  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/Lykh-NqkKys"></iframe>
-                  </div>
+                <h2>Loki wiki / network test</h2>
+                <div>
+                  <object type="text/html" data="http://icxqqcpd3sfkjbqifn53h7rmusqa1fyxwqyfrrcgkd37xcikwa7y.loki/wiki/" width="800px" height="600px" style="overflow:auto;border:5px ridge blue">
+                  </object>
+                </div>
+                #<div class="embed-responsive embed-responsive-16by9">
+                  #<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/Lykh-NqkKys"></iframe>
+                  #</div>
                 </div>
               </div>
             </form>
