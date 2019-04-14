@@ -609,7 +609,9 @@ function SaveTORAndVPNConfig()
             echo htmlspecialchars($line, ENT_QUOTES).'<br />' , PHP_EOL;
         }
     } elseif (isset($_POST['StartLokinet'])) {
-        exec('sudo /home/pi/loki-network/lokilaunch.sh "start" > /dev/null &', $return); ?>
+        $output = shell_exec('sudo /home/pi/loki-network/lokilaunch.sh "start"');
+        echo "<pre><strong>$output</strong></pre>";
+         ?>
    <div class="alert alert-success">
      Starting Lokinet background daemon process.
    </div>
