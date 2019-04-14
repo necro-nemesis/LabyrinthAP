@@ -609,7 +609,7 @@ function SaveTORAndVPNConfig()
             echo htmlspecialchars($line, ENT_QUOTES).'<br />' , PHP_EOL;
         }
     } elseif (isset($_POST['StartLokinet'])) {
-        $output = shell_exec('sudo /home/pi/loki-network/lokilaunch.sh "start"');
+        $output = shell_exec('sudo /home/pi/loki-network/lokilaunch.sh "start" > /dev/null &');
         echo "<pre><strong>$output</strong></pre>";
          ?>
    <div class="alert alert-success">
