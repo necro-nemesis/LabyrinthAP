@@ -420,7 +420,7 @@ function DisplayLokinetConfig()
               <div class="container">
                 <h2>Loki wiki / network test</h2>
                 <div>
-                  <object type="text/html" data="http://icxqqcpd3sfkjbqifn53h7rmusqa1fyxwqyfrrcgkd37xcikwa7y.loki/wiki/" width="800px" height="600px" style="overflow:auto;border:5px ridge blue">
+                  <object type="text/html" data="http://google.com" width="800px" height="600px" style="overflow:auto;border:5px ridge black">
                   </object>
                 </div>
                 #<div class="embed-responsive embed-responsive-16by9">
