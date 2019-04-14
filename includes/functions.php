@@ -364,10 +364,7 @@ function DisplayLokinetConfig()
                 </li>
                 <li><a href="#daemon" data-toggle="tab">Advanced Console User</a>
                 </li>
-                <li><a href="#lokiwiki" data-toggle="tab">Loki wiki / loknet test</a>
-                </li>
             </ul>
-
             <!-- Tab panes -->
            	<div class="tab-content">
            		<p><?php echo $status; ?></p>
@@ -407,25 +404,12 @@ function DisplayLokinetConfig()
 				       </div>
              </div>
            </div>
-
              	<div class="tab-pane fade" id="daemon">
             		<h4>Lokient Daemon</h4>
                 <div class="row">
                   <div class="col-lg-12">
                     <iframe src="includes/webconsole.php" class="webconsole"></iframe>
                   </div>
-                </div>
-              </div>
-              <div class="tab-pane fade" id="lokiwiki">
-              <div class="container">
-                <h2>Loki wiki / network test</h2>
-                <div>
-                  <object type="text/html" data="http://google.com" width="800px" height="600px" style="overflow:auto;border:5px ridge black">
-                  </object>
-                </div>
-                #<div class="embed-responsive embed-responsive-16by9">
-                  #<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/Lykh-NqkKys"></iframe>
-                  #</div>
                 </div>
               </div>
             </form>
