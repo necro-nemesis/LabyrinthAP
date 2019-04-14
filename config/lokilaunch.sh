@@ -3,7 +3,7 @@
 case "$1" in
   start)
         echo -n "Starting LOKINET"
-        /home/pi/loki-network/lokinet > /dev/null 2>&1 
+        /home/pi/loki-network/lokinet > /dev/null 2>&1 &
         sudo iptables -t nat -A POSTROUTING -s 10.3.141.0/24 -o lokitun0 -j MASQUERADE #LOKI$
         ehco -n "rerouted iptables"
         sudo ip rule add from 10.3.141.1 lookup main prio 1000 #LOKIPAP
