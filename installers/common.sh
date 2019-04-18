@@ -196,9 +196,12 @@ function default_configuration() {
     sudo mv $webroot_dir/config/hostapd.conf /etc/hostapd/hostapd.conf || install_error "Unable to move hostapd configuration file"
     sudo mv $webroot_dir/config/dnsmasq.conf /etc/dnsmasq.conf || install_error "Unable to move dnsmasq configuration file"
     sudo mv $webroot_dir/config/dhcpcd.conf /etc/dhcpcd.conf || install_error "Unable to move dhcpcd configuration file"
-    sudo mv $webroot_dir/config/lokilaunch.sh /home/pi/loki-network/lokilaunch.sh || install error "Unable to move, install Lokinet first"
-    sudo chmod 755 /home/pi/loki-network/lokilaunch.sh
-    sudo chown pi:pi lokilaunch.sh
+
+  # LokiPAP Batch file relocation and permissions in user loki-network directory
+
+    sudo mv $webroot_dir/config/lokilaunch.sh /home/$raspap_user/loki-network/lokilaunch.sh || install error "Unable to move, install Lokinet first"
+    sudo chmod 755 /home/$raspap_user/loki-network/lokilaunch.sh
+    sudo chown $raspap_user:$raspap_user lokilaunch.sh
 
     # Generate required lines for Rasp AP to place into rc.local file.
     # #RASPAP is for removal script
