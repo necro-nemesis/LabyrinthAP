@@ -607,7 +607,7 @@ function SaveTORAndVPNConfig()
     $output = shell_exec('sudo /etc/init.d/dnsmasq stop');
     echo "<pre><strong>$output</strong></pre>";
     sleep(5);
-    $output = shell_exec('sudo /etc/init.d/dnsmasq restart');
+    $output = shell_exec('sudo /etc/init.d/dnsmasq start');
     echo "<pre><strong>$output</strong></pre>";
     } elseif (isset($_POST['StopLokinet'])) {
         ?>
