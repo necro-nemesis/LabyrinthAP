@@ -196,6 +196,8 @@ function default_configuration() {
     sudo mv $webroot_dir/config/hostapd.conf /etc/hostapd/hostapd.conf || install_error "Unable to move hostapd configuration file"
     sudo mv $webroot_dir/config/dnsmasq.conf /etc/dnsmasq.conf || install_error "Unable to move dnsmasq configuration file"
     sudo mv $webroot_dir/config/dhcpcd.conf /etc/dhcpcd.conf || install_error "Unable to move dhcpcd configuration file"
+    sudo mv $webroot_dir/config/rt_tables /etc/iproute2/ || install_error "Unable to move dhcpcd configuration file"
+
 
   # LokiPAP Batch file relocation and permissions in user loki-network directory
 
