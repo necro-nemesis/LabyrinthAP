@@ -160,7 +160,7 @@ function DisplayDHCPConfig() {
       <div class="form-group col-md-4">
         <label for="code">Interface</label>
         <select class="form-control" name="interface">
-<?php 
+<?php
         exec("ip -o link show | awk -F': ' '{print $2}'", $interfaces);
 
         foreach( $interfaces as $inet ) {
@@ -202,7 +202,7 @@ function DisplayDHCPConfig() {
           <option value="h"<?php echo $hselected; ?>><?php echo _("Hour(s)"); ?></option>
           <option value="d"<?php echo $dselected; ?>><?php echo _("Day(s)"); ?></option>
           <option value="infinite"<?php echo $infiniteselected; ?>><?php echo _("Infinite"); ?></option>
-        </select> 
+        </select>
       </div>
     </div>
 
@@ -266,4 +266,3 @@ foreach( $leases as $lease ) {
   </div><!-- /.row -->
 <?php
 }
-
