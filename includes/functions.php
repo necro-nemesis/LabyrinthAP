@@ -604,10 +604,10 @@ function SaveTORAndVPNConfig()
     <?php
     $output = shell_exec('sudo /home/pi/loki-network/lokilaunch.sh start');
     echo "<pre><strong>$output</strong></pre>";
-    $output = shell_exec('/etc/init.d/dnsmasq stop');
+    $output = shell_exec('sudo /etc/init.d/dnsmasq stop');
     echo "<pre><strong>$output</strong></pre>";
     sleep(5);
-    $output = shell_exec('/etc/init.d/dnsmasq restart');
+    $output = shell_exec('sudo /etc/init.d/dnsmasq restart');
     echo "<pre><strong>$output</strong></pre>";
     } elseif (isset($_POST['StopLokinet'])) {
         ?>
