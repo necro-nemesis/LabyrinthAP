@@ -12,7 +12,7 @@
  *
  * @author     TechnicalTumbleweed (Loki->Discord/Telegram)
  * @license    GNU General Public License, version 3 (GPL-3.0)
- * @version    1.5a
+ * @version    1.6b
  * @link       https://github.com/necro-nemesis/Lokiap-webgui
  */
 
