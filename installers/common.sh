@@ -201,8 +201,8 @@ function default_configuration() {
 
   # LokiPAP Batch file relocation and permissions in user loki-network directory
 
-    sudo mv $webroot_dir/config/lokilaunch.sh /home/$raspap_user/loki-network/ || install error "Unable to move, install Lokinet first"
-    sudo chmod 755 /home/$raspap_user/loki-network/lokilaunch.sh
+    sudo mv $webroot_dir/config/lokilaunch.sh $HOME/loki-network/ || install error "Unable to move, install Lokinet first"
+    sudo chmod 755 $HOME/loki-network/lokilaunch.sh
     sudo chown $raspap_user:$raspap_user lokilaunch.sh
 
     # Generate required lines for Rasp AP to place into rc.local file.
