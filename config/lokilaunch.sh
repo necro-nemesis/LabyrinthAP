@@ -30,8 +30,9 @@ case "$1" in
 
   gen)
         echo -n "NEW lokinet.ini FILE CREATED\n"
-        cat /root/.lokinet/lokinet.ini
         lokinet "-g"
+        cp /root/.lokinet/lokinet.ini /usr/local/bin/
+        cat /usr/local/bin/lokinet.ini
         ;;
 
 bootstrap)
