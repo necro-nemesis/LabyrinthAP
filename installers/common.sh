@@ -52,7 +52,7 @@ function display_welcome() {
     echo -e "   888         d88   88b  888 .8P     888     .8   888.     888ooo88P"
     echo -e "   888         888   888  888888.     888    .88ooo8888.    888"
     echo -e "   888       o 888   888  888  88b.   888   .8       888.   888"
-    echo -e " o888ooooood8   Y8bod8P o888o o888o o888o o88o     o8888o o888o"
+    echo -e "  o888ooooood8  Y8bod8P  o888o o888o o888o o88o     o8888o o888o"
     echo -e "${raspberry}"
     echo -e "The Quick Installer will guide you through a few easy steps\n\n"
 }
