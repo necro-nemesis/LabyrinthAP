@@ -607,7 +607,7 @@ function SaveTORAndVPNConfig()
     $output = shell_exec('sudo /home/pi/loki-network/lokilaunch.sh start');
     echo "<pre><strong>$output</strong></pre>";
     /*sleep(5);*/
-    $output = shell_exec('sudo dnsmasq --interface=wlan0 --server=127.3.2.1 --server-127.0.0.1 --server=1.1.1.1 --bind-interfaces --dhcp-range=10.3.141.0,10.3.141.24,12h --conf-file=/dev/null');
+    $output = shell_exec('sudo dnsmasq --interface=wlan0 --bind-interfaces --dhcp-range=10.3.141.0,10.3.141.24,12h --conf-file=/etc/resolv.conf');
     echo "<pre><strong>$output</strong></pre>";
     } elseif (isset($_POST['StopLokinet'])) {
         ?>
