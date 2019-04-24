@@ -602,12 +602,13 @@ function SaveTORAndVPNConfig()
       Starting Lokinet background daemon process.
     </div>
     <?php
-    # $output = shell_exec('sudo /etc/init.d/dnsmasq stop');
+    $output = shell_exec('sudo /etc/init.d/dnsmasq stop');
     echo "<pre><strong>$output</strong></pre>";
     $output = shell_exec('sudo /home/pi/loki-network/lokilaunch.sh start');
     echo "<pre><strong>$output</strong></pre>";
-    /*sleep(5);*/
-    $output = shell_exec('sudo dnsmasq --interface=wlan0 --bind-interfaces --dhcp-range=10.3.141.0,10.3.141.24,12h --conf-file=/etc/resolv.conf');
+    $output = shell_exec('sudo /etc/init.d/dnsmasq start');
+  # sleep(5);
+  #  $output = shell_exec('sudo dnsmasq --interface=wlan0 --bind-interfaces --dhcp-range=10.3.141.0,10.3.141.24,12h --conf-file=/etc/resolv.conf');
     echo "<pre><strong>$output</strong></pre>";
     } elseif (isset($_POST['StopLokinet'])) {
         ?>
