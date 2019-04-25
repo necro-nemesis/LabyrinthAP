@@ -212,7 +212,8 @@ function default_configuration() {
     'echo 1 > \/proc\/sys\/net\/ipv4\/ip_forward #RASPAP'
     'iptables -t nat -A POSTROUTING -s 10.3.141.0\/24 -o lokitun0 -j MASQUERADE #RASPAP'
     'iptables -t nat -A POSTROUTING -j MASQUERADE #RASPAP'
-    'sudo \/etc\/init.d\/dnsmasq restart #RASPAP'
+    'sudo lokinet > /dev/null 2>&1 & #RASPAP'
+
 
     )
 
