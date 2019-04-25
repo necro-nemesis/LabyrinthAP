@@ -3,8 +3,11 @@
 case "$1" in
 
   start)
-        echo -n "Starting LOKINET\n"
+        echo -n "Starting LOKINET daemon\n"
         lokinet > /dev/null 2>&1 &
+        ;;
+
+  connect)
         ehco -n "rerouted iptables\n"
         sudo ip rule add from 10.3.141.1 lookup main prio 1000
         echo -n "added wlan0 address rule\n"
@@ -17,8 +20,11 @@ case "$1" in
         ;;
 
   stop)
-        echo -n "Stopping daemon\n"
+        echo -n "Stopping LOKINET daemon\n"
         pkill lokinet
+        ;;
+
+disconnect)
         sudo ip rule del from 10.3.141.1 lookup main prio 1000 #LOKIPAP
         echo -n "removed wlan0 address rule\n"
         sudo ip rule del from 10.3.141.0/24 lookup lokinet prio 1000 #LOKIPAP
@@ -47,7 +53,7 @@ bootstrap)
         ;;
 
   *)
-        echo "Usage: "$1" {start|stop|gen|bootstrap}"
+        echo "Usage: "$1" {start|stop|gen|bootstrap|connect|disconnect}"
         exit 1
         ;;
         esac
