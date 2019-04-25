@@ -1,3 +1,4 @@
+# test staging push
 raspap_dir="/etc/raspap"
 raspap_user="www-data"
 version=`sed 's/\..*//' /etc/debian_version`
