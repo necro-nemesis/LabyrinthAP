@@ -381,7 +381,7 @@ function DisplayLokinetConfig()
 					<form role="form" action="?page=save_hostapd_conf" method="POST">
             <div class="row">
 						<div class="form-group col-lg-6">
-							<label for="code">Update lokinet-bootstrap settings</label>
+							<label for="code">All 4 Buttons must be green to connect to Lokinet.If there is no .ini file it must be generated followed by applying a bootstrap. If no URL is submitted the default bootstrap file will be applied automatically.</label>
               <div class="container">
                 <h5>Entering and applying a valid bootstrap url below overwrites the current bootstrap settings:</h5>
                   <form>
