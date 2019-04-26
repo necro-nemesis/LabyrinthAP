@@ -393,7 +393,6 @@ function DisplayLokinetConfig()
                     </div>
                   </form>
                 </div>
-                  <h5>Contact Loki user groups for the latest bootstrap file location</h5>
           				<?php
                   if ($rulestate != "lokinet") {
                       echo '<input type="submit" class="btn btn-danger" name="UseLokinet" value="Use Lokinet" />' , PHP_EOL;
@@ -430,7 +429,7 @@ function DisplayLokinetConfig()
             </form>
       			</div><!-- /.tab-content -->
       		</div><!-- /.panel-body -->
-      		<div class="panel-footer"> Information provided by Lokinet</div>
+      		<div class="panel-footer">Contact Loki user groups for the latest bootstrap file location</div>
           </div><!-- /.panel-primary -->
       </div><!-- /.col-lg-12 -->
     </div><!-- /.row -->
