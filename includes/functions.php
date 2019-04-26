@@ -385,25 +385,25 @@ function DisplayLokinetConfig()
                   </form>
                 </div>
                   <h5>Contact Loki user groups for the latest bootstrap file location</h5>
-                  <input type="submit" class="btn btn-success" name="ApplyLokinetSettings" value="Apply Bootstrap" />
+                  <input type="submit" class="btn btn-success" name="ApplyLokinetSettings" value="Bootstrap" />
           				<?php
                   if ($ruletstate = "lokinet") {
-                      echo '<input type="submit" class="btn btn-success" name="Connect to Lokinet" value="Connect Lokinet Service" />' , PHP_EOL;
+                      echo '<input type="submit" class="btn btn-success" name="Connect to Lokinet" value="Use Lokinet" />' , PHP_EOL;
                   } else {
-                      echo '<input type="submit" class="btn btn-danger" name="Disconnect from Lokinet" value="Disconnect Lokinet Service" />' , PHP_EOL;
+                      echo '<input type="submit" class="btn btn-danger" name="Disconnect from Lokinet" value="Exit Lokinet" />' , PHP_EOL;
                   }
                   if ($lokinetstatus[0] == 0) {
-                      echo '<input type="submit" class="btn btn-success" name="Start Daemon" value="Start Lokinet Service" />' , PHP_EOL;
+                      echo '<input type="submit" class="btn btn-success" name="Start Daemon" value="Start Daemon" />' , PHP_EOL;
                   } else {
-                      echo '<input type="submit" class="btn btn-danger" name="Stop Daemon" value="Stop Lokinet Service" />' , PHP_EOL;
+                      echo '<input type="submit" class="btn btn-danger" name="Stop Daemon" value="Stop Daemon" />' , PHP_EOL;
                         }
 
     $filename = '/usr/local/bin/lokinet.ini';
 
     if (file_exists($filename)) {
-        echo '<input type="submit" class="btn btn-danger" name="ReGenerateLokinet" value="Regenerate Lokinet.ini" />' , PHP_EOL;
+        echo '<input type="submit" class="btn btn-danger" name="ReGenerateLokinet" value="Regenerate .ini" />' , PHP_EOL;
     } else {
-        echo '<input type="submit" class="btn btn-success" name="GenerateLokinet" value="Generate Lokinet.ini" />' , PHP_EOL;
+        echo '<input type="submit" class="btn btn-success" name="GenerateLokinet" value="Generate .ini" />' , PHP_EOL;
     } ?>
                   <h5><strong><?php echo _("Your development support is greatly appreciated: Developer Loki Address"); ?></strong></h5>
                   <h5><strong><pre><?php echo _("LA8VDcoJgiv2bSiVqyaT6hJ67LXbnQGpf9Uk3zh9ikUKPJUWeYbgsd9gxQ5ptM2hQNSsCaRETQ3GM9FLDe7BGqcm4ve69bh"); ?></pre></strong></h5>
