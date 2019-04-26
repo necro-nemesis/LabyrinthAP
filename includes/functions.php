@@ -344,7 +344,7 @@ function DisplayOpenVPNConfig()
 function DisplayLokinetConfig()
 {
     exec('pidof lokinet | wc -l', $lokinetstatus);
-    shell_exec('sudo iptables -t nat -L' > $networkstate)
+    exec(ip rule show default | grep lokinet | awk {'print $5'}, $rulestate);
 
     if ($lokinetstatus[0] == 0) {
         $status = '<div class="alert alert-danger alert-dismissable">Lokinet daemon is not running
@@ -387,16 +387,16 @@ function DisplayLokinetConfig()
                   <h5>Contact Loki user groups for the latest bootstrap file location</h5>
                   <input type="submit" class="btn btn-success" name="ApplyLokinetSettings" value="Apply Bootstrap" />
           				<?php
-                  if (ip rule show default | grep lokinet | awk {'print $5'} != 'lokinet') {
+                  if (ruletstate = "lokinet") {
                       echo '<input type="submit" class="btn btn-success" name="Connect to Lokinet" value="Start Lokinet Service" />' , PHP_EOL;
                   } else {
                       echo '<input type="submit" class="btn btn-danger" name="Disconnect from Lokinet" value="Stop Lokinet Service" />' , PHP_EOL;
                   }
-                          if ($lokinetstatus[0] == 0) {
-                              echo '<input type="submit" class="btn btn-success" name="Start Daemon" value="Start Lokinet Service" />' , PHP_EOL;
-                          } else {
-                              echo '<input type="submit" class="btn btn-danger" name="Stop Daemon" value="Stop Lokinet Service" />' , PHP_EOL;
-                          }
+                  if ($lokinetstatus[0] == 0) {
+                      echo '<input type="submit" class="btn btn-success" name="Start Daemon" value="Start Lokinet Service" />' , PHP_EOL;
+                  } else {
+                      echo '<input type="submit" class="btn btn-danger" name="Stop Daemon" value="Stop Lokinet Service" />' , PHP_EOL;
+                        }
 
     $filename = '/usr/local/bin/lokinet.ini';
 
