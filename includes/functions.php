@@ -394,24 +394,24 @@ function DisplayLokinetConfig()
                   <h5>Contact Loki user groups for the latest bootstrap file location</h5>
           				<?php
                   if ($rulestate != "lokinet") {
-                      echo '<input type="submit" class="btn btn-success" name="UseLokinet" value="Use Lokinet" />' , PHP_EOL;
+                      echo '<input type="submit" class="btn btn-danger" name="UseLokinet" value="Use Lokinet" />' , PHP_EOL;
                   } else {
-                      echo '<input type="submit" class="btn btn-danger" name="ExitLokinet" value="Exit Lokinet" />' , PHP_EOL;
+                      echo '<input type="submit" class="btn btn-success" name="ExitLokinet" value="Exit Lokinet" />' , PHP_EOL;
                   }
                   if ($lokinetstatus[0] == 0) {
-                      echo '<input type="submit" class="btn btn-success" name="StartDaemon" value="Start Daemon" />' , PHP_EOL;
+                      echo '<input type="submit" class="btn btn-danger" name="StartDaemon" value="Start Daemon" />' , PHP_EOL;
                   } else {
-                      echo '<input type="submit" class="btn btn-danger" name="StopDaemon" value="Stop Daemon" />' , PHP_EOL;
+                      echo '<input type="submit" class="btn btn-success" name="StopDaemon" value="Stop Daemon" />' , PHP_EOL;
                         }
 
     $filename = '/usr/local/bin/lokinet.ini';
 
     if (file_exists($filename)) {
-        echo '<input type="submit" class="btn btn-danger" name="ReGenerateLokinet" value="Regenerate .ini" />' , PHP_EOL;
+        echo '<input type="submit" class="btn btn-success" name="ReGenerateLokinet" value="Regenerate .ini" />' , PHP_EOL;
     } else {
-        echo '<input type="submit" class="btn btn-success" name="GenerateLokinet" value="Generate .ini" />' , PHP_EOL;
+        echo '<input type="submit" class="btn btn-danger" name="GenerateLokinet" value="Generate .ini" />' , PHP_EOL;
     } ?>
-                  <input type="submit" class="btn btn-success" name="ApplyLokinetSettings" value="Bootstrap" />
+                  <input type="submit" class="btn btn-success" name="ApplyLokinetSettings" value="Re-Bootstrap" />
                   <h5><strong><?php echo _("Your development support is greatly appreciated: Developer Loki Address"); ?></strong></h5>
                   <h5><strong><pre><?php echo _("LA8VDcoJgiv2bSiVqyaT6hJ67LXbnQGpf9Uk3zh9ikUKPJUWeYbgsd9gxQ5ptM2hQNSsCaRETQ3GM9FLDe7BGqcm4ve69bh"); ?></pre></strong></h5>
 				       </div>
