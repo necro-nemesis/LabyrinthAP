@@ -344,7 +344,11 @@ function DisplayOpenVPNConfig()
 function DisplayLokinetConfig()
 {
     exec('pidof lokinet | wc -l', $lokinetstatus);
+<<<<<<< HEAD
     exec(ip rule show default | grep lokinet | awk {'print $5'}, $rulestate);
+=======
+    $rulestate = exec(ip rule show default | grep lokinet | awk {'print $5'});
+>>>>>>> dc47097bb9215668fea3bb7ba59eaf48ca8f2155
 
     if ($lokinetstatus[0] == 0) {
         $status = '<div class="alert alert-danger alert-dismissable">Lokinet daemon is not running
