@@ -684,11 +684,26 @@ function SaveTORAndVPNConfig()
     $output = shell_exec('sudo /home/pi/loki-network/lokilaunch.sh gen');
         echo "<pre><strong>$output</strong></pre>";
     } elseif (isset($_POST['ApplyLokinetSettings'])) {
-        $bootstrap = $_POST['lokinetbootstrap']; ?>
-    <div class="alert alert-success">
+      ?>
+  <div class="alert alert-danger">
+        Exiting Lokinet.
+  </div>
+  <?php
+  $output = shell_exec('sudo /home/pi/loki-network/lokilaunch.sh disconnect');
+  echo "<pre><strong>$output</strong></pre>";
+  ?>
+  <div class="alert alert-danger">
+    Stopping Lokinet background daemon process.
+  </div>
+  <?php
+  $output = shell_exec('sudo /home/pi/loki-network/lokilaunch.sh stop');
+  echo "<pre><strong>$output</strong></pre>";
+        $bootstrap = $_POST['lokinetbootstrap'];
+  ?>
+  <div class="alert alert-success">
     Applying Bootstrap
-    </div>
-    <?php
+  </div>
+  <?php
   $bootstrap=str_replace("'", "", $bootstrap);
         $output = shell_exec('sudo /home/pi/./loki-network/lokilaunch.sh bootstrap '.$bootstrap.'');
         echo "<pre><strong>$output</strong></pre>";
