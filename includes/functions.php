@@ -344,7 +344,7 @@ function DisplayOpenVPNConfig()
 function DisplayLokinetConfig()
 {
     exec('pidof lokinet | wc -l', $lokinetstatus);
-//    exec(ip rule show default | grep lokinet | awk {'print $5'}, $rulestate);
+    exec(ip rule show default | grep lokinet | awk {'print $5'}, $rulestate);
 
     if ($lokinetstatus[0] == 0) {
         $status = '<div class="alert alert-danger alert-dismissable">Lokinet daemon is not running
@@ -387,7 +387,7 @@ function DisplayLokinetConfig()
                   <h5>Contact Loki user groups for the latest bootstrap file location</h5>
                   <input type="submit" class="btn btn-success" name="ApplyLokinetSettings" value="Bootstrap" />
           				<?php
-                  if ($ruletstate = "lokinet") {
+                  if ($rulestate == "lokinet") {
                       echo '<input type="submit" class="btn btn-success" name="Connect to Lokinet" value="Use Lokinet" />' , PHP_EOL;
                   } else {
                       echo '<input type="submit" class="btn btn-danger" name="Disconnect from Lokinet" value="Exit Lokinet" />' , PHP_EOL;
