@@ -377,7 +377,7 @@ function DisplayLokinetConfig()
            	<div class="tab-content">
            		<p><?php echo $status; ?></p>
             	<div class="tab-pane fade in active" id="basic">
-            	<strong><h4> Basic User Instructions:</h4></strong>
+            <h4><strong>Basic User Instructions:</strong></h4>
 					<form role="form" action="?page=save_hostapd_conf" method="POST">
             <div class="row">
 						<div class="form-group col-lg-6">
