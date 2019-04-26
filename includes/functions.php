@@ -349,7 +349,7 @@ function DisplayLokinetConfig()
         $status = '<div class="alert alert-danger alert-dismissable">Lokinet daemon is not running
 					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>';
     } else {
-        $status = '<div class="alert alert-success alert-dismissable">Lokinet is running
+        $status = '<div class="alert alert-success alert-dismissable">Lokinet daemon is running
 					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>';
     } ?>
 	<div class="row">
@@ -387,14 +387,14 @@ function DisplayLokinetConfig()
                   <input type="submit" class="btn btn-success" name="ApplyLokinetSettings" value="Bootstrap" />
           				<?php
                   if ($rulestate == "lokinet") {
-                      echo '<input type="submit" class="btn btn-success" name="Connect to Lokinet" value="Use Lokinet" />' , PHP_EOL;
+                      echo '<input type="submit" class="btn btn-success" name="UseLokinet" value="Use Lokinet" />' , PHP_EOL;
                   } else {
-                      echo '<input type="submit" class="btn btn-danger" name="Disconnect from Lokinet" value="Exit Lokinet" />' , PHP_EOL;
+                      echo '<input type="submit" class="btn btn-danger" name="ExitLokinet" value="Exit Lokinet" />' , PHP_EOL;
                   }
                   if ($lokinetstatus[0] == 0) {
-                      echo '<input type="submit" class="btn btn-success" name="Start Daemon" value="Start Daemon" />' , PHP_EOL;
+                      echo '<input type="submit" class="btn btn-success" name="StartDaemon" value="Start Daemon" />' , PHP_EOL;
                   } else {
-                      echo '<input type="submit" class="btn btn-danger" name="Stop Daemon" value="Stop Daemon" />' , PHP_EOL;
+                      echo '<input type="submit" class="btn btn-danger" name="StopDaemon" value="Stop Daemon" />' , PHP_EOL;
                         }
 
     $filename = '/usr/local/bin/lokinet.ini';
@@ -601,7 +601,7 @@ function SaveTORAndVPNConfig()
         foreach ($return as $line) {
             echo htmlspecialchars($line, ENT_QUOTES).'<br />' , PHP_EOL;
         }
-    } elseif (isset($_POST['StartLokinet'])) {
+    } elseif (isset($_POST['StartDaemon'])) {
         ?>
     <div class="alert alert-success">
       Starting Lokinet background daemon process.
@@ -615,7 +615,7 @@ function SaveTORAndVPNConfig()
   # sleep(5);
   #  $output = shell_exec('sudo dnsmasq --interface=wlan0 --bind-interfaces --dhcp-range=10.3.141.0,10.3.141.24,12h --conf-file=/etc/resolv.conf');
     echo "<pre><strong>$output</strong></pre>";
-    } elseif (isset($_POST['StopLokinet'])) {
+  } elseif (isset($_POST['StopDaemon'])) {
         ?>
     <div class="alert alert-danger">
       Stopping Lokinet background daemon process.
