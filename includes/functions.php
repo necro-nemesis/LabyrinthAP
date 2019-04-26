@@ -631,7 +631,7 @@ function SaveTORAndVPNConfig()
     <?php
     $output = shell_exec('sudo /home/pi/loki-network/lokilaunch.sh disconnect');
     echo "<pre><strong>$output</strong></pre>";
-    sleep 3;
+    sleep (3);
     ?>
     <div class="alert alert-danger">
       Stopping Lokinet background daemon process.
