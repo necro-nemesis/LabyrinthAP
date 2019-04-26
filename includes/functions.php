@@ -351,7 +351,16 @@ function DisplayLokinetConfig()
     } else {
         $status = '<div class="alert alert-success alert-dismissable">Lokinet daemon is running
 					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>';
-    } ?>
+    }
+    if ($rulestate != "lokinet") {
+        $status = '<div class="alert alert-danger alert-dismissable">Not Connected to Lokinet
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>';
+    } else {
+        $status = '<div class="alert alert-success alert-dismissable">Successfully Connected to Lokinet
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>';
+    }
+
+     ?>
 	<div class="row">
 	<div class="col-lg-12">
 		<div class="panel panel-primary">
