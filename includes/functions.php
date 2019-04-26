@@ -386,7 +386,7 @@ function DisplayLokinetConfig()
                   <h5>Contact Loki user groups for the latest bootstrap file location</h5>
                   <input type="submit" class="btn btn-success" name="ApplyLokinetSettings" value="Bootstrap" />
           				<?php
-                  if ($rulestate == "lokinet") {
+                  if ($rulestate != "lokinet") {
                       echo '<input type="submit" class="btn btn-success" name="UseLokinet" value="Use Lokinet" />' , PHP_EOL;
                   } else {
                       echo '<input type="submit" class="btn btn-danger" name="ExitLokinet" value="Exit Lokinet" />' , PHP_EOL;
