@@ -359,7 +359,6 @@ function DisplayLokinetConfig()
         $status = '<div class="alert alert-success alert-dismissable">Successfully Connected to Lokinet
 					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>';
     }
-
      ?>
 	<div class="row">
 	<div class="col-lg-12">
@@ -393,7 +392,6 @@ function DisplayLokinetConfig()
                   </form>
                 </div>
                   <h5>Contact Loki user groups for the latest bootstrap file location</h5>
-                  <input type="submit" class="btn btn-success" name="ApplyLokinetSettings" value="Bootstrap" />
           				<?php
                   if ($rulestate != "lokinet") {
                       echo '<input type="submit" class="btn btn-success" name="UseLokinet" value="Use Lokinet" />' , PHP_EOL;
@@ -413,6 +411,7 @@ function DisplayLokinetConfig()
     } else {
         echo '<input type="submit" class="btn btn-success" name="GenerateLokinet" value="Generate .ini" />' , PHP_EOL;
     } ?>
+                  <input type="submit" class="btn btn-success" name="ApplyLokinetSettings" value="Bootstrap" />
                   <h5><strong><?php echo _("Your development support is greatly appreciated: Developer Loki Address"); ?></strong></h5>
                   <h5><strong><pre><?php echo _("LA8VDcoJgiv2bSiVqyaT6hJ67LXbnQGpf9Uk3zh9ikUKPJUWeYbgsd9gxQ5ptM2hQNSsCaRETQ3GM9FLDe7BGqcm4ve69bh"); ?></pre></strong></h5>
 				       </div>
