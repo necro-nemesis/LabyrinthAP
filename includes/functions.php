@@ -631,7 +631,6 @@ function SaveTORAndVPNConfig()
     <?php
     $output = shell_exec('sudo /home/pi/loki-network/lokilaunch.sh disconnect');
     echo "<pre><strong>$output</strong></pre>";
-    sleep (3);
     ?>
     <div class="alert alert-danger">
       Stopping Lokinet background daemon process.
@@ -646,8 +645,13 @@ function SaveTORAndVPNConfig()
     Connecting to Lokinet.
   </div>
   <?php
+  exec('pidof lokinet | wc -l', $lokinetstatus);
   $output = shell_exec('sudo /etc/init.d/dnsmasq stop');
   echo "<pre><strong>$output</strong></pre>";
+  if ($lokinetstatus[0] == 0){
+    $output = shell_exec('sudo /home/pi/loki-network/lokilaunch.sh start');
+    echo "<pre><strong>$output</strong></pre>";
+  }
   $output = shell_exec('sudo /home/pi/loki-network/lokilaunch.sh connect');
   echo "<pre><strong>$output</strong></pre>";
   $output = shell_exec('sudo /etc/init.d/dnsmasq start');
