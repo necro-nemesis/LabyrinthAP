@@ -380,11 +380,15 @@ function DisplayLokinetConfig()
             <h4><strong>Basic User Instructions:</strong></h4>
 					<form role="form" action="?page=save_hostapd_conf" method="POST">
             <div class="row">
-						<div class="form-group col-lg-6">
+                <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#instruct">Instructions</button>
+  <div id="instruct" class="collapse in">Applying a bootstrap without submitting a valid URL in the textbox area will apply the default bootstrap automatically.
+    All 4 buttons below must be active (green) to connect to Lokinet.If there isn't a current .ini file found on the system it must be generated first.
+  </div>
+            /*	<div class="form-group col-lg-6">
 							<label for="code">*All 4 buttons below must be active (green) to connect to Lokinet.</label>
               <label for="code">*If there isn't a current .ini file found on the system it must be generated first.</label>
               <label for="code">*Applying a bootstrap without submitting a valid URL in the textbox area will apply the default bootstrap automatically.</label>
-              <div class="container">
+              <div class="container">  */
                 <h5>Entering and applying a valid bootstrap url below overwrites the current bootstrap settings:</h5>
                   <form>
                     <div class="form-group">
