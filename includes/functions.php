@@ -380,7 +380,7 @@ function DisplayLokinetConfig()
             <h4><strong>Basic User Instructions:</strong></h4>
                 <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#instruct">Instructions</button>
   <div id="instruct" class="collapse">All 4 buttons below must be active (green) to connect to Lokinet. If there isn't a current lokinet.ini file found on the system i.e the "Generate.ini" will be red and the .ini file must be generated first by pressing the button. Similarly the absense of a valid bootstrap will be indicated by the red "Bootstrap" button. Applying a bootstrap by pressing the apply button without submitting a valid URL in the textbox area will apply the original default bootstrap in place of one being provided.
-
+</div>
 <form role="form" action="?page=save_hostapd_conf" method="POST">
 
                 <h5>Enter a valid bootstrap url below and apply to overwrite the current bootstrap:</h5>
@@ -428,7 +428,7 @@ function DisplayLokinetConfig()
       		<div class="panel-footer">Contact Loki user groups for the latest bootstrap file location</div>
           </div><!-- /.panel-primary -->
       </div><!-- /.col-lg-12 -->
-    </div><!-- /.row -->
+<!--    </div><!-- /.row -->
       <?php
 }
 
