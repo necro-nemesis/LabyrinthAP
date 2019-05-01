@@ -377,7 +377,6 @@ function DisplayLokinetConfig()
            	<div class="tab-content">
            		<p><?php echo $status; ?></p>
             	<div class="tab-pane fade in active" id="basic">
-            <h4><strong>Basic User Instructions:</strong></h4>
                 <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#instruct">Instructions</button>
   <div id="instruct" class="collapse">All 4 buttons below must be active (green) to connect to Lokinet. If there isn't a current lokinet.ini file found on the system i.e the "Generate.ini" will be red and the .ini file must be generated first by pressing the button. Similarly the absense of a valid bootstrap will be indicated by the red "Bootstrap" button. Applying a bootstrap by pressing the apply button without submitting a valid URL in the textbox area will apply the original default bootstrap in place of one being provided.
 </div>
