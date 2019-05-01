@@ -390,7 +390,7 @@ function DisplayLokinetConfig()
                       <input type="url" class="form-control" placeholder="http://206.81.100.174/n-st-5.signed" id="lokinetbootstrap" name="lokinetbootstrap">
                     </div>
                   </form>
-                </div>
+        <!--        </div> -->
           				<?php
                   if ($rulestate != "lokinet") {
                       echo '<input type="submit" class="btn btn-danger" name="UseLokinet" value="Use Lokinet" />' , PHP_EOL;
@@ -428,7 +428,7 @@ function DisplayLokinetConfig()
       		<div class="panel-footer">Contact Loki user groups for the latest bootstrap file location</div>
           </div><!-- /.panel-primary -->
       </div><!-- /.col-lg-12 -->
-<!--    </div><!-- /.row -->
+    </div><!-- /.row -->
       <?php
 }
 
