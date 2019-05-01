@@ -378,6 +378,7 @@ function DisplayLokinetConfig()
            		<p><?php echo $status; ?></p>
             	<div class="tab-pane fade in active" id="basic">
             <h4><strong>Basic User Instructions:</strong></h4>
+            <div class="form-group col-lg-6">
 
               <div class="container">
                 <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#instruct">Instructions</button>
@@ -387,7 +388,6 @@ function DisplayLokinetConfig()
 </div>
 <form role="form" action="?page=save_hostapd_conf" method="POST">
   <div class="row">
-          <div class="form-group col-lg-6">
 
                 <h5>Entering and applying a valid bootstrap url below overwrites the current bootstrap settings:</h5>
                   <form>
