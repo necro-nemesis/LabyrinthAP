@@ -397,6 +397,7 @@ function DisplayLokinetConfig()
                     </div>
                   </form>
                 </div>
+              </div>
           				<?php
                   if ($rulestate != "lokinet") {
                       echo '<input type="submit" class="btn btn-danger" name="UseLokinet" value="Use Lokinet" />' , PHP_EOL;
