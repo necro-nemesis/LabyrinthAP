@@ -379,12 +379,12 @@ function DisplayLokinetConfig()
             	<div class="tab-pane fade in active" id="basic">
             <h4><strong>Basic User Instructions:</strong></h4>
                 <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#instruct">Instructions</button>
-  <div id="instruct" class="collapse">All 4 buttons below must be active (green) to connect to Lokinet. If there isn't a current .ini file found on the system (Generate.ini is red) it must be generated first. Applying a bootstrap without submitting a valid URL in the textbox area will apply the default bootstrap automatically.
+  <div id="instruct" class="collapse">All 4 buttons below must be active (green) to connect to Lokinet. If there isn't a current .ini file found on the system i.e the "Generate.ini" is red it must be generated first by pressing the button. Additioanlly the absense of a bootstrap will be indicated by a red "Bootstrap" button. Applying a bootstrap without submitting a valid URL in the textbox area will apply the original default bootstrap in place of one being provided.
 
 <form role="form" action="?page=save_hostapd_conf" method="POST">
 <!--  <div class="row"> -->
 
-                <h5>Entering and applying a valid bootstrap url below overwrites the current bootstrap settings:</h5>
+                <h5>Enter a valid bootstrap url below and apply to overwrite the current bootstrap:</h5>
                   <form>
                     <div class="form-group">
                       <label for="usr">Bootstrap url:</label>
