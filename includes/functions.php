@@ -389,18 +389,18 @@ function DisplayLokinetConfig()
 
   <div class="row">
 						<div class="form-group col-lg-6">
-							<label for="code">Update lokinet-bootstrap settings</label>
+				<!--			<label for="code">Update lokinet-bootstrap settings</label>
               <div class="container">
 
 
 
-
+-->
 
 
 
                 <h5>Enter a valid bootstrap url below and apply to overwrite the current bootstrap:</h5>
                   <form>
-                    <div class="form-group col -lg-6">
+  <!--                  <div class="form-group col -lg-6"> -->
                       <label for="usr">Bootstrap url:</label>
                       <input type="url" class="form-control" placeholder="http://206.81.100.174/n-st-5.signed" id="lokinetbootstrap" name="lokinetbootstrap">
                     </div>
