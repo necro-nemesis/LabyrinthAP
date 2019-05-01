@@ -384,8 +384,7 @@ function DisplayLokinetConfig()
                 <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#instruct">Instructions</button>
   <div id="instruct" class="collapse in">Applying a bootstrap without submitting a valid URL in the textbox area will apply the default bootstrap automatically.
     All 4 buttons below must be active (green) to connect to Lokinet.If there isn't a current .ini file found on the system it must be generated first.
-  </div>
-</div>
+
 <form role="form" action="?page=save_hostapd_conf" method="POST">
   <div class="row">
 
