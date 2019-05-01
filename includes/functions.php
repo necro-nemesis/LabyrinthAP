@@ -378,9 +378,6 @@ function DisplayLokinetConfig()
            		<p><?php echo $status; ?></p>
             	<div class="tab-pane fade in active" id="basic">
             <h4><strong>Basic User Instructions:</strong></h4>
-<!--          <div class="form-group col-lg-12"> -->
-
-<!--              <div class="container"> -->
                 <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#instruct">Instructions</button>
   <div id="instruct" class="collapse">Applying a bootstrap without submitting a valid URL in the textbox area will apply the default bootstrap automatically.
     All 4 buttons below must be active (green) to connect to Lokinet.If there isn't a current .ini file found on the system it must be generated first.
@@ -417,8 +414,8 @@ function DisplayLokinetConfig()
         echo '<input type="submit" class="btn btn-danger" name="GenerateLokinet" value="Generate .ini" />' , PHP_EOL;
     } ?>
                   <input type="submit" class="btn btn-success" name="ApplyLokinetSettings" value="Re-Bootstrap" />
-                  <h5><strong><?php echo _("Your development support is greatly appreciated: Developer Loki Address"); ?></strong></h5>
-                  <h5><strong><pre><?php echo _("LA8VDcoJgiv2bSiVqyaT6hJ67LXbnQGpf9Uk3zh9ikUKPJUWeYbgsd9gxQ5ptM2hQNSsCaRETQ3GM9FLDe7BGqcm4ve69bh"); ?></pre></strong></h5>
+                  <h5><?php echo _("Your development support is greatly appreciated | Loki Address:"); ?></h5>
+                  <h5><pre><?php echo _("LA8VDcoJgiv2bSiVqyaT6hJ67LXbnQGpf9Uk3zh9ikUKPJUWeYbgsd9gxQ5ptM2hQNSsCaRETQ3GM9FLDe7BGqcm4ve69bh"); ?></pre></h5>
 				       </div>
              </div>
            </div>
@@ -428,15 +425,13 @@ function DisplayLokinetConfig()
                   <div class="col-lg-12">
                     <iframe src="includes/webconsole.php" class="webconsole"></iframe>
                   </div>
-                </div>
-              </div>
             </form>
       			</div><!-- /.tab-content -->
       		</div><!-- /.panel-body -->
       		<div class="panel-footer">Contact Loki user groups for the latest bootstrap file location</div>
           </div><!-- /.panel-primary -->
-  <!--    </div><!-- /.col-lg-12 -->
-  <!--  </div><!-- /.row -->
+      </div><!-- /.col-lg-12 -->
+    </div><!-- /.row -->
       <?php
 }
 
