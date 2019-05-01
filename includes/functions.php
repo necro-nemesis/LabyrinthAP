@@ -380,9 +380,9 @@ function DisplayLokinetConfig()
             <h4><strong>Basic User Instructions:</strong></h4>
 <!--          <div class="form-group col-lg-12"> -->
 
-              <div class="container">
+<!--              <div class="container"> -->
                 <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#instruct">Instructions</button>
-  <div id="instruct" class="collapse in">Applying a bootstrap without submitting a valid URL in the textbox area will apply the default bootstrap automatically.
+  <div id="instruct" class="collapse">Applying a bootstrap without submitting a valid URL in the textbox area will apply the default bootstrap automatically.
     All 4 buttons below must be active (green) to connect to Lokinet.If there isn't a current .ini file found on the system it must be generated first.
 
 <form role="form" action="?page=save_hostapd_conf" method="POST">
@@ -435,7 +435,7 @@ function DisplayLokinetConfig()
       		</div><!-- /.panel-body -->
       		<div class="panel-footer">Contact Loki user groups for the latest bootstrap file location</div>
           </div><!-- /.panel-primary -->
-      </div><!-- /.col-lg-12 -->
+  <!--    </div><!-- /.col-lg-12 -->
   <!--  </div><!-- /.row -->
       <?php
 }
