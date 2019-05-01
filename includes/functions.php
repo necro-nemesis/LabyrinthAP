@@ -378,7 +378,7 @@ function DisplayLokinetConfig()
            		<p><?php echo $status; ?></p>
             	<div class="tab-pane fade in active" id="basic">
             <h4><strong>Basic User Instructions:</strong></h4>
-            <div class="form-group col-lg-6">
+            <div class="form-group col-lg-12">
 
               <div class="container">
                 <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#instruct">Instructions</button>
