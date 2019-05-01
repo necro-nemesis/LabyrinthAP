@@ -379,11 +379,10 @@ function DisplayLokinetConfig()
             	<div class="tab-pane fade in active" id="basic">
             <h4><strong>Basic User Instructions:</strong></h4>
                 <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#instruct">Instructions</button>
-  <div id="instruct" class="collapse">Applying a bootstrap without submitting a valid URL in the textbox area will apply the default bootstrap automatically.
-    All 4 buttons below must be active (green) to connect to Lokinet.If there isn't a current .ini file found on the system it must be generated first.
+  <div id="instruct" class="collapse">All 4 buttons below must be active (green) to connect to Lokinet. If there isn't a current .ini file found on the system (Generate.ini is red) it must be generated first. Applying a bootstrap without submitting a valid URL in the textbox area will apply the default bootstrap automatically.
 
 <form role="form" action="?page=save_hostapd_conf" method="POST">
-  <div class="row">
+<!--  <div class="row"> -->
 
                 <h5>Entering and applying a valid bootstrap url below overwrites the current bootstrap settings:</h5>
                   <form>
@@ -393,7 +392,7 @@ function DisplayLokinetConfig()
                     </div>
                   </form>
                 </div>
-              </div>
+        <!--      </div> -->
           				<?php
                   if ($rulestate != "lokinet") {
                       echo '<input type="submit" class="btn btn-danger" name="UseLokinet" value="Use Lokinet" />' , PHP_EOL;
