@@ -391,15 +391,14 @@ function DisplayLokinetConfig()
 						<div class="form-group col-lg-6">
 
                 <h5>Enter a valid bootstrap url below and apply to overwrite the current bootstrap:</h5>
-                  <form>
+                <!--  <form>
                     <div class="row">
-                  <div class="form-group col -lg-6">
+                  <div class="form-group col -lg-6"> -->
                       <label for="usr">Bootstrap url:</label>
                       <input type="url" class="form-control" placeholder="http://206.81.100.174/n-st-5.signed" id="lokinetbootstrap" name="lokinetbootstrap">
-                    </div>
+                <!--    </div>
                   </div>
-                  </form>
-          <!--    </div> -->
+                </form> -->
           				<?php
                   if ($rulestate != "lokinet") {
                       echo '<input type="submit" class="btn btn-danger" name="UseLokinet" value="Use Lokinet" />' , PHP_EOL;
