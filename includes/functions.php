@@ -388,7 +388,7 @@ function DisplayLokinetConfig()
 <form role="form" action="?page=save_hostapd_conf" method="POST">
 
   <div class="row">
-						<div class="form-group col-lg-6">
+						<div class="form-group col-lg-12">
 
                 <h5>Enter a valid bootstrap url below and apply to overwrite the current bootstrap:</h5>
                 <!--  <form>
