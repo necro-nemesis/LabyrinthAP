@@ -381,7 +381,22 @@ function DisplayLokinetConfig()
                 <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#instruct">Instructions</button>
   <div id="instruct" class="collapse">All 4 buttons below must be active (green) to connect to Lokinet. If there isn't a current lokinet.ini file found on the system i.e the "Generate.ini" will be red and the .ini file must be generated first by pressing the button. Similarly the absense of a valid bootstrap will be indicated by the red "Bootstrap" button. Applying a bootstrap by pressing the apply button without submitting a valid URL in the textbox area will apply the original default bootstrap in place of one being provided.
 </div>
+
+
+
+
 <form role="form" action="?page=save_hostapd_conf" method="POST">
+
+  <div class="row">
+						<div class="form-group col-lg-6">
+							<label for="code">Update lokinet-bootstrap settings</label>
+              <div class="container">
+
+
+
+
+
+
 
                 <h5>Enter a valid bootstrap url below and apply to overwrite the current bootstrap:</h5>
                   <form>
@@ -390,7 +405,7 @@ function DisplayLokinetConfig()
                       <input type="url" class="form-control" placeholder="http://206.81.100.174/n-st-5.signed" id="lokinetbootstrap" name="lokinetbootstrap">
                     </div>
                   </form>
-        <!--        </div> -->
+              </div>
           				<?php
                   if ($rulestate != "lokinet") {
                       echo '<input type="submit" class="btn btn-danger" name="UseLokinet" value="Use Lokinet" />' , PHP_EOL;
@@ -423,6 +438,14 @@ function DisplayLokinetConfig()
                     <iframe src="includes/webconsole.php" class="webconsole"></iframe>
                   </div>
             </form>
+
+
+</div>
+</div>
+</div>
+
+
+
       			</div><!-- /.tab-content -->
       		</div><!-- /.panel-body -->
       		<div class="panel-footer">Contact Loki user groups for the latest bootstrap file location</div>
