@@ -216,9 +216,9 @@ function default_configuration() {
 
     # Forces all traffic through Lokinet (change permissions)
 
-      sudo chmod 755 /.lokinet/on-up.sh
-      sudo chmod 755 /.lokinet/on-down.sh
-      sudo chmod 755 /.lokinet/on-ready.sh
+      sudo chmod 755 /root/.lokinet/on-up.sh
+      sudo chmod 755 /root/.lokinet/on-down.sh
+      sudo chmod 755 /root/.lokinet/on-ready.sh
 
     # Generate required lines for Rasp AP to place into rc.local file.
     # #RASPAP is for removal script
