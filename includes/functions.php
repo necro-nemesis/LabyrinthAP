@@ -611,7 +611,7 @@ function SaveTORAndVPNConfig()
     } elseif (isset($_POST['StartDaemon'])) {
         ?>
     <div class="alert alert-success">
-      Starting Lokinet background daemon process.
+      Launching Lokinet.
     </div>
     <?php
     $output = shell_exec('sudo /etc/init.d/dnsmasq stop');
