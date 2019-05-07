@@ -7,7 +7,7 @@ for addr in $STRICT_CONNECT_ADDRS ; do
 done
 sudo ip route del $gateway_route
 sudo ip route add default dev lokitun0
-cat <<EOF > /.lokinet/on-down.sh
+cat <<EOF > /root/.lokinet/on-down.sh
 #!/usr/bin/env bash
 set -x
 for addr in \$STRICT_CONNECT_ADDRS ; do
@@ -17,4 +17,4 @@ sudo ip route del default dev lokitun0
 sudo ip route add $gateway_route
 
 EOF
-chmod +x /.lokinet/on-down.sh
+chmod +x /root/.lokinet/on-down.sh
