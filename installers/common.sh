@@ -196,14 +196,14 @@ function default_configuration() {
     sudo mv $webroot_dir/config/hostapd.conf /etc/hostapd/hostapd.conf || install_error "Unable to move hostapd configuration file"
     sudo mv $webroot_dir/config/dnsmasq.conf /etc/dnsmasq.conf || install_error "Unable to move dnsmasq configuration file"
     sudo mv $webroot_dir/config/dhcpcd.conf /etc/dhcpcd.conf || install_error "Unable to move dhcpcd configuration file"
-    sudo mv $webroot_dir/config/rt_tables /etc/iproute2/ || install_error "Unable to move dhcpcd configuration file"
+    sudo mv $webroot_dir/config/head /etc/resolvconf/resolvconf.d/ || install_error "Unable to move resolvconf head file"
+    sudo resolvconf -u || install_error "Unable to update resolv.conf"
 
 
   # LokiPAP Batch file relocation and permissions in user loki-network directory
 
     sudo mv $webroot_dir/config/lokilaunch.sh $HOME/loki-network/ || install error "Unable to move, install Lokinet first"
     sudo chmod 755 $HOME/loki-network/lokilaunch.sh
-    # sudo chown $raspap_user:$raspap_user lokilaunch.sh
 
     # Generate required lines for Rasp AP to place into rc.local file.
     # #RASPAP is for removal script
@@ -212,7 +212,6 @@ function default_configuration() {
     'iptables -t nat -A POSTROUTING -s 10.3.141.0\/24 -o lokitun0 -j MASQUERADE #RASPAP'
     'iptables -t nat -A POSTROUTING -j MASQUERADE #RASPAP'
     'sudo \/home\/pi\/loki-network\/.\/lokilaunch.sh start #RASPAP'
-  # 'sudo \/home\/pi\/loki-network\/.\/lokilaunch.sh connect #RASPAP'
 
 
     )
