@@ -7,31 +7,9 @@ case "$1" in
         lokinet > /dev/null 2>&1 &
         ;;
 
-  connect)
-        ehco -n "rerouted iptables\n"
-        sudo ip rule add from 10.3.141.1 lookup main prio 1000
-        echo -n "added wlan0 address rule\n"
-        sudo ip rule add from 10.3.141.0/24 lookup lokinet prio 1000
-        echo -n "added wifi-clients rule\n"
-        sleep 3
-        sudo ip route add default dev lokitun0 table lokinet
-        echo -n "added lokitun0 route\n"
-        echo -n "Restarting DNSMASQ\n"
-        ;;
-
   stop)
         echo -n "Stopping LOKINET daemon\n"
         pkill lokinet
-        ;;
-
-disconnect)
-        sudo ip rule del from 10.3.141.1 lookup main prio 1000 #LOKIPAP
-        echo -n "removed wlan0 address rule\n"
-        sudo ip rule del from 10.3.141.0/24 lookup lokinet prio 1000 #LOKIPAP
-        echo -n "removed wifi-clients rule\n"
-        sudo ip route del default dev lokitun0 table lokinet
-        echo -n "removed lokitun0 route\n"
-        echo -n "Lokinet terminated - Network encryption services ended\n"
         ;;
 
   gen)
@@ -53,7 +31,7 @@ bootstrap)
         ;;
 
   *)
-        echo "Usage: "$1" {start|stop|gen|bootstrap|connect|disconnect}"
+        echo "Usage: "$1" {start|stop|gen|bootstrap}"
         exit 1
         ;;
         esac
