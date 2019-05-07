@@ -206,9 +206,9 @@ function default_configuration() {
 
     # Forces all traffic through Lokinet (drop scripts into root's .lokinet folder)
 
-      sudo mv $webroot_dir/config/on-up.sh /.lokinet/on-up.sh || install error "Unable to move on-up.sh, install Lokinet first"
-      sudo mv $webroot_dir/config/on-down.sh /.lokinet/on-down.sh || install error "Unable to move on-down.sh, install Lokinet first"
-      sudo mv $webroot_dir/config/on-ready.sh /.lokinet/on-ready.sh || install error "Unable to move on-ready.sh, install Lokinet first"
+      sudo mv $webroot_dir/config/on-up.sh /root/.lokinet/on-up.sh || install error "Unable to move on-up.sh, install Lokinet first"
+      sudo mv $webroot_dir/config/on-down.sh /root/.lokinet/on-down.sh || install error "Unable to move on-down.sh, install Lokinet first"
+      sudo mv $webroot_dir/config/on-ready.sh /root/.lokinet/on-ready.sh || install error "Unable to move on-ready.sh, install Lokinet first"
 
     #changes persmission on lokilaunch.sh
 
