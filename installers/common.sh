@@ -200,10 +200,25 @@ function default_configuration() {
     sudo resolvconf -u || install_error "Unable to update resolv.conf"
 
 
-  # LokiPAP Batch file relocation and permissions in user loki-network directory
+    # LokiPAP Batch file relocation and permissions in user loki-network directory
 
-    sudo mv $webroot_dir/config/lokilaunch.sh $HOME/loki-network/ || install error "Unable to move, install Lokinet first"
+    sudo mv $webroot_dir/config/lokilaunch.sh $HOME/loki-network/ || install error "Unable to move lokilaunch.sh, install Lokinet first"
+
+    # Forces all traffic through Lokinet (drop scripts into root's .lokinet folder)
+
+      sudo mv $webroot_dir/config/on-up.sh /.lokinet/ || install error "Unable to move on-up.sh, install Lokinet first"
+      sudo mv $webroot_dir/config/on-down.sh /.lokinet/ || install error "Unable to move on-down.sh, install Lokinet first"
+      sudo mv $webroot_dir/config/on-ready.sh /.lokinet/ || install error "Unable to move on-ready, install Lokinet first"
+
+    #changes persmission on lokilaunch.sh
+
     sudo chmod 755 $HOME/loki-network/lokilaunch.sh
+
+    # Forces all traffic through Lokinet (change permissions)
+
+      sudo chmod 755 /.lokinet/on-up.sh
+      sudo chmod 755 /.lokinet/on-down.sh
+      sudo chmod 755 /.lokinet/on-ready.sh
 
     # Generate required lines for Rasp AP to place into rc.local file.
     # #RASPAP is for removal script
@@ -212,7 +227,6 @@ function default_configuration() {
     'iptables -t nat -A POSTROUTING -s 10.3.141.0\/24 -o lokitun0 -j MASQUERADE #RASPAP'
     'iptables -t nat -A POSTROUTING -j MASQUERADE #RASPAP'
     'sudo \/home\/pi\/loki-network\/.\/lokilaunch.sh start #RASPAP'
-
 
     )
 
@@ -241,6 +255,9 @@ function patch_system_files() {
     # Set commands array
     cmds=(
         "/home/pi/loki-network/lokilaunch.sh*"
+          #added for forced Lokinet
+        "/sbin/ip"
+          #
         "/sbin/ifdown"
         "/sbin/ifup"
         "/bin/cat /etc/wpa_supplicant/wpa_supplicant.conf"
