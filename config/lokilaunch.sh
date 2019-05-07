@@ -42,14 +42,14 @@ disconnect)
         ;;
 
 bootstrap)
-        echo -n "LOKINET DAEMON SHUTDOWN FOR BOOTSTRAPPING\n"
+        echo -n "LOKINET DICONNECTED AND DAEMON SHUTDOWN FOR BOOTSTRAPPING\n"
         pkill lokinet
         sleep 2
         pidof lokinet >/dev/null && echo "Service is running\n" || echo "Service NOT running\n"
         echo -n "FETCH BOOTSTRAP <---- "
         lokinet-bootstrap "$2"
         echo -n "SUCCESS! BOOTSTRAPPED WTIH ---> $2\n\n"
-        echo -n "MANUALLY RESTART LOKINET DAEMON TO RECONNECT TO SERVICE\n"
+        echo -n "YOU MUST MANUALLY RESTART LOKINET DAEMON AND RECONNECT FOR SERVICE\n"
         ;;
 
   *)
