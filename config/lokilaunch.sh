@@ -8,7 +8,7 @@ case "$1" in
         ;;
 
   stop)
-        echo -n "Stopping LOKINET daemon\n"
+        echo -n "daemon stop command sent\n"
         pkill lokinet
         ;;
 
