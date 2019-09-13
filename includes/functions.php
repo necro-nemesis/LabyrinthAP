@@ -352,13 +352,6 @@ function DisplayLokinetConfig()
         $status = '<div class="alert alert-success alert-dismissable">Lokinet daemon is running
 					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>';
     }
-  /*  if ($rulestate != "lokinet") {
-        $status = '<div class="alert alert-danger alert-dismissable">Not Connected to Lokinet
-					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>';
-    } else {
-        $status = '<div class="alert alert-success alert-dismissable">Successfully Connected to Lokinet
-					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>';
-    } */
 
      ?>
 	<div class="row">
@@ -389,11 +382,6 @@ function DisplayLokinetConfig()
                         <input type="url" class="form-control" placeholder="https://seed.lokinet.org/bootstrap.signed" id="lokinetbootstrap" name="lokinetbootstrap">
                   <?php
 
-                /*  if ($rulestate != "lokinet") {
-                      echo '<input type="submit" class="btn btn-danger" name="UseLokinet" value="Use Lokinet" />' , PHP_EOL;
-                  } else {
-                      echo '<input type="submit" class="btn btn-success" name="ExitLokinet" value="Exit Lokinet" />' , PHP_EOL;
-                  } */
                   if ($lokinetstatus[0] == 0) {
                       echo '<input type="submit" class="btn btn-danger" name="StartDaemon" value="Start Daemon" />' , PHP_EOL;
                   } else {
@@ -614,22 +602,14 @@ function SaveTORAndVPNConfig()
       Launching Lokinet.
     </div>
     <?php
-/*    $output = shell_exec('sudo /etc/init.d/dnsmasq stop');
-    echo "<pre><strong>$output</strong></pre>";
-*/
     $output = shell_exec('sudo /home/pi/loki-network/lokilaunch.sh start');
     echo "<pre><strong>$output</strong></pre>";
-/*  $output = shell_exec('sudo /etc/init.d/dnsmasq start');
-    echo "<pre><strong>$output</strong></pre>";
-*/
-  } elseif (isset($_POST['StopDaemon'])) {
+    } elseif (isset($_POST['StopDaemon'])) {
         ?>
     <div class="alert alert-danger">
           Exiting Lokinet.
     </div>
     <?php
-  /*  $output = shell_exec('sudo /home/pi/loki-network/lokilaunch.sh disconnect');
-    echo "<pre><strong>$output</strong></pre>"; */
     ?>
     <div class="alert alert-danger">
       Stopping Lokinet background daemon process.
@@ -637,37 +617,6 @@ function SaveTORAndVPNConfig()
     <?php
     $output = shell_exec('sudo /home/pi/loki-network/lokilaunch.sh stop');
     echo "<pre><strong>$output</strong></pre>";
-/*
-  } elseif (isset($_POST['UseLokinet'])) {
-      ?>
-  <div class="alert alert-success">
-    Connecting to Lokinet.
-  </div>
-  <?php
-  exec('pidof lokinet | wc -l', $lokinetstatus);
-  $output = shell_exec('sudo /etc/init.d/dnsmasq stop');
-  echo "<pre><strong>$output</strong></pre>";
-  if ($lokinetstatus[0] == 0){
-    $output = shell_exec('sudo /home/pi/loki-network/lokilaunch.sh start');
-    echo "<pre><strong>$output</strong></pre>";
-
-  $output = shell_exec('sudo /home/pi/loki-network/lokilaunch.sh connect');
-  echo "<pre><strong>$output</strong></pre>";
-  $output = shell_exec('sudo /etc/init.d/dnsmasq start');
-# sleep(5);
-#  $output = shell_exec('sudo dnsmasq --interface=wlan0 --bind-interfaces --dhcp-range=10.3.141.0,10.3.141.24,12h --conf-file=/etc/resolv.conf');
-  echo "<pre><strong>$output</strong></pre>";
-}
-
-} elseif (isset($_POST['ExitLokinet'])) {
-      ?>
-  <div class="alert alert-danger">
-    Exiting Lokinet.
-  </div>
-  <?php
-  $output = shell_exec('sudo /home/pi/loki-network/lokilaunch.sh disconnect');
-  echo "<pre><strong>$output</strong></pre>";
-*/
     } elseif (isset($_POST['GenerateLokinet'])) {
         ?>
     <div class="alert alert-success">
@@ -690,9 +639,6 @@ function SaveTORAndVPNConfig()
         Exiting Lokinet.
   </div>
   <?php
-/*  $output = shell_exec('sudo /home/pi/loki-network/lokilaunch.sh disconnect');
-  echo "<pre><strong>$output</strong></pre>";
-*/
   ?>
   <div class="alert alert-danger">
     Stopping Lokinet background daemon process.
