@@ -11,7 +11,7 @@ function install_dependencies() {
     install_log "Installing required packages"
     install_log "Install public key used to sign the lokinet binaries."
     curl -s https://deb.imaginary.stream/public.gpg | sudo apt-key add -
-    echo -n "deb https://deb.imaginary.stream $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/imaginary.stream.list
+    wget "deb https://deb.imaginary.stream $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/imaginary.stream.list
     sudo apt-get update
     sudo apt-get install lighttpd $php_package git hostapd dnsmasq vnstat resolvconf lokinet || install_error "Unable to install dependencies"
 }
