@@ -352,13 +352,13 @@ function DisplayLokinetConfig()
         $status = '<div class="alert alert-success alert-dismissable">Lokinet daemon is running
 					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>';
     }
-    if ($rulestate != "lokinet") {
+  /*  if ($rulestate != "lokinet") {
         $status = '<div class="alert alert-danger alert-dismissable">Not Connected to Lokinet
 					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>';
     } else {
         $status = '<div class="alert alert-success alert-dismissable">Successfully Connected to Lokinet
 					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>';
-    }
+    } */
 
      ?>
 	<div class="row">
@@ -379,21 +379,21 @@ function DisplayLokinetConfig()
            		<p><?php echo $status; ?></p>
             	<div class="tab-pane fade in active" id="basic">
                 <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#instruct">Instructions</button>
-                <div id="instruct" class="collapse">All 4 buttons below must be active (green) to connect to Lokinet. If there isn't a current lokinet.ini file found on the system the "Generate.ini" button will be red. The .ini file must be generated first by pressing the button. Similarly the absense of a valid bootstrap will be indicated by the red "Bootstrap" button. Applying a bootstrap by pressing the apply button without submitting a valid URL in the textbox area will apply the original default bootstrap in place of one being provided. Stopping the daemon also exits Lokinet. If you simply exit Lokinet the daemon is left running in the background. So in summary if necessary generate the .ini and bootstrap then you are able to connect to lokinet and the daemon will be started.
+                <div id="instruct" class="collapse">The 3 buttons below must be active (green) to connect to Lokinet. If there isn't a current lokinet.ini file found on the system the "Generate.ini" button will be red. The .ini file must be generated prior to connecting to Lokinet by pressing the button which will automatically write the required .ini file. Similarly the absense of a valid bootstrap will be indicated by a red "Bootstrap" button. Applying a bootstrap by pressing the apply button without submitting a valid URL in the textbox area will apply the original default bootstrap in place of one being provided. Stopping the daemon also exits Lokinet. To summarize, if necessary generate the .ini and bootstrap Lokinet then you are able to connect to Lokinet by starting the daemon and letting the network establish itself.
                 </div>
                 <form role="form" action="?page=save_hostapd_conf" method="POST">
                   <div class="row">
                     <div class="form-group col-lg-12">
                       <h5>Enter a valid bootstrap url below and apply to overwrite the current bootstrap:</h5>
                         <label for="usr">Bootstrap url:</label>
-                        <input type="url" class="form-control" placeholder="http://206.81.100.174/n-st-5.signed" id="lokinetbootstrap" name="lokinetbootstrap">
+                        <input type="url" class="form-control" placeholder="https://seed.lokinet.org/bootstrap.signed" id="lokinetbootstrap" name="lokinetbootstrap">
                   <?php
 
-                  if ($rulestate != "lokinet") {
+                /*  if ($rulestate != "lokinet") {
                       echo '<input type="submit" class="btn btn-danger" name="UseLokinet" value="Use Lokinet" />' , PHP_EOL;
                   } else {
                       echo '<input type="submit" class="btn btn-success" name="ExitLokinet" value="Exit Lokinet" />' , PHP_EOL;
-                  }
+                  } */
                   if ($lokinetstatus[0] == 0) {
                       echo '<input type="submit" class="btn btn-danger" name="StartDaemon" value="Start Daemon" />' , PHP_EOL;
                   } else {
@@ -611,23 +611,25 @@ function SaveTORAndVPNConfig()
     } elseif (isset($_POST['StartDaemon'])) {
         ?>
     <div class="alert alert-success">
-      Starting Lokinet background daemon process.
+      Launching Lokinet.
     </div>
     <?php
-    /*$output = shell_exec('sudo /etc/init.d/dnsmasq stop');
-    echo "<pre><strong>$output</strong></pre>";*/
+/*    $output = shell_exec('sudo /etc/init.d/dnsmasq stop');
+    echo "<pre><strong>$output</strong></pre>";
+*/
     $output = shell_exec('sudo /home/pi/loki-network/lokilaunch.sh start');
     echo "<pre><strong>$output</strong></pre>";
-    /*$output = shell_exec('sudo /etc/init.d/dnsmasq start');
-    echo "<pre><strong>$output</strong></pre>";*/
+/*  $output = shell_exec('sudo /etc/init.d/dnsmasq start');
+    echo "<pre><strong>$output</strong></pre>";
+*/
   } elseif (isset($_POST['StopDaemon'])) {
         ?>
     <div class="alert alert-danger">
           Exiting Lokinet.
     </div>
     <?php
-    $output = shell_exec('sudo /home/pi/loki-network/lokilaunch.sh disconnect');
-    echo "<pre><strong>$output</strong></pre>";
+  /*  $output = shell_exec('sudo /home/pi/loki-network/lokilaunch.sh disconnect');
+    echo "<pre><strong>$output</strong></pre>"; */
     ?>
     <div class="alert alert-danger">
       Stopping Lokinet background daemon process.
@@ -635,7 +637,7 @@ function SaveTORAndVPNConfig()
     <?php
     $output = shell_exec('sudo /home/pi/loki-network/lokilaunch.sh stop');
     echo "<pre><strong>$output</strong></pre>";
-
+/*
   } elseif (isset($_POST['UseLokinet'])) {
       ?>
   <div class="alert alert-success">
@@ -648,13 +650,15 @@ function SaveTORAndVPNConfig()
   if ($lokinetstatus[0] == 0){
     $output = shell_exec('sudo /home/pi/loki-network/lokilaunch.sh start');
     echo "<pre><strong>$output</strong></pre>";
-  }
+
   $output = shell_exec('sudo /home/pi/loki-network/lokilaunch.sh connect');
   echo "<pre><strong>$output</strong></pre>";
   $output = shell_exec('sudo /etc/init.d/dnsmasq start');
 # sleep(5);
 #  $output = shell_exec('sudo dnsmasq --interface=wlan0 --bind-interfaces --dhcp-range=10.3.141.0,10.3.141.24,12h --conf-file=/etc/resolv.conf');
   echo "<pre><strong>$output</strong></pre>";
+}
+
 } elseif (isset($_POST['ExitLokinet'])) {
       ?>
   <div class="alert alert-danger">
@@ -663,7 +667,7 @@ function SaveTORAndVPNConfig()
   <?php
   $output = shell_exec('sudo /home/pi/loki-network/lokilaunch.sh disconnect');
   echo "<pre><strong>$output</strong></pre>";
-
+*/
     } elseif (isset($_POST['GenerateLokinet'])) {
         ?>
     <div class="alert alert-success">
@@ -686,8 +690,9 @@ function SaveTORAndVPNConfig()
         Exiting Lokinet.
   </div>
   <?php
-  $output = shell_exec('sudo /home/pi/loki-network/lokilaunch.sh disconnect');
+/*  $output = shell_exec('sudo /home/pi/loki-network/lokilaunch.sh disconnect');
   echo "<pre><strong>$output</strong></pre>";
+*/
   ?>
   <div class="alert alert-danger">
     Stopping Lokinet background daemon process.

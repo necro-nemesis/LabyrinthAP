@@ -1,25 +1,29 @@
-# test staging push
 raspap_dir="/etc/raspap"
 raspap_user="www-data"
+webroot_dir="/var/www/html"
 version=`sed 's/\..*//' /etc/debian_version`
 
 # Determine version, set default home location for lighttpd and
 # php package to install
-webroot_dir="/var/www/html"
-if [ $version -eq 9 ]; then
-    version_msg="Raspian 9.0 (Stretch)"
+if [ $version -eq 10 ]; then
+    version_msg="Raspbian 10.0 (Buster)"
+    php_package="php7.1-cgi"
+elif [ $version -eq 9 ]; then
+    version_msg="Raspbian 9.0 (Stretch)"
     php_package="php7.0-cgi"
 elif [ $version -eq 8 ]; then
-    version_msg="Raspian 8.0 (Jessie)"
+    version_msg="Raspbian 8.0 (Jessie)"
     php_package="php5-cgi"
 else
-    version_msg="Raspian earlier than 8.0 (Wheezy)"
+    version_msg="Raspbian earlier than 8.0 (Wheezy)"
     webroot_dir="/var/www"
     php_package="php5-cgi"
 fi
 
 phpcgiconf=""
-if [ "$php_package" = "php7.0-cgi" ]; then
+if [ "$php_package" = "php7.1-cgi" ]; then
+    phpcgiconf="/etc/php/7.1/cgi/php.ini"
+elif [ "$php_package" = "php7.0-cgi" ]; then
     phpcgiconf="/etc/php/7.0/cgi/php.ini"
 elif [ "$php_package" = "php5-cgi" ]; then
     phpcgiconf="/etc/php5/cgi/php.ini"
@@ -197,14 +201,29 @@ function default_configuration() {
     sudo mv $webroot_dir/config/hostapd.conf /etc/hostapd/hostapd.conf || install_error "Unable to move hostapd configuration file"
     sudo mv $webroot_dir/config/dnsmasq.conf /etc/dnsmasq.conf || install_error "Unable to move dnsmasq configuration file"
     sudo mv $webroot_dir/config/dhcpcd.conf /etc/dhcpcd.conf || install_error "Unable to move dhcpcd configuration file"
-    sudo mv $webroot_dir/config/rt_tables /etc/iproute2/ || install_error "Unable to move dhcpcd configuration file"
+    sudo mv $webroot_dir/config/head /etc/resolvconf/resolv.conf.d/head || install_error "Unable to move resolvconf head file"
+    sudo resolvconf -u || install_error "Unable to update resolv.conf"
 
 
-  # LokiPAP Batch file relocation and permissions in user loki-network directory
+    # LokiPAP Batch file relocation and permissions in user loki-network directory
 
-    sudo mv $webroot_dir/config/lokilaunch.sh $HOME/loki-network/ || install error "Unable to move, install Lokinet first"
+    sudo mv $webroot_dir/config/lokilaunch.sh $HOME/loki-network/ || install error "Unable to move lokilaunch.sh, install Lokinet first"
+
+    # Forces all traffic through Lokinet (drop scripts into root's .lokinet folder)
+
+      sudo mv $webroot_dir/config/on-up.sh /root/.lokinet/on-up.sh || install error "Unable to move on-up.sh, install Lokinet first"
+      sudo mv $webroot_dir/config/on-down.sh /root/.lokinet/on-down.sh || install error "Unable to move on-down.sh, install Lokinet first"
+      sudo mv $webroot_dir/config/on-ready.sh /root/.lokinet/on-ready.sh || install error "Unable to move on-ready.sh, install Lokinet first"
+
+    #changes persmission on lokilaunch.sh
+
     sudo chmod 755 $HOME/loki-network/lokilaunch.sh
-    # sudo chown $raspap_user:$raspap_user lokilaunch.sh
+
+    # Forces all traffic through Lokinet (change permissions)
+
+      sudo chmod 755 /root/.lokinet/on-up.sh
+      sudo chmod 755 /root/.lokinet/on-down.sh
+      sudo chmod 755 /root/.lokinet/on-ready.sh
 
     # Generate required lines for Rasp AP to place into rc.local file.
     # #RASPAP is for removal script
@@ -213,8 +232,6 @@ function default_configuration() {
     'iptables -t nat -A POSTROUTING -s 10.3.141.0\/24 -o lokitun0 -j MASQUERADE #RASPAP'
     'iptables -t nat -A POSTROUTING -j MASQUERADE #RASPAP'
     'sudo \/home\/pi\/loki-network\/.\/lokilaunch.sh start #RASPAP'
-    'sudo \/home\/pi\/loki-network\/.\/lokilaunch.sh connect #RASPAP'
-
 
     )
 
@@ -243,6 +260,9 @@ function patch_system_files() {
     # Set commands array
     cmds=(
         "/home/pi/loki-network/lokilaunch.sh*"
+          #added for forced Lokinet
+        "/sbin/ip"
+          #
         "/sbin/ifdown"
         "/sbin/ifup"
         "/bin/cat /etc/wpa_supplicant/wpa_supplicant.conf"
