@@ -219,7 +219,7 @@ function default_configuration() {
     'echo 1 > \/proc\/sys\/net\/ipv4\/ip_forward #RASPAP'
     'iptables -t nat -A POSTROUTING -s 10.3.141.0\/24 -o lokitun0 -j MASQUERADE #RASPAP'
     'iptables -t nat -A POSTROUTING -j MASQUERADE #RASPAP'
-    'sudo \/home\/pi\/loki-network\/.\/lokilaunch.sh start #RASPAP'
+    'sudo \/var\/lib\/lokinet\/.\/lokilaunch.sh start #RASPAP'
 
     )
 
@@ -247,7 +247,7 @@ function patch_system_files() {
     sudo ln -s /usr/share/dhcpcd/hooks/10-wpa_supplicant /etc/dhcp/dhclient-enter-hooks.d/
     # Set commands array
     cmds=(
-        "/home/pi/loki-network/lokilaunch.sh*"
+        "/var/lib/lokinet/lokilaunch.sh*"
           #added for forced Lokinet
         "/sbin/ip"
           #

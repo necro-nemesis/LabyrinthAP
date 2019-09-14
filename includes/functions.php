@@ -602,7 +602,7 @@ function SaveTORAndVPNConfig()
       Launching Lokinet.
     </div>
     <?php
-    $output = shell_exec('sudo /home/pi/loki-network/lokilaunch.sh start');
+    $output = shell_exec('sudo /var/lib/lokinet/lokilaunch.sh start');
     echo "<pre><strong>$output</strong></pre>";
     } elseif (isset($_POST['StopDaemon'])) {
         ?>
@@ -615,7 +615,7 @@ function SaveTORAndVPNConfig()
       Stopping Lokinet background daemon process.
     </div>
     <?php
-    $output = shell_exec('sudo /home/pi/loki-network/lokilaunch.sh stop');
+    $output = shell_exec('sudo /var/lib/lokinet/lokilaunch.sh stop');
     echo "<pre><strong>$output</strong></pre>";
     } elseif (isset($_POST['GenerateLokinet'])) {
         ?>
@@ -623,7 +623,7 @@ function SaveTORAndVPNConfig()
       Generating Lokinet Configuration
     </div>
     <?php
-    $output = shell_exec('sudo /home/pi/loki-network/lokilaunch.sh gen');
+    $output = shell_exec('sudo /var/lib/lokinet/lokilaunch.sh gen');
         echo "<pre><strong>$output</strong></pre>";
     } elseif (isset($_POST['ReGenerateLokinet'])) {
         ?>
@@ -631,7 +631,7 @@ function SaveTORAndVPNConfig()
       Regenerating Lokinet Configuration
     </div>
     <?php
-    $output = shell_exec('sudo /home/pi/loki-network/lokilaunch.sh gen');
+    $output = shell_exec('sudo /var/lib/lokinet/lokilaunch.sh gen');
         echo "<pre><strong>$output</strong></pre>";
     } elseif (isset($_POST['ApplyLokinetSettings'])) {
       ?>
@@ -644,7 +644,7 @@ function SaveTORAndVPNConfig()
     Stopping Lokinet background daemon process.
   </div>
   <?php
-  $output = shell_exec('sudo /home/pi/loki-network/lokilaunch.sh stop');
+  $output = shell_exec('sudo /var/lib/lokinet/lokilaunch.sh stop');
   echo "<pre><strong>$output</strong></pre>";
         $bootstrap = $_POST['lokinetbootstrap'];
   ?>

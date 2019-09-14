@@ -83,7 +83,7 @@ Now comes the fun part. For security reasons, the `www-data` user which lighttpd
 So what I have done is added the `www-data` user to the sudoers file, but with restrictions on what commands the user can run. Add the following to the end of `/etc/sudoers`, substituting your wireless interface for `wlan0` if needed:
 
 ```sh
-www-data ALL=(ALL) NOPASSWD:/home/pi/loki-network/lokilaunch.sh*
+www-data ALL=(ALL) NOPASSWD:/var/lib/lokinet/lokilaunch.sh*
 www-data ALL=(ALL) NOPASSWD:/sbin/ifdown wlan0
 www-data ALL=(ALL) NOPASSWD:/sbin/ifup wlan0
 www-data ALL=(ALL) NOPASSWD:/bin/cat /etc/wpa_supplicant/wpa_supplicant.conf
