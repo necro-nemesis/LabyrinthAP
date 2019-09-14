@@ -247,7 +247,7 @@ function patch_system_files() {
     sudo ln -s /usr/share/dhcpcd/hooks/10-wpa_supplicant /etc/dhcp/dhclient-enter-hooks.d/
     # Set commands array
     cmds=(
-        "/var/lib/lokinet/lokilaunch.sh*"
+
           #added for forced Lokinet
         "/sbin/ip"
           #
