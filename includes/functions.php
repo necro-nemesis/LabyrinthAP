@@ -388,7 +388,7 @@ function DisplayLokinetConfig()
                       echo '<input type="submit" class="btn btn-success" name="StopDaemon" value="Stop Daemon" />' , PHP_EOL;
                   }
 
-    $filename = '/usr/local/bin/lokinet.ini';
+    $filename = '/var/lib/lokinet/lokinet.ini';
 
                   if (file_exists($filename)) {
                     echo '<input type="submit" class="btn btn-success" name="ReGenerateLokinet" value="Regenerate .ini" />' , PHP_EOL;
@@ -653,7 +653,7 @@ function SaveTORAndVPNConfig()
   </div>
   <?php
   $bootstrap=str_replace("'", "", $bootstrap);
-        $output = shell_exec('sudo /home/pi/./loki-network/lokilaunch.sh bootstrap '.$bootstrap.'');
+        $output = shell_exec('sudo /var/lib/lokinet/lokilaunch.sh bootstrap '.$bootstrap.'');
         echo "<pre><strong>$output</strong></pre>";
     }
 }
