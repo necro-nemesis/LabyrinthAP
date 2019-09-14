@@ -207,23 +207,11 @@ function default_configuration() {
 
     # LokiPAP Batch file relocation and permissions in user loki-network directory
 
-    sudo mv $webroot_dir/config/lokilaunch.sh $HOME/loki-network/ || install error "Unable to move lokilaunch.sh, install Lokinet first"
-
-    # Forces all traffic through Lokinet (drop scripts into root's .lokinet folder)
-
-      sudo mv $webroot_dir/config/on-up.sh /root/.lokinet/on-up.sh || install error "Unable to move on-up.sh, install Lokinet first"
-      sudo mv $webroot_dir/config/on-down.sh /root/.lokinet/on-down.sh || install error "Unable to move on-down.sh, install Lokinet first"
-      sudo mv $webroot_dir/config/on-ready.sh /root/.lokinet/on-ready.sh || install error "Unable to move on-ready.sh, install Lokinet first"
+    sudo mv $webroot_dir/config/lokilaunch.sh /var/lib/lokinet/ || install error "Unable to move lokilaunch.sh, install Lokinet first"
 
     #changes persmission on lokilaunch.sh
 
-    sudo chmod 755 $HOME/loki-network/lokilaunch.sh
-
-    # Forces all traffic through Lokinet (change permissions)
-
-      sudo chmod 755 /root/.lokinet/on-up.sh
-      sudo chmod 755 /root/.lokinet/on-down.sh
-      sudo chmod 755 /root/.lokinet/on-ready.sh
+    sudo chmod 755 /var/lib/lokinet/lokilaunch.sh
 
     # Generate required lines for Rasp AP to place into rc.local file.
     # #RASPAP is for removal script
@@ -231,7 +219,7 @@ function default_configuration() {
     'echo 1 > \/proc\/sys\/net\/ipv4\/ip_forward #RASPAP'
     'iptables -t nat -A POSTROUTING -s 10.3.141.0\/24 -o lokitun0 -j MASQUERADE #RASPAP'
     'iptables -t nat -A POSTROUTING -j MASQUERADE #RASPAP'
-    'sudo \/home\/pi\/loki-network\/.\/lokilaunch.sh start #RASPAP'
+    'sudo \/var\/lib\/lokinet\/.\/lokilaunch.sh start #RASPAP'
 
     )
 
@@ -259,7 +247,7 @@ function patch_system_files() {
     sudo ln -s /usr/share/dhcpcd/hooks/10-wpa_supplicant /etc/dhcp/dhclient-enter-hooks.d/
     # Set commands array
     cmds=(
-        "/home/pi/loki-network/lokilaunch.sh*"
+
           #added for forced Lokinet
         "/sbin/ip"
           #
@@ -287,6 +275,8 @@ function patch_system_files() {
         "/bin/cp /etc/raspap/networking/dhcpcd.conf /etc/dhcpcd.conf"
         "/etc/raspap/hostapd/enablelog.sh"
         "/etc/raspap/hostapd/disablelog.sh"
+        "/var/lib/lokinet/lokilaunch.sh*"
+  
     )
 
     # Check if sudoers needs patching

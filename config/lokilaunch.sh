@@ -4,12 +4,14 @@ case "$1" in
 
   start)
         echo -n "Starting LOKINET daemon\n"
-        lokinet > /dev/null 2>&1 &
+        systemctl start lokinet
+        #lokinet > /dev/null 2>&1 &
         ;;
 
   stop)
         echo -n "daemon stop command sent\n"
-        pkill lokinet
+        systemctl stop lokinet
+        #pkill lokinet
         ;;
 
   gen)
