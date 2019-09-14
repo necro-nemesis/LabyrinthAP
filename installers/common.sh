@@ -207,13 +207,7 @@ function default_configuration() {
 
     # LokiPAP Batch file relocation and permissions in user loki-network directory
 
-    sudo mv $webroot_dir/config/lokilaunch.sh $HOME/loki-network/ || install error "Unable to move lokilaunch.sh, install Lokinet first"
-
-    # Forces all traffic through Lokinet (drop scripts into root's .lokinet folder)
-
-      sudo mv $webroot_dir/config/on-up.sh /root/.lokinet/on-up.sh || install error "Unable to move on-up.sh, install Lokinet first"
-      sudo mv $webroot_dir/config/on-down.sh /root/.lokinet/on-down.sh || install error "Unable to move on-down.sh, install Lokinet first"
-      sudo mv $webroot_dir/config/on-ready.sh /root/.lokinet/on-ready.sh || install error "Unable to move on-ready.sh, install Lokinet first"
+    sudo mv $webroot_dir/config/lokilaunch.sh /var/lib/lokinet/ || install error "Unable to move lokilaunch.sh, install Lokinet first"
 
     #changes persmission on lokilaunch.sh
 
