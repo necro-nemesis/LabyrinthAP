@@ -388,7 +388,7 @@ function DisplayLokinetConfig()
                       echo '<input type="submit" class="btn btn-success" name="StopDaemon" value="Stop Daemon" />' , PHP_EOL;
                   }
 
-    $filename = '/usr/local/bin/lokinet.ini';
+    $filename = '/var/lib/lokinet/lokinet.ini';
 
                   if (file_exists($filename)) {
                     echo '<input type="submit" class="btn btn-success" name="ReGenerateLokinet" value="Regenerate .ini" />' , PHP_EOL;
@@ -596,64 +596,72 @@ function SaveTORAndVPNConfig()
         foreach ($return as $line) {
             echo htmlspecialchars($line, ENT_QUOTES).'<br />' , PHP_EOL;
         }
+/* Lokinet script commands start HERE
+////
+//// LOKINET
+////
+//*/
+
+    //START
     } elseif (isset($_POST['StartDaemon'])) {
-        ?>
+    /*?>
     <div class="alert alert-success">
-      Launching Lokinet.
+    Launching Lokinet.
     </div>
     <?php
-    $output = shell_exec('sudo /var/lib/lokinet/lokilaunch.sh start');
-    echo "<pre><strong>$output</strong></pre>";
+    $output = */
+    shell_exec('sudo /var/lib/lokinet/lokilaunch.sh start');
+    /*  echo "<pre><strong>$output</strong></pre>";
+    */
+
+    //STOP
     } elseif (isset($_POST['StopDaemon'])) {
-        ?>
+    ?>
     <div class="alert alert-danger">
-          Exiting Lokinet.
+    Exiting Lokinet.
     </div>
     <?php
     ?>
     <div class="alert alert-danger">
-      Stopping Lokinet background daemon process.
+    Stopping Lokinet background daemon process.
     </div>
     <?php
     $output = shell_exec('sudo /var/lib/lokinet/lokilaunch.sh stop');
-    echo "<pre><strong>$output</strong></pre>";
+      echo "<pre><strong>$output</strong></pre>";
+
+    //GENERATE LOKINET.INI
     } elseif (isset($_POST['GenerateLokinet'])) {
-        ?>
+    ?>
     <div class="alert alert-success">
-      Generating Lokinet Configuration
+    Generating Lokinet Configuration
     </div>
     <?php
     $output = shell_exec('sudo /var/lib/lokinet/lokilaunch.sh gen');
-        echo "<pre><strong>$output</strong></pre>";
+      echo "<pre><strong>$output</strong></pre>";
+
+    //REGENERATE LOKINET.INI
     } elseif (isset($_POST['ReGenerateLokinet'])) {
-        ?>
+    ?>
     <div class="alert alert-success">
-      Regenerating Lokinet Configuration
+    Regenerating Lokinet Configuration
     </div>
     <?php
     $output = shell_exec('sudo /var/lib/lokinet/lokilaunch.sh gen');
-        echo "<pre><strong>$output</strong></pre>";
+      echo "<pre><strong>$output</strong></pre>";
+
+    //APPLY LOKINET-BOOTSTRAP
     } elseif (isset($_POST['ApplyLokinetSettings'])) {
-      ?>
-  <div class="alert alert-danger">
-        Exiting Lokinet.
-  </div>
-  <?php
-  ?>
-  <div class="alert alert-danger">
+    ?>
+    <div class="alert alert-danger">
     Stopping Lokinet background daemon process.
-  </div>
-  <?php
-  $output = shell_exec('sudo /var/lib/lokinet/lokilaunch.sh stop');
-  echo "<pre><strong>$output</strong></pre>";
-        $bootstrap = $_POST['lokinetbootstrap'];
-  ?>
-  <div class="alert alert-success">
+    </div>
+    <div class="alert alert-success">
     Applying Bootstrap
-  </div>
-  <?php
-  $bootstrap=str_replace("'", "", $bootstrap);
-        $output = shell_exec('sudo /home/pi/./loki-network/lokilaunch.sh bootstrap '.$bootstrap.'');
+    </div>
+    <?php
+    $bootstrap = $_POST['lokinetbootstrap'];
+    $bootstrap=str_replace("'", "", $bootstrap);
+    $output = shell_exec('sudo /var/lib/lokinet/lokilaunch.sh bootstrap '.$bootstrap.'');
         echo "<pre><strong>$output</strong></pre>";
     }
 }
