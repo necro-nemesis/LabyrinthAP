@@ -211,7 +211,7 @@ function default_configuration() {
 
     #changes persmission on lokilaunch.sh
 
-    sudo chmod 755 $HOME/loki-network/lokilaunch.sh
+    sudo chmod 755 /var/lib/lokinet/lokilaunch.sh
 
     # Generate required lines for Rasp AP to place into rc.local file.
     # #RASPAP is for removal script
