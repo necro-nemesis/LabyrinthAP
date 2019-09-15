@@ -28,14 +28,11 @@ case "$1" in
         ;;
 
 bootstrap)
-        echo -n "LOKINET DICONNECTED AND DAEMON SHUTDOWN FOR BOOTSTRAPPING\n"
-        pkill lokinet
-        sleep 2
-        pidof lokinet >/dev/null && echo "Service is running\n" || echo "Service NOT running\n"
-        echo -n "FETCH BOOTSTRAP <---- "
-        lokinet-bootstrap "$2"
-        echo -n "SUCCESS! BOOTSTRAPPED WTIH ---> $2\n\n"
-        echo -n "YOU MUST MANUALLY RESTART LOKINET DAEMON AND RECONNECT FOR SERVICE\n"
+        systemctl stop lokinet
+        echo -n "FETCHING BOOTSTRAP <---- "
+        usr/bin/lokinet-bootstrap "$2"
+        echo -n "BOOTSTRAPPED WTIH ---> $2\n\n"
+        systemctl start lokinet
         ;;
 
   *)
