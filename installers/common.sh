@@ -200,7 +200,7 @@ function network_tables() {
     install_log "Use iptables"
     tablerouteA='iptables -t nat -A POSTROUTING -s 10.3.141.0\/24 -o lokitun0 -j MASQUERADE #RASPAP'
     tablerouteB='iptables -t nat -A POSTROUTING -j MASQUERADE #RASPAP'
-    fi
+    else
     install_log "Use nftables"
     sudo apt-get -y install nftables
     tablerouteA='nft add rule ip nat POSTROUTING oifname "lokitun0" ip saddr 10.3.141.0\/24 counter masquerade #RASPAP'
