@@ -604,30 +604,11 @@ function SaveTORAndVPNConfig()
 
     //START
     } elseif (isset($_POST['StartDaemon'])) {
-    /*?>
-    <div class="alert alert-success">
-    Launching Lokinet.
-    </div>
-    <?php
-    $output = */
-    shell_exec('sudo /var/lib/lokinet/lokilaunch.sh start');
-    /*  echo "<pre><strong>$output</strong></pre>";
-    */
+    exec('sudo /var/lib/lokinet/lokilaunch.sh start');
 
     //STOP
     } elseif (isset($_POST['StopDaemon'])) {
-    ?>
-    <div class="alert alert-danger">
-    Exiting Lokinet.
-    </div>
-    <?php
-    ?>
-    <div class="alert alert-danger">
-    Stopping Lokinet background daemon process.
-    </div>
-    <?php
-    $output = shell_exec('sudo /var/lib/lokinet/lokilaunch.sh stop');
-      echo "<pre><strong>$output</strong></pre>";
+    exec('sudo /var/lib/lokinet/lokilaunch.sh stop');
 
     //GENERATE LOKINET.INI
     } elseif (isset($_POST['GenerateLokinet'])) {
@@ -664,5 +645,7 @@ function SaveTORAndVPNConfig()
     $output = shell_exec('sudo /var/lib/lokinet/lokilaunch.sh bootstrap '.$bootstrap.'');
         echo "<pre><strong>$output</strong></pre>";
     }
+
+    DisplayLokinetConfig();
 }
 ?>
