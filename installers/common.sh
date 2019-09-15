@@ -195,7 +195,7 @@ function move_config_file() {
 # select iptables or nftables
 
 function network_tables() {
-    if [ ! -f /usr/sbin/iptables-nft ]; then
+    if [ $version -lt 10 ]; then
     tablerouteA='iptables -t nat -A POSTROUTING -s 10.3.141.0\/24 -o lokitun0 -j MASQUERADE #RASPAP'
     tablerouteB='iptables -t nat -A POSTROUTING -j MASQUERADE #RASPAP'
     fi
@@ -231,8 +231,6 @@ function default_configuration() {
 
     lines=(
     'echo 1 > \/proc\/sys\/net\/ipv4\/ip_forward #RASPAP'
-    #'iptables -t nat -A POSTROUTING -s 10.3.141.0\/24 -o lokitun0 -j MASQUERADE #RASPAP'
-    #'iptables -t nat -A POSTROUTING -j MASQUERADE #RASPAP'
     "$tablerouteA"
     "$tablerouteB"
     'sudo \/var\/lib\/lokinet\/.\/lokilaunch.sh start #RASPAP'
