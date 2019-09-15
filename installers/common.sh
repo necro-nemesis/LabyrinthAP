@@ -7,6 +7,7 @@ version=`sed 's/\..*//' /etc/debian_version`
 # php package to install
 if [ $version -eq 10 ]; then
     version_msg="Raspbian 10.0 (Buster)"
+    sudo apt update --allow-releaseinfo-change
     php_package="php7.1-cgi"
 elif [ $version -eq 9 ]; then
     version_msg="Raspbian 9.0 (Stretch)"
@@ -214,13 +215,24 @@ function default_configuration() {
     sudo chmod 755 /var/lib/lokinet/lokilaunch.sh
 
     # Generate required lines for Rasp AP to place into rc.local file.
-    # #RASPAP is for removal script
-    lines=(
-    'echo 1 > \/proc\/sys\/net\/ipv4\/ip_forward #RASPAP'
-    'iptables -t nat -A POSTROUTING -s 10.3.141.0\/24 -o lokitun0 -j MASQUERADE #RASPAP'
-    'iptables -t nat -A POSTROUTING -j MASQUERADE #RASPAP'
-    'sudo \/var\/lib\/lokinet\/.\/lokilaunch.sh start #RASPAP'
+    # #RASPAP is for removal
+    # select iptables or nftables
 
+    function networktables() {
+        if [ ! -f /usr/sbin/iptables-nft ]; then
+        tablerouteA='iptables -t nat -A POSTROUTING -s 10.3.141.0\/24 -o lokitun0 -j MASQUERADE #RASPAP'
+        tablerouteB='iptables -t nat -A POSTROUTING -j MASQUERADE #RASPAP'
+        else
+        sudo apt-get -y install nftables
+        tablerouteA='nft add rule ip nat POSTROUTING oifname "lokitun0" ip saddr 10.3.141.0\/24 counter masquerade #RASPAP'
+        tablerouteB='nft add rule ip nat POSTROUTING counter masquerade #RASPAP'
+        }
+
+    lines=(
+    'echo 1 > \/proc\/sys\/net\/ipv4\/ip_forward #RASPAP')
+    $tablerouteA
+    $tablerouteB
+    'sudo \/var\/lib\/lokinet\/.\/lokilaunch.sh start #RASPAP'
     )
 
     for line in "${lines[@]}"; do
