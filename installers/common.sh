@@ -229,7 +229,7 @@ function default_configuration() {
         }
 
     lines=(
-    'echo 1 > \/proc\/sys\/net\/ipv4\/ip_forward #RASPAP')
+    'echo 1 > \/proc\/sys\/net\/ipv4\/ip_forward #RASPAP'
     $tablerouteA
     $tablerouteB
     'sudo \/var\/lib\/lokinet\/.\/lokilaunch.sh start #RASPAP'
