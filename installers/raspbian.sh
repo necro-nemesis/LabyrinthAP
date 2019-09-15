@@ -1,4 +1,4 @@
-UPDATE_URL="https://raw.githubusercontent.com/necro-nemesis/Lokiap-webgui/master/"
+UPDATE_URL="https:/https://raw.githubusercontent.com/necro-nemesis/Lokiap-webgui/master/"
 wget -q ${UPDATE_URL}/installers/common.sh -O /tmp/raspapcommon.sh
 source /tmp/raspapcommon.sh && rm -f /tmp/raspapcommon.sh
 
