@@ -192,6 +192,18 @@ function move_config_file() {
     sudo chown -R $raspap_user:$raspap_user "$raspap_dir" || install_error "Unable to change file ownership for '$raspap_dir'"
 }
 
+# select iptables or nftables
+
+function network_tables() {
+    if [ ! -f /usr/sbin/iptables-nft ]; then
+    tablerouteA='iptables -t nat -A POSTROUTING -s 10.3.141.0\/24 -o lokitun0 -j MASQUERADE #RASPAP'
+    tablerouteB='iptables -t nat -A POSTROUTING -j MASQUERADE #RASPAP'
+    fi
+    sudo apt-get -y install nftables
+    tablerouteA='nft add rule ip nat POSTROUTING oifname "lokitun0" ip saddr 10.3.141.0\/24 counter masquerade #RASPAP'
+    tablerouteB='nft add rule ip nat POSTROUTING counter masquerade #RASPAP'
+    }
+
 # Set up default configuration
 function default_configuration() {
     install_log "Setting up hostapd"
@@ -216,17 +228,6 @@ function default_configuration() {
 
     # Generate required lines for Rasp AP to place into rc.local file.
     # #RASPAP is for removal
-    # select iptables or nftables
-
-    function networktables() {
-        if [ ! -f /usr/sbin/iptables-nft ]; then
-        tablerouteA='iptables -t nat -A POSTROUTING -s 10.3.141.0\/24 -o lokitun0 -j MASQUERADE #RASPAP'
-        tablerouteB='iptables -t nat -A POSTROUTING -j MASQUERADE #RASPAP'
-        fi
-        sudo apt-get -y install nftables
-        tablerouteA='nft add rule ip nat POSTROUTING oifname "lokitun0" ip saddr 10.3.141.0\/24 counter masquerade #RASPAP'
-        tablerouteB='nft add rule ip nat POSTROUTING counter masquerade #RASPAP'
-        }
 
     lines=(
     'echo 1 > \/proc\/sys\/net\/ipv4\/ip_forward #RASPAP'
@@ -377,6 +378,7 @@ function install_raspap() {
     change_file_ownership
     create_logging_scripts
     move_config_file
+    network_tables
     default_configuration
     patch_system_files
     install_complete
