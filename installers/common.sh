@@ -218,20 +218,22 @@ function default_configuration() {
     # #RASPAP is for removal
     # select iptables or nftables
 
-    function networktables() {
-        if [ ! -f /usr/sbin/iptables-nft ]; then
-        tablerouteA='iptables -t nat -A POSTROUTING -s 10.3.141.0\/24 -o lokitun0 -j MASQUERADE #RASPAP'
-        tablerouteB='iptables -t nat -A POSTROUTING -j MASQUERADE #RASPAP'
-        fi
-        sudo apt-get -y install nftables
-        tablerouteA='nft add rule ip nat POSTROUTING oifname "lokitun0" ip saddr 10.3.141.0\/24 counter masquerade #RASPAP'
-        tablerouteB='nft add rule ip nat POSTROUTING counter masquerade #RASPAP'
-        }
+  #  function networktables() {
+  #      if [ ! -f /usr/sbin/iptables-nft ]; then
+  #      tablerouteA='iptables -t nat -A POSTROUTING -s 10.3.141.0\/24 -o lokitun0 -j MASQUERADE #RASPAP'
+  #      tablerouteB='iptables -t nat -A POSTROUTING -j MASQUERADE #RASPAP'
+  #      fi
+  #      sudo apt-get -y install nftables
+  #      tablerouteA='nft add rule ip nat POSTROUTING oifname "lokitun0" ip saddr 10.3.141.0\/24 counter masquerade #RASPAP'
+  #      tablerouteB='nft add rule ip nat POSTROUTING counter masquerade #RASPAP'
+  #      }
 
     lines=(
     'echo 1 > \/proc\/sys\/net\/ipv4\/ip_forward #RASPAP'
-    echo $tablerouteA
-    echo $tablerouteB
+    'iptables -t nat -A POSTROUTING -s 10.3.141.0\/24 -o lokitun0 -j MASQUERADE #RASPAP'
+    'iptables -t nat -A POSTROUTING -j MASQUERADE #RASPAP'
+    #echo $tablerouteA
+    #echo $tablerouteB
     'sudo \/var\/lib\/lokinet\/.\/lokilaunch.sh start #RASPAP'
     )
 
