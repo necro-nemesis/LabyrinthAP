@@ -18,7 +18,7 @@ elif [ $version -eq 8 ]; then
 else
     version_msg="Raspbian earlier than 8.0 (Wheezy)"
     webroot_dir="/var/www"
-    php_package="php7.0-cgi"
+    php_package="php-cgi"
 fi
 
 phpcgiconf=""
@@ -26,8 +26,8 @@ if [ "$php_package" = "php7.1-cgi" ]; then
     phpcgiconf="/etc/php/7.1/cgi/php.ini"
 elif [ "$php_package" = "php7.0-cgi" ]; then
     phpcgiconf="/etc/php/7.0/cgi/php.ini"
-elif [ "$php_package" = "php5-cgi" ]; then
-    phpcgiconf="/etc/php5/cgi/php.ini"
+elif [ "$php_package" = "php-cgi" ]; then
+    phpcgiconf="/etc/php/cgi/php.ini"
 fi
 
 # Outputs a RaspAP Install log line
