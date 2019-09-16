@@ -18,7 +18,7 @@ elif [ $version -eq 8 ]; then
 else
     version_msg="Raspbian earlier than 8.0 (Wheezy)"
     webroot_dir="/var/www"
-    php_package="php7.0-cgi"
+    php_package="php7.3-cgi"
 fi
 
 phpcgiconf=""
