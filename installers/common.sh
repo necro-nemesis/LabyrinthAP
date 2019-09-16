@@ -14,11 +14,11 @@ elif [ $version -eq 9 ]; then
     php_package="php7.0-cgi"
 elif [ $version -eq 8 ]; then
     version_msg="Raspbian 8.0 (Jessie)"
-    php_package="php5-cgi"
+    php_package="php5.6-cgi"
 else
     version_msg="Raspbian earlier than 8.0 (Wheezy)"
     webroot_dir="/var/www"
-    php_package="php5-cgi"
+    php_package="php5.6-cgi"
 fi
 
 phpcgiconf=""
@@ -26,7 +26,7 @@ if [ "$php_package" = "php7.3-cgi" ]; then
     phpcgiconf="/etc/php/7.3/cgi/php.ini"
 elif [ "$php_package" = "php7.0-cgi" ]; then
     phpcgiconf="/etc/php/7.0/cgi/php.ini"
-elif [ "$php_package" = "php5-cgi" ]; then
+elif [ "$php_package" = "php5.6-cgi" ]; then
     phpcgiconf="/etc/php5/cgi/php.ini"
 fi
 
