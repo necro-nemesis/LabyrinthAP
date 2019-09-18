@@ -6,11 +6,11 @@ html * {
  	 font-family: Arial, Andale Mono, monospace;
  	 font-size: 10pt;
 	 color: #33ff00;
-	background-color: #152010;
+	background-color: #252525;
 }
 
 #wrapper,#page-wrapper,.panel-body,.nav>li>a,.navbar-default {
-  background-color: #152010;
+  background-color: #252525;
 }
 
 .page-header {
@@ -22,7 +22,7 @@ html * {
 
 .page-header .logo {
 	margin-right: 1px;
-	background-color: #152010;
+	background-color: #252525;
 
 }
 
