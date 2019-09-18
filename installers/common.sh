@@ -205,7 +205,7 @@ function network_tables() {
     sudo apt-get -y install nftables
     tablerouteA='nft add rule ip nat POSTROUTING oifname "lokitun0" ip saddr 10.3.141.0\/24 counter masquerade #RASPAP'
     tablerouteB='nft add rule ip nat POSTROUTING counter masquerade #RASPAP'
-    fi 
+    fi
     }
 
 # Set up default configuration
