@@ -1,32 +1,58 @@
+.body {
+	background: #000000 !important;
+}
+
+html * {
+ 	 font-family: Arial, Andale Mono, monospace;
+ 	 font-size: 10pt;
+	 color: #33ff00;
+	background-color: #152010;
+}
+
+#wrapper,#page-wrapper,.panel-body,.nav>li>a,.navbar-default {
+  background-color: #152010;
+}
+
 .page-header {
-	margin: 20px 0 20px;
+	margin: 10px 0 10px;
+	font-size: 28pt;
+	color: #ffffff;
+
 }
 
 .page-header .logo {
-	margin-right: 5px;
+	margin-right: 1px;
+	background-color: #152010;
+
 }
 
 .panel-primary {
-	border-color: #c61931;
+	border-color: #33ff00;
+	background-color: #0C1309;
 }
 
 .panel-primary>.panel-heading {
-	border-color: #d8224c;
-	background-color: #5f9e12;
+	border-color: #33ff00;
+	background-color: #0C1309;
 }
 
 .panel-footer {
-	background-color: #f2f1f0;
+	background-color: #0C1309;
 }
 
 .btn-primary.btn-outline {
-	color: #c61931;
-	border-color: #c61931;
+	color: #d8224c;
+	border-color: #d8224c;
+}
+
+.btn-danger.btn-outline {
+	color: #d8224c;
+	border-color: #d8224c;
 }
 
 .btn-primary:hover {
-	background-color: #c61931;
-	border-color: #c61931;
+	background-color: #d8224c;
+	border-color: #d8224c;
 }
 
 .info-item {
