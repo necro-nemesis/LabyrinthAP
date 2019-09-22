@@ -372,7 +372,7 @@ function DisplayLokinetConfig()
            		<p><?php echo $status; ?></p>
             	<div class="tab-pane fade in active" id="basic">
                 <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#instruct">Instructions</button>
-                <div id="instruct" class="collapse">The 3 buttons below must be active (green) to connect to Lokinet. If there isn't a current lokinet.ini file found on the system the "Generate.ini" button will be red. The .ini file must be generated prior to connecting to Lokinet by pressing the button which will automatically write the required .ini file. Similarly the absense of a valid bootstrap will be indicated by a red "Bootstrap" button. Applying a bootstrap by pressing the apply button without submitting a valid URL in the textbox area will apply the original default bootstrap in place of one being provided. Stopping the daemon also exits Lokinet. To summarize, if necessary generate the .ini and bootstrap Lokinet then you are able to connect to Lokinet by starting the daemon and letting the network establish itself.
+                <div id="instruct" class="collapse">The 3 buttons below must be armed (red) to connect to Lokinet. If there isn't a current lokinet.ini file found on the system the "Generate.ini" button will be green. The .ini file must be generated prior to connecting to Lokinet by pressing the button which will automatically write the required .ini file. Similarly the absense of a valid bootstrap will be indicated by a green "Bootstrap" button. Applying a bootstrap by pressing the apply button without submitting a valid URL in the textbox area will apply the original default bootstrap in place of one being provided. Stopping the daemon also exits Lokinet. To summarize, if necessary generate the .ini and bootstrap Lokinet then you are able to connect to Lokinet by starting the daemon and letting the network establish itself.
                 </div>
                 <form role="form" action="?page=save_hostapd_conf" method="POST">
                   <div class="row">
@@ -380,24 +380,25 @@ function DisplayLokinetConfig()
                       <h5>Enter a valid bootstrap url below and apply to overwrite the current bootstrap:</h5>
                         <label for="usr">Bootstrap url:</label>
                         <input type="url" class="form-control" placeholder="https://seed.lokinet.org/bootstrap.signed" id="lokinetbootstrap" name="lokinetbootstrap">
+                        <li></li>
                   <?php
 
                   if ($lokinetstatus[0] == 0) {
-                      echo '<input type="submit" class="btn btn-danger" name="StartDaemon" value="Start Daemon" />' , PHP_EOL;
+                      echo '<input type="submit" class="btn btn-success" name="StartDaemon" value="Start Daemon" />' , PHP_EOL;
                   } else {
-                      echo '<input type="submit" class="btn btn-success" name="StopDaemon" value="Stop Daemon" />' , PHP_EOL;
+                      echo '<input type="submit" class="btn btn-danger" name="StopDaemon" value="Stop Daemon" />' , PHP_EOL;
                   }
 
     $filename = '/var/lib/lokinet/lokinet.ini';
 
                   if (file_exists($filename)) {
-                    echo '<input type="submit" class="btn btn-success" name="ReGenerateLokinet" value="Regenerate .ini" />' , PHP_EOL;
+                    echo '<input type="submit" class="btn btn-danger" name="ReGenerateLokinet" value="Regenerate .ini" />' , PHP_EOL;
                   } else {
-                    echo '<input type="submit" class="btn btn-danger" name="GenerateLokinet" value="Generate .ini" />' , PHP_EOL;
+                    echo '<input type="submit" class="btn btn-success" name="GenerateLokinet" value="Generate .ini" />' , PHP_EOL;
                   }
                   ?>
 
-                  <input type="submit" class="btn btn-success" name="ApplyLokinetSettings" value="Re-Bootstrap" />
+                  <input type="submit" class="btn btn-danger" name="ApplyLokinetSettings" value="Re-Bootstrap" />
                   <h5><?php echo _("Your development support is greatly appreciated | Loki Address:"); ?></h5>
                   <h5><pre><?php echo _("LA8VDcoJgiv2bSiVqyaT6hJ67LXbnQGpf9Uk3zh9ikUKPJUWeYbgsd9gxQ5ptM2hQNSsCaRETQ3GM9FLDe7BGqcm4ve69bh"); ?></pre></h5>
 				       </div>
@@ -604,30 +605,11 @@ function SaveTORAndVPNConfig()
 
     //START
     } elseif (isset($_POST['StartDaemon'])) {
-    /*?>
-    <div class="alert alert-success">
-    Launching Lokinet.
-    </div>
-    <?php
-    $output = */
-    shell_exec('sudo /var/lib/lokinet/lokilaunch.sh start');
-    /*  echo "<pre><strong>$output</strong></pre>";
-    */
+    exec('sudo /var/lib/lokinet/lokilaunch.sh start');
 
     //STOP
     } elseif (isset($_POST['StopDaemon'])) {
-    ?>
-    <div class="alert alert-danger">
-    Exiting Lokinet.
-    </div>
-    <?php
-    ?>
-    <div class="alert alert-danger">
-    Stopping Lokinet background daemon process.
-    </div>
-    <?php
-    $output = shell_exec('sudo /var/lib/lokinet/lokilaunch.sh stop');
-      echo "<pre><strong>$output</strong></pre>";
+    exec('sudo /var/lib/lokinet/lokilaunch.sh stop');
 
     //GENERATE LOKINET.INI
     } elseif (isset($_POST['GenerateLokinet'])) {
@@ -664,5 +646,7 @@ function SaveTORAndVPNConfig()
     $output = shell_exec('sudo /var/lib/lokinet/lokilaunch.sh bootstrap '.$bootstrap.'');
         echo "<pre><strong>$output</strong></pre>";
     }
+
+    DisplayLokinetConfig();
 }
 ?>
