@@ -47,7 +47,7 @@ With the prerequisites done, you can proceed with either the Quick installer or 
 ## Quick installer
 Install LokiAP from your RaspberryPi's shell prompt:
 ```sh
-$ wget -q https://git.io/fjeSw -O /tmp/raspap && bash /tmp/raspap
+$ wget -q https://git.io/JesRM -O /tmp/raspap && bash /tmp/raspap
 ```
 The installer will complete the steps in the manual installation (below) for you.
 
