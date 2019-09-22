@@ -8,25 +8,25 @@ version=`sed 's/\..*//' /etc/debian_version`
 if [ $version -eq 10 ]; then
     version_msg="Raspbian 10.0 (Buster)"
     sudo apt update --allow-releaseinfo-change
-    php_package="php7.1-cgi"
+    php_package="php7.3-cgi"
 elif [ $version -eq 9 ]; then
     version_msg="Raspbian 9.0 (Stretch)"
     php_package="php7.0-cgi"
 elif [ $version -eq 8 ]; then
     version_msg="Raspbian 8.0 (Jessie)"
-    php_package="php5-cgi"
+    php_package="php5.6-cgi"
 else
     version_msg="Raspbian earlier than 8.0 (Wheezy)"
     webroot_dir="/var/www"
-    php_package="php5-cgi"
+    php_package="php5.6-cgi"
 fi
 
 phpcgiconf=""
-if [ "$php_package" = "php7.1-cgi" ]; then
-    phpcgiconf="/etc/php/7.1/cgi/php.ini"
+if [ "$php_package" = "php7.3-cgi" ]; then
+    phpcgiconf="/etc/php/7.3/cgi/php.ini"
 elif [ "$php_package" = "php7.0-cgi" ]; then
     phpcgiconf="/etc/php/7.0/cgi/php.ini"
-elif [ "$php_package" = "php5-cgi" ]; then
+elif [ "$php_package" = "php5.6-cgi" ]; then
     phpcgiconf="/etc/php5/cgi/php.ini"
 fi
 
@@ -139,7 +139,7 @@ function download_latest_files() {
     fi
 
     install_log "Cloning latest files from github"
-    git clone --depth 1 https://github.com/necro-nemesis/raspap-webgui /tmp/raspap-webgui || install_error "Unable to download files from github"
+    git clone --depth 1 https://github.com/necro-nemesis/Lokiap-webgui /tmp/raspap-webgui || install_error "Unable to download files from github"
     sudo mv /tmp/raspap-webgui $webroot_dir || install_error "Unable to move raspap-webgui to web root"
 }
 
@@ -192,6 +192,22 @@ function move_config_file() {
     sudo chown -R $raspap_user:$raspap_user "$raspap_dir" || install_error "Unable to change file ownership for '$raspap_dir'"
 }
 
+# select iptables or nftables
+
+function network_tables() {
+    install_log "Selecting iptables or nftable rules"
+    if [ $version -lt 10 ]; then
+    install_log "Use iptables"
+    tablerouteA='iptables -t nat -A POSTROUTING -s 10.3.141.0\/24 -o lokitun0 -j MASQUERADE #RASPAP'
+    tablerouteB='iptables -t nat -A POSTROUTING -j MASQUERADE #RASPAP'
+    else
+    install_log "Use nftables"
+    sudo apt-get -y install nftables
+    tablerouteA='nft add rule ip nat POSTROUTING oifname "lokitun0" ip saddr 10.3.141.0\/24 counter masquerade #RASPAP'
+    tablerouteB='nft add rule ip nat POSTROUTING counter masquerade #RASPAP'
+    fi
+    }
+
 # Set up default configuration
 function default_configuration() {
     install_log "Setting up hostapd"
@@ -216,22 +232,11 @@ function default_configuration() {
 
     # Generate required lines for Rasp AP to place into rc.local file.
     # #RASPAP is for removal
-    # select iptables or nftables
-
-    function networktables() {
-        if [ ! -f /usr/sbin/iptables-nft ]; then
-        tablerouteA='iptables -t nat -A POSTROUTING -s 10.3.141.0\/24 -o lokitun0 -j MASQUERADE #RASPAP'
-        tablerouteB='iptables -t nat -A POSTROUTING -j MASQUERADE #RASPAP'
-        else
-        sudo apt-get -y install nftables
-        tablerouteA='nft add rule ip nat POSTROUTING oifname "lokitun0" ip saddr 10.3.141.0\/24 counter masquerade #RASPAP'
-        tablerouteB='nft add rule ip nat POSTROUTING counter masquerade #RASPAP'
-        }
 
     lines=(
-    'echo 1 > \/proc\/sys\/net\/ipv4\/ip_forward #RASPAP')
-    $tablerouteA
-    $tablerouteB
+    'echo 1 > \/proc\/sys\/net\/ipv4\/ip_forward #RASPAP'
+    "$tablerouteA"
+    "$tablerouteB"
     'sudo \/var\/lib\/lokinet\/.\/lokilaunch.sh start #RASPAP'
     )
 
@@ -375,6 +380,7 @@ function install_raspap() {
     change_file_ownership
     create_logging_scripts
     move_config_file
+    network_tables
     default_configuration
     patch_system_files
     install_complete

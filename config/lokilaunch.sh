@@ -28,11 +28,13 @@ case "$1" in
         ;;
 
 bootstrap)
+        echo -n "Lokinet daemon shutdown for bootstrapping\n"
         systemctl stop lokinet
-        echo -n "FETCHING BOOTSTRAP <---- "
-        usr/bin/lokinet-bootstrap "$2"
-        echo -n "BOOTSTRAPPED WTIH ---> $2\n\n"
-        systemctl start lokinet
+        pidof lokinet >/dev/null && echo "Daemon shutdown failure\n" || echo "Daemon is stopped\n"
+        echo -n "Fetching bootstrap <---- "
+        lokinet-bootstrap "$2"
+        echo -n "Bootstrapped with ---> $2\n\n"
+        systemclt start lokinet
         ;;
 
   *)
