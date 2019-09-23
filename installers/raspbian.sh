@@ -16,4 +16,16 @@ function install_dependencies() {
     sudo apt-get install lighttpd $php_package git hostapd dnsmasq vnstat resolvconf lokinet || install_error "Unable to install dependencies"
 }
 
+#Remove NetworkManager, install dhcpd, create symlink to resolvconf.
+
+function check_for_networkmananger() {
+    if [ -f /etc/NetworkManager/NetworkManager.conf ]; then
+        sudo apt-get purge network-manager
+        sudo apt-get install dhcpcd5
+        sudo rm /etc/resolv.conf
+        sudo ln -s ../run/resolvconf/resolv.conf /etc/resolv.conf
+    fi
+
+}
+
 install_raspap
