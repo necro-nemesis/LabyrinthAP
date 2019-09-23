@@ -19,7 +19,7 @@ function install_dependencies() {
 #Remove NetworkManager, install dhcpd, create symlink to resolvconf.
 
 function check_for_networkmananger() {
-    if [ -f /etc/NetworkManager/NetworkManager.conf ]; then
+    if [ -f /lib/systemd/system/network-manager.service ]; then
         sudo apt-get purge network-manager
         sudo apt-get install dhcpcd5
         sudo rm /etc/resolv.conf
