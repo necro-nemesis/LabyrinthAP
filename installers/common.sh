@@ -91,6 +91,13 @@ function install_dependencies() {
     install_error "No function definition for install_dependencies"
 }
 
+# Replaces NetworkManager with DHCPD
+function check_for_networkmananger() {
+    # OVERLOAD THIS
+    install_error "No function definition for install_dependencies"
+}
+
+
 # Enables PHP for lighttpd and restarts service for settings to take effect
 function enable_php_lighttpd() {
     install_log "Enabling PHP for lighttpd"
