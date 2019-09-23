@@ -25,8 +25,8 @@ function check_for_networkmananger() {
   echo "Network Manager found. Replacing with DHCPCD"
         sudo apt-get -y purge network-manager
         sudo apt-get -y install dhcpcd5
-        sudo rm /etc/resolv.conf
-        sudo ln -s ../run/resolvconf/resolv.conf /etc/resolv.conf
+    #    sudo rm /etc/resolv.conf
+    #    sudo ln -s ../run/resolvconf/resolv.conf /etc/resolv.conf
     fi
 
 }
