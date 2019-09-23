@@ -20,10 +20,11 @@ function install_dependencies() {
 
 function check_for_networkmananger() {
   install_log "Checking for NetworkManager"
-  echo "Checking for NetworkManager and DHCPD"
+  echo "Checking for Network Manager"
     if [ -f /lib/systemd/system/network-manager.service ]; then
-        sudo apt-get purge network-manager
-        sudo apt-get install dhcpcd5
+  echo "Network Manager found. Replacing with DHCPCD"
+        sudo apt-get -y purge network-manager
+        sudo apt-get -y install dhcpcd5
         sudo rm /etc/resolv.conf
         sudo ln -s ../run/resolvconf/resolv.conf /etc/resolv.conf
     fi
