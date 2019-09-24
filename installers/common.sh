@@ -362,6 +362,10 @@ function optimize_php() {
     fi
 }
 
+function clean_up () {
+  sudo apt-get -y autoremove
+}
+
 function install_complete() {
     install_log "Installation completed!"
 
@@ -395,5 +399,6 @@ function install_raspap() {
     network_tables
     default_configuration
     patch_system_files
+    clean_up
     install_complete
 }
