@@ -64,7 +64,7 @@ https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
 4. Update Raspbian/Armbian, including the kernel and firmware, followed by a reboot:
 ```
 sudo apt-get update
-sudo apt-get dist-upgrade
+sudo apt-get upgrade
 sudo reboot
 ```
 5. Set the WiFi country in raspi-config's / armbian-config's **Localisation Options**: `sudo raspi-config` or `sudo arbmian-config` for RasperryPi or OrangePi respectively.
