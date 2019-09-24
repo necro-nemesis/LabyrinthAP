@@ -41,7 +41,7 @@ https://www.balena.io/etcher/
 
 ## Preparing the image
 
-For Raspbian you will need to remove the SD card from the computer, reinsert it, open the boot directory up and create a new textfile file named "ssh" with no .txt file extension i.e. just "ssh" in order to remotely connect. This step is not required for Armbian.
+For Raspbian you will need to remove the SD card from the computer, reinsert it, open the boot directory up and create a new textfile file named `ssh` with no .txt file extension i.e. just `ssh` in order to remotely connect. This step is not required for Armbian.
 
 Insert the SD card into the device and power it up.
 
@@ -52,12 +52,12 @@ https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
 
 1.  Log into your router from your PC and find the address it assigned to the Pi.
 
-2.  Start Putty up and enter this address into Putty with settings:
+2.  Start Putty up and enter this obtained address into Putty with settings:
 
-    Host Name Address "address obtained from router" Port "22" and connection type "SSH" then "OPEN"
+    Host Name Address = the address obtained from router | Port `22` | connection type `SSH` | then `OPEN`
 
-For Raspbian the default login is "root" password "raspberry"
-For Armbian the default login is "root" password "1234"
+    For Raspbian the default login is `root` password `raspberry`
+    For Armbian the default login is `root` password `1234`
 
 3.  Follow any first user password instructions provided once logged in.
 
@@ -67,7 +67,7 @@ sudo apt-get update
 sudo apt-get dist-upgrade
 sudo reboot
 ```
-5. Set the WiFi country in raspi-config's / armbian-config's **Localisation Options**: `sudo raspi-config` or 'sudo arbmian-config' for RasperryPi or OrangePi respectively.
+5. Set the WiFi country in raspi-config's / armbian-config's **Localisation Options**: `sudo raspi-config` or `sudo arbmian-config` for RasperryPi or OrangePi respectively.
 
 6. If you have an older Raspberry Pi without an onboard WiFi chipset, the [**Edimax Wireless 802.11b/g/n nano USB adapter**](https://www.edimax.com/edimax/merchandise/merchandise_detail/data/edimax/global/wireless_adapters_n150/ew-7811un) is an excellent option – it's small, cheap and has good driver support.
 
@@ -84,11 +84,11 @@ The installer will complete the steps in the manual installation (below) for you
 After the reboot at the end of the installation the wireless network will be
 configured as an access point as follows:
 * IP address: 10.3.141.1
-  * Username: admin
-  * Password: secret
+  * Username: `admin`
+  * Password: `secret`
 * DHCP range: 10.3.141.1 to 10.3.141.24
 * SSID: `loki-access`
-* Password: ChangeMe
+* Password: `ChangeMe`
 
 ## Support us
 
