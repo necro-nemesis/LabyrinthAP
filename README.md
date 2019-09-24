@@ -54,22 +54,22 @@ https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
 
 2.  Start Putty up and enter this address into Putty with settings:
 
-3.  Host Name Address "address obtained from router" Port "22" and connection type "SSH" then "OPEN"
+    Host Name Address "address obtained from router" Port "22" and connection type "SSH" then "OPEN"
 
 For Raspbian the default login is "root" password "raspberry"
 For Armbian the default login is "root" password "1234"
 
-4.  Follow any first user password instructions provided once logged in.
+3.  Follow any first user password instructions provided once logged in.
 
-5. Update Raspbian/Armbian, including the kernel and firmware, followed by a reboot:
+4. Update Raspbian/Armbian, including the kernel and firmware, followed by a reboot:
 ```
 sudo apt-get update
 sudo apt-get dist-upgrade
 sudo reboot
 ```
-6. Set the WiFi country in raspi-config's / armbian-config's **Localisation Options**: `sudo raspi-config` or 'sudo arbmian-config' for RasperryPi or OrangePi respectively.
+5. Set the WiFi country in raspi-config's / armbian-config's **Localisation Options**: `sudo raspi-config` or 'sudo arbmian-config' for RasperryPi or OrangePi respectively.
 
-7. If you have an older Raspberry Pi without an onboard WiFi chipset, the [**Edimax Wireless 802.11b/g/n nano USB adapter**](https://www.edimax.com/edimax/merchandise/merchandise_detail/data/edimax/global/wireless_adapters_n150/ew-7811un) is an excellent option – it's small, cheap and has good driver support.
+6. If you have an older Raspberry Pi without an onboard WiFi chipset, the [**Edimax Wireless 802.11b/g/n nano USB adapter**](https://www.edimax.com/edimax/merchandise/merchandise_detail/data/edimax/global/wireless_adapters_n150/ew-7811un) is an excellent option – it's small, cheap and has good driver support.
 
 With the prerequisites done, you can proceed with either the Quick installer or Manual installation steps below.
 
