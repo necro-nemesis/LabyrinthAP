@@ -39,32 +39,37 @@ For Orange Pi R1 use Armbian Stretch found here: https://dl.armbian.com/orangepi
 Burn the image to an SD card on your PC using Etcher:
 https://www.balena.io/etcher/
 
+##Preparing the image
+
 For Raspbian you will need to remove the SD card from the computer, reinsert it, open the boot directory up and create a new textfile file named "ssh" with no .txt file extension i.e. just "ssh" in order to remotely connect. This step is not required for Armbian.
 
 Insert the SD card into the device and power it up.
 
+##Accessing the device
+
 Obtain a copy of Putty:
 https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
 
-Log into your router from your PC and find the address it assigned to the Pi.
+1.  Log into your router from your PC and find the address it assigned to the Pi.
 
-Start Putty up and enter this address into Putty with settings:
-Host Name Address "<address obtained from router>" Port "22" and connection type "SSH" then "OPEN"
+2.  Start Putty up and enter this address into Putty with settings:
+
+3.  Host Name Address "<address obtained from router>" Port "22" and connection type "SSH" then "OPEN"
 
 For Raspbian the default login is "root" password "raspberry"
 For Armbian the default login is "root" password "1234"
 
-Follow any first user password instructions provided once logged in.
+4.  Follow any first user password instructions provided once logged in.
 
-1. Update Raspbian/Armbian, including the kernel and firmware, followed by a reboot:
+5. Update Raspbian/Armbian, including the kernel and firmware, followed by a reboot:
 ```
 sudo apt-get update
 sudo apt-get dist-upgrade
 sudo reboot
 ```
-2. Set the WiFi country in raspi-config's / armbian-config's **Localisation Options**: `sudo raspi-config` or 'sudo arbmian-config' for RasperryPi or OrangePi respectively.
+6. Set the WiFi country in raspi-config's / armbian-config's **Localisation Options**: `sudo raspi-config` or 'sudo arbmian-config' for RasperryPi or OrangePi respectively.
 
-3. If you have an older Raspberry Pi without an onboard WiFi chipset, the [**Edimax Wireless 802.11b/g/n nano USB adapter**](https://www.edimax.com/edimax/merchandise/merchandise_detail/data/edimax/global/wireless_adapters_n150/ew-7811un) is an excellent option – it's small, cheap and has good driver support.
+7. If you have an older Raspberry Pi without an onboard WiFi chipset, the [**Edimax Wireless 802.11b/g/n nano USB adapter**](https://www.edimax.com/edimax/merchandise/merchandise_detail/data/edimax/global/wireless_adapters_n150/ew-7811un) is an excellent option – it's small, cheap and has good driver support.
 
 With the prerequisites done, you can proceed with either the Quick installer or Manual installation steps below.
 
