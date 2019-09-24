@@ -36,6 +36,26 @@ For Orange Pi Zero use Armbian Stretch found here: https://dl.armbian.com/orange
 
 For Orange Pi R1 use Armbian Stretch found here: https://dl.armbian.com/orangepi-r1/
 
+Burn the image to an SD card on your PC using Etcher:
+https://www.balena.io/etcher/
+
+For Raspbian you will need to remove the SD card from the computer, reinsert it, open the boot directory up and create a new textfile file named "ssh" with no .txt file extension i.e. just "ssh" in order to remotely connect. This step is not required for Armbian.
+
+Insert the SD card into the device and power it up.
+
+Obtain a copy of Putty:
+https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
+
+Log into your router from your PC and find the address it assigned to the Pi.
+
+Start Putty up and enter this address into Putty with settings:
+Host Name Address "<address obtained from router>" Port "22" and connection type "SSH" then "OPEN"
+
+For Raspbian the default login is "root" password "raspberry"
+For Armbian the default login is "root" password "1234"
+
+Follow any first user password instructions provided once logged in.
+
 1. Update Raspbian/Armbian, including the kernel and firmware, followed by a reboot:
 ```
 sudo apt-get update
@@ -49,6 +69,7 @@ sudo reboot
 With the prerequisites done, you can proceed with either the Quick installer or Manual installation steps below.
 
 ## Quick installer
+
 Install LokiAP from shell prompt:
 ```sh
 $ wget -q https://git.io/fjeSw -O /tmp/raspap && bash /tmp/raspap
