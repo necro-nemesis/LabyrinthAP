@@ -373,7 +373,7 @@ function install_complete() {
     fi
     echo -n "Shutting down"
     echo -n "Allow a minute for reinitialization"
-    echo -n "Then connect to SSID loki-access"
+    echo -n "Connect wifi to SSID loki-access and use default password 'ChangeMe'"
     sleep 8
     sudo shutdown -r now || install_error "Unable to execute shutdown"
 }
