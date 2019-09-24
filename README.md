@@ -39,13 +39,13 @@ For Orange Pi R1 use Armbian Stretch found here: https://dl.armbian.com/orangepi
 Burn the image to an SD card on your PC using Etcher:
 https://www.balena.io/etcher/
 
-##Preparing the image
+## Preparing the image
 
 For Raspbian you will need to remove the SD card from the computer, reinsert it, open the boot directory up and create a new textfile file named "ssh" with no .txt file extension i.e. just "ssh" in order to remotely connect. This step is not required for Armbian.
 
 Insert the SD card into the device and power it up.
 
-##Accessing the device
+## Accessing the device
 
 Obtain a copy of Putty:
 https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
