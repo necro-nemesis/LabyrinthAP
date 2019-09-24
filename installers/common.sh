@@ -91,6 +91,13 @@ function install_dependencies() {
     install_error "No function definition for install_dependencies"
 }
 
+# Replaces NetworkManager with DHCPD
+function check_for_networkmananger() {
+    # OVERLOAD THIS
+    install_error "No function definition for install_dependencies"
+}
+
+
 # Enables PHP for lighttpd and restarts service for settings to take effect
 function enable_php_lighttpd() {
     install_log "Enabling PHP for lighttpd"
@@ -364,6 +371,9 @@ function install_complete() {
         echo "Installation reboot aborted."
         exit 0
     fi
+    install_log "Shutting Down"
+    echo -n "Allow a minute for reinitialization then connect wifi to SSID loki-access and use default password 'ChangeMe'"
+    sleep 8
     sudo shutdown -r now || install_error "Unable to execute shutdown"
 }
 
@@ -372,6 +382,7 @@ function install_raspap() {
     config_installation
     update_system_packages
     install_dependencies
+    check_for_networkmananger
     optimize_php
     enable_php_lighttpd
     create_raspap_directories
