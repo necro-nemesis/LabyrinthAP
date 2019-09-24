@@ -54,7 +54,7 @@ https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
 
 2.  Start Putty up and enter this address into Putty with settings:
 
-3.  Host Name Address "<address obtained from router>" Port "22" and connection type "SSH" then "OPEN"
+3.  Host Name Address "address obtained from router" Port "22" and connection type "SSH" then "OPEN"
 
 For Raspbian the default login is "root" password "raspberry"
 For Armbian the default login is "root" password "1234"
