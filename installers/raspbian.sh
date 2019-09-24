@@ -16,7 +16,7 @@ function install_dependencies() {
     sudo apt-get install lighttpd $php_package git hostapd dnsmasq vnstat resolvconf lokinet || install_error "Unable to install dependencies"
 }
 
-#Remove NetworkManager, install dhcpd, create symlink to resolvconf.
+#Remove NetworkManager and install dhcpd if required.
 
 function check_for_networkmananger() {
   install_log "Checking for NetworkManager"
@@ -25,8 +25,6 @@ function check_for_networkmananger() {
   echo "Network Manager found. Replacing with DHCPCD"
         sudo apt-get -y purge network-manager
         sudo apt-get -y install dhcpcd5
-    #    sudo rm /etc/resolv.conf
-    #    sudo ln -s ../run/resolvconf/resolv.conf /etc/resolv.conf
     fi
 
 }
