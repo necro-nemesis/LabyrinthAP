@@ -375,9 +375,8 @@ function install_complete() {
         echo "Installation reboot aborted."
         exit 0
     fi
-    echo "Shutting down\n"
-    echo "Allow a minute for reinitialization\n"
-    echo "Connect wifi to SSID loki-access and use default password 'ChangeMe'"
+    install_log "Shutting Down"
+    echo -n "Allow a minute for reinitialization then connect wifi to SSID loki-access and use default password 'ChangeMe'"
     sleep 8
     sudo shutdown -r now || install_error "Unable to execute shutdown"
 }
