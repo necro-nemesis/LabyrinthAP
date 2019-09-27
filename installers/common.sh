@@ -186,6 +186,11 @@ function check_for_old_configs() {
         sudo cp /etc/rc.local "$raspap_dir/backups/rc.local.`date +%F-%R`"
         sudo ln -sf "$raspap_dir/backups/rc.local.`date +%F-%R`" "$raspap_dir/backups/rc.local"
     fi
+
+    if [ -f /etc/nftables.conf ]; then
+        sudo cp /etc/nftables.conf "$raspap_dir/backups/nftables.conf.`date +%F-%R`"
+        sudo ln -sf "$raspap_dir/backups/nftables.conf.`date +%F-%R`" "$raspap_dir/backups/nftables.conf"
+    fi
 }
 
 # Move configuration file to the correct location
@@ -212,11 +217,11 @@ function network_tables() {
     sudo apt-get -y install nftables
     sudo apt-get -y purge iptables
     #nft flush ruleset
-    nft add table nat
-    nft add chain nat postrouting { type nat hook postrouting priority 100 \; }
-    nft add rule ip nat postrouting oifname "lokitun0" ip saddr 10.3.141.0/24 counter masquerade
-    nft add rule ip nat postrouting counter masquerade
-    nft -s list ruleset > /etc/nftables.conf
+    #nft add table nat
+    #nft add chain nat postrouting { type nat hook postrouting priority 100 \; }
+    #nft add rule ip nat postrouting oifname "lokitun0" ip saddr 10.3.141.0/24 counter masquerade
+    #nft add rule ip nat postrouting counter masquerade
+    #nft -s list ruleset > /etc/nftables.conf
     sudo systemctl enable nftables.service
     fi
     }
@@ -232,6 +237,7 @@ function default_configuration() {
     sudo mv $webroot_dir/config/dnsmasq.conf /etc/dnsmasq.conf || install_error "Unable to move dnsmasq configuration file"
     sudo mv $webroot_dir/config/dhcpcd.conf /etc/dhcpcd.conf || install_error "Unable to move dhcpcd configuration file"
     sudo mv $webroot_dir/config/head /etc/resolvconf/resolv.conf.d/head || install_error "Unable to move resolvconf head file"
+    sudo mv $webroot_dir/config/nftables.conf /etc/nftables.conf || install_error "unable to move nftables configuration file"
     sudo rm /etc/resolv.conf
     sudo ln -s /etc/resolvconf/run/resolv.conf /etc/resolv.conf
     sudo resolvconf -u || install_error "Unable to update resolv.conf"
@@ -399,8 +405,8 @@ function install_raspap() {
     change_file_ownership
     create_logging_scripts
     move_config_file
-    network_tables
     default_configuration
+    network_tables
     patch_system_files
     install_complete
 }
