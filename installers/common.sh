@@ -217,7 +217,7 @@ function network_tables() {
     nft add rule ip nat postrouting oifname "lokitun0" ip saddr 10.3.141.0/24 counter masquerade
     nft add rule ip nat postrouting counter masquerade
     systemctl start nftables.service
-    systemctl enable nftable.service
+    systemctl enable nftables.service
     fi
     }
 
