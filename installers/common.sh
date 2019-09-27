@@ -215,13 +215,13 @@ function network_tables() {
     else
     install_log "Use nftables"
     sudo apt-get -y install nftables
-    sudo apt-get -y purge iptables
     #nft flush ruleset
     #nft add table nat
     #nft add chain nat postrouting { type nat hook postrouting priority 100 \; }
     #nft add rule ip nat postrouting oifname "lokitun0" ip saddr 10.3.141.0/24 counter masquerade
     #nft add rule ip nat postrouting counter masquerade
     #nft -s list ruleset > /etc/nftables.conf
+    sudo apt-get -y purge iptables
     sudo systemctl enable nftables.service
     fi
     }
