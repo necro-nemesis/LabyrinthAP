@@ -207,11 +207,15 @@ function network_tables() {
     install_log "Use iptables"
     tablerouteA='iptables -t nat -A POSTROUTING -s 10.3.141.0\/24 -o lokitun0 -j MASQUERADE #RASPAP'
     tablerouteB='iptables -t nat -A POSTROUTING -j MASQUERADE #RASPAP'
+    tablerouteC='#RASPAP'
+    tablerouteD='#RASPAP'
     else
     install_log "Use nftables"
     sudo apt-get -y install nftables
-    tablerouteA='nft add rule ip nat POSTROUTING oifname "lokitun0" ip saddr 10.3.141.0\/24 counter masquerade #RASPAP'
-    tablerouteB='nft add rule ip nat POSTROUTING counter masquerade #RASPAP'
+    tablerouteA='nft add table nat #RASPAP'
+    tablerouteB='nft add chain nat postrouting { type nat hook postrouting priority 100 \; } #RASPAP'
+    tablerouteC='nft add rule ip nat postrouting oifname "lokitun0" ip saddr 10.3.141.0\/24 counter masquerade #RASPAP'
+    tablerouteD='nft add rule ip nat postrouting counter masquerade #RASPAP'
     fi
     }
 
@@ -246,6 +250,8 @@ function default_configuration() {
     'echo 1 > \/proc\/sys\/net\/ipv4\/ip_forward #RASPAP'
     "$tablerouteA"
     "$tablerouteB"
+    "$tablerouteC"
+    "$tablerouteD"
     'sudo \/var\/lib\/lokinet\/.\/lokilaunch.sh start #RASPAP'
     )
 
