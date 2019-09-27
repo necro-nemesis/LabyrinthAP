@@ -405,8 +405,8 @@ function install_raspap() {
     change_file_ownership
     create_logging_scripts
     move_config_file
-    default_configuration
     network_tables
+    default_configuration
     patch_system_files
     install_complete
 }
