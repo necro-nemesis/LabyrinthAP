@@ -212,12 +212,11 @@ function network_tables() {
     sudo apt-get -y install nftables
     sudo apt-get -y purge iptables
     #nft flush ruleset
-    nft add table nat
-    nft add chain nat postrouting { type nat hook postrouting priority 100 \; }
-    nft add rule ip nat postrouting oifname "lokitun0" ip saddr 10.3.141.0/24 counter masquerade
-    nft add rule ip nat postrouting counter masquerade
-    systemctl start nftables.service
-    systemctl enable nftables.service
+    sudo nft add table nat
+    sudo nft add chain nat postrouting { type nat hook postrouting priority 100 \; }
+    suod nft add rule ip nat postrouting oifname "lokitun0" ip saddr 10.3.141.0/24 counter masquerade
+    sudo nft add rule ip nat postrouting counter masquerade
+    sudo systemctl enable nftables.service
     fi
     }
 
@@ -252,7 +251,7 @@ function default_configuration() {
     'echo 1 > \/proc\/sys\/net\/ipv4\/ip_forward #RASPAP'
     "$tablerouteA"
     "$tablerouteB"
-    'sudo \/var\/lib\/lokinet\/.\/lokilaunch.sh start #RASPAP'
+    #'sudo \/var\/lib\/lokinet\/.\/lokilaunch.sh start #RASPAP'
     )
 
     for line in "${lines[@]}"; do
