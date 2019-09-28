@@ -30,13 +30,15 @@ This project branches from the work of Raspap and SB Admin 2.
  - [License](#license)
 
 ## Prerequisites
-Start with a clean install of the [latest release of Raspbian](https://www.raspberrypi.org/downloads/raspbian/) (currently Stretch). Raspbian Stretch Lite is recommended.
+Start with a clean install of the [latest release of Raspbian](https://www.raspberrypi.org/downloads/raspbian/) (currently Buster and Stretch are verified as working). Lite versions are recommended. If using Raspbian Buster you will need to run the command ```apt-get update --allow-releaseinfo-change``` just before running the LokiAP installer script.
 
-For Orange Pi Zero use Armbian Stretch found here: https://dl.armbian.com/orangepizero/
+For OrangePi Zero you can use an Armbian Buster "nightly" found here": https://dl.armbian.com/orangepizero/nightly/ or stable Armbian Stretch found here: https://dl.armbian.com/orangepizero/
 
-For Orange Pi R1 use Armbian Stretch found here: https://dl.armbian.com/orangepi-r1/
+For Orange Pi R1 you can use Armbian Buster "nightly" found here: https://dl.armbian.com/orangepi-r1/nightly/ or stable Stretch found here: https://dl.armbian.com/orangepi-r1/
 
-Burn the image to an SD card on your PC using Etcher:
+Be aware "nightly" Armbian releases can be unstable but are needed to run Buster. If in doubt use a Stretch release build.
+
+To burn the image to an SD card on your PC you can may Etcher:
 https://www.balena.io/etcher/
 
 ## Preparing the image
@@ -47,7 +49,7 @@ Insert the SD card into the device and power it up.
 
 ## Accessing the device
 
-Obtain a copy of Putty:
+Obtain a copy of Putty and install it on your PC:
 https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
 
 1.  Log into your router from your PC and find the address it assigned to the Pi.
@@ -61,7 +63,7 @@ https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
 
 3.  Follow any first user password instructions provided once logged in.
 
-4. Update Raspbian/Armbian, including the kernel and firmware, followed by a reboot:
+4. If you want to get the lastest updates before installing LokiAP:
 ```
 sudo apt-get update
 sudo apt-get upgrade
