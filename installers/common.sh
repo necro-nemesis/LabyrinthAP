@@ -89,6 +89,9 @@ function update_system_packages() {
 function install_dependencies() {
     # OVERLOAD THIS
     install_error "No function definition for install_dependencies"
+}
+
+function stop_lokinet(){
     sudo systemctl stop lokinet.service
 }
 
@@ -392,6 +395,7 @@ function install_raspap() {
     config_installation
     update_system_packages
     install_dependencies
+    stop_lokinet
     check_for_networkmananger
     optimize_php
     enable_php_lighttpd
