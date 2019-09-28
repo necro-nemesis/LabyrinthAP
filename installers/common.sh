@@ -210,6 +210,7 @@ function network_tables() {
     install_log "Selecting iptables or nftable rules"
     if [ $version -lt 11 ]; then
     install_log "Use iptables"
+    sudo apt-get -y install iptables
     tablerouteA='iptables -t nat -A POSTROUTING -s 10.3.141.0\/24 -o lokitun0 -j MASQUERADE #RASPAP'
     tablerouteB='iptables -t nat -A POSTROUTING -j MASQUERADE #RASPAP'
     else
