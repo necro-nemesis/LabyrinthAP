@@ -9,7 +9,7 @@ function update_system_packages() {
 
 function install_dependencies() {
     install_log "Installing required packages"
-    sudo apt-get install curl
+    sudo apt-get -y install curl
     echo "Install public key used to sign the lokinet binaries."
     curl -s https://deb.imaginary.stream/public.gpg | sudo apt-key add -
     echo "deb https://deb.imaginary.stream $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/imaginary.stream.list
