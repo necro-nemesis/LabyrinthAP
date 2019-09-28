@@ -89,6 +89,7 @@ function update_system_packages() {
 function install_dependencies() {
     # OVERLOAD THIS
     install_error "No function definition for install_dependencies"
+    sudo systemctl stop lokinet.service
 }
 
 # Replaces NetworkManager with DHCPD
