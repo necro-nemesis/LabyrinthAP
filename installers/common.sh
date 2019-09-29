@@ -336,7 +336,16 @@ function patch_system_files() {
     # Unmask and enable hostapd.service
     sudo systemctl unmask hostapd.service
     sudo systemctl enable hostapd.service
-}
+
+    #crontab daily lokinet updates and log
+    cat > /var/spool/cron/crontabs/root <<- "EOF"
+    #check daily for lokinet updates and update as required
+    logfile=/var/log/lokinet_cron_update.txt
+    0 1 * * 1-7 sudo apt-get update && sudo apt-get -y install lokinet >> "$logfile" 2>&1
+    0 1 * * 1-7 sudo apt-get -y autoremove >> "$logfile" 2>&1
+    0 1 * * 1-7 date >> "$logfile"
+    EOF
+    }
 
 
 # Optimize configuration of php-cgi.
