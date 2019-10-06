@@ -92,6 +92,11 @@ configured as an access point as follows:
 * SSID: `loki-access`
 * Password: `ChangeMe`
 
+## Test site
+
+To test the connection navigate to Loki's wiki page found at
+http://icxqqcpd3sfkjbqifn53h7rmusqa1fyxwqyfrrcgkd37xcikwa7y.loki/wiki/index.php?title=Main_Page
+
 ## Support us
 
 LokiAP is free software, but powered by your support. If you find it beneficial or wish to contribute to inspire ongoing development your donations of any amount; be they even symbolic, are a show of approval and are greatly appreciated.
