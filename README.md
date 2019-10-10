@@ -28,7 +28,7 @@ This project branches from the work of Raspap and SB Admin 2.
  - [License](#license)
 
 ## Prerequisites
-Start with a clean install of the [latest release of Raspbian](https://www.raspberrypi.org/downloads/raspbian/) (currently Buster and Stretch are verified as working). Lite versions are recommended. If using Raspbian Buster you will need to run the command ```apt-get update --allow-releaseinfo-change``` just before running the LokiAP installer script.
+Start with a clean install of the [latest release of Raspbian](https://www.raspberrypi.org/downloads/raspbian/) (currently Buster and Stretch are verified as working). Lite versions are recommended. If using Raspbian Buster you will need to run the command ```sudo apt-get update --allow-releaseinfo-change``` just before running the LokiAP installer script.
 
 For OrangePi Zero you can use an Armbian Buster "nightly" found here": https://dl.armbian.com/orangepizero/nightly/ or stable Armbian Stretch found here: https://dl.armbian.com/orangepizero/
 
