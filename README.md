@@ -36,7 +36,7 @@ For Orange Pi R1 you can use Armbian Buster "nightly" found here: https://dl.arm
 
 Be aware "nightly" Armbian releases can be unstable but are needed to run Buster. If in doubt use a Stretch release build.
 
-To burn the image to an SD card on your PC you can may Etcher:
+To burn the image to an SD card on your PC you can use Etcher:
 https://www.balena.io/etcher/
 
 ## Preparing the image
