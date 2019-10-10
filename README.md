@@ -22,8 +22,8 @@ This project branches from the work of Raspap and SB Admin 2.
 
  - [Prerequisites](#prerequisites)
  - [Quick installer](#quick-installer)
+ - [Test Site](#test-site)
  - [Support us](#support-us)
- - [Manual installation](#manual-installation)
  - [Multilingual support](#multilingual-support)
  - [Optional services](#optional-services)
  - [How to contribute](#how-to-contribute)
