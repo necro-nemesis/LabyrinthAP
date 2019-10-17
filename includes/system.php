@@ -41,10 +41,10 @@ function RPiVersion() {
     'a020a0' => 'Compute Module 3',
     'a02100' => 'Compute Module 3+',
     //Orange Pi Boards
-    'orpi' => 'Orange Pi'
-    'orpizero' => 'Orange Pi Zero'
-    'orpione' => 'Orange Pi One'
-    'orpir1' => 'Orange Pi R1'
+    'orpi' => 'Orange Pi',
+    'orpizero' => 'Orange Pi Zero',
+    'orpione' => 'Orange Pi One',
+    'orpir1' => 'Orange Pi R1',
   );
 
   $cpuinfo_array = '';
