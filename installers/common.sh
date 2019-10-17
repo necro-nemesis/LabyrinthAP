@@ -8,25 +8,25 @@ version=`sed 's/\..*//' /etc/debian_version`
 if [ $version -eq 10 ]; then
     version_msg="Raspbian 10.0 (Buster)"
     sudo apt update --allow-releaseinfo-change
-    php_package="php7.1-cgi"
+    php_package="php7.3-cgi"
 elif [ $version -eq 9 ]; then
     version_msg="Raspbian 9.0 (Stretch)"
     php_package="php7.0-cgi"
 elif [ $version -eq 8 ]; then
     version_msg="Raspbian 8.0 (Jessie)"
-    php_package="php5-cgi"
+    php_package="php5.6-cgi"
 else
     version_msg="Raspbian earlier than 8.0 (Wheezy)"
     webroot_dir="/var/www"
-    php_package="php5-cgi"
+    php_package="php5.6-cgi"
 fi
 
 phpcgiconf=""
-if [ "$php_package" = "php7.1-cgi" ]; then
-    phpcgiconf="/etc/php/7.1/cgi/php.ini"
+if [ "$php_package" = "php7.3-cgi" ]; then
+    phpcgiconf="/etc/php/7.3/cgi/php.ini"
 elif [ "$php_package" = "php7.0-cgi" ]; then
     phpcgiconf="/etc/php/7.0/cgi/php.ini"
-elif [ "$php_package" = "php5-cgi" ]; then
+elif [ "$php_package" = "php5.6-cgi" ]; then
     phpcgiconf="/etc/php5/cgi/php.ini"
 fi
 
@@ -91,6 +91,17 @@ function install_dependencies() {
     install_error "No function definition for install_dependencies"
 }
 
+function stop_lokinet(){
+    sudo systemctl stop lokinet.service
+}
+
+# Replaces NetworkManager with DHCPD
+function check_for_networkmananger() {
+    # OVERLOAD THIS
+    install_error "No function definition for install_dependencies"
+}
+
+
 # Enables PHP for lighttpd and restarts service for settings to take effect
 function enable_php_lighttpd() {
     install_log "Enabling PHP for lighttpd"
@@ -139,7 +150,7 @@ function download_latest_files() {
     fi
 
     install_log "Cloning latest files from github"
-    git clone --depth 1 https://github.com/necro-nemesis/raspap-webgui /tmp/raspap-webgui || install_error "Unable to download files from github"
+    git clone --depth 1 https://github.com/necro-nemesis/Lokiap-webgui /tmp/raspap-webgui || install_error "Unable to download files from github"
     sudo mv /tmp/raspap-webgui $webroot_dir || install_error "Unable to move raspap-webgui to web root"
 }
 
@@ -179,6 +190,11 @@ function check_for_old_configs() {
         sudo cp /etc/rc.local "$raspap_dir/backups/rc.local.`date +%F-%R`"
         sudo ln -sf "$raspap_dir/backups/rc.local.`date +%F-%R`" "$raspap_dir/backups/rc.local"
     fi
+
+    if [ -f /etc/nftables.conf ]; then
+        sudo cp /etc/nftables.conf "$raspap_dir/backups/nftables.conf.`date +%F-%R`"
+        sudo ln -sf "$raspap_dir/backups/nftables.conf.`date +%F-%R`" "$raspap_dir/backups/nftables.conf"
+    fi
 }
 
 # Move configuration file to the correct location
@@ -192,6 +208,23 @@ function move_config_file() {
     sudo chown -R $raspap_user:$raspap_user "$raspap_dir" || install_error "Unable to change file ownership for '$raspap_dir'"
 }
 
+# select iptables or nftables
+
+function network_tables() {
+    install_log "Selecting iptables or nftable rules"
+    if [ $version -lt 11 ]; then
+    install_log "Use iptables"
+    sudo apt-get -y install iptables
+    tablerouteA='iptables -t nat -A POSTROUTING -s 10.3.141.0\/24 -o lokitun0 -j MASQUERADE #RASPAP'
+    tablerouteB='iptables -t nat -A POSTROUTING -j MASQUERADE #RASPAP'
+    else
+    install_log "Use nftables"
+    sudo apt-get -y install nftables
+    sudo apt-get -y purge iptables
+    sudo systemctl enable nftables.service
+    fi
+    }
+
 # Set up default configuration
 function default_configuration() {
     install_log "Setting up hostapd"
@@ -203,6 +236,9 @@ function default_configuration() {
     sudo mv $webroot_dir/config/dnsmasq.conf /etc/dnsmasq.conf || install_error "Unable to move dnsmasq configuration file"
     sudo mv $webroot_dir/config/dhcpcd.conf /etc/dhcpcd.conf || install_error "Unable to move dhcpcd configuration file"
     sudo mv $webroot_dir/config/head /etc/resolvconf/resolv.conf.d/head || install_error "Unable to move resolvconf head file"
+    sudo mv $webroot_dir/config/nftables.conf /etc/nftables.conf || install_error "unable to move nftables configuration file"
+    sudo rm /etc/resolv.conf
+    sudo ln -s /etc/resolvconf/run/resolv.conf /etc/resolv.conf
     sudo resolvconf -u || install_error "Unable to update resolv.conf"
 
 
@@ -216,23 +252,12 @@ function default_configuration() {
 
     # Generate required lines for Rasp AP to place into rc.local file.
     # #RASPAP is for removal
-    # select iptables or nftables
-
-    function networktables() {
-        if [ ! -f /usr/sbin/iptables-nft ]; then
-        tablerouteA='iptables -t nat -A POSTROUTING -s 10.3.141.0\/24 -o lokitun0 -j MASQUERADE #RASPAP'
-        tablerouteB='iptables -t nat -A POSTROUTING -j MASQUERADE #RASPAP'
-        else
-        sudo apt-get -y install nftables
-        tablerouteA='nft add rule ip nat POSTROUTING oifname "lokitun0" ip saddr 10.3.141.0\/24 counter masquerade #RASPAP'
-        tablerouteB='nft add rule ip nat POSTROUTING counter masquerade #RASPAP'
-        }
 
     lines=(
-    'echo 1 > \/proc\/sys\/net\/ipv4\/ip_forward #RASPAP')
-    $tablerouteA
-    $tablerouteB
-    'sudo \/var\/lib\/lokinet\/.\/lokilaunch.sh start #RASPAP'
+    'echo 1 > \/proc\/sys\/net\/ipv4\/ip_forward #RASPAP'
+    "$tablerouteA"
+    "$tablerouteB"
+    #'sudo \/var\/lib\/lokinet\/.\/lokilaunch.sh start #RASPAP'
     )
 
     for line in "${lines[@]}"; do
@@ -311,7 +336,16 @@ function patch_system_files() {
     # Unmask and enable hostapd.service
     sudo systemctl unmask hostapd.service
     sudo systemctl enable hostapd.service
-}
+
+    #crontab daily lokinet updates and log
+cat > /var/spool/cron/crontabs/root <<-'EOF'
+check daily for lokinet updates and update as required
+logfile=/var/log/lokinet_cron_update.txt
+0 1 * * 1-7 sudo apt-get update && sudo apt-get -y install lokinet >> "$logfile" 2>&1
+0 1 * * 1-7 sudo apt-get -y autoremove >> "$logfile" 2>&1
+0 1 * * 1-7 date >> "$logfile"
+EOF
+    }
 
 
 # Optimize configuration of php-cgi.
@@ -359,6 +393,9 @@ function install_complete() {
         echo "Installation reboot aborted."
         exit 0
     fi
+    install_log "Shutting Down"
+    echo -n "Allow a minute for reinitialization then connect wifi to SSID loki-access and use default password 'ChangeMe'"
+    sleep 8
     sudo shutdown -r now || install_error "Unable to execute shutdown"
 }
 
@@ -367,6 +404,8 @@ function install_raspap() {
     config_installation
     update_system_packages
     install_dependencies
+    stop_lokinet
+    check_for_networkmananger
     optimize_php
     enable_php_lighttpd
     create_raspap_directories
@@ -375,6 +414,7 @@ function install_raspap() {
     change_file_ownership
     create_logging_scripts
     move_config_file
+    network_tables
     default_configuration
     patch_system_files
     install_complete

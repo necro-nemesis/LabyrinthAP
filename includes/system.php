@@ -40,11 +40,21 @@ function RPiVersion() {
     'a220a0' => 'Compute Module 3',
     'a020a0' => 'Compute Module 3',
     'a02100' => 'Compute Module 3+',
+    //Orange Pi Boards
+    'orpi' => 'Orange Pi',
+    'orpizero' => 'Orange Pi Zero',
+    'orpione' => 'Orange Pi One',
+    'orpir1' => 'Orange Pi R1',
   );
 
   $cpuinfo_array = '';
   exec('cat /proc/cpuinfo', $cpuinfo_array);
   $rev = trim(array_pop(explode(':',array_pop(preg_grep("/^Revision/", $cpuinfo_array)))));
+    //Armbian Identification
+  if ( strpos(file_get_contents("/etc/armbian-release"),'orangepi') !== false) {$rev=orpi;}
+  if ( strpos(file_get_contents("/etc/armbian-release"),'orangepizero') !== false) {$rev=orpizero;}
+  if ( strpos(file_get_contents("/etc/armbian-release"),'orangepione') !== false) {$rev=orpione;}
+  if ( strpos(file_get_contents("/etc/armbian-release"),'orangepi-r1') !== false) {$rev=orpir1;}
   if (array_key_exists($rev, $revisions)) {
     return $revisions[$rev];
   } else {
