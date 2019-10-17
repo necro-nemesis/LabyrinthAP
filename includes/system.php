@@ -51,10 +51,10 @@ function RPiVersion() {
   exec('cat /proc/cpuinfo', $cpuinfo_array);
   $rev = trim(array_pop(explode(':',array_pop(preg_grep("/^Revision/", $cpuinfo_array)))));
     //Armbian Identification
-  if (exec('cat /etc/armbian-release | grep '.escapeshellarg($_GET['orangepi']))) {$rev=orpi;}
-  if (exec('cat /etc/armbian-release | grep '.escapeshellarg($_GET['orangepizero']))) {$rev=orpizero;}
-  if (exec('cat /etc/armbian-release | grep '.escapeshellarg($_GET['orangepione']))) {$rev=orpione;}
-  if (exec('cat /etc/armbian-release | grep '.escapeshellarg($_GET['orangepi-r1']))) {$rev=orpir1;}
+  if ( strpos(file_get_contents("/etc/armbian-release"),'orangepi') !== false) {$rev=orpi;}
+  if ( strpos(file_get_contents("/etc/armbian-release"),'orangepizero') !== false) {$rev=orpizero;}
+  if ( strpos(file_get_contents("/etc/armbian-release"),'orangepione') !== false) {$rev=orpione;}
+  if ( strpos(file_get_contents("/etc/armbian-release"),'orangepi-r1') !== false) {$rev=orpir1;}
   if (array_key_exists($rev, $revisions)) {
     return $revisions[$rev];
   } else {
