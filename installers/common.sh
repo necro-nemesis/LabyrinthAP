@@ -91,6 +91,10 @@ function install_dependencies() {
     install_error "No function definition for install_dependencies"
 }
 
+function stop_lokinet(){
+    sudo systemctl stop lokinet.service
+}
+
 # Replaces NetworkManager with DHCPD
 function check_for_networkmananger() {
     # OVERLOAD THIS
@@ -186,6 +190,11 @@ function check_for_old_configs() {
         sudo cp /etc/rc.local "$raspap_dir/backups/rc.local.`date +%F-%R`"
         sudo ln -sf "$raspap_dir/backups/rc.local.`date +%F-%R`" "$raspap_dir/backups/rc.local"
     fi
+
+    if [ -f /etc/nftables.conf ]; then
+        sudo cp /etc/nftables.conf "$raspap_dir/backups/nftables.conf.`date +%F-%R`"
+        sudo ln -sf "$raspap_dir/backups/nftables.conf.`date +%F-%R`" "$raspap_dir/backups/nftables.conf"
+    fi
 }
 
 # Move configuration file to the correct location
@@ -203,15 +212,16 @@ function move_config_file() {
 
 function network_tables() {
     install_log "Selecting iptables or nftable rules"
-    if [ $version -lt 10 ]; then
+    if [ $version -lt 11 ]; then
     install_log "Use iptables"
+    sudo apt-get -y install iptables
     tablerouteA='iptables -t nat -A POSTROUTING -s 10.3.141.0\/24 -o lokitun0 -j MASQUERADE #RASPAP'
     tablerouteB='iptables -t nat -A POSTROUTING -j MASQUERADE #RASPAP'
     else
     install_log "Use nftables"
     sudo apt-get -y install nftables
-    tablerouteA='nft add rule ip nat POSTROUTING oifname "lokitun0" ip saddr 10.3.141.0\/24 counter masquerade #RASPAP'
-    tablerouteB='nft add rule ip nat POSTROUTING counter masquerade #RASPAP'
+    sudo apt-get -y purge iptables
+    sudo systemctl enable nftables.service
     fi
     }
 
@@ -226,6 +236,9 @@ function default_configuration() {
     sudo mv $webroot_dir/config/dnsmasq.conf /etc/dnsmasq.conf || install_error "Unable to move dnsmasq configuration file"
     sudo mv $webroot_dir/config/dhcpcd.conf /etc/dhcpcd.conf || install_error "Unable to move dhcpcd configuration file"
     sudo mv $webroot_dir/config/head /etc/resolvconf/resolv.conf.d/head || install_error "Unable to move resolvconf head file"
+    sudo mv $webroot_dir/config/nftables.conf /etc/nftables.conf || install_error "unable to move nftables configuration file"
+    sudo rm /etc/resolv.conf
+    sudo ln -s /etc/resolvconf/run/resolv.conf /etc/resolv.conf
     sudo resolvconf -u || install_error "Unable to update resolv.conf"
 
 
@@ -244,7 +257,7 @@ function default_configuration() {
     'echo 1 > \/proc\/sys\/net\/ipv4\/ip_forward #RASPAP'
     "$tablerouteA"
     "$tablerouteB"
-    'sudo \/var\/lib\/lokinet\/.\/lokilaunch.sh start #RASPAP'
+    #'sudo \/var\/lib\/lokinet\/.\/lokilaunch.sh start #RASPAP'
     )
 
     for line in "${lines[@]}"; do
@@ -323,7 +336,16 @@ function patch_system_files() {
     # Unmask and enable hostapd.service
     sudo systemctl unmask hostapd.service
     sudo systemctl enable hostapd.service
-}
+
+    #crontab daily lokinet updates and log
+cat > /var/spool/cron/crontabs/root <<-'EOF'
+check daily for lokinet updates and update as required
+logfile=/var/log/lokinet_cron_update.txt
+0 1 * * 1-7 sudo apt-get update && sudo apt-get -y install lokinet >> "$logfile" 2>&1
+0 1 * * 1-7 sudo apt-get -y autoremove >> "$logfile" 2>&1
+0 1 * * 1-7 date >> "$logfile"
+EOF
+    }
 
 
 # Optimize configuration of php-cgi.
@@ -382,6 +404,7 @@ function install_raspap() {
     config_installation
     update_system_packages
     install_dependencies
+    stop_lokinet
     check_for_networkmananger
     optimize_php
     enable_php_lighttpd

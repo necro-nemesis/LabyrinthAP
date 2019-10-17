@@ -9,14 +9,15 @@ function update_system_packages() {
 
 function install_dependencies() {
     install_log "Installing required packages"
+    sudo apt-get -y install curl
     echo "Install public key used to sign the lokinet binaries."
     curl -s https://deb.imaginary.stream/public.gpg | sudo apt-key add -
     echo "deb https://deb.imaginary.stream $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/imaginary.stream.list
     sudo apt-get update
-    sudo apt-get install lighttpd $php_package git hostapd dnsmasq vnstat resolvconf lokinet || install_error "Unable to install dependencies"
+    sudo yes | apt-get install lighttpd $php_package git hostapd dnsmasq vnstat resolvconf lokinet || install_error "Unable to install dependencies"
 }
 
-#Remove NetworkManager, install dhcpd, create symlink to resolvconf.
+#Remove NetworkManager and install dhcpd if required.
 
 function check_for_networkmananger() {
   install_log "Checking for NetworkManager"
@@ -25,8 +26,6 @@ function check_for_networkmananger() {
   echo "Network Manager found. Replacing with DHCPCD"
         sudo apt-get -y purge network-manager
         sudo apt-get -y install dhcpcd5
-    #    sudo rm /etc/resolv.conf
-    #    sudo ln -s ../run/resolvconf/resolv.conf /etc/resolv.conf
     fi
 
 }

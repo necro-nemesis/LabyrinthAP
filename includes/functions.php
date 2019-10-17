@@ -345,6 +345,7 @@ function DisplayLokinetConfig()
 {
     exec('pidof lokinet | wc -l', $lokinetstatus);
     $rulestate = exec("ip rule show default | grep lokinet | awk {'print $5'}", $output);
+    $lokiversion = exec("dpkg -s lokinet | grep '^Version:'", $output);
     if ($lokinetstatus[0] == 0) {
         $status = '<div class="alert alert-danger alert-dismissable">Lokinet daemon is not running
 					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>';
@@ -370,7 +371,8 @@ function DisplayLokinetConfig()
             <!-- Tab panes -->
            	<div class="tab-content">
            		<p><?php echo $status; ?></p>
-            	<div class="tab-pane fade in active" id="basic">
+              <p><?php echo "Current Lokinet $lokiversion"; ?></p>
+              <div class="tab-pane fade in active" id="basic">
                 <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#instruct">Instructions</button>
                 <div id="instruct" class="collapse">The 3 buttons below must be armed (red) to connect to Lokinet. If there isn't a current lokinet.ini file found on the system the "Generate.ini" button will be green. The .ini file must be generated prior to connecting to Lokinet by pressing the button which will automatically write the required .ini file. Similarly the absense of a valid bootstrap will be indicated by a green "Bootstrap" button. Applying a bootstrap by pressing the apply button without submitting a valid URL in the textbox area will apply the original default bootstrap in place of one being provided. Stopping the daemon also exits Lokinet. To summarize, if necessary generate the .ini and bootstrap Lokinet then you are able to connect to Lokinet by starting the daemon and letting the network establish itself.
                 </div>
