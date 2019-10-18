@@ -94,7 +94,7 @@ function install_dependencies() {
 function stop_lokinet(){
     sudo systemctl stop lokinet.service
 }
-function common_interfacest(){
+function common_interfaces(){
     #OVERLOAD THIS
     install_error "Not Armbian"
 }
