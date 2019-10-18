@@ -94,7 +94,7 @@ function install_dependencies() {
 #If Armbian set network interfaces naming convention
 
 function common_interfaces() {
-  if [ -f "/boot/armbianEnv.txt"]; then
+  if [ -f /boot/armbianEnv.txt ]; then
     sudo sed -i '1i extraargs=net.ifnames=0' /boot/armbianEnv.txt && install_log "armbianEnv patched"
   else install_log "Armbian undetected no patching required"
   fi
