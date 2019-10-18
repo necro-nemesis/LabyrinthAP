@@ -14,9 +14,8 @@ Loki
 
 ![](https://i.imgur.com/fxKF4bi.jpg)
 
-This project branches from the work of Raspap and SB Admin 2.
-
 ![](https://i.imgur.com/rLxGmZd.png)
+
 ![](https://i.imgur.com/pSgI2gt.png)
 
 ## Contents
@@ -29,13 +28,22 @@ This project branches from the work of Raspap and SB Admin 2.
  - [License](#license)
 
 ## Prerequisites
-Start with a clean install of the [latest release of Raspbian](https://www.raspberrypi.org/downloads/raspbian/) (currently Buster and Stretch are verified as working). Lite versions are recommended. If using Raspbian Buster you will need to run the command ```sudo apt-get update --allow-releaseinfo-change``` then elevate to root with ```sudo su``` before running the LokiAP installer script.
-
-For OrangePi Zero you can use an Armbian Buster "nightly" found here": https://dl.armbian.com/orangepizero/nightly/ or stable Armbian Stretch found here: https://dl.armbian.com/orangepizero/
+Start with a clean install of the [Armbian](https://www.armbian.com/) or [Raspbian](https://www.raspberrypi.org/downloads/raspbian/) (currently Buster and Stretch are verified as working). Lite versions are recommended. If using Raspbian Buster you will need to run the command ```sudo apt-get update --allow-releaseinfo-change``` then elevate to root with ```sudo su``` before running the LokiAP installer script. These additional steps are not required when using Armbian.
 
 For Orange Pi R1 you can use Armbian Buster "nightly" found here: https://dl.armbian.com/orangepi-r1/nightly/ or stable Stretch found here: https://dl.armbian.com/orangepi-r1/
 
-Be aware "nightly" Armbian releases can be unstable but are needed to run Buster. If in doubt use a Stretch release build.
+Note:
+
+Specific code has been incorporated to take advantage of the OrangePi R1's second ethernet interface. The AP will provide access via ethernet in addition to wifi when using this board.
+
+
+For OrangePi Zero you can use an Armbian Buster "nightly" found here": https://dl.armbian.com/orangepizero/nightly/ or stable Armbian Stretch found here: https://dl.armbian.com/orangepizero/
+
+Note:
+
+Although it will function the OrangePi Zero has a well documented issue with the XR819 wifi chip used on this board. It will drop connections occasionally as a result of unresolved firmware issues. The board is supported but I would recommend using the R1 over the Zero given it has two ethernet adapters and is equipped with a Realtek wifi chip which is stable.
+
+Be aware "nightly" Armbian releases can be unstable but are needed to run Buster. If in doubt use a Stretch release build. So far I have had good success with Buster nightly builds.
 
 To burn the image to an SD card on your PC you can use Etcher:
 https://www.balena.io/etcher/
