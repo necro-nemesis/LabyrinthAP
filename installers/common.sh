@@ -6,17 +6,17 @@ version=`sed 's/\..*//' /etc/debian_version`
 # Determine version, set default home location for lighttpd and
 # php package to install
 if [ $version -eq 10 ]; then
-    version_msg="Raspbian 10.0 (Buster)"
+    version_msg="10.0 (Buster)"
     sudo apt update --allow-releaseinfo-change
     php_package="php7.3-cgi"
 elif [ $version -eq 9 ]; then
-    version_msg="Raspbian 9.0 (Stretch)"
+    version_msg="9.0 (Stretch)"
     php_package="php7.0-cgi"
 elif [ $version -eq 8 ]; then
-    version_msg="Raspbian 8.0 (Jessie)"
+    version_msg="8.0 (Jessie)"
     php_package="php5.6-cgi"
 else
-    version_msg="Raspbian earlier than 8.0 (Wheezy)"
+    version_msg="Earlier than 8.0 (Wheezy)"
     webroot_dir="/var/www"
     php_package="php5.6-cgi"
 fi
@@ -91,12 +91,16 @@ function install_dependencies() {
     install_error "No function definition for install_dependencies"
 }
 
+#If Armbian set network interfaces naming convention
+
+function common_interfaces () {
+  if [ -f /boot/armbianEnv]; then
+    sudo sed -i '1i extraargs=net.ifnames=0' /boot/armbianEnv.txt && install_log "armbianEnv patched"
+  fi
+}
+
 function stop_lokinet(){
     sudo systemctl stop lokinet.service
-}
-function common_interfaces(){
-    #OVERLOAD THIS
-    install_error "Not Armbian"
 }
 
 # Replaces NetworkManager with DHCPD
