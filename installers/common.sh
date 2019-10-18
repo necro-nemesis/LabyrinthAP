@@ -94,6 +94,10 @@ function install_dependencies() {
 function stop_lokinet(){
     sudo systemctl stop lokinet.service
 }
+function common_interfacest(){
+    #OVERLOAD THIS
+    install_error "Not Armbian"
+}
 
 # Replaces NetworkManager with DHCPD
 function check_for_networkmananger() {
@@ -384,12 +388,6 @@ function optimize_php() {
     fi
 }
 
-function build_R1 () {
-  if [ -f /boot/armbianEnv]; then
-    sudo sed -i '1i extraargs=net.ifnames=0' /boot/armbianEnv.txt
-  fi
-}
-
 function install_complete() {
     install_log "Installation completed!"
 
@@ -410,6 +408,7 @@ function install_raspap() {
     config_installation
     update_system_packages
     install_dependencies
+    common_interfaces
     stop_lokinet
     check_for_networkmananger
     optimize_php
@@ -423,6 +422,5 @@ function install_raspap() {
     network_tables
     default_configuration
     patch_system_files
-    build_R1
     install_complete
 }
