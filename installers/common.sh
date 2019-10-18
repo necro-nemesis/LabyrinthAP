@@ -384,6 +384,12 @@ function optimize_php() {
     fi
 }
 
+function build_R1 () {
+  if [ strpos(file_get_contents("/etc/armbian-release"),'orangepi-r1') !== false]; then
+    sudo sed -i "1i extraargs=net.ifnames=0" /boot/armbianEnv.txt
+  fi
+}
+
 function install_complete() {
     install_log "Installation completed!"
 
@@ -417,5 +423,6 @@ function install_raspap() {
     network_tables
     default_configuration
     patch_system_files
+    build_R1
     install_complete
 }
