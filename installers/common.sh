@@ -385,7 +385,7 @@ function optimize_php() {
 }
 
 function build_R1 () {
-  if [ strpos(file_get_contents("/etc/armbian-release"),'orangepi-r1') !== false]; then
+  if ( strpos(file_get_contents("/etc/armbian-release"),'orangepi-r1') !== false); then
     sudo sed -i "1i extraargs=net.ifnames=0" /boot/armbianEnv.txt
   fi
 }
