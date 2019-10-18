@@ -17,6 +17,7 @@ Loki
 This project branches from the work of Raspap and SB Admin 2.
 
 ![](https://i.imgur.com/qdXbAGn.png)
+![](https://i.imgur.com/pSgI2gt.png)
 
 ## Contents
 
