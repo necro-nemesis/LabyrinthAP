@@ -386,7 +386,7 @@ function optimize_php() {
 
 function build_R1 () {
   if [ -f /boot/armbianEnv.txt]; then
-    sudo sed -i "1i extraargs=net.ifnames=0" /boot/armbianEnv.txt
+    sudo sed -i '1i extraargs=net.ifnames=0' /boot/armbianEnv.txt
   fi
 }
 
