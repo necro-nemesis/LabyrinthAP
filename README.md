@@ -12,7 +12,7 @@ https://loki.network/
 
 Loki
 
-![](https://i.imgur.com/V9coVgA.jpg)
+![](https://i.imgur.com/fxKF4bi.jpg)
 
 This project branches from the work of Raspap and SB Admin 2.
 
