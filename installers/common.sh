@@ -264,6 +264,9 @@ function default_configuration() {
 
     lines=(
     'echo 1 > \/proc\/sys\/net\/ipv4\/ip_forward #RASPAP'
+    'if [ ! -f /etc/loki/lokinet.ini ]; then'
+    'lokinet -g'
+    'fi'
     "$tablerouteA"
     "$tablerouteB"
     #'sudo \/var\/lib\/lokinet\/.\/lokilaunch.sh start #RASPAP'
