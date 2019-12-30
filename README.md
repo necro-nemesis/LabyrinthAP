@@ -30,11 +30,11 @@ Loki
 ## Prerequisites
 Start with a clean install of [Armbian](https://www.armbian.com/) or [Raspbian](https://www.raspberrypi.org/downloads/raspbian/) (currently Buster and Stretch are verified as working). Lite versions are recommended. If using Raspbian Buster you will need to run the command ```sudo apt-get update --allow-releaseinfo-change``` then elevate to root with ```sudo su``` before running the LokiAP installer script. These additional steps are not required when using Armbian.
 
-For Orange Pi R1 you can use Armbian Buster found here: https://www.armbian.com/orange-pi-r1/. Recommend using "minimal" which is available for direct download at the bottom of the page or much faster download by .torrent also linked there.
+For Orange Pi R1 use Armbian Buster found here: https://www.armbian.com/orange-pi-r1/. Recommend using "minimal" which is available for direct download at the bottom of the page or much faster download by .torrent also linked there.
 
 Specific code has been incorporated to take advantage of the OrangePi R1's second ethernet interface. The AP will provide access via ethernet in addition to wifi when using this board.
 
-For OrangePi Zero you can use an Armbian Buster "nightly" found here": https://www.armbian.com/orange-pi-zero/
+For OrangePi Zero use Armbian Buster found here": https://www.armbian.com/orange-pi-zero/
 
 Note:
 
