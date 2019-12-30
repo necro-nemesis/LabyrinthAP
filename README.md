@@ -30,20 +30,15 @@ Loki
 ## Prerequisites
 Start with a clean install of [Armbian](https://www.armbian.com/) or [Raspbian](https://www.raspberrypi.org/downloads/raspbian/) (currently Buster and Stretch are verified as working). Lite versions are recommended. If using Raspbian Buster you will need to run the command ```sudo apt-get update --allow-releaseinfo-change``` then elevate to root with ```sudo su``` before running the LokiAP installer script. These additional steps are not required when using Armbian.
 
-For Orange Pi R1 you can use Armbian Buster "nightly" found here: https://dl.armbian.com/orangepi-r1/nightly/ or stable Stretch found here: https://dl.armbian.com/orangepi-r1/
-
-Note:
+For Orange Pi R1 you can use Armbian Buster found here: https://www.armbian.com/orange-pi-r1/. Recommend using "minimal" which is available for direct download at the bottom of the page or much faster download by .torrent also linked there.
 
 Specific code has been incorporated to take advantage of the OrangePi R1's second ethernet interface. The AP will provide access via ethernet in addition to wifi when using this board.
 
-
-For OrangePi Zero you can use an Armbian Buster "nightly" found here": https://dl.armbian.com/orangepizero/nightly/ or stable Armbian Stretch found here: https://dl.armbian.com/orangepizero/
+For OrangePi Zero you can use an Armbian Buster "nightly" found here": https://www.armbian.com/orange-pi-zero/
 
 Note:
 
 Although it will function the OrangePi Zero has a well documented issue with the XR819 wifi chip used on this board. It will drop connections occasionally as a result of unresolved firmware issues. The board is supported but I would recommend using the R1 over the Zero given it has two ethernet adapters and is equipped with a Realtek wifi chip which is stable.
-
-Be aware "nightly" Armbian releases can be unstable but are needed to run Buster. If in doubt use a Stretch release build. So far I have had good success with Buster nightly builds.
 
 To burn the image to an SD card on your PC you can use Etcher:
 https://www.balena.io/etcher/
@@ -76,11 +71,9 @@ sudo apt-get update
 sudo apt-get upgrade
 sudo reboot
 ```
-5. Set the WiFi country in raspi-config's / armbian-config's **Localisation Options**: `sudo raspi-config` or `sudo arbmian-config` for RasperryPi or OrangePi respectively.
+5. If you have an older Raspberry Pi without an onboard WiFi chipset, the [**Edimax Wireless 802.11b/g/n nano USB adapter**](https://www.edimax.com/edimax/merchandise/merchandise_detail/data/edimax/global/wireless_adapters_n150/ew-7811un) is an excellent option – it's small, cheap and has good driver support.
 
-6. If you have an older Raspberry Pi without an onboard WiFi chipset, the [**Edimax Wireless 802.11b/g/n nano USB adapter**](https://www.edimax.com/edimax/merchandise/merchandise_detail/data/edimax/global/wireless_adapters_n150/ew-7811un) is an excellent option – it's small, cheap and has good driver support.
-
-With the prerequisites done, you can proceed with either the Quick installer or Manual installation steps below.
+With the prerequisites done, you can now proceed with the Quick installer.
 
 ## Quick installer
 
