@@ -109,10 +109,10 @@ function DisplayDHCPConfig() {
   exec( 'cat '. RASPI_DNSMASQ_CONFIG, $return );
   $conf = ParseConfig($return);
   $arrRange = explode( ",", $conf['dhcp-range'] );
-  $RangeStart = $arrRange[0];
-  $RangeEnd = $arrRange[1];
-  $RangeMask = $arrRange[2];
-  $leaseTime = $arrRange[3];
+  $RangeStart = $arrRange[1];
+  $RangeEnd = $arrRange[2];
+  $RangeMask = $arrRange[3];
+  $leaseTime = $arrRange[4];
 
   $hselected = '';
   $mselected = '';

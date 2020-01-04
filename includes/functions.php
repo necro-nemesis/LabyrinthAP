@@ -381,7 +381,7 @@ function DisplayLokinetConfig()
                     <div class="form-group col-lg-12">
                       <h5>Enter a valid bootstrap url below and apply to overwrite the current bootstrap:</h5>
                         <label for="usr">Bootstrap url:</label>
-                        <input type="url" class="form-control" placeholder="https://seed.lokinet.org/bootstrap.signed" id="lokinetbootstrap" name="lokinetbootstrap">
+                        <input type="url" class="form-control" placeholder="https://seed.lokinet.org/lokinet.signed" id="lokinetbootstrap" name="lokinetbootstrap">
                         <li></li>
                   <?php
 
