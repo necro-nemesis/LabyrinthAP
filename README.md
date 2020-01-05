@@ -95,7 +95,7 @@ configured as an access point as follows:
 ## Test site
 
 To test the connection navigate to Loki's wiki page found at
-http://http://wikicymsw5cy1h367oo9wwxuhp7igcrxcugy6kn4h5kgdzmq8qho.loki/
+http://wikicymsw5cy1h367oo9wwxuhp7igcrxcugy6kn4h5kgdzmq8qho.loki/
 
 ## Support us
 
