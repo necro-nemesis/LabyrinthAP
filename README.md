@@ -81,7 +81,7 @@ Install LokiAP from shell prompt:
 ```sh
 $ wget -q https://git.io/fjeSw -O /tmp/raspap && bash /tmp/raspap
 ```
-The installer will complete the steps in the manual installation (below) for you. You will be occasionally prompted to answer `y` or `n`. Answering yes to all prompts will in almost all cases be the answer you want so if in doubt respond with `y` that you want the default set up and the AP will work.
+The installer will complete the installation steps for you. You will be occasionally prompted to answer `y` or `n`. Answering yes to all prompts will in almost all cases be the answer you want so if in doubt respond with `y` that you want the default set up and the AP will work.
 
 After the reboot at the end of the installation the wireless network will be
 configured as an access point as follows:
@@ -95,7 +95,7 @@ configured as an access point as follows:
 ## Test site
 
 To test the connection navigate to Loki's wiki page found at
-http://icxqqcpd3sfkjbqifn53h7rmusqa1fyxwqyfrrcgkd37xcikwa7y.loki/wiki/index.php?title=Main_Page
+http://dw68y1xhptqbhcm5s8aaaip6dbopykagig5q5u1za4c7pzxto77y.loki/wiki/index.php?title=Main_Page
 
 ## Support us
 

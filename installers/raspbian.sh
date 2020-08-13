@@ -17,7 +17,7 @@ function install_dependencies() {
     sudo yes | apt-get install lighttpd $php_package git resolvconf hostapd dnsmasq vnstat lokinet || install_error "Unable to install dependencies"
 }
 
-#Remove NetworkManager and install dhcpd if required.
+#Remove NetworkManager and install dhcpd if required Armbian.
 
 function check_for_networkmananger() {
   install_log "Checking for NetworkManager"
