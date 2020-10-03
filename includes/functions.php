@@ -379,7 +379,8 @@ function DisplayLokinetConfig()
                 <input type="url" class="form-control" placeholder="enter exit key here" id="exitkey" name="exitkey">
                 <br/>
                 <?php
-    if ($exitstatus == False) {
+    GLOBAL $exitstatus;
+    if ($exitstatus == FALSE) {
       echo '<input type="submit" class="btn btn-success" name="StartExit" value="Start Exit" />' , PHP_EOL;
     } else {
       echo '<input type="submit" class="btn btn-danger" name="StopExit" value="Stop Exit" />' , PHP_EOL;
@@ -631,13 +632,14 @@ function SaveTORAndVPNConfig()
         $token=str_replace("'", "", $token);
         $output = shell_exec("sudo /var/lib/lokinet/lokilaunch.sh exitup '".$exit."''" .$token."'");
         echo "<pre><strong>$output</strong></pre>";
+        GLOBAL $existatus;
+        $exitstatus = TRUE;
 
-        //exec ('sudo /var/lib/lokinet/lokilaunch.sh exitup');
-        $exitstatus = True;
     //STOP EXIT
     } elseif (isset($_POST['StopExit'])) {
         exec ('sudo /var/lib/lokinet/lokilaunch.sh exitdown');
-        $exitstatus = False;
+        GLOBAL $exitstatus;
+        $exitstatus = FALSE;
 
     //GENERATE LOKINET.INI
     } elseif (isset($_POST['GenerateLokinet'])) {
