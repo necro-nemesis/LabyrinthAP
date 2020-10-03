@@ -30,11 +30,11 @@ case "$1" in
 bootstrap)
         echo -n "Lokinet daemon shutdown for bootstrapping\n"
         systemctl stop lokinet
-        pidof lokinet >/dev/null && echo "Daemon shutdown failure\n" || echo "Daemon is stopped\n"
+        pidof lokinet >/dev/null && echo "Daemon shutdown failure" || echo "Daemon is stopped"
         echo -n "Fetching bootstrap <---- "
         lokinet-bootstrap "$2"
-        echo -n "Bootstrapped with ---> $2\n\n"
-        systemclt start lokinet
+        systemctl start lokinet
+        echo -n "Lokinet daemon restarted"
         ;;
 
 exitup)
