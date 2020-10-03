@@ -37,8 +37,18 @@ bootstrap)
         systemclt start lokinet
         ;;
 
+exitup)
+        lokinet-vpn --up --exit "$2" --token "$3"
+        echo -n  "lokinet-vpn --up --exit ""$2"" --token ""$3"
+        ;;
+
+exitdown)
+        echo -n "Stopping Exit"
+        lokinet-vpn --down
+        ;;
+
   *)
-        echo "Usage: "$1" {start|stop|gen|bootstrap}"
+        echo "Usage: "$1" {start|stop|gen|bootstrap|exitup|exitdown}"
         exit 1
         ;;
         esac
