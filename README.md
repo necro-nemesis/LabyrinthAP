@@ -14,8 +14,6 @@ Loki
 
 ![](https://i.imgur.com/fxKF4bi.jpg)
 
-![](https://i.imgur.com/rLxGmZd.png)
-
 ![](https://i.imgur.com/muMVvdV.png)
 
 ![](https://i.imgur.com/F83n7PF.jpg)
