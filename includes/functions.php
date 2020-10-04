@@ -632,7 +632,7 @@ function SaveTORAndVPNConfig()
         $token=str_replace("'", "", $token);
         $output = shell_exec("sudo /var/lib/lokinet/lokilaunch.sh exitup '".$exit."''" .$token."'");
         echo "<pre><strong>$output</strong></pre>";
-        GLOBAL $existatus;
+        GLOBAL $exitstatus;
         $exitstatus = TRUE;
 
     //STOP EXIT
