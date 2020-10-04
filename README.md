@@ -1,8 +1,8 @@
 ![](https://i.imgur.com/mXuacOH.jpg)
 
-# `$ Lokiap-webgui` [![Release 1.8](https://img.shields.io/badge/Release-1.8-green.svg)](https://github.com/necro-nemesis/raspap-webgui/releases)
+# `$ Lokiap-webgui` [![Release 1.9](https://img.shields.io/badge/Release-1.9-green.svg)](https://github.com/necro-nemesis/raspap-webgui/releases)
 
-LokiAP interfaces witht Lokinet daemon to facilitate connections to the the Lokinet global privacy network. LokiAP provides a simple, responsive web interface to control wifi, hostapd, Lokinet daemon and related services necessary to access Lokinet on the Raspberry Pi or Orange Pi.
+LokiAP interfaces witht Lokinet daemon to facilitate connections to the Lokinet global privacy network. LokiAP provides a simple, responsive web interface to control wifi, hostapd, Lokinet daemon and related services necessary to access Lokinet on the Raspberry Pi or Orange Pi.
 
 ### WHAT IS LOKI?
 
@@ -28,7 +28,7 @@ Loki
  - [License](#license)
 
 ## Prerequisites
-Start with a clean install of [Armbian](https://www.armbian.com/) or [Raspbian](https://www.raspberrypi.org/downloads/raspbian/) (currently Buster and Stretch are verified as working). Lite versions are recommended. If using Raspbian Buster you will need to run the command ```sudo apt-get update --allow-releaseinfo-change``` then elevate to root with ```sudo su``` before running the LokiAP installer script. These additional steps are not required when using Armbian.
+Start with a clean install of [Armbian](https://www.armbian.com/) or [Raspbian](https://www.raspberrypi.org/downloads/raspbian/) (currently Buster and Stretch are verified as working). Lite versions are recommended as all additional dependencies are added by the installer. If using Raspbian you will need to elevate to root with ```sudo su``` before running the LokiAP installer script. This additional step is not required when using Armbian.
 
 For Orange Pi R1 use Armbian Buster found here: https://www.armbian.com/orange-pi-r1/. Recommend using "minimal" which is available for direct download at the bottom of the page or much faster download by .torrent also linked there.
 
@@ -96,6 +96,10 @@ configured as an access point as follows:
 
 To test the connection navigate to Loki's wiki page found at
 http://dw68y1xhptqbhcm5s8aaaip6dbopykagig5q5u1za4c7pzxto77y.loki/wiki/index.php?title=Main_Page
+
+## Connecting to an Exit Node
+
+Exit nodes provide privacy on the internet through onion routing connections via the global network of Lokinet relay nodes and dedicated exit nodes. In order to connect to an exit node you will require the exit address from the exit node provider. These can be found through various social media linked at https://loki.network/. From the GUI this information can be entered and activated.
 
 ## Support us
 

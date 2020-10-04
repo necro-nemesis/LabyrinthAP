@@ -346,13 +346,7 @@ function DisplayLokinetConfig()
     exec('pidof lokinet | wc -l', $lokinetstatus);
     $rulestate = exec("ip rule show default | grep lokinet | awk {'print $5'}", $output);
     $lokiversion = exec("dpkg -s lokinet | grep '^Version:'", $output);
-    if ($lokinetstatus[0] == 0) {
-        $status = '<div class="alert alert-danger alert-dismissable">Lokinet daemon is not running
-                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>';
-    } else {
-        $status = '<div class="alert alert-success alert-dismissable">Lokinet daemon is running
-                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>';
-    } ?>
+        ?>
         <div class="row">
           <div class="col-lg-12">
             <div class="panel panel-primary">
@@ -374,12 +368,13 @@ function DisplayLokinetConfig()
                 <form role="form" action="?page=save_hostapd_conf" method="POST">
 	              <h5>Enter Exit Node Data to activate:</h5>
                 <label for="exitaddress">Exit Address:</label>
-                <input type="url" class="form-control" placeholder="enter exit address here" id="exitaddress" name="exitaddress">
+                <input type="text" class="form-control" placeholder="enter exit address here" id="exitaddress" name="exitaddress">
                 <label for="exitkey">Exit Key: (optional)</label>
-                <input type="url" class="form-control" placeholder="enter exit key here" id="exitkey" name="exitkey">
+                <input type="text" class="form-control" placeholder="enter exit key here" id="exitkey" name="exitkey">
                 <br/>
                 <?php
-    if ($exitstatus[0] == 0) {
+    GLOBAL $exitstatus;
+    if ($exitstatus == FALSE) {
       echo '<input type="submit" class="btn btn-success" name="StartExit" value="Start Exit" />' , PHP_EOL;
     } else {
       echo '<input type="submit" class="btn btn-danger" name="StopExit" value="Stop Exit" />' , PHP_EOL;
@@ -394,9 +389,9 @@ function DisplayLokinetConfig()
                     <div class="tab-pane fade" id="daemon">
                     <h4>Lokient Daemon</h4>
                       <div class="row">
-                        <div class="col-lg-12">The 3 buttons below must be armed (red) to connect to Lokinet. If there isn't a current lokinet.ini file found on the system the "Generate.ini" button will be green. The .ini file must be generated prior to connecting to Lokinet by pressing the button which will automatically write the required .ini file. Similarly the absense of a valid bootstrap will be indicated by a green "Bootstrap" button. Applying a bootstrap by pressing the apply button without submitting a valid URL in the textbox area will apply the original default bootstrap in place of one being provided. Stopping the daemon also exits Lokinet. To summarize, if necessary generate the .ini and bootstrap Lokinet then you are able to connect to Lokinet by starting the daemon and letting the network establish itself.
+                        <div class="col-lg-12">
                  <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#instruct">Instructions</button>
-                          <div id="instruct" class="collapse">
+                          <div id="instruct" class="collapse">The 3 buttons below must be armed (red) to connect to Lokinet. If there isn't a current lokinet.ini file found on the system the "Generate.ini" button will be green. The .ini file must be generated prior to connecting to Lokinet by pressing the button which will automatically write the required .ini file. Similarly the absense of a valid bootstrap will be indicated by a green "Bootstrap" button. Applying a bootstrap by pressing the apply button without submitting a valid URL in the textbox area will apply the original default bootstrap in place of one being provided. Stopping the daemon also exits Lokinet. To summarize, if necessary generate the .ini and bootstrap Lokinet then you are able to connect to Lokinet by starting the daemon and letting the network establish itself.
                           </div>
                           <div class="row">
                             <div class="form-group col-lg-12">
@@ -623,6 +618,23 @@ function SaveTORAndVPNConfig()
     } elseif (isset($_POST['StopDaemon'])) {
         exec('sudo /var/lib/lokinet/lokilaunch.sh stop');
 
+    //START EXIT
+    } elseif (isset($_POST['StartExit'])) {
+        $exit = $_POST['exitaddress'];
+        $token = $_POST['exitkey'];
+        $exit=str_replace("'", "", $exit);
+        $token=str_replace("'", "", $token);
+        $output = shell_exec("sudo /var/lib/lokinet/lokilaunch.sh exitup '".$exit."''" .$token."'");
+        echo "<pre><strong>$output</strong></pre>";
+        GLOBAL $exitstatus;
+        $exitstatus = TRUE;
+
+    //STOP EXIT
+    } elseif (isset($_POST['StopExit'])) {
+        exec ('sudo /var/lib/lokinet/lokilaunch.sh exitdown');
+        GLOBAL $exitstatus;
+        $exitstatus = FALSE;
+
     //GENERATE LOKINET.INI
     } elseif (isset($_POST['GenerateLokinet'])) {
         ?>
@@ -645,17 +657,10 @@ function SaveTORAndVPNConfig()
 
     //APPLY LOKINET-BOOTSTRAP
     } elseif (isset($_POST['ApplyLokinetSettings'])) {
-        ?>
-    <div class="alert alert-danger">
-    Stopping Lokinet background daemon process.
-    </div>
-    <div class="alert alert-success">
-    Applying Bootstrap
-    </div>
-    <?php
     $bootstrap = $_POST['lokinetbootstrap'];
         $bootstrap=str_replace("'", "", $bootstrap);
         $output = shell_exec('sudo /var/lib/lokinet/lokilaunch.sh bootstrap '.$bootstrap.'');
+        $output = preg_replace('#\\x1b[[][^A-Za-z]*[A-Za-z]#', '', $output);
         echo "<pre><strong>$output</strong></pre>";
     }
 
