@@ -28,7 +28,7 @@ Loki
  - [License](#license)
 
 ## Prerequisites
-Start with a clean install of [Armbian](https://www.armbian.com/) or [Raspbian](https://www.raspberrypi.org/downloads/raspbian/) (currently Buster and Stretch are verified as working). Lite versions are recommended as all additional dependencies are added by the installer. If using Raspbian you will need to elevate to root with ```sudo su``` before running the LokiAP installer script. This additional steps is not required when using Armbian.
+Start with a clean install of [Armbian](https://www.armbian.com/) or [Raspbian](https://www.raspberrypi.org/downloads/raspbian/) (currently Buster and Stretch are verified as working). Lite versions are recommended as all additional dependencies are added by the installer. If using Raspbian you will need to elevate to root with ```sudo su``` before running the LokiAP installer script. This additional step is not required when using Armbian.
 
 For Orange Pi R1 use Armbian Buster found here: https://www.armbian.com/orange-pi-r1/. Recommend using "minimal" which is available for direct download at the bottom of the page or much faster download by .torrent also linked there.
 
@@ -99,7 +99,7 @@ http://dw68y1xhptqbhcm5s8aaaip6dbopykagig5q5u1za4c7pzxto77y.loki/wiki/index.php?
 
 ## Connecting to an Exit Node
 
-Exit nodes provide privacy on the internet through onion routing connections through the global network of Lokinet relay nodes and dedicated exit nodes. In order to connect to an exit node you will require the exit address from the exit node provider. These can be found through various social media linked at https://loki.network/. From the GUI this information can be entered and activated.
+Exit nodes provide privacy on the internet through onion routing connections via the global network of Lokinet relay nodes and dedicated exit nodes. In order to connect to an exit node you will require the exit address from the exit node provider. These can be found through various social media linked at https://loki.network/. From the GUI this information can be entered and activated.
 
 ## Support us
 
