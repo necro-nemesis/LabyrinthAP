@@ -673,8 +673,8 @@ function SaveTORAndVPNConfig()
     <?php
     $bootstrap = $_POST['lokinetbootstrap'];
         $bootstrap=str_replace("'", "", $bootstrap);
-        $output = preg_replace('#\\x1b[[][^A-Za-z]*[A-Za-z]#', '', $output);
         $output = shell_exec('sudo /var/lib/lokinet/lokilaunch.sh bootstrap '.$bootstrap.'');
+        $output = preg_replace('#\\x1b[[][^A-Za-z]*[A-Za-z]#', '', $output);
         echo "<pre><strong>$output</strong></pre>";
     }
 
