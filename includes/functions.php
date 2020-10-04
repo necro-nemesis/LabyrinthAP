@@ -397,7 +397,7 @@ function DisplayLokinetConfig()
                       <div class="row">
                         <div class="col-lg-12">
                  <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#instruct">Instructions</button>
-                          <div id="instruct" class="collapse">The 3 buttons below must be armed (red) to connect to Lokinet. If there isn't a current lokinet.ini file found on the system the "Generate.ini" button will be gre$
+                          <div id="instruct" class="collapse">The 3 buttons below must be armed (red) to connect to Lokinet. If there isn't a current lokinet.ini file found on the system the "Generate.ini" button will be green. The .ini file must be generated prior to connecting to Lokinet by pressing the button which will automatically write the required .ini file. Similarly the absense of a valid bootstrap will be indicated by a green "Bootstrap" button. Applying a bootstrap by pressing the apply button without submitting a valid URL in the textbox area will apply the original default bootstrap in place of one being provided. Stopping the daemon also exits Lokinet. To summarize, if necessary generate the .ini and bootstrap Lokinet then you are able to connect to Lokinet by starting the daemon and letting the network establish itself.
                           </div>
                           <div class="row">
                             <div class="form-group col-lg-12">
