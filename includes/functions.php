@@ -346,13 +346,7 @@ function DisplayLokinetConfig()
     exec('pidof lokinet | wc -l', $lokinetstatus);
     $rulestate = exec("ip rule show default | grep lokinet | awk {'print $5'}", $output);
     $lokiversion = exec("dpkg -s lokinet | grep '^Version:'", $output);
-    if ($lokinetstatus[0] == 0) {
-        $status = '<div class="alert alert-danger alert-dismissable">Lokinet daemon is not running
-                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>';
-    } else {
-        $status = '<div class="alert alert-success alert-dismissable">Lokinet daemon is running
-                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>';
-    } ?>
+        ?>
         <div class="row">
           <div class="col-lg-12">
             <div class="panel panel-primary">
@@ -663,14 +657,6 @@ function SaveTORAndVPNConfig()
 
     //APPLY LOKINET-BOOTSTRAP
     } elseif (isset($_POST['ApplyLokinetSettings'])) {
-        ?>
-    <div class="alert alert-danger">
-    Stopping Lokinet background daemon process.
-    </div>
-    <div class="alert alert-success">
-    Applying Bootstrap
-    </div>
-    <?php
     $bootstrap = $_POST['lokinetbootstrap'];
         $bootstrap=str_replace("'", "", $bootstrap);
         $output = shell_exec('sudo /var/lib/lokinet/lokilaunch.sh bootstrap '.$bootstrap.'');
