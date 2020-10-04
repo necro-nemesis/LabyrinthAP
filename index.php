@@ -136,19 +136,9 @@ $theme_url = 'dist/css/'.htmlspecialchars($theme, ENT_QUOTES);
                 <a href="index.php?page=dhcpd_conf"><i class="fa fa-exchange fa-fw"></i> <?php echo _("Configure DHCP Server"); ?></a>
               </li>
               <?php endif; ?>
-              <?php if ( RASPI_OPENVPN_ENABLED ) : ?>
-              <li>
-                <a href="index.php?page=openvpn_conf"><i class="fa fa-lock fa-fw"></i> <?php echo _("Configure OpenVPN"); ?></a>
-              </li>
-              <?php endif; ?>
 	            <?php if ( RASPI_LOKINET_ENABLED ) : ?>
               <li>
                  <a href="index.php?page=lokinet_conf"><i class="fa fa-eye-slash fa-fw"></i> <?php echo _("Configure Lokinet"); ?></a>
-              </li>
-              <?php endif; ?>
-              <?php if ( RASPI_TORPROXY_ENABLED ) : ?>
-              <li>
-                 <a href="index.php?page=torproxy_conf"><i class="fa fa-eye-slash fa-fw"></i> <?php echo _("Configure TOR proxy"); ?></a>
               </li>
               <?php endif; ?>
               <?php if ( RASPI_CONFAUTH_ENABLED ) : ?>
@@ -206,20 +196,14 @@ $extraFooterScripts = array();
           case "hostapd_conf":
             DisplayHostAPDConfig();
             break;
-          case "openvpn_conf":
-            DisplayOpenVPNConfig();
-            break;
 	        case "lokinet_conf":
             DisplayLokinetConfig();
-            break;
-          case "torproxy_conf":
-            DisplayTorProxyConfig();
             break;
           case "auth_conf":
             DisplayAuthConfig($config['admin_user'], $config['admin_pass']);
             break;
           case "save_hostapd_conf":
-            SaveTORAndVPNConfig();
+            ActivateLokinetConfig();
             break;
           case "theme_conf":
             DisplayThemeConfig();
