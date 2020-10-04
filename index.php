@@ -113,13 +113,18 @@ $theme_url = 'dist/css/'.htmlspecialchars($theme, ENT_QUOTES);
         <div class="navbar-default sidebar" role="navigation">
           <div class="sidebar-nav navbar-collapse">
             <ul class="nav" id="side-menu">
+              <?php if ( RASPI_LOKINET_ENABLED ) : ?>
+              <li>
+                 <a href="index.php?page=lokinet_conf"><i class="fa fa-eye-slash fa-fw"></i> <?php echo _("Configure Lokinet"); ?></a>
+              </li>
+              <?php endif; ?>
               <li>
                 <a href="index.php?page=wlan0_info"><i class="fa fa-dashboard fa-fw"></i> <?php echo _("Dashboard"); ?></a>
               </li>
-	            <?php if ( RASPI_WIFICLIENT_ENABLED ) : ?>
+              <?php if ( RASPI_WIFICLIENT_ENABLED ) : ?>
               <li>
                 <a href="index.php?page=wpa_conf"><i class="fa fa-signal fa-fw"></i> <?php echo _("Configure WiFi client"); ?></a>
-	            </li>
+              </li>
               <?php endif; ?>
               <?php if ( RASPI_HOTSPOT_ENABLED ) : ?>
               <li>
@@ -134,11 +139,6 @@ $theme_url = 'dist/css/'.htmlspecialchars($theme, ENT_QUOTES);
               <?php if ( RASPI_DHCP_ENABLED ) : ?>
               <li>
                 <a href="index.php?page=dhcpd_conf"><i class="fa fa-exchange fa-fw"></i> <?php echo _("Configure DHCP Server"); ?></a>
-              </li>
-              <?php endif; ?>
-	            <?php if ( RASPI_LOKINET_ENABLED ) : ?>
-              <li>
-                 <a href="index.php?page=lokinet_conf"><i class="fa fa-eye-slash fa-fw"></i> <?php echo _("Configure Lokinet"); ?></a>
               </li>
               <?php endif; ?>
               <?php if ( RASPI_CONFAUTH_ENABLED ) : ?>
