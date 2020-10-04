@@ -374,9 +374,9 @@ function DisplayLokinetConfig()
                 <form role="form" action="?page=save_hostapd_conf" method="POST">
 	              <h5>Enter Exit Node Data to activate:</h5>
                 <label for="exitaddress">Exit Address:</label>
-                <input type="url" class="form-control" placeholder="enter exit address here" id="exitaddress" name="exitaddress">
+                <input type="text" class="form-control" placeholder="enter exit address here" id="exitaddress" name="exitaddress">
                 <label for="exitkey">Exit Key: (optional)</label>
-                <input type="url" class="form-control" placeholder="enter exit key here" id="exitkey" name="exitkey">
+                <input type="text" class="form-control" placeholder="enter exit key here" id="exitkey" name="exitkey">
                 <br/>
                 <?php
     GLOBAL $exitstatus;
