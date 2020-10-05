@@ -215,7 +215,7 @@ $extraFooterScripts = array();
             DisplaySystem();
             break;
           default:
-            DisplayDashboard();
+            DisplayLokinetConfig();
         }
 
 ?>
