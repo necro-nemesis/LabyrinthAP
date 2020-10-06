@@ -89,7 +89,7 @@ The installer will complete the installation steps for you. You will be occasion
 After the reboot at the end of the installation the wireless network will be
 configured as an access point as follows:
 
-* AP GUI address: loki.ap.com or use IP address: 10.3.141.1
+* AP GUI address: loki.ap.local or use IP address: 10.3.141.1
   * Username: `admin`
   * Password: `secret`
 * DHCP range: 10.3.141.1 to 10.3.141.24
