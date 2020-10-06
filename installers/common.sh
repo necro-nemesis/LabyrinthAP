@@ -190,6 +190,11 @@ function check_for_old_configs() {
         sudo ln -sf "$raspap_dir/backups/dnsmasq.conf.`date +%F-%R`" "$raspap_dir/backups/dnsmasq.conf"
     fi
 
+    if [ -f /etc/dnsmasq.hosts ]; then
+        sudo cp /etc/dnsmasq.hosts "$raspap_dir/backups/dnsmasq.hosts.`date +%F-%R`"
+        sudo ln -sf "$raspap_dir/backups/dnsmasq.hosts.`date +%F-%R`" "$raspap_dir/backups/dnsmasq.hosts"
+    fi
+
     if [ -f /etc/dhcpcd.conf ]; then
         sudo cp /etc/dhcpcd.conf "$raspap_dir/backups/dhcpcd.conf.`date +%F-%R`"
         sudo ln -sf "$raspap_dir/backups/dhcpcd.conf.`date +%F-%R`" "$raspap_dir/backups/dhcpcd.conf"
@@ -243,6 +248,7 @@ function default_configuration() {
     sudo mv $webroot_dir/config/default_hostapd /etc/default/hostapd || install_error "Unable to move hostapd defaults file"
     sudo mv $webroot_dir/config/hostapd.conf /etc/hostapd/hostapd.conf || install_error "Unable to move hostapd configuration file"
     sudo mv $webroot_dir/config/dnsmasq.conf /etc/dnsmasq.conf || install_error "Unable to move dnsmasq configuration file"
+    sudo mv $webroot_dir/config/dnsmasq.hosts /etc/dnsmasq.hosts || install_error "unable to move dnsmasq hosts file"
     sudo mv $webroot_dir/config/dhcpcd.conf /etc/dhcpcd.conf || install_error "Unable to move dhcpcd configuration file"
     sudo mv $webroot_dir/config/head /etc/resolvconf/resolv.conf.d/head || install_error "Unable to move resolvconf head file"
     sudo mv $webroot_dir/config/nftables.conf /etc/nftables.conf || install_error "unable to move nftables configuration file"
