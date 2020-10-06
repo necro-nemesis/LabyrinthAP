@@ -21,11 +21,11 @@ Loki
 ## Contents
 
  - [Prerequisites](#prerequisites)
- - [Preparing the image](#preparing the image)
- - [Accessing the device](#accessing the device)
+ - [Preparing the image](#preparing-the-image)
+ - [Accessing the device](#accessing-the-device)
  - [Quick installer](#quick-installer)
  - [Test Site](#test-site)
- - [Connecting to an Exit Node](#connecting to an exit node)
+ - [Connecting to an Exit Node](#connecting-to-an-exit-node)
  - [Support us](#support-us)
  - [How to contribute](#how-to-contribute)
  - [License](#license)
