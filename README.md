@@ -21,8 +21,11 @@ Loki
 ## Contents
 
  - [Prerequisites](#prerequisites)
+ - [Preparing the image](#preparing the image)
+ - [Accessing the device](#accessing the device)
  - [Quick installer](#quick-installer)
  - [Test Site](#test-site)
+ - [Connecting to an Exit Node](#connecting to an exit node)
  - [Support us](#support-us)
  - [How to contribute](#how-to-contribute)
  - [License](#license)
@@ -85,7 +88,8 @@ The installer will complete the installation steps for you. You will be occasion
 
 After the reboot at the end of the installation the wireless network will be
 configured as an access point as follows:
-* IP address: 10.3.141.1
+
+* AP GUI address: loki.ap.com or use IP address: 10.3.141.1
   * Username: `admin`
   * Password: `secret`
 * DHCP range: 10.3.141.1 to 10.3.141.24
