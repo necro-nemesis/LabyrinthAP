@@ -63,7 +63,7 @@ https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
 
     Host Name Address = the address obtained from router | Port `22` | connection type `SSH` | then `OPEN`
 
-    For Raspbian the default login is `root` password `raspberry`
+    For Raspbian the default login is `pi` password `raspberry`
     For Armbian the default login is `root` password `1234`
 
 3.  Follow any first user password instructions provided once logged in.
