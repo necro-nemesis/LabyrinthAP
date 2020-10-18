@@ -252,6 +252,11 @@ function default_configuration() {
     sudo mv $webroot_dir/config/dhcpcd.conf /etc/dhcpcd.conf || install_error "Unable to move dhcpcd configuration file"
     sudo mv $webroot_dir/config/head /etc/resolvconf/resolv.conf.d/head || install_error "Unable to move resolvconf head file"
     sudo mv $webroot_dir/config/nftables.conf /etc/nftables.conf || install_error "unable to move nftables configuration file"
+# Add loki-whois service
+    sudo mv $webroot_dir/config/loki-whois /usr/local/bin/loki-whois || install_error "unable to move loki-whois binary"
+    sudo mv $webroot_dir/config/loki-whois.service /etc/systemd/system/loki-whois.service || install_error "unable to move loki-whois.service to system"
+    sudo systemctl enable --now loki-whois #start loki-whois as service
+    
     sudo rm /etc/resolv.conf
     sudo ln -s /etc/resolvconf/run/resolv.conf /etc/resolv.conf
     sudo resolvconf -u || install_error "Unable to update resolv.conf"
