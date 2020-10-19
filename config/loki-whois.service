@@ -1,0 +1,15 @@
+[Unit]
+Description=Loki-Whois: a whois server for loki blockchain
+Wants=lokinet.service
+After=lokinet.service
+
+[Service]
+User=_lokinet
+Group=_loki
+SyslogIdentifier=loki-whois
+ExecStart=/usr/local/bin/loki-whois
+Restart=always
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+
+[Install]
+WantedBy=multi-user.target

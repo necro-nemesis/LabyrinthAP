@@ -3,19 +3,19 @@ raspap_dir="/etc/raspap"
 raspap_user="www-data"
 version=`sed 's/\..*//' /etc/debian_version`
 
-# Determine version and set default home location for lighttpd 
-webroot_dir="/var/www/html" 
-if [ $version -eq 9 ]; then 
-    version_msg="Raspian 9.0 (Stretch)" 
-    php_package="php7.0-cgi" 
-elif [ $version -eq 8 ]; then 
-    version_msg="Raspian 8.0 (Jessie)" 
-    webroot_dir="/var/www" 
-    php_package="php5-cgi" 
-else 
+# Determine version and set default home location for lighttpd
+webroot_dir="/var/www/html"
+if [ $version -eq 9 ]; then
+    version_msg="Raspian 9.0 (Stretch)"
+    php_package="php7.0-cgi"
+elif [ $version -eq 8 ]; then
+    version_msg="Raspian 8.0 (Jessie)"
+    webroot_dir="/var/www"
+    php_package="php5-cgi"
+else
     version_msg="Raspian earlier than 8.0 (Wheezy)"
-    webroot_dir="/var/www" 
-    php_package="php5-cgi" 
+    webroot_dir="/var/www"
+    php_package="php5-cgi"
 fi
 
 phpcgiconf=""
@@ -40,7 +40,7 @@ function install_error() {
 # Checks to make sure uninstallation info is correct
 function config_uninstallation() {
     install_log "Configure installation"
-    echo "Detected ${version_msg}" 
+    echo "Detected ${version_msg}"
     echo "Install directory: ${raspap_dir}"
     echo "Lighttpd directory: ${webroot_dir}"
     echo -n "Uninstall RaspAP with these values? [y/N]: "
@@ -74,6 +74,14 @@ function check_for_backups() {
             if [[ $answer -eq 'y' ]]; then
                 sudo cp "$raspap_dir/backups/dnsmasq.conf" /etc/dnsmasq.conf
             fi
+
+        if [ -f "$raspap_dir/backups/dnsmasq.hosts" ]; then
+            echo -n "Restore the last dnsmasq hosts file? [y/N]: "
+            read answer
+            if [[ $answer -eq 'y' ]]; then
+                sudo cp "$raspap_dir/backups/dnsmasq.hosts" /etc/dnsmasq.hosts
+            fi
+
         fi
         if [ -f "$raspap_dir/backups/dhcpcd.conf" ]; then
             echo -n "Restore the last dhcpcd.conf file? [y/N]: "
