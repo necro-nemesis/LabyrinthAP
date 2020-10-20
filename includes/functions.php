@@ -233,6 +233,10 @@ function DisplayLokinetConfig()
                 </li>
                 <li><a href="#daemon" data-toggle="tab">Daemon Settings</a>
                 </li>
+
+                <li><a href="#whois" data-toggle="tab">WHOIS</a>
+                </li>
+
                 </ul>
         <!-- Tab panes -->
                   <div class="tab-content">
@@ -260,6 +264,21 @@ function DisplayLokinetConfig()
     } ?><h5><?php echo _("Your development support is greatly appreciated | Loki Address:"); ?></h5>
     <h5><pre><?php echo _("LA8VDcoJgiv2bSiVqyaT6hJ67LXbnQGpf9Uk3zh9ikUKPJUWeYbgsd9gxQ5ptM2hQNSsCaRETQ3GM9FLDe7BGqcm4ve69bh"); ?></pre></h5>
                   </div>
+
+
+                    <div class="tab-pane fade" id="whois">
+                <form role="form" action="?page=save_hostapd_conf" method="POST">
+	              <h5>Enter .loki Address:</h5>
+                <label for="lokiaddress">Loki Address:</label>
+                <input type="text" class="form-control" placeholder="enter lokinet address here" id="lokiaddress" name="lokiaddress">
+                <br/>
+                <?php
+      echo '<input type="submit" class="btn btn-success" name="checkaddress" value="Submit" />' , PHP_EOL;
+     ?><h5><?php echo _("Your development support is greatly appreciated | Loki Address:"); ?></h5>
+    <h5><pre><?php echo _("LA8VDcoJgiv2bSiVqyaT6hJ67LXbnQGpf9Uk3zh9ikUKPJUWeYbgsd9gxQ5ptM2hQNSsCaRETQ3GM9FLDe7BGqcm4ve69bh"); ?></pre></h5>
+                  </div>
+
+
                     <div class="tab-pane fade" id="daemon">
                     <h4>Lokient Daemon</h4>
                       <div class="row">
@@ -320,10 +339,12 @@ function ActivateLokinetConfig()
     //START
     if (isset($_POST['StartDaemon'])) {
         exec('sudo /var/lib/lokinet/lokilaunch.sh start');
+	DisplayLokinetConfig();
 
     //STOP
     } elseif (isset($_POST['StopDaemon'])) {
         exec('sudo /var/lib/lokinet/lokilaunch.sh stop');
+	DisplayLokinetConfig();
 
     //START EXIT
     } elseif (isset($_POST['StartExit'])) {
@@ -335,12 +356,17 @@ function ActivateLokinetConfig()
         echo "<pre><strong>$output</strong></pre>";
         GLOBAL $exitstatus;
         $exitstatus = TRUE;
+        ?><form method="post"><?php
+        echo '<input type="submit" class="btn btn-success" name="Return" value="Return" />' , PHP_EOL;
+        echo "\n";
+        ?><form><br/><?php
 
     //STOP EXIT
     } elseif (isset($_POST['StopExit'])) {
         exec ('sudo /var/lib/lokinet/lokilaunch.sh exitdown');
         GLOBAL $exitstatus;
         $exitstatus = FALSE;
+	DisplayLokinetConfig();
 
     //GENERATE LOKINET.INI
     } elseif (isset($_POST['GenerateLokinet'])) {
@@ -351,6 +377,10 @@ function ActivateLokinetConfig()
     <?php
     $output = shell_exec('sudo /var/lib/lokinet/lokilaunch.sh gen');
         echo "<pre><strong>$output</strong></pre>";
+        ?><form method="post"><?php
+        echo '<input type="submit" class="btn btn-success" name="Return" value="Return" />' , PHP_EOL;
+        echo "\n";
+        ?><form><br/><?php
 
     //REGENERATE LOKINET.INI
     } elseif (isset($_POST['ReGenerateLokinet'])) {
@@ -361,6 +391,10 @@ function ActivateLokinetConfig()
     <?php
     $output = shell_exec('sudo /var/lib/lokinet/lokilaunch.sh gen');
         echo "<pre><strong>$output</strong></pre>";
+        ?><form method="post"><?php
+        echo '<input type="submit" class="btn btn-success" name="Return" value="Return" />' , PHP_EOL;
+        echo "\n";
+        ?><form><br/><?php
 
     //APPLY LOKINET-BOOTSTRAP
     } elseif (isset($_POST['ApplyLokinetSettings'])) {
@@ -369,8 +403,22 @@ function ActivateLokinetConfig()
         $output = shell_exec('sudo /var/lib/lokinet/lokilaunch.sh bootstrap '.$bootstrap.'');
         $output = preg_replace('#\\x1b[[][^A-Za-z]*[A-Za-z]#', '', $output);
         echo "<pre><strong>$output</strong></pre>";
-    }
+        ?><form method="post"><?php
+        echo '<input type="submit" class="btn btn-success" name="Return" value="Return" />' , PHP_EOL;
+        echo "\n";
+        ?><form><br/><?php
 
-    DisplayLokinetConfig();
+   //WHOIS
+    } elseif (isset($_POST['checkaddress'])) {
+    $address = $_POST['lokiaddress'];
+        $output = shell_exec('sudo /var/lib/lokinet/lokilaunch.sh whois '.$address.'');
+        echo "<pre><strong>$output</strong></pre>";
+	?><form method="post"><?php
+	echo '<input type="submit" class="btn btn-success" name="Return" value="Return" />' , PHP_EOL;
+	echo "\n";
+	?><form><br/><?php
+ } elseif (isset($_POST['Return'])) {
+
+DisplayLokinetConfig();	}
+
 }
-?>

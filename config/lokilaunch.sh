@@ -47,6 +47,11 @@ exitdown)
         lokinet-vpn --down
         ;;
 
+whois)
+        echo -n "LNS Registration Information\n\n"
+        whois -h public.loki.foundation "$2"
+        ;;
+
   *)
         echo "Usage: "$1" {start|stop|gen|bootstrap|exitup|exitdown}"
         exit 1
