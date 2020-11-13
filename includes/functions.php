@@ -218,6 +218,7 @@ function ConvertToSecurity($security)
 function DisplayLokinetConfig()
 {
     exec('pidof lokinet | wc -l', $lokinetstatus);
+    $exitstatus = exec("lokinet-vpn --status");
     $rulestate = exec("ip rule show default | grep lokinet | awk {'print $5'}", $output);
     $lokiversion = exec("dpkg -s lokinet | grep '^Version:'", $output);
         ?>
@@ -251,8 +252,7 @@ function DisplayLokinetConfig()
                 <input type="text" class="form-control" placeholder="enter exit key here" id="exitkey" name="exitkey">
                 <br/>
                 <?php
-    GLOBAL $exitstatus;
-    if ($exitstatus == FALSE) {
+    if ($exitstatus == "no exits") {
       echo '<input type="submit" class="btn btn-success" name="StartExit" value="Start Exit" />' , PHP_EOL;
     } else {
       echo '<input type="submit" class="btn btn-danger" name="StopExit" value="Stop Exit" />' , PHP_EOL;
@@ -354,8 +354,6 @@ function ActivateLokinetConfig()
         $token=str_replace("'", "", $token);
         $output = shell_exec("sudo /var/lib/lokinet/lokilaunch.sh exitup '".$exit."''" .$token."'");
         echo "<pre><strong>$output</strong></pre>";
-        GLOBAL $exitstatus;
-        $exitstatus = TRUE;
         ?><form method="post"><?php
         echo '<input type="submit" class="btn btn-success" name="Return" value="Return" />' , PHP_EOL;
         echo "\n";
@@ -364,8 +362,6 @@ function ActivateLokinetConfig()
     //STOP EXIT
     } elseif (isset($_POST['StopExit'])) {
         exec ('sudo /var/lib/lokinet/lokilaunch.sh exitdown');
-        GLOBAL $exitstatus;
-        $exitstatus = FALSE;
 	DisplayLokinetConfig();
 
     //GENERATE LOKINET.INI
