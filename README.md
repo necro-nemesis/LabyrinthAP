@@ -1,6 +1,6 @@
 ![](https://i.imgur.com/mXuacOH.jpg)
 
-# `$ Lokiap-webgui` [![Release 2.0](https://img.shields.io/badge/Release-2.0-green.svg)](https://github.com/necro-nemesis/raspap-webgui/releases)
+# `$ Lokiap-webgui` [![Release 2.1](https://img.shields.io/badge/Release-2.1-green.svg)](https://github.com/necro-nemesis/raspap-webgui/releases)
 
 LokiAP interfaces witht Lokinet daemon to facilitate connections to the Lokinet global privacy network. LokiAP provides a simple, responsive web interface to control wifi, hostapd, Lokinet daemon and related services necessary to access Lokinet on the Raspberry Pi or Orange Pi.
 
