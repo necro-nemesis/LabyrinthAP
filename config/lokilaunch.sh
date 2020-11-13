@@ -38,8 +38,13 @@ bootstrap)
         ;;
 
 exitup)
+        if [ "$3" = "" ]; then
+        lokinet-vpn --up --exit "$2"
+        echo -n "lokinet --vpn --exit ""$2"
+        else
         lokinet-vpn --up --exit "$2" --token "$3"
         echo -n  "lokinet-vpn --up --exit ""$2"" --token ""$3"
+        fi
         ;;
 
 exitdown)
