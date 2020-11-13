@@ -352,7 +352,7 @@ function ActivateLokinetConfig()
         $token = $_POST['exitkey'];
         $exit=str_replace("'", "", $exit);
         $token=str_replace("'", "", $token);
-        $output = shell_exec("sudo /var/lib/lokinet/lokilaunch.sh exitup '".$exit."''" .$token."'");
+        $output = shell_exec("sudo /var/lib/lokinet/lokilaunch.sh exitup '".$exit."' '" .$token."'");
         echo "<pre><strong>$output</strong></pre>";
         ?><form method="post"><?php
         echo '<input type="submit" class="btn btn-success" name="Return" value="Return" />' , PHP_EOL;
