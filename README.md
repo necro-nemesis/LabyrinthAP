@@ -107,7 +107,7 @@ Exit nodes provide privacy on the internet through onion routing connections via
 
 ## Support us
 
-LokiAP is free software, but powered by your support. If you find it beneficial or wish to contribute to inspire ongoing development small donations are greatly appreciated.
+LokiAP is free software but powered by your support. If you find it beneficial or wish to contribute to inspire ongoing development small donations are greatly appreciated.
 
 - Loki Donation Address:
 ```sh
