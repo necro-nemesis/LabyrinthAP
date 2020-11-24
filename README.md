@@ -114,7 +114,7 @@ Loki Donation Address:
 LA8VDcoJgiv2bSiVqyaT6hJ67LXbnQGpf9Uk3zh9ikUKPJUWeYbgsd9gxQ5ptM2hQNSsCaRETQ3GM9FLDe7BGqcm4ve69bh
 ```
 PayPal Donation Address:
-![](https://i.imgur.com/l3ugTUM.jpg)
+![](https://i.imgur.com/gIhGB1X.jpg)
 
 ## How to contribute
 
