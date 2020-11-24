@@ -107,13 +107,13 @@ Exit nodes provide privacy on the internet through onion routing connections via
 
 ## Support us
 
-LokiAP is free software, but powered by your support. If you find it beneficial or wish to contribute to inspire ongoing development small donations are greatly appreciated.
+- LokiAP is free software, but powered by your support. If you find it beneficial or wish to contribute to inspire ongoing development small donations are greatly appreciated.
 
 Loki Donation Address:
 ```sh
 LA8VDcoJgiv2bSiVqyaT6hJ67LXbnQGpf9Uk3zh9ikUKPJUWeYbgsd9gxQ5ptM2hQNSsCaRETQ3GM9FLDe7BGqcm4ve69bh
 ```
-PayPal Donation Address:
+- PayPal Donation Address:
 ![](https://i.imgur.com/gIhGB1X.jpg)
 
 ## How to contribute
