@@ -3,7 +3,7 @@
 # 4G
 sudo qmicli -d /dev/cdc-wdm0 --dms-set-operating-mode='online' # power on module
 # configure raw-ip protocol
-ip link set wwan0 down
+sudo ip link set wwan0 down
 echo 'Y' | sudo tee /sys/class/net/wwan0/qmi/raw_ip
 sudo ip link set wwan0 up
 # connect to carrier
