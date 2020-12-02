@@ -282,8 +282,8 @@ function default_configuration() {
     "$tablerouteB"
     'if ! [cat \/sys\/class\/net\/eth0\/carrier] ; then'
     '\/var\/lib\/lokinet\/mobile.sh'
-    'fi'
-    
+    'fi #end'
+
     )
 
     for line in "${lines[@]}"; do
