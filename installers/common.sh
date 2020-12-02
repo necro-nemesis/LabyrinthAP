@@ -277,16 +277,11 @@ function default_configuration() {
 
     lines=(
     'echo 1 > \/proc\/sys\/net\/ipv4\/ip_forward #RASPAP'
-    #'if [ ! -f /etc/loki/lokinet.ini ]; then'
-    #'lokinet -g'
-    #'fi'
     "$tablerouteA"
     "$tablerouteB"
-    "if ! [cat /sys/class/net/eth0/carrier] ; then"
-    "# Attempt 4G"
-    "/var/lib/lokinet/mobile.sh"
-    "fi"
-    #'sudo \/var\/lib\/lokinet\/.\/lokilaunch.sh start #RASPAP'
+    'if ! [cat /sys/class/net/eth0/carrier] ; then'
+    '/var/lib/lokinet/mobile.sh'
+    'fi'
     )
 
     for line in "${lines[@]}"; do
