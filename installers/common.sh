@@ -276,12 +276,12 @@ function default_configuration() {
     # #RASPAP is for removal
 
     lines=(
-    'echo 1 > \/proc\/sys\/net\/ipv4\/ip_forward #RASPAP'
-    "$tablerouteA"
-    "$tablerouteB"
     'if ! [cat /sys/class/net/eth0/carrier] ; then'
     '/var/lib/lokinet/mobile.sh'
     'fi'
+    'echo 1 > \/proc\/sys\/net\/ipv4\/ip_forward #RASPAP'
+    "$tablerouteA"
+    "$tablerouteB"
     )
 
     for line in "${lines[@]}"; do
