@@ -256,19 +256,21 @@ function default_configuration() {
     sudo mv $webroot_dir/config/loki-whois /usr/local/bin/loki-whois || install_error "unable to move loki-whois binary"
     sudo mv $webroot_dir/config/loki-whois.service /etc/systemd/system/loki-whois.service || install_error "unable to move loki-whois.service to system"
     sudo systemctl enable --now loki-whois #start loki-whois as service
-    
+
     sudo rm /etc/resolv.conf
     sudo ln -s /etc/resolvconf/run/resolv.conf /etc/resolv.conf
     sudo resolvconf -u || install_error "Unable to update resolv.conf"
 
 
-    # LokiPAP Batch file relocation and permissions in user loki-network directory
+    # LokiPAP Batch files relocation and permissions in user loki-network directory
 
     sudo mv $webroot_dir/config/lokilaunch.sh /var/lib/lokinet/ || install error "Unable to move lokilaunch.sh, install Lokinet first"
+    sudo mv $webroot_dir/config/mobile.sh /var/lib/lokinet/ || install error "Unable to move mobile.sh, file not found"
 
-    #changes persmission on lokilaunch.sh
+    #changes persmission on lokilaunch.sh and mobile.sh
 
     sudo chmod 755 /var/lib/lokinet/lokilaunch.sh
+    sudo chmod 755 /var/lib/lokinet/mobile.sh
 
     # Generate required lines for Rasp AP to place into rc.local file.
     # #RASPAP is for removal
@@ -280,6 +282,10 @@ function default_configuration() {
     #'fi'
     "$tablerouteA"
     "$tablerouteB"
+    "if ! [cat /sys/class/net/eth0/carrier] ; then"
+    "# Attempt 4G"
+    "/var/lib/lokinet/mobile.sh"
+    "fi"
     #'sudo \/var\/lib\/lokinet\/.\/lokilaunch.sh start #RASPAP'
     )
 
