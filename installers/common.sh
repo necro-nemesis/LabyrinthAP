@@ -280,9 +280,9 @@ function default_configuration() {
     'echo 1 > \/proc\/sys\/net\/ipv4\/ip_forward #RASPAP'
     "$tablerouteA"
     "$tablerouteB"
-    'if ! [cat \/sys\/class\/net\/eth0\/carrier] ; then'
+    # 'if ! [cat \/sys\/class\/net\/eth0\/carrier] ; then'
     '\/var\/lib\/lokinet\/mobile.sh'
-    'fi #end'
+    # 'fi #end'
 
     )
 
