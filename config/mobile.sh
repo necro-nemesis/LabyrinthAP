@@ -1,4 +1,4 @@
-!/bin/sh
+#!/bin/sh
 
 # 4G
 sudo qmicli -d /dev/cdc-wdm0 --dms-set-operating-mode='online' # power on module
