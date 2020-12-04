@@ -105,11 +105,11 @@ http://dw68y1xhptqbhcm5s8aaaip6dbopykagig5q5u1za4c7pzxto77y.loki/wiki/index.php?
 
 Exit nodes provide privacy on the internet through onion routing connections via the global network of Lokinet relay nodes and dedicated exit nodes. In order to connect to an exit node you will require the exit address from the exit node provider. These can be found through various social media linked at https://loki.network/. From the GUI this information can be entered and activated.
 
-![](https://i.imgur.com/eD82qCT.png)
-
 ## Waveshare 4G Mobile Pi HAT
 
 If you have a Waveshare 4G/3G/2G/GSM/GPRS/GNSS HAT for the Raspberry Pi the access point has built in support for it to use cellular data. When installed if Ethernet is available the access point will connect over Ethernet. If you wish to use cellular then booting without an Ethernet connection the access point will automatically switch over to cellular and connect to your provider. You will need to obtain a SIM card and it's APN address from your local cellular service provider. The APN addresses are usually obtainable with a quick online search. Once the software is installed you will need to navigate to the "Mobile APN" tab in the GUI under "Configure Lokinet" and enter in your APN address, set it and then reboot. It will now be saved for future use of the adapter.
+
+![](https://i.imgur.com/eD82qCT.png)
 
 ## Support us
 
