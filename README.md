@@ -1,6 +1,6 @@
 ![](https://i.imgur.com/mXuacOH.jpg)
 
-# `$ Lokiap-webgui` [![Release 2.1](https://img.shields.io/badge/Release-2.1-green.svg)](https://github.com/necro-nemesis/raspap-webgui/releases)
+# `$ Lokiap-webgui` [![Release 2.2](https://img.shields.io/badge/Release-2.2-green.svg)](https://github.com/necro-nemesis/raspap-webgui/releases)
 
 LokiAP interfaces witht Lokinet daemon to facilitate connections to the Lokinet global privacy network. LokiAP provides a simple, responsive web interface to control wifi, hostapd, Lokinet daemon and related services necessary to access Lokinet on the Raspberry Pi or Orange Pi.
 
@@ -74,7 +74,7 @@ sudo apt-get update
 sudo apt-get upgrade
 sudo reboot
 ```
-5. If you have an older Raspberry Pi without an onboard WiFi chipset, the [**Edimax Wireless 802.11b/g/n nano USB adapter**](https://www.edimax.com/edimax/merchandise/merchandise_detail/data/edimax/global/wireless_adapters_n150/ew-7811un) is an excellent option – it's small, cheap and has good driver support.
+5. Before installing the LokiAP on the Raspberry pi you must log in to the shell prompt and set your WiFi "Localization Options" to the country code you are in. If this is not set WiFi will not be available on the Rasberry pi. Additionally if you are using the LokiAP with a SIMCOM chip based mobile adapter for cellular connection to the net you will need to go into Interface Options -> serial -> answer "NO" when asked if you want login shell over serial and then answer "YES" when asked if you want the serial port hardware enabled. In order to set these options enter `sudo raspi-config` at the command line and use the menu to get to these settings. When exiting and asked to reboot answer yes and reboot for the settings to be enabled.
 
 With the prerequisites done, you can now proceed with the Quick installer.
 
@@ -104,6 +104,10 @@ http://dw68y1xhptqbhcm5s8aaaip6dbopykagig5q5u1za4c7pzxto77y.loki/wiki/index.php?
 ## Connecting to an Exit Node
 
 Exit nodes provide privacy on the internet through onion routing connections via the global network of Lokinet relay nodes and dedicated exit nodes. In order to connect to an exit node you will require the exit address from the exit node provider. These can be found through various social media linked at https://loki.network/. From the GUI this information can be entered and activated.
+
+## Waveshare 4G Mobile Pi HAT
+
+If you have a Waveshare 4G/3G/2G/GSM/GPRS/GNSS HAT for the Raspberry Pi the access point has built in support for it to use cellular data. When installed if Ethernet is available the access point will connect over Ethernet. If you wish to use cellular then booting without an Ethernet connection the access point will automatically switch over to cellular and connect to your provider. You will need to obtain a SIM card and it's APN address from your local cellular service provider. The APN addresses are usually obtainable with a quick online search. Once the software is installed you will need to navigate to the "Mobile APN" tab in the GUI under "Configure Lokinet" and enter in your APN address, set it and then reboot. It will now be saved for future use of the adapter.
 
 ## Support us
 
