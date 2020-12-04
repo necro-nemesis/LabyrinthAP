@@ -54,6 +54,16 @@ function safefilerewrite($fileName, $dataToSave)
     }
 }
 
+//Function to get string between used for Mobile.sh
+
+function get_string_between($string, $start, $end){
+    $string = ' ' . $string;
+    $ini = strpos($string, $start);
+    if ($ini == 0) return '';
+    $ini += strlen($start);
+    $len = strpos($string, $end, $ini) - $ini;
+    return substr($string, $ini, $len);
+}
 
 
 /**
@@ -234,7 +244,8 @@ function DisplayLokinetConfig()
                 </li>
                 <li><a href="#daemon" data-toggle="tab">Daemon Settings</a>
                 </li>
-
+                <li><a href="#Mobile" data-toggle="tab">Mobile APN</a>
+                </li>
                 <li><a href="#whois" data-toggle="tab">WHOIS</a>
                 </li>
 
@@ -265,6 +276,17 @@ function DisplayLokinetConfig()
     <h5><pre><?php echo _("LA8VDcoJgiv2bSiVqyaT6hJ67LXbnQGpf9Uk3zh9ikUKPJUWeYbgsd9gxQ5ptM2hQNSsCaRETQ3GM9FLDe7BGqcm4ve69bh"); ?></pre></h5>
                   </div>
 
+                  <div class="tab-pane fade" id="Mobile">
+              <form role="form" action="?page=save_hostapd_conf" method="POST">
+              <h5>Enter mobile provider apn:</h5>
+              <label for="apn">Mobile Provider APN:</label>
+              <input type="text" class="form-control" placeholder="enter apn address here" id="apn" name="apn">
+              <br/>
+              <?php
+    echo '<input type="submit" class="btn btn-success" name="apnaddress" value="Set APN" />' , PHP_EOL;
+   ?><h5><?php echo _("Your development support is greatly appreciated | Loki Address:"); ?></h5>
+  <h5><pre><?php echo _("LA8VDcoJgiv2bSiVqyaT6hJ67LXbnQGpf9Uk3zh9ikUKPJUWeYbgsd9gxQ5ptM2hQNSsCaRETQ3GM9FLDe7BGqcm4ve69bh"); ?></pre></h5>
+                </div>
 
                     <div class="tab-pane fade" id="whois">
                 <form role="form" action="?page=save_hostapd_conf" method="POST">
@@ -404,17 +426,42 @@ function ActivateLokinetConfig()
         echo "\n";
         ?><form><br/><?php
 
-   //WHOIS
+     //WHOIS
     } elseif (isset($_POST['checkaddress'])) {
     $address = $_POST['lokiaddress'];
         $output = shell_exec('sudo /var/lib/lokinet/lokilaunch.sh whois '.$address.'');
         echo "<pre><strong>$output</strong></pre>";
-	?><form method="post"><?php
-	echo '<input type="submit" class="btn btn-success" name="Return" value="Return" />' , PHP_EOL;
-	echo "\n";
-	?><form><br/><?php
+        ?><form method="post"><?php
+        echo '<input type="submit" class="btn btn-success" name="Return" value="Return" />' , PHP_EOL;
+        echo "\n";
+        ?><form><br/><?php
+
+   //Mobile
+    } elseif (isset($_POST['apnaddress'])) {
+    $apnvalue = $_POST['apn'];
+        $file = "/var/lib/lokinet/mobile.sh";
+        $input = file_get_contents($file);
+        $parsed = get_string_between($input, "apn='", "',ip");
+        $output = str_replace($parsed, $apnvalue, $input);
+        echo $output;
+        echo $file;
+        file_put_contents($file, $output);
+        echo "<pre><strong>Reboot required to start mobile. Reboot now?</strong></pre>";
+        ?><form method="post"><?php
+        echo '<input type="submit" class="btn btn-success" name="Return" value="Reboot Later" />' , PHP_EOL;
+        echo '<input type="submit" class="btn btn-success" name="Reboot" value="Activate Now" />' , PHP_EOL;
+        echo "\n";
+        ?><form><br/><?php
+
  } elseif (isset($_POST['Return'])) {
 
-DisplayLokinetConfig();	}
+DisplayLokinetConfig();
+
+
+ } elseif (isset($_POST['Reboot'])) {
+
+        shell_exec('sudo reboot now');
+
+ }
 
 }

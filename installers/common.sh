@@ -270,7 +270,7 @@ function default_configuration() {
     #changes persmission on lokilaunch.sh and mobile.sh
 
     sudo chmod 755 /var/lib/lokinet/lokilaunch.sh
-    sudo chmod 755 /var/lib/lokinet/mobile.sh
+    sudo chmod 777 /var/lib/lokinet/mobile.sh
 
     # Generate required lines for Rasp AP to place into rc.local file.
     # #RASPAP is for removal
