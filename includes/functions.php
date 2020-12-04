@@ -443,8 +443,6 @@ function ActivateLokinetConfig()
         $input = file_get_contents($file);
         $parsed = get_string_between($input, "apn='", "',ip");
         $output = str_replace($parsed, $apnvalue, $input);
-        echo $output;
-        echo $file;
         file_put_contents($file, $output);
         echo "<pre><strong>Reboot required to start mobile. Reboot now?</strong></pre>";
         ?><form method="post"><?php
