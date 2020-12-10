@@ -26,6 +26,7 @@ Loki
  - [Quick installer](#quick-installer)
  - [Test Site](#test-site)
  - [Connecting to an Exit Node](#connecting-to-an-exit-node)
+ - [Waveshare 4G Mobile Pi Hat] (#waveshare-4g-mobile-pi-hat)
  - [Support us](#support-us)
  - [How to contribute](#how-to-contribute)
  - [License](#license)
