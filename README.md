@@ -1,4 +1,4 @@
-![](https://i.imgur.com/s6hOlqx.png)
+![](https://i.imgur.com/2ZrhaiH.png)
 
 # `LabyrinthAP / Lokinet Access Point` [![Release 2.3](https://img.shields.io/badge/Release-2.3-green.svg)](https://github.com/necro-nemesis/raspap-webgui/releases)
 
@@ -13,8 +13,6 @@ Lokinet is a privacy network which allows users to transact and communicate priv
 LabyrinthAP is currently offered as a free software solution that runs Lokinet on a remote network connected device which creates a WiFi hostspot and/or Ethernet subnet to connect to Lokinet. Using LabyrinthAP not only ensure Lokinet is always connected and available but removes the requirement of installation and association with a single or group of devices. LabyrinthAP makes Lokinet platform agnostic meaning it can connect to a multitude of devices regardless of the type of hardware or software installed. LabyrinthAP is compatible with most web based applications and browsers. It also has a web based interface to manage and control.
 
 LabyrinthAP comes with it's own auto-installation scripts to set up Lokinet and the LabyrinthAP interface providing an access point on very commonly available single board computer devices such as the Rapsberry Pi using Raspberry OS. It also supports device running Armbian such as the OrangePiR1 or OrangePi Zero + etc.
-
-![](https://i.imgur.com/fxKF4bi.jpg)
 
 ![](https://i.imgur.com/JpudIag.png)
 
