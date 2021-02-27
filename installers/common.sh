@@ -420,7 +420,7 @@ function install_complete() {
         exit 0
     fi
     install_log "Shutting Down"
-    echo -n "Allow a minute for reinitialization then connect wifi to SSID loki-access and use default password 'ChangeMe'"
+    echo -n "Allow a minute for reinitialization then connect wifi to SSID LabyrinthAP and use default password 'ChangeMe'"
     sleep 8
     sudo shutdown -r now || install_error "Unable to execute shutdown"
 }

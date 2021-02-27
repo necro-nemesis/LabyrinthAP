@@ -94,7 +94,7 @@ configured as an access point as follows:
   * Username: `admin`
   * Password: `secret`
 * DHCP range: 10.3.141.1 to 10.3.141.24
-* SSID: `loki-access`
+* SSID: `LabyrinthAP`
 * Password: `ChangeMe`
 
 ## Test site
