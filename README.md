@@ -14,7 +14,7 @@ LabyrinthAP is currently offered as a free software solution that runs Lokinet o
 
 LabyrinthAP comes with it's own auto-installation scripts to set up Lokinet and the LabyrinthAP interface providing an access point on very commonly available single board computer devices such as the Rapsberry Pi using Raspberry OS. It also supports device running Armbian such as the OrangePiR1 or OrangePi Zero + etc.
 
-![](https://i.imgur.com/JpudIag.png)
+![](https://i.imgur.com/IbksKgc.png)
 
 ![](https://i.imgur.com/F83n7PF.jpg)
 
