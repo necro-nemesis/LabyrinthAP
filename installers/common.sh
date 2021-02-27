@@ -52,12 +52,12 @@ function display_welcome() {
     cyan='\033[1;36m'
 
     echo -e "${cyan}\n"
-    echo -e "  _          _                _       _   _        _    ____"
-    echo -e " | |    __ _| |__  _   _ _ __(_)_ __ | |_| |__    / \  |  _ \"
-    echo -e " | |   / _  |  _ \| | | |  __| |  _ \| __|  _ \  / _ \ | |_) |"
-    echo -e " | |__| (_| | |_) | |_| | |  | | | | | |_| | | |/ ___ \|  __/"
-    echo -e " |_____\__,_|_.__/ \__, |_|  |_|_| |_|\__|_| |_/_/   \_\_|"
-    echo -e "                   |___/"
+    echo -e "  _          _                _       _   _        _    ____ "
+    echo -e " | |    __ _| |__  _   _ _ __(_)_ __ | |_| |__    / \  |  _ \ "
+    echo -e " | |   / _  |  _ \| | | |  __| |  _ \| __|  _ \  / _ \ | |_) | "
+    echo -e " | |__| (_| | |_) | |_| | |  | | | | | |_| | | |/ ___ \|  __/ "
+    echo -e " |_____\__,_|_.__/ \__, |_|  |_|_| |_|\__|_| |_/_/   \_\_| "
+    echo -e "                   |___/ "
     echo -e " by Minotaurware.net"
     echo -e "${raspberry}"
     echo -e "The Quick Installer will guide you through a few easy steps\n\n"
