@@ -5,7 +5,7 @@
 html * {
  	 font-family: Arial, Andale Mono, monospace;
  	 font-size: 10pt;
-	 color: #33ff00;
+	 color: #609aac;
 	background-color: #252525;
 }
 
@@ -27,12 +27,12 @@ html * {
 }
 
 .panel-primary {
-	border-color: #33ff00;
+	border-color: #609aac;
 	background-color: #0C1309;
 }
 
 .panel-primary>.panel-heading {
-	border-color: #33ff00;
+	border-color: #609aac;
 	background-color: #0C1309;
 }
 

@@ -12,7 +12,7 @@
  *
  * @author     TechnicalTumbleweed (Loki->Discord/Telegram)
  * @license    GNU General Public License, version 3 (GPL-3.0)
- * @version    2.2
+ * @version    2.3
  * @link       https://github.com/necro-nemesis/LabyrinthAP-webgui
  */
 
@@ -105,7 +105,7 @@ $theme_url = 'dist/css/'.htmlspecialchars($theme, ENT_QUOTES);
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-    <a class="navbar-brand" href="index.php"style="font-family: Arial;font-size: 20px; color: #33ff00"><?php echo _("LabyrinthAP Mixnet Portal"); ?> v<?php echo RASPI_VERSION; ?></a>
+    <a class="navbar-brand" href="index.php"style="font-family: Arial;font-size: 20px; color: #609aac"><?php echo _("LabyrinthAP Mixnet Portal"); ?> v<?php echo RASPI_VERSION; ?></a>
         </div>
         <!-- /.navbar-header -->
 

@@ -1,6 +1,6 @@
 ![](https://i.imgur.com/mXuacOH.jpg)
 
-# `LabyrinthAP / Lokinet Access Point` [![Release 2.3](https://img.shields.io/badge/Release-2.2-green.svg)](https://github.com/necro-nemesis/raspap-webgui/releases)
+# `LabyrinthAP / Lokinet Access Point` [![Release 2.3](https://img.shields.io/badge/Release-2.3-green.svg)](https://github.com/necro-nemesis/raspap-webgui/releases)
 
 LabyrinthAP interfaces with Lokinet daemon to facilitate connections to the Lokinet global privacy network. LabyrinthAP provides a simple, responsive web interface to control wifi, hostapd, Lokinet daemon and related services necessary to access Lokinet on the Raspberry Pi or Orange Pi.
 
