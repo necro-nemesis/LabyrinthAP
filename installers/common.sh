@@ -49,16 +49,16 @@ function install_warning() {
 # Outputs a welcome message
 function display_welcome() {
     raspberry='\033[0;35m'
-    green='\033[1;32m'
+    cyan='\033[1;36m'
 
-    echo -e "${green}\n"
-    echo -e "  ooooo                  oooo         o8o        .o.       ooooooooo."
-    echo -e "   888                    888                   .888.       888    Y88."
-    echo -e "   888          .ooooo.   888  oooo  oooo      .8 888.      888   .d88"
-    echo -e "   888         d88   88b  888 .8P     888     .8   888.     888ooo88P"
-    echo -e "   888         888   888  888888.     888    .88ooo8888.    888"
-    echo -e "   888       o 888   888  888  88b.   888   .8       888.   888"
-    echo -e "  o888ooooood8  Y8bod8P  o888o o888o o888o o88o     o8888o o888o"
+    echo -e "${cyan}\n" 
+    echo -e "  _          _                _       _   _        _    ____"
+    echo -e " | |    __ _| |__  _   _ _ __(_)_ __ | |_| |__    / \  |  _ \"
+    echo -e " | |   / _` | '_ \| | | | '__| | '_ \| __| '_ \  / _ \ | |_) |"
+    echo -e " | |__| (_| | |_) | |_| | |  | | | | | |_| | | |/ ___ \|  __/"
+    echo -e " |_____\__,_|_.__/ \__, |_|  |_|_| |_|\__|_| |_/_/   \_\_|"
+    echo -e "                   |___/"
+    echo -e " by Minotaurware.net"
     echo -e "${raspberry}"
     echo -e "The Quick Installer will guide you through a few easy steps\n\n"
 }
