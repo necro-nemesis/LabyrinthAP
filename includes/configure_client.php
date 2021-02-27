@@ -282,7 +282,7 @@ function DisplayWPAConfig(){
 
           </form>
         </div><!-- ./ Panel body -->
-	<div class="panel-footer"><?php echo _("<strong>Note:</strong> WEP access points appear as 'Open'. LokiAP does not currently support connecting to WEP"); ?></div>
+	<div class="panel-footer"><?php echo _("<strong>Note:</strong> WEP access points appear as 'Open'. LabyrinthAP does not currently support connecting to WEP"); ?></div>
       </div><!-- /.panel-primary -->
     </div><!-- /.col-lg-12 -->
   </div><!-- /.row -->
