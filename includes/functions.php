@@ -54,6 +54,16 @@ function safefilerewrite($fileName, $dataToSave)
     }
 }
 
+//Function to get string between used for Mobile.sh
+
+function get_string_between($string, $start, $end){
+    $string = ' ' . $string;
+    $ini = strpos($string, $start);
+    if ($ini == 0) return '';
+    $ini += strlen($start);
+    $len = strpos($string, $end, $ini) - $ini;
+    return substr($string, $ini, $len);
+}
 
 
 /**
@@ -213,442 +223,243 @@ function ConvertToSecurity($security)
 *
 *
 */
-function DisplayOpenVPNConfig()
-{
-    exec('cat '. RASPI_OPENVPN_CLIENT_CONFIG, $returnClient);
-    exec('cat '. RASPI_OPENVPN_SERVER_CONFIG, $returnServer);
-    exec('pidof openvpn | wc -l', $openvpnstatus);
-
-    if ($openvpnstatus[0] == 0) {
-        $status = '<div class="alert alert-warning alert-dismissable">OpenVPN is not running
-					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>';
-    } else {
-        $status = '<div class="alert alert-success alert-dismissable">OpenVPN is running
-					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>';
-    }
-
-    // parse client settings
-    foreach ($returnClient as $a) {
-        if ($a[0] != "#") {
-            $arrLine = explode(" ", $a) ;
-            $arrClientConfig[$arrLine[0]]=$arrLine[1];
-        }
-    }
-
-    // parse server settings
-    foreach ($returnServer as $a) {
-        if ($a[0] != "#") {
-            $arrLine = explode(" ", $a) ;
-            $arrServerConfig[$arrLine[0]]=$arrLine[1];
-        }
-    } ?>
-	<div class="row">
-	<div class="col-lg-12">
-		<div class="panel panel-primary">
-			<div class="panel-heading"><i class="fa fa-lock fa-fw"></i> Configure OpenVPN </div>
-		<!-- /.panel-heading -->
-		<div class="panel-body">
-			<!-- Nav tabs -->
-			<ul class="nav nav-tabs">
-				<li class="active"><a href="#openvpnclient" data-toggle="tab">Client settings</a></li>
-				<li><a href="#openvpnserver" data-toggle="tab">Server settings</a></li>
-			</ul>
-			<!-- Tab panes -->
-			<div class="tab-content">
-				<p><?php echo $status; ?></p>
-				<div class="tab-pane fade in active" id="openvpnclient">
-
-					<h4>Client settings</h4>
-					<form role="form" action="?page=save_hostapd_conf" method="POST">
-
-					<div class="row">
-						<div class="form-group col-md-4">
-							<label>Select OpenVPN configuration file (.ovpn)</label>
-							<input type="file" name="openvpn-config">
-						</div>
-					</div>
-					<div class="row">
-						<div class="form-group col-md-4">
-							<label for="code">Client Log</label>
-							<input type="text" class="form-control" id="disabledInput" name="log-append" type="text" placeholder="<?php echo htmlspecialchars($arrClientConfig['log-append'], ENT_QUOTES); ?>" disabled="disabled" />
-						</div>
-					</div>
-				</div>
-				<div class="tab-pane fade" id="openvpnserver">
-					<h4>Server settings</h4>
-					<div class="row">
-						<div class="form-group col-md-4">
-						<label for="code">Port</label>
-						<input type="text" class="form-control" name="openvpn_port" value="<?php echo htmlspecialchars($arrServerConfig['port'], ENT_QUOTES); ?>" />
-						</div>
-					</div>
-					<div class="row">
-						<div class="form-group col-md-4">
-						<label for="code">Protocol</label>
-						<input type="text" class="form-control" name="openvpn_proto" value="<?php echo htmlspecialchars($arrServerConfig['proto'], ENT_QUOTES); ?>" />
-						</div>
-					</div>
-					<div class="row">
-						<div class="form-group col-md-4">
-						<label for="code">Root CA certificate</label>
-						<input type="text" class="form-control" name="openvpn_rootca" placeholder="<?php echo htmlspecialchars($arrServerConfig['ca'], ENT_QUOTES); ?>" disabled="disabled" />
-						</div>
-					</div>
-					<div class="row">
-						<div class="form-group col-md-4">
-						<label for="code">Server certificate</label>
-						<input type="text" class="form-control" name="openvpn_cert" placeholder="<?php echo htmlspecialchars($arrServerConfig['cert'], ENT_QUOTES); ?>" disabled="disabled" />
-						</div>
-					</div>
-					<div class="row">
-						<div class="form-group col-md-4">
-						<label for="code">Diffie Hellman parameters</label>
-						<input type="text" class="form-control" name="openvpn_dh" placeholder="<?php echo htmlspecialchars($arrServerConfig['dh'], ENT_QUOTES); ?>" disabled="disabled" />
-						</div>
-					</div>
-					<div class="row">
-						<div class="form-group col-md-4">
-						<label for="code">KeepAlive</label>
-						<input type="text" class="form-control" name="openvpn_keepalive" value="<?php echo htmlspecialchars($arrServerConfig['keepalive'], ENT_QUOTES); ?>" />
-						</div>
-					</div>
-					<div class="row">
-						<div class="form-group col-md-4">
-						<label for="code">Server log</label>
-						<input type="text" class="form-control" name="openvpn_status" placeholder="<?php echo htmlspecialchars($arrServerConfig['status'], ENT_QUOTES); ?>" disabled="disabled" />
-						</div>
-					</div>
-				</div>
-				<input type="submit" class="btn btn-outline btn-primary" name="SaveOpenVPNSettings" value="Save settings" />
-				<?php
-                if ($hostapdstatus[0] == 0) {
-                    echo '<input type="submit" class="btn btn-success" name="StartOpenVPN" value="Start OpenVPN" />' , PHP_EOL;
-                } else {
-                    echo '<input type="submit" class="btn btn-warning" name="StopOpenVPN" value="Stop OpenVPN" />' , PHP_EOL;
-                } ?>
-				</form>
-		</div><!-- /.panel-body -->
-	</div><!-- /.panel-primary -->
-	<div class="panel-footer"> Information provided by openvpn</div>
-</div><!-- /.col-lg-12 -->
-</div><!-- /.row -->
-<?php
-}
-
-/**
-*
-*
-*/
 /*LOKINET FUNCTIONS ADDED HERE*/
 
 function DisplayLokinetConfig()
 {
     exec('pidof lokinet | wc -l', $lokinetstatus);
+    $exitstatus = exec("lokinet-vpn --status");
     $rulestate = exec("ip rule show default | grep lokinet | awk {'print $5'}", $output);
     $lokiversion = exec("dpkg -s lokinet | grep '^Version:'", $output);
-    if ($lokinetstatus[0] == 0) {
-        $status = '<div class="alert alert-danger alert-dismissable">Lokinet daemon is not running
-					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>';
+        ?>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="panel panel-primary">
+              <div class="panel-heading"><i class="fa fa-eye-slash fa-fw"></i> Configure Lokinet</div>
+        <!-- /.panel-heading -->
+                <div class="panel-body">
+        <!-- Nav tabs -->
+                  <ul class="nav nav-tabs">
+                <li class="active"><a href="#basic" data-toggle="tab">Exit Node Settings</a>
+                </li>
+                <li><a href="#daemon" data-toggle="tab">Daemon Settings</a>
+                </li>
+                <li><a href="#Mobile" data-toggle="tab">Mobile APN</a>
+                </li>
+                <li><a href="#whois" data-toggle="tab">WHOIS</a>
+                </li>
+
+                </ul>
+        <!-- Tab panes -->
+                  <div class="tab-content">
+                <p><?php echo $status; ?></p>
+                <p><?php echo "Current Lokinet $lokiversion"; ?></p>
+                    <div class="tab-pane fade in active" id="basic">
+                <form role="form" action="?page=save_hostapd_conf" method="POST">
+	              <h5>Enter Exit Node Data to activate:</h5>
+                <label for="exitaddress">Exit Address:</label>
+                <input type="text" class="form-control" placeholder="enter exit address here" id="exitaddress" name="exitaddress">
+                <label for="exitkey">Exit Key: (optional)</label>
+                <input type="text" class="form-control" placeholder="enter exit key here" id="exitkey" name="exitkey">
+                <br/>
+                <?php
+    if ($exitstatus == "no exits") {
+      echo '<input type="submit" class="btn btn-success" name="StartExit" value="Start Exit" />' , PHP_EOL;
     } else {
-        $status = '<div class="alert alert-success alert-dismissable">Lokinet daemon is running
-					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>';
+      echo '<input type="submit" class="btn btn-danger" name="StopExit" value="Stop Exit" />' , PHP_EOL;
+    }
+    if ($lokinetstatus[0] == 0) {
+      echo '<input type="submit" class="btn btn-success" name="StartDaemon" value="Start Daemon" />' , PHP_EOL;
+    } else {
+      echo '<input type="submit" class="btn btn-danger" name="StopDaemon" value="Stop Daemon" />' , PHP_EOL;
+    } ?><h5><?php echo _("Your development support is greatly appreciated | Loki Address:"); ?></h5>
+    <h5><pre><?php echo _("LA8VDcoJgiv2bSiVqyaT6hJ67LXbnQGpf9Uk3zh9ikUKPJUWeYbgsd9gxQ5ptM2hQNSsCaRETQ3GM9FLDe7BGqcm4ve69bh"); ?></pre></h5>
+                  </div>
+
+                  <div class="tab-pane fade" id="Mobile">
+              <form role="form" action="?page=save_hostapd_conf" method="POST">
+              <h5>Enter mobile provider apn:</h5>
+              <label for="apn">Mobile Provider APN:</label>
+              <input type="text" class="form-control" placeholder="enter apn address here" id="apn" name="apn">
+              <br/>
+              <?php
+    echo '<input type="submit" class="btn btn-success" name="apnaddress" value="Set APN" />' , PHP_EOL;
+   ?><h5><?php echo _("Your development support is greatly appreciated | Loki Address:"); ?></h5>
+  <h5><pre><?php echo _("LA8VDcoJgiv2bSiVqyaT6hJ67LXbnQGpf9Uk3zh9ikUKPJUWeYbgsd9gxQ5ptM2hQNSsCaRETQ3GM9FLDe7BGqcm4ve69bh"); ?></pre></h5>
+                </div>
+
+                    <div class="tab-pane fade" id="whois">
+                <form role="form" action="?page=save_hostapd_conf" method="POST">
+	              <h5>Enter .loki Address:</h5>
+                <label for="lokiaddress">Loki Address:</label>
+                <input type="text" class="form-control" placeholder="enter lokinet address here" id="lokiaddress" name="lokiaddress">
+                <br/>
+                <?php
+      echo '<input type="submit" class="btn btn-success" name="checkaddress" value="Submit" />' , PHP_EOL;
+     ?><h5><?php echo _("Your development support is greatly appreciated | Loki Address:"); ?></h5>
+    <h5><pre><?php echo _("LA8VDcoJgiv2bSiVqyaT6hJ67LXbnQGpf9Uk3zh9ikUKPJUWeYbgsd9gxQ5ptM2hQNSsCaRETQ3GM9FLDe7BGqcm4ve69bh"); ?></pre></h5>
+                  </div>
+
+
+                    <div class="tab-pane fade" id="daemon">
+                    <h4>Lokient Daemon</h4>
+                      <div class="row">
+                        <div class="col-lg-12">
+                 <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#instruct">Instructions</button>
+                          <div id="instruct" class="collapse">The 3 buttons below must be armed (red) to connect to Lokinet. If there isn't a current lokinet.ini file found on the system the "Generate.ini" button will be green. The .ini file must be generated prior to connecting to Lokinet by pressing the button which will automatically write the required .ini file. Similarly the absense of a valid bootstrap will be indicated by a green "Bootstrap" button. Applying a bootstrap by pressing the apply button without submitting a valid URL in the textbox area will apply the original default bootstrap in place of one being provided. Stopping the daemon also exits Lokinet. To summarize, if necessary generate the .ini and bootstrap Lokinet then you are able to connect to Lokinet by starting the daemon and letting the network establish itself.
+                          </div>
+                          <div class="row">
+                            <div class="form-group col-lg-12">
+                  <h5>Enter a valid bootstrap url below and apply to overwrite the current bootstrap:</h5>
+                  <label for="lokinetbootstrap">Bootstrap url:</label>
+                  <input type="url" class="form-control" placeholder="https://seed.lokinet.org/lokinet.signed" id="lokinetbootstrap" name="lokinetbootstrap">
+                  <br/>
+<?php
+    $filename = '/var/lib/lokinet/lokinet.ini';
+    if ($lokinetstatus[0] == 0) {
+        echo '<input type="submit" class="btn btn-success" name="StartDaemon" value="Start Daemon" />' , PHP_EOL;
+    } else {
+        echo '<input type="submit" class="btn btn-danger" name="StopDaemon" value="Stop Daemon" />' , PHP_EOL;
     }
 
-     ?>
-	<div class="row">
-	<div class="col-lg-12">
-		<div class="panel panel-primary">
-			<div class="panel-heading"><i class="fa fa-eye-slash fa-fw"></i> Configure Lokinet</div>
-        <!-- /.panel-heading -->
-        <div class="panel-body">
-        	<!-- Nav tabs -->
-            <ul class="nav nav-tabs">
-                <li class="active"><a href="#basic" data-toggle="tab">Daemon Control</a>
-                </li>
-                <li><a href="#daemon" data-toggle="tab">Advanced Console User</a>
-                </li>
-            </ul>
-            <!-- Tab panes -->
-           	<div class="tab-content">
-           		<p><?php echo $status; ?></p>
-              <p><?php echo "Current Lokinet $lokiversion"; ?></p>
-              <div class="tab-pane fade in active" id="basic">
-                <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#instruct">Instructions</button>
-                <div id="instruct" class="collapse">The 3 buttons below must be armed (red) to connect to Lokinet. If there isn't a current lokinet.ini file found on the system the "Generate.ini" button will be green. The .ini file must be generated prior to connecting to Lokinet by pressing the button which will automatically write the required .ini file. Similarly the absense of a valid bootstrap will be indicated by a green "Bootstrap" button. Applying a bootstrap by pressing the apply button without submitting a valid URL in the textbox area will apply the original default bootstrap in place of one being provided. Stopping the daemon also exits Lokinet. To summarize, if necessary generate the .ini and bootstrap Lokinet then you are able to connect to Lokinet by starting the daemon and letting the network establish itself.
-                </div>
-                <form role="form" action="?page=save_hostapd_conf" method="POST">
-                  <div class="row">
-                    <div class="form-group col-lg-12">
-                      <h5>Enter a valid bootstrap url below and apply to overwrite the current bootstrap:</h5>
-                        <label for="usr">Bootstrap url:</label>
-                        <input type="url" class="form-control" placeholder="https://seed.lokinet.org/lokinet.signed" id="lokinetbootstrap" name="lokinetbootstrap">
-                        <li></li>
-                  <?php
-
-                  if ($lokinetstatus[0] == 0) {
-                      echo '<input type="submit" class="btn btn-success" name="StartDaemon" value="Start Daemon" />' , PHP_EOL;
-                  } else {
-                      echo '<input type="submit" class="btn btn-danger" name="StopDaemon" value="Stop Daemon" />' , PHP_EOL;
-                  }
-
-    $filename = '/var/lib/lokinet/lokinet.ini';
-
-                  if (file_exists($filename)) {
-                    echo '<input type="submit" class="btn btn-danger" name="ReGenerateLokinet" value="Regenerate .ini" />' , PHP_EOL;
-                  } else {
-                    echo '<input type="submit" class="btn btn-success" name="GenerateLokinet" value="Generate .ini" />' , PHP_EOL;
-                  }
-                  ?>
+    if (file_exists($filename)) {
+        echo '<input type="submit" class="btn btn-danger" name="ReGenerateLokinet" value="Regenerate .ini" />' , PHP_EOL;
+    } else {
+        echo '<input type="submit" class="btn btn-success" name="GenerateLokinet" value="Generate .ini" />' , PHP_EOL;
+    } ?>
 
                   <input type="submit" class="btn btn-danger" name="ApplyLokinetSettings" value="Re-Bootstrap" />
                   <h5><?php echo _("Your development support is greatly appreciated | Loki Address:"); ?></h5>
                   <h5><pre><?php echo _("LA8VDcoJgiv2bSiVqyaT6hJ67LXbnQGpf9Uk3zh9ikUKPJUWeYbgsd9gxQ5ptM2hQNSsCaRETQ3GM9FLDe7BGqcm4ve69bh"); ?></pre></h5>
-				       </div>
-             </div>
-           </div>
-             	<div class="tab-pane fade" id="daemon">
-            		<h4>Lokient Daemon</h4>
-                <div class="row">
-                  <div class="col-lg-12">
-                    <iframe src="includes/webconsole.php" class="webconsole"></iframe>
-                  </div>
                 </form>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div><!-- /.tab-content -->
-	     </div><!-- /.panel-body -->
-      <div class="panel-footer">Contact Loki user groups for the latest bootstrap file location</div>
+          </div><!-- /.tab-content -->
+        </div><!-- /.panel-body -->
+      <div class="panel-footer">Contact Loki user groups on Session to obtain Exit Access</div>
     </div><!-- /.panel-primary -->
   </div><!-- /.col-lg-12 -->
 </div><!-- /.row -->
       <?php
 }
 
-
 /**
 *
 *
 */
-function DisplayTorProxyConfig()
+function ActivateLokinetConfig()
 {
-    exec('cat '. RASPI_TORPROXY_CONFIG, $return);
-    exec('pidof tor | wc -l', $torproxystatus);
-
-    if ($torproxystatus[0] == 0) {
-        $status = '<div class="alert alert-warning alert-dismissable">TOR is not running
-					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>';
-    } else {
-        $status = '<div class="alert alert-success alert-dismissable">TOR is running
-					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>';
-    }
-
-    $arrConfig = array();
-    foreach ($return as $a) {
-        if ($a[0] != "#") {
-            $arrLine = explode(" ", $a) ;
-            $arrConfig[$arrLine[0]]=$arrLine[1];
-        }
-    } ?>
-	<div class="row">
-	<div class="col-lg-12">
-		<div class="panel panel-primary">
-			<div class="panel-heading"><i class="fa fa-eye-slash fa-fw"></i> Configure TOR proxy</div>
-        <!-- /.panel-heading -->
-        <div class="panel-body">
-        	<!-- Nav tabs -->
-            <ul class="nav nav-tabs">
-                <li class="active"><a href="#basic" data-toggle="tab">Basic</a>
-                </li>
-                <li><a href="#relay" data-toggle="tab">Relay</a>
-                </li>
-            </ul>
-
-            <!-- Tab panes -->
-           	<div class="tab-content">
-           		<p><?php echo $status; ?></p>
-
-            	<div class="tab-pane fade in active" id="basic">
-            		<h4>Basic settings</h4>
-					<form role="form" action="?page=save_hostapd_conf" method="POST">
-					<div class="row">
-						<div class="form-group col-md-4">
-							<label for="code">VirtualAddrNetwork</label>
-							<input type="text" class="form-control" name="virtualaddrnetwork" value="<?php echo htmlspecialchars($arrConfig['VirtualAddrNetwork'], ENT_QUOTES); ?>" />
-						</div>
-					</div>
-					<div class="row">
-						<div class="form-group col-md-4">
-							<label for="code">AutomapHostsSuffixes</label>
-							<input type="text" class="form-control" name="automaphostssuffixes" value="<?php echo htmlspecialchars($arrConfig['AutomapHostsSuffixes'], ENT_QUOTES); ?>" />
-						</div>
-					</div>
-					<div class="row">
-						<div class="form-group col-md-4">
-							<label for="code">AutomapHostsOnResolve</label>
-							<input type="text" class="form-control" name="automaphostsonresolve" value="<?php echo htmlspecialchars($arrConfig['AutomapHostsOnResolve'], ENT_QUOTES); ?>" />
-						</div>
-					</div>
-					<div class="row">
-						<div class="form-group col-md-4">
-							<label for="code">TransListenAddress</label>
-							<input type="text" class="form-control" name="translistenaddress" value="<?php echo htmlspecialchars($arrConfig['TransListenAddress'], ENT_QUOTES); ?>" />
-						</div>
-					</div>
-					<div class="row">
-						<div class="form-group col-md-4">
-							<label for="code">DNSPort</label>
-							<input type="text" class="form-control" name="dnsport" value="<?php echo htmlspecialchars($arrConfig['DNSPort'], ENT_QUOTES); ?>" />
-						</div>
-					</div>
-					<div class="row">
-						<div class="form-group col-md-4">
-							<label for="code">DNSListenAddress</label>
-							<input type="text" class="form-control" name="dnslistenaddress" value="<?php echo htmlspecialchars($arrConfig['DNSListenAddress'], ENT_QUOTES); ?>" />
-						</div>
-					</div>
-				</div>
-				<div class="tab-pane fade" id="relay">
-            		<h4>Relay settings</h4>
-            		<div class="row">
-						<div class="form-group col-md-4">
-							<label for="code">ORPort</label>
-							<input type="text" class="form-control" name="orport" value="<?php echo htmlspecialchars($arrConfig['ORPort'], ENT_QUOTES); ?>" />
-						</div>
-					</div>
-					<div class="row">
-						<div class="form-group col-md-4">
-							<label for="code">ORListenAddress</label>
-							<input type="text" class="form-control" name="orlistenaddress" value="<?php echo htmlspecialchars($arrConfig['ORListenAddress'], ENT_QUOTES); ?>" />
-						</div>
-					</div>
-					<div class="row">
-						<div class="form-group col-md-4">
-							<label for="code">Nickname</label>
-							<input type="text" class="form-control" name="nickname" value="<?php echo htmlspecialchars($arrConfig['Nickname'], ENT_QUOTES); ?>" />
-						</div>
-					</div>
-					<div class="row">
-						<div class="form-group col-md-4">
-							<label for="code">Address</label>
-							<input type="text" class="form-control" name="address" value="<?php echo htmlspecialchars($arrConfig['Address'], ENT_QUOTES); ?>" />
-						</div>
-					</div>
-					<div class="row">
-						<div class="form-group col-md-4">
-							<label for="code">RelayBandwidthRate</label>
-							<input type="text" class="form-control" name="relaybandwidthrate" value="<?php echo htmlspecialchars($arrConfig['RelayBandwidthRate'], ENT_QUOTES); ?>" />
-						</div>
-					</div>
-					<div class="row">
-						<div class="form-group col-md-4">
-							<label for="code">RelayBandwidthBurst</label>
-							<input type="text" class="form-control" name="relaybandwidthburst" value="<?php echo htmlspecialchars($arrConfig['RelayBandwidthBurst'], ENT_QUOTES); ?>" />
-						</div>
-					</div>
-				</div>
-
-				<input type="submit" class="btn btn-outline btn-primary" name="SaveTORProxySettings" value="Save settings" />
-				<?php
-                if ($torproxystatus[0] == 0) {
-                    echo '<input type="submit" class="btn btn-success" name="StartTOR" value="Start TOR" />' , PHP_EOL;
-                } else {
-                    echo '<input type="submit" class="btn btn-warning" name="StopTOR" value="Stop TOR" />' , PHP_EOL;
-                }; ?>
-				</form>
-			</div><!-- /.tab-content -->
-		</div><!-- /.panel-body -->
-		<div class="panel-footer"> Information provided by tor</div>
-    </div><!-- /.panel-primary -->
-</div><!-- /.col-lg-12 -->
-</div><!-- /.row -->
-<?php
-}
-
-/**
-*
-*
-*/
-function SaveTORAndVPNConfig()
-{
-    if (isset($_POST['SaveOpenVPNSettings'])) {
-        // TODO
-    } elseif (isset($_POST['SaveTORProxySettings'])) {
-        // TODO
-    } elseif (isset($_POST['StartOpenVPN'])) {
-        echo "Attempting to start openvpn";
-        exec('sudo /etc/init.d/openvpn start', $return);
-        foreach ($return as $line) {
-            echo htmlspecialchars($line, ENT_QUOTES).'<br />' , PHP_EOL;
-        }
-    } elseif (isset($_POST['StopOpenVPN'])) {
-        echo "Attempting to stop openvpn";
-        exec('sudo /etc/init.d/openvpn stop', $return);
-        foreach ($return as $line) {
-            echo htmlspecialchars($line, ENT_QUOTES).'<br />' , PHP_EOL;
-        }
-    } elseif (isset($_POST['StartTOR'])) {
-        echo "Attempting to start TOR";
-        exec('sudo /etc/init.d/tor start', $return);
-        foreach ($return as $line) {
-            echo htmlspecialchars($line, ENT_QUOTES).'<br />' , PHP_EOL;
-        }
-    } elseif (isset($_POST['StopTOR'])) {
-        echo "Attempting to stop TOR";
-        exec('sudo /etc/init.d/tor stop', $return);
-        foreach ($return as $line) {
-            echo htmlspecialchars($line, ENT_QUOTES).'<br />' , PHP_EOL;
-        }
-/* Lokinet script commands start HERE
-////
-//// LOKINET
-////
-//*/
+        /* Lokinet script commands start HERE
+        ////
+        //// LOKINET
+        ////
+        //*/
 
     //START
-    } elseif (isset($_POST['StartDaemon'])) {
-    exec('sudo /var/lib/lokinet/lokilaunch.sh start');
+    if (isset($_POST['StartDaemon'])) {
+        exec('sudo /var/lib/lokinet/lokilaunch.sh start');
+	DisplayLokinetConfig();
 
     //STOP
     } elseif (isset($_POST['StopDaemon'])) {
-    exec('sudo /var/lib/lokinet/lokilaunch.sh stop');
+        exec('sudo /var/lib/lokinet/lokilaunch.sh stop');
+	DisplayLokinetConfig();
+
+    //START EXIT
+    } elseif (isset($_POST['StartExit'])) {
+        $exit = $_POST['exitaddress'];
+        $token = $_POST['exitkey'];
+        $exit=str_replace("'", "", $exit);
+        $token=str_replace("'", "", $token);
+        $output = shell_exec("sudo /var/lib/lokinet/lokilaunch.sh exitup '".$exit."' '" .$token."'");
+        echo "<pre><strong>$output</strong></pre>";
+        ?><form method="post"><?php
+        echo '<input type="submit" class="btn btn-success" name="Return" value="Return" />' , PHP_EOL;
+        echo "\n";
+        ?><form><br/><?php
+
+    //STOP EXIT
+    } elseif (isset($_POST['StopExit'])) {
+        exec ('sudo /var/lib/lokinet/lokilaunch.sh exitdown');
+	DisplayLokinetConfig();
 
     //GENERATE LOKINET.INI
     } elseif (isset($_POST['GenerateLokinet'])) {
-    ?>
+        ?>
     <div class="alert alert-success">
     Generating Lokinet Configuration
     </div>
     <?php
     $output = shell_exec('sudo /var/lib/lokinet/lokilaunch.sh gen');
-      echo "<pre><strong>$output</strong></pre>";
+        echo "<pre><strong>$output</strong></pre>";
+        ?><form method="post"><?php
+        echo '<input type="submit" class="btn btn-success" name="Return" value="Return" />' , PHP_EOL;
+        echo "\n";
+        ?><form><br/><?php
 
     //REGENERATE LOKINET.INI
     } elseif (isset($_POST['ReGenerateLokinet'])) {
-    ?>
+        ?>
     <div class="alert alert-success">
     Regenerating Lokinet Configuration
     </div>
     <?php
     $output = shell_exec('sudo /var/lib/lokinet/lokilaunch.sh gen');
-      echo "<pre><strong>$output</strong></pre>";
+        echo "<pre><strong>$output</strong></pre>";
+        ?><form method="post"><?php
+        echo '<input type="submit" class="btn btn-success" name="Return" value="Return" />' , PHP_EOL;
+        echo "\n";
+        ?><form><br/><?php
 
     //APPLY LOKINET-BOOTSTRAP
     } elseif (isset($_POST['ApplyLokinetSettings'])) {
-    ?>
-    <div class="alert alert-danger">
-    Stopping Lokinet background daemon process.
-    </div>
-    <div class="alert alert-success">
-    Applying Bootstrap
-    </div>
-    <?php
     $bootstrap = $_POST['lokinetbootstrap'];
-    $bootstrap=str_replace("'", "", $bootstrap);
-    $output = shell_exec('sudo /var/lib/lokinet/lokilaunch.sh bootstrap '.$bootstrap.'');
+        $bootstrap=str_replace("'", "", $bootstrap);
+        $output = shell_exec('sudo /var/lib/lokinet/lokilaunch.sh bootstrap '.$bootstrap.'');
+        $output = preg_replace('#\\x1b[[][^A-Za-z]*[A-Za-z]#', '', $output);
         echo "<pre><strong>$output</strong></pre>";
-    }
+        ?><form method="post"><?php
+        echo '<input type="submit" class="btn btn-success" name="Return" value="Return" />' , PHP_EOL;
+        echo "\n";
+        ?><form><br/><?php
 
-    DisplayLokinetConfig();
+     //WHOIS
+    } elseif (isset($_POST['checkaddress'])) {
+    $address = $_POST['lokiaddress'];
+        $output = shell_exec('sudo /var/lib/lokinet/lokilaunch.sh whois '.$address.'');
+        echo "<pre><strong>$output</strong></pre>";
+        ?><form method="post"><?php
+        echo '<input type="submit" class="btn btn-success" name="Return" value="Return" />' , PHP_EOL;
+        echo "\n";
+        ?><form><br/><?php
+
+   //Mobile
+    } elseif (isset($_POST['apnaddress'])) {
+    $apnvalue = $_POST['apn'];
+        $file = "/var/lib/lokinet/mobile.sh";
+        $input = file_get_contents($file);
+        $parsed = get_string_between($input, "apn='", "',ip");
+        $output = str_replace($parsed, $apnvalue, $input);
+        file_put_contents($file, $output);
+        echo "<pre><strong>Reboot required to start mobile. Reboot now?</strong></pre>";
+        ?><form method="post"><?php
+        echo '<input type="submit" class="btn btn-success" name="Return" value="Reboot Later" />' , PHP_EOL;
+        echo '<input type="submit" class="btn btn-success" name="Reboot" value="Activate Now" />' , PHP_EOL;
+        echo "\n";
+        ?><form><br/><?php
+
+ } elseif (isset($_POST['Return'])) {
+
+DisplayLokinetConfig();
+
+
+ } elseif (isset($_POST['Reboot'])) {
+
+        shell_exec('sudo reboot now');
+
+ }
+
 }
-?>

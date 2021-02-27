@@ -190,6 +190,11 @@ function check_for_old_configs() {
         sudo ln -sf "$raspap_dir/backups/dnsmasq.conf.`date +%F-%R`" "$raspap_dir/backups/dnsmasq.conf"
     fi
 
+    if [ -f /etc/dnsmasq.hosts ]; then
+        sudo cp /etc/dnsmasq.hosts "$raspap_dir/backups/dnsmasq.hosts.`date +%F-%R`"
+        sudo ln -sf "$raspap_dir/backups/dnsmasq.hosts.`date +%F-%R`" "$raspap_dir/backups/dnsmasq.hosts"
+    fi
+
     if [ -f /etc/dhcpcd.conf ]; then
         sudo cp /etc/dhcpcd.conf "$raspap_dir/backups/dhcpcd.conf.`date +%F-%R`"
         sudo ln -sf "$raspap_dir/backups/dhcpcd.conf.`date +%F-%R`" "$raspap_dir/backups/dhcpcd.conf"
@@ -243,33 +248,42 @@ function default_configuration() {
     sudo mv $webroot_dir/config/default_hostapd /etc/default/hostapd || install_error "Unable to move hostapd defaults file"
     sudo mv $webroot_dir/config/hostapd.conf /etc/hostapd/hostapd.conf || install_error "Unable to move hostapd configuration file"
     sudo mv $webroot_dir/config/dnsmasq.conf /etc/dnsmasq.conf || install_error "Unable to move dnsmasq configuration file"
+    sudo mv $webroot_dir/config/dnsmasq.hosts /etc/dnsmasq.hosts || install_error "unable to move dnsmasq hosts file"
     sudo mv $webroot_dir/config/dhcpcd.conf /etc/dhcpcd.conf || install_error "Unable to move dhcpcd configuration file"
     sudo mv $webroot_dir/config/head /etc/resolvconf/resolv.conf.d/head || install_error "Unable to move resolvconf head file"
     sudo mv $webroot_dir/config/nftables.conf /etc/nftables.conf || install_error "unable to move nftables configuration file"
+# Add loki-whois service
+    sudo mv $webroot_dir/config/loki-whois /usr/local/bin/loki-whois || install_error "unable to move loki-whois binary"
+    sudo mv $webroot_dir/config/loki-whois.service /etc/systemd/system/loki-whois.service || install_error "unable to move loki-whois.service to system"
+    sudo systemctl enable --now loki-whois #start loki-whois as service
+
     sudo rm /etc/resolv.conf
     sudo ln -s /etc/resolvconf/run/resolv.conf /etc/resolv.conf
     sudo resolvconf -u || install_error "Unable to update resolv.conf"
 
 
-    # LokiPAP Batch file relocation and permissions in user loki-network directory
+    # LokiPAP Batch files relocation and permissions in user loki-network directory
 
     sudo mv $webroot_dir/config/lokilaunch.sh /var/lib/lokinet/ || install error "Unable to move lokilaunch.sh, install Lokinet first"
+    sudo mv $webroot_dir/config/mobile.sh /var/lib/lokinet/ || install error "Unable to move mobile.sh, file not found"
 
-    #changes persmission on lokilaunch.sh
+    #changes persmission on lokilaunch.sh and mobile.sh
 
     sudo chmod 755 /var/lib/lokinet/lokilaunch.sh
+    sudo chmod 777 /var/lib/lokinet/mobile.sh
 
     # Generate required lines for Rasp AP to place into rc.local file.
     # #RASPAP is for removal
 
     lines=(
+
     'echo 1 > \/proc\/sys\/net\/ipv4\/ip_forward #RASPAP'
-    #'if [ ! -f /etc/loki/lokinet.ini ]; then'
-    #'lokinet -g'
-    #'fi'
     "$tablerouteA"
     "$tablerouteB"
-    #'sudo \/var\/lib\/lokinet\/.\/lokilaunch.sh start #RASPAP'
+    # 'if ! [cat \/sys\/class\/net\/eth0\/carrier] ; then'
+    '\/var\/lib\/lokinet\/mobile.sh'
+    # 'fi #end'
+
     )
 
     for line in "${lines[@]}"; do
