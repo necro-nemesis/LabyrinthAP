@@ -1,16 +1,18 @@
 ![](https://i.imgur.com/mXuacOH.jpg)
 
-# `$ Lokiap-webgui` [![Release 2.2](https://img.shields.io/badge/Release-2.2-green.svg)](https://github.com/necro-nemesis/raspap-webgui/releases)
+# `LabyrinthAP / Lokinet Access Point` [![Release 2.3](https://img.shields.io/badge/Release-2.2-green.svg)](https://github.com/necro-nemesis/raspap-webgui/releases)
 
-LokiAP interfaces witht Lokinet daemon to facilitate connections to the Lokinet global privacy network. LokiAP provides a simple, responsive web interface to control wifi, hostapd, Lokinet daemon and related services necessary to access Lokinet on the Raspberry Pi or Orange Pi.
+LabyrinthAP interfaces with Lokinet daemon to facilitate connections to the Lokinet global privacy network. LabyrinthAP provides a simple, responsive web interface to control wifi, hostapd, Lokinet daemon and related services necessary to access Lokinet on the Raspberry Pi or Orange Pi.
 
-### WHAT IS LOKI?
+### WHAT IS LOKINET?
 
-https://loki.network/
+https://lokinet.org/
 
-"Loki is a privacy network which will allow users to transact and communicate privately over the internet, providing a suite of tools to help maintain the maximum amount of anonymity possible while browsing, transacting and communication online. Using the decentralised nature of blockchain technology, Loki creates new private and secure methods of interacting with the internet, as well as building privacy-centric applications, such as messaging services, forums, online marketplaces, and social media platforms."
+Lokinet is a privacy network which allows users to transact and communicate privately over the internet infrastructure using it's own onion routing network, encryption system and protocols. Lokinet requires no internet IP Address but instead provides it's own network addresses which can be either ephemeral, persistent or personalized depending on the users desired application. Information is onion routed through a globally distributed network of over one thousand nodes. Utilizing blockchain technology Lokinet is run on incentivized decentralized nodes that are paid by the network to maintain the privacy of the network. User need not pay for access to use Lokinet but may chose to subscribe to an exit provider should they wish to anonymously access the internet through a paid exit provider.
 
-Loki
+LabyrinthAP is currently offered as a free software solution that runs Lokinet on a remote network connected device which creates a WiFi hostspot and/or Ethernet subnet to connect to Lokinet. Using LabyrinthAP not only ensure Lokinet is always connected and available but removes the requirement of installation and association with a single or group of devices. LabyrinthAP makes Lokinet platform agnostic meaning it can connect to a multitude of devices regardless of the type of hardware or software installed. LabyrinthAP is compatible with most web based applications and browsers. It also has a web based interface to manage and control.
+
+LabyrinthAP comes with it's own auto-installation scripts to set up Lokinet and the LabyrinthAP interface providing an access point on very commonly available single board computer devices such as the Rapsberry Pi using Raspberry OS. It also supports device running Armbian such as the OrangePiR1 or OrangePi Zero + etc.
 
 ![](https://i.imgur.com/fxKF4bi.jpg)
 
@@ -69,19 +71,19 @@ https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
 
 3.  Follow any first user password instructions provided once logged in.
 
-4. If you want to get the lastest updates before installing LokiAP:
+4. If you want to get the lastest updates before installing LabyrinthAP:
 ```
 sudo apt-get update
 sudo apt-get upgrade
 sudo reboot
 ```
-5. Before installing the LokiAP on the Raspberry pi you must log in to the shell prompt and set your WiFi "Localization Options" to the country code you are in. If this is not set WiFi will not be available on the Rasberry pi. Additionally if you are using the LokiAP with a SIMCOM chip based mobile adapter for cellular connection to the net you will need to go into Interface Options -> serial -> answer "NO" when asked if you want login shell over serial and then answer "YES" when asked if you want the serial port hardware enabled. In order to set these options enter `sudo raspi-config` at the command line and use the menu to get to these settings. When exiting and asked to reboot answer yes and reboot for the settings to be enabled.
+5. Before installing the LabyrinthAP on the Raspberry pi you must log in to the shell prompt and set your WiFi "Localization Options" to the country code you are in. If this is not set WiFi will not be available on the Rasberry pi. Additionally if you are using the LabyrinthAP with a SIMCOM chip based mobile adapter for cellular connection to the net you will need to go into Interface Options -> serial -> answer "NO" when asked if you want login shell over serial and then answer "YES" when asked if you want the serial port hardware enabled. In order to set these options enter `sudo raspi-config` at the command line and use the menu to get to these settings. When exiting and asked to reboot answer yes and reboot for the settings to be enabled.
 
 With the prerequisites done, you can now proceed with the Quick installer.
 
 ## Quick installer
 
-Install LokiAP from shell prompt:
+Install LabyrinthAP from shell prompt:
 ```sh
 $ wget -q https://git.io/fjeSw -O /tmp/raspap && bash /tmp/raspap
 ```
@@ -99,7 +101,7 @@ configured as an access point as follows:
 
 ## Test site
 
-To test the connection navigate to Loki's wiki page found at
+To test the connection navigate to Lokinet's wiki page found at
 http://dw68y1xhptqbhcm5s8aaaip6dbopykagig5q5u1za4c7pzxto77y.loki/wiki/index.php?title=Main_Page
 
 ## Connecting to an Exit Node
@@ -116,9 +118,9 @@ If you have a Waveshare 4G/3G/2G/GSM/GPRS/GNSS HAT for the Raspberry Pi the acce
 
 ## Support us
 
-LokiAP is free software but powered by your support. If you find it beneficial or wish to contribute to inspire ongoing development small donations are greatly appreciated.
+LabyrinthAP is free software but powered by your support. If you find it beneficial or wish to contribute to inspire ongoing development small donations are greatly appreciated.
 
-- Loki Donation Address:
+- Oxen Donation Address:
 ```sh
 LA8VDcoJgiv2bSiVqyaT6hJ67LXbnQGpf9Uk3zh9ikUKPJUWeYbgsd9gxQ5ptM2hQNSsCaRETQ3GM9FLDe7BGqcm4ve69bh
 ```
