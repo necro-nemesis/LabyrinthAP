@@ -1,4 +1,4 @@
-![](https://i.imgur.com/mXuacOH.jpg)
+![](https://i.imgur.com/s6hOlqx.png)
 
 # `LabyrinthAP / Lokinet Access Point` [![Release 2.3](https://img.shields.io/badge/Release-2.3-green.svg)](https://github.com/necro-nemesis/raspap-webgui/releases)
 
