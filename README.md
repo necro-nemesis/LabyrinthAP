@@ -101,7 +101,7 @@ configured as an access point as follows:
 
 To test the connection navigate to Lokinet's wiki page found at
 http://dw68y1xhptqbhcm5s8aaaip6dbopykagig5q5u1za4c7pzxto77y.loki/wiki/index.php?title=Main_Page
-You can also access this page using it's ONS registered domain name at
+You can also access this page using it's ONS (Oxen Name Service) registered domain name at
 http://probably.loki
 
 ## Connecting to an Exit Node
