@@ -8,11 +8,11 @@ LabyrinthAP interfaces with Lokinet daemon to facilitate connections to the Loki
 
 https://lokinet.org/
 
-Lokinet is a privacy network which allows users to transact and communicate privately over the internet infrastructure using it's own onion routing network, encryption system and protocols. Lokinet requires no internet IP Address but instead provides it's own network addresses which can be either ephemeral, persistent or personalized depending on the users desired application. Information is onion routed through a globally distributed network of over one thousand nodes. Utilizing blockchain technology Lokinet is run on incentivized decentralized nodes that are paid by the network to maintain the privacy of the network. User need not pay for access to use Lokinet but may chose to subscribe to an exit provider should they wish to anonymously access the internet through a paid exit provider.
+Lokinet is a privacy network which allows users to transact and communicate privately over the internet infrastructure using it's own onion routing network, encryption system and protocols. Lokinet requires no internet IP Address but instead provides it's own network addresses which can be either ephemeral, persistent or personalized depending on the users desired application. Information is onion routed through a globally distributed network of over one thousand nodes. Utilizing blockchain technology Lokinet is run on incentivized decentralized nodes that are paid by the network to maintain the privacy and decentralized aspects of the network. User need not pay for access to use Lokinet but may chose to subscribe to an exit provider should they wish to anonymously access the internet through such a provider. Additionally the network generally has free exit nodes available offered through individuals providing volunteerary support of the network.
 
-LabyrinthAP is currently offered as a free software solution that runs Lokinet on a remote network connected device which creates a WiFi hostspot and/or Ethernet subnet to connect to Lokinet. Using LabyrinthAP not only ensures Lokinet is always connected and available but removes the requirement of installation and association with a single or group of devices. LabyrinthAP makes Lokinet platform agnostic meaning it can connect to a multitude of devices regardless of the type of hardware or software installed. LabyrinthAP is compatible with most web based applications and browsers. It also has a web based interface to manage and control.
+LabyrinthAP is currently offered as a free software solution that runs Lokinet on a remote network connected device which creates a WiFi hostspot and/or Ethernet subnet to connect to Lokinet. Using LabyrinthAP not only ensures Lokinet is always connected and available but removes the requirement for installation on a single or group of end point devices. LabyrinthAP makes Lokinet platform agnostic meaning it can connect to a range of devices regardless of the type of hardware or software installed on them. LabyrinthAP is compatible with most web based applications and browsers and has a built in web based interface to manage and control.
 
-LabyrinthAP comes with it's own auto-installation scripts to set up Lokinet and the LabyrinthAP interface providing an access point on very commonly available single board computer devices such as the Rapsberry Pi using Raspberry OS. It also supports device running Armbian such as the OrangePiR1 or OrangePi Zero + etc.
+LabyrinthAP comes with it's own auto-installation scripts to set up Lokinet and the LabyrinthAP interface thereby providing an easy to create access point on very commonly available single board computer devices such as the Rapsberry Pi using Raspberry OS. It also supports device running Armbian such as the OrangePiR1 or OrangePi Zero + etc.
 
 ![](https://i.imgur.com/IbksKgc.png)
 
@@ -101,6 +101,8 @@ configured as an access point as follows:
 
 To test the connection navigate to Lokinet's wiki page found at
 http://dw68y1xhptqbhcm5s8aaaip6dbopykagig5q5u1za4c7pzxto77y.loki/wiki/index.php?title=Main_Page
+You can also access this page using it's ONS registered domain name at
+http://probably.loki
 
 ## Connecting to an Exit Node
 
