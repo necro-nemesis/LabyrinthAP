@@ -102,6 +102,9 @@ function common_interfaces() {
 
 function stop_lokinet(){
     sudo systemctl stop lokinet.service
+#Set sed lokinet.service for Hostapd to restart everytime after Lokinet restarts
+    sed -i '/^ExecStartPost=+/usr/sbin/lokinet-resolvconf add /var/lib/lokinet/lokinet.ini.*/a ExecStartPost=+systemctl restart hostapd' /usr/lib/systemd/system/lokinet.service
+    sudo systemctl daemon-reload
 }
 
 # Replaces NetworkManager with DHCPD
