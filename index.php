@@ -12,7 +12,7 @@
  *
  * @author     TechnicalTumbleweed (Loki->Discord/Telegram)
  * @license    GNU General Public License, version 3 (GPL-3.0)
- * @version    2.3
+ * @version    2.4
  * @link       https://github.com/necro-nemesis/LabyrinthAP
  */
 
