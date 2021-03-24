@@ -316,7 +316,6 @@ function patch_system_files() {
 
           #added for forced Lokinet
         "/sbin/ip"
-          #
         "/sbin/ifdown"
         "/sbin/ifup"
         "/bin/cat /etc/wpa_supplicant/wpa_supplicant.conf"
@@ -326,7 +325,7 @@ function patch_system_files() {
         "/sbin/wpa_cli -i wlan[0-9] scan_results"
         "/sbin/wpa_cli -i wlan[0-9] scan"
         "/sbin/wpa_cli -i wlan[0-9] reconfigure"
-	      "/sbin/wpa_cli -i wlan[0-9] select_network"
+	"/sbin/wpa_cli -i wlan[0-9] select_network"
         "/bin/cp /tmp/hostapddata /etc/hostapd/hostapd.conf"
         "/etc/init.d/hostapd start"
         "/etc/init.d/hostapd stop"
