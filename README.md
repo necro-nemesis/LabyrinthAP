@@ -125,7 +125,7 @@ LA8VDcoJgiv2bSiVqyaT6hJ67LXbnQGpf9Uk3zh9ikUKPJUWeYbgsd9gxQ5ptM2hQNSsCaRETQ3GM9FL
 ```
 - Donation Wallets
 
-![](https://i.imgur.com/HGVuijh.jpg)           ![](https://i.imgur.com/gIhGB1X.jpg)
+![](https://i.imgur.com/HGVuijh.jpg) ![](https://i.imgur.com/ZOKEpDj.png) ![](https://i.imgur.com/gIhGB1X.jpg)
 
 ## How to contribute
 
