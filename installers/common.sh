@@ -32,12 +32,12 @@ fi
 
 # Outputs a RaspAP Install log line
 function install_log() {
-    echo -e "\033[1;32mLokiAP Install: $*\033[m"
+    echo -e "\033[1;32mLabyrinthAP Install: $*\033[m"
 }
 
 # Outputs a RaspAP Install Error log line and exits with status code 1
 function install_error() {
-    echo -e "\033[1;37;41mLokiAP Install Error: $*\033[m"
+    echo -e "\033[1;37;41mLabyrinthAP Install Error: $*\033[m"
     exit 1
 }
 
@@ -49,16 +49,16 @@ function install_warning() {
 # Outputs a welcome message
 function display_welcome() {
     raspberry='\033[0;35m'
-    green='\033[1;32m'
+    cyan='\033[1;36m'
 
-    echo -e "${green}\n"
-    echo -e "  ooooo                  oooo         o8o        .o.       ooooooooo."
-    echo -e "   888                    888                   .888.       888    Y88."
-    echo -e "   888          .ooooo.   888  oooo  oooo      .8 888.      888   .d88"
-    echo -e "   888         d88   88b  888 .8P     888     .8   888.     888ooo88P"
-    echo -e "   888         888   888  888888.     888    .88ooo8888.    888"
-    echo -e "   888       o 888   888  888  88b.   888   .8       888.   888"
-    echo -e "  o888ooooood8  Y8bod8P  o888o o888o o888o o88o     o8888o o888o"
+    echo -e "${cyan}\n"
+    echo -e "  _          _                _       _   _        _    ____ "
+    echo -e " | |    __ _| |__  _   _ _ __(_)_ __ | |_| |__    / \  |  _ \ "
+    echo -e " | |   / _  |  _ \| | | |  __| |  _ \| __|  _ \  / _ \ | |_) | "
+    echo -e " | |__| (_| | |_) | |_| | |  | | | | | |_| | | |/ ___ \|  __/ "
+    echo -e " |_____\__,_|_.__/ \__, |_|  |_|_| |_|\__|_| |_/_/   \_\_| "
+    echo -e "                   |___/ "
+    echo -e " by Minotaurware.net"
     echo -e "${raspberry}"
     echo -e "The Quick Installer will guide you through a few easy steps\n\n"
 }
@@ -102,6 +102,9 @@ function common_interfaces() {
 
 function stop_lokinet(){
     sudo systemctl stop lokinet.service
+#Set sed lokinet.service for Hostapd to restart everytime after Lokinet restarts
+    sed -i '/^ExecStartPost=+/usr/sbin/lokinet-resolvconf add /var/lib/lokinet/lokinet.ini.*/a ExecStartPost=+systemctl restart hostapd' /usr/lib/systemd/system/lokinet.service
+    sudo systemctl daemon-reload
 }
 
 # Replaces NetworkManager with DHCPD
@@ -122,7 +125,7 @@ function enable_php_lighttpd() {
 
 # Verifies existence and permissions of RaspAP directory
 function create_raspap_directories() {
-    install_log "Creating LokiAP directories"
+    install_log "Creating LabyrinthAP directories"
     if [ -d "$raspap_dir" ]; then
         sudo mv $raspap_dir "$raspap_dir.`date +%F-%R`" || install_error "Unable to move old '$raspap_dir' out of the way"
     fi
@@ -159,7 +162,7 @@ function download_latest_files() {
     fi
 
     install_log "Cloning latest files from github"
-    git clone --depth 1 https://github.com/necro-nemesis/Lokiap-webgui /tmp/raspap-webgui || install_error "Unable to download files from github"
+    git clone --depth 1 https://github.com/necro-nemesis/LabyrinthAP /tmp/raspap-webgui || install_error "Unable to download files from github"
     sudo mv /tmp/raspap-webgui $webroot_dir || install_error "Unable to move raspap-webgui to web root"
 }
 
@@ -313,7 +316,6 @@ function patch_system_files() {
 
           #added for forced Lokinet
         "/sbin/ip"
-          #
         "/sbin/ifdown"
         "/sbin/ifup"
         "/bin/cat /etc/wpa_supplicant/wpa_supplicant.conf"
@@ -323,7 +325,7 @@ function patch_system_files() {
         "/sbin/wpa_cli -i wlan[0-9] scan_results"
         "/sbin/wpa_cli -i wlan[0-9] scan"
         "/sbin/wpa_cli -i wlan[0-9] reconfigure"
-	      "/sbin/wpa_cli -i wlan[0-9] select_network"
+	"/sbin/wpa_cli -i wlan[0-9] select_network"
         "/bin/cp /tmp/hostapddata /etc/hostapd/hostapd.conf"
         "/etc/init.d/hostapd start"
         "/etc/init.d/hostapd stop"
@@ -420,7 +422,7 @@ function install_complete() {
         exit 0
     fi
     install_log "Shutting Down"
-    echo -n "Allow a minute for reinitialization then connect wifi to SSID loki-access and use default password 'ChangeMe'"
+    echo -n "Allow a minute for reinitialization then connect wifi to SSID LabyrinthAP and use default password 'ChangeMe'"
     sleep 8
     sudo shutdown -r now || install_error "Unable to execute shutdown"
 }

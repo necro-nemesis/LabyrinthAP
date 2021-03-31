@@ -1,6 +1,6 @@
-![](https://i.imgur.com/mXuacOH.jpg)
+![](https://i.imgur.com/2ZrhaiH.png)
 
-# `LabyrinthAP / Lokinet Access Point` [![Release 2.3](https://img.shields.io/badge/Release-2.2-green.svg)](https://github.com/necro-nemesis/raspap-webgui/releases)
+# `LabyrinthAP / Lokinet Access Point` [![Release 2.4](https://img.shields.io/badge/Release-2.4-green.svg)](https://github.com/necro-nemesis/raspap-webgui/releases)
 
 LabyrinthAP interfaces with Lokinet daemon to facilitate connections to the Lokinet global privacy network. LabyrinthAP provides a simple, responsive web interface to control wifi, hostapd, Lokinet daemon and related services necessary to access Lokinet on the Raspberry Pi or Orange Pi.
 
@@ -8,15 +8,13 @@ LabyrinthAP interfaces with Lokinet daemon to facilitate connections to the Loki
 
 https://lokinet.org/
 
-Lokinet is a privacy network which allows users to transact and communicate privately over the internet infrastructure using it's own onion routing network, encryption system and protocols. Lokinet requires no internet IP Address but instead provides it's own network addresses which can be either ephemeral, persistent or personalized depending on the users desired application. Information is onion routed through a globally distributed network of over one thousand nodes. Utilizing blockchain technology Lokinet is run on incentivized decentralized nodes that are paid by the network to maintain the privacy of the network. User need not pay for access to use Lokinet but may chose to subscribe to an exit provider should they wish to anonymously access the internet through a paid exit provider.
+Lokinet is a privacy network which allows users to transact and communicate privately over the internet infrastructure using it's own onion routing network, encryption system and protocols. Lokinet requires no internet IP Address but instead provides it's own network addresses which can be either ephemeral, persistent or personalized depending on the users desired application. Information is onion routed through a globally distributed network of over one thousand nodes. Utilizing blockchain technology Lokinet is run on incentivized decentralized nodes that are paid by the network to maintain the privacy and decentralized aspects of the network. User need not pay for access to use Lokinet but may chose to subscribe to an exit provider should they wish to anonymously access the internet through such a provider. Additionally the network generally has free exit nodes available offered through individuals providing volunteerary support of the network.
 
-LabyrinthAP is currently offered as a free software solution that runs Lokinet on a remote network connected device which creates a WiFi hostspot and/or Ethernet subnet to connect to Lokinet. Using LabyrinthAP not only ensure Lokinet is always connected and available but removes the requirement of installation and association with a single or group of devices. LabyrinthAP makes Lokinet platform agnostic meaning it can connect to a multitude of devices regardless of the type of hardware or software installed. LabyrinthAP is compatible with most web based applications and browsers. It also has a web based interface to manage and control.
+LabyrinthAP is currently offered as a free software solution that runs Lokinet on a remote network connected device which creates a WiFi hostspot and/or Ethernet subnet to connect to Lokinet. Using LabyrinthAP not only ensures Lokinet is always connected and available but removes the requirement for installation on a single or group of end point devices. LabyrinthAP makes Lokinet platform agnostic meaning it can connect to a range of devices regardless of the type of hardware or software installed on them. LabyrinthAP is compatible with most web based applications and browsers and has a built in web based interface to manage and control.
 
-LabyrinthAP comes with it's own auto-installation scripts to set up Lokinet and the LabyrinthAP interface providing an access point on very commonly available single board computer devices such as the Rapsberry Pi using Raspberry OS. It also supports device running Armbian such as the OrangePiR1 or OrangePi Zero + etc.
+LabyrinthAP comes with it's own auto-installation scripts to set up Lokinet and the LabyrinthAP interface thereby providing an easy to create access point on very commonly available single board computer devices such as the Rapsberry Pi using Raspberry OS. It also supports device running Armbian such as the OrangePiR1 or OrangePi Zero + etc.
 
-![](https://i.imgur.com/fxKF4bi.jpg)
-
-![](https://i.imgur.com/JpudIag.png)
+![](https://i.imgur.com/IbksKgc.png)
 
 ![](https://i.imgur.com/F83n7PF.jpg)
 
@@ -34,7 +32,7 @@ LabyrinthAP comes with it's own auto-installation scripts to set up Lokinet and 
  - [License](#license)
 
 ## Prerequisites
-Start with a clean install of [Armbian](https://www.armbian.com/) or [Raspberry Pi OS](https://www.raspberrypi.org/downloads/raspberry-pi-os/) (currently Buster and Stretch are verified as working). Lite versions are recommended as all additional dependencies are added by the installer. If using Raspberry Pi OS you will need to elevate to root with ```sudo su``` before running the LokiAP installer script. This additional step is not required when using Armbian.
+Start with a clean install of [Armbian](https://www.armbian.com/) or [Raspberry Pi OS](https://www.raspberrypi.org/downloads/raspberry-pi-os/) (currently Buster and Stretch are verified as working). Lite versions are recommended as all additional dependencies are added by the installer. If using Raspberry Pi OS you will need to elevate to root with ```sudo su``` before running the LabyrinthAP installer script. This additional step is not required when using Armbian.
 
 For Orange Pi R1 use Armbian Buster found here: https://www.armbian.com/orange-pi-r1/. Recommend using "minimal" which is available for direct download at the bottom of the page or much faster download by .torrent also linked there.
 
@@ -96,13 +94,15 @@ configured as an access point as follows:
   * Username: `admin`
   * Password: `secret`
 * DHCP range: 10.3.141.1 to 10.3.141.24
-* SSID: `loki-access`
+* SSID: `LabyrinthAP`
 * Password: `ChangeMe`
 
 ## Test site
 
 To test the connection navigate to Lokinet's wiki page found at
 http://dw68y1xhptqbhcm5s8aaaip6dbopykagig5q5u1za4c7pzxto77y.loki/wiki/index.php?title=Main_Page
+You can also access this page using it's ONS (Oxen Name Service) registered domain name at
+http://probably.loki
 
 ## Connecting to an Exit Node
 
@@ -113,8 +113,7 @@ Exit nodes provide privacy on the internet through onion routing connections via
 If you have a Waveshare 4G/3G/2G/GSM/GPRS/GNSS HAT for the Raspberry Pi the access point has built in support for it to use cellular data. When installed if Ethernet is available the access point will connect over Ethernet. If you wish to use cellular then booting without an Ethernet connection the access point will automatically switch over to cellular and connect to your provider. You will need to obtain a SIM card and it's APN address from your local cellular service provider. The APN addresses are usually obtainable with a quick online search. Once the software is installed you will need to navigate to the "Mobile APN" tab in the GUI under "Configure Lokinet" and enter in your APN address, set it and then reboot. It will now be saved for future use of the adapter.
 
 ![](https://i.imgur.com/eD82qCT.png)
-![](https://i.imgur.com/KYy2grU.png)
-
+![](https://i.imgur.com/feaC56c.png)
 
 ## Support us
 
@@ -124,9 +123,9 @@ LabyrinthAP is free software but powered by your support. If you find it benefic
 ```sh
 LA8VDcoJgiv2bSiVqyaT6hJ67LXbnQGpf9Uk3zh9ikUKPJUWeYbgsd9gxQ5ptM2hQNSsCaRETQ3GM9FLDe7BGqcm4ve69bh
 ```
-- PayPal Donation Address:
+- Donation Wallets
 
-![](https://i.imgur.com/gIhGB1X.jpg)
+![](https://i.imgur.com/HGVuijh.jpg) ![](https://i.imgur.com/6dMgBVr.jpg) ![](https://i.imgur.com/gIhGB1X.jpg)
 
 ## How to contribute
 

@@ -12,8 +12,8 @@
  *
  * @author     TechnicalTumbleweed (Loki->Discord/Telegram)
  * @license    GNU General Public License, version 3 (GPL-3.0)
- * @version    2.2
- * @link       https://github.com/necro-nemesis/Lokiap-webgui
+ * @version    2.4
+ * @link       https://github.com/necro-nemesis/LabyrinthAP
  */
 
 session_start();
@@ -62,7 +62,7 @@ $theme_url = 'dist/css/'.htmlspecialchars($theme, ENT_QUOTES);
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title><?php echo _("LokiAP"); ?></title>
+    <title><?php echo _("LabyrinthAP"); ?></title>
 
     <!-- Bootstrap Core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -105,7 +105,7 @@ $theme_url = 'dist/css/'.htmlspecialchars($theme, ENT_QUOTES);
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-    <a class="navbar-brand" href="index.php"style="font-family: Arial;font-size: 20px; color: #33ff00"><?php echo _("LokiAP Mixnet Portal"); ?> v<?php echo RASPI_VERSION; ?></a>
+    <a class="navbar-brand" href="index.php"style="font-family: Arial;font-size: 20px; color: #609aac"><?php echo _("LabyrinthAP Mixnet Portal"); ?> v<?php echo RASPI_VERSION; ?></a>
         </div>
         <!-- /.navbar-header -->
 
@@ -172,7 +172,7 @@ $theme_url = 'dist/css/'.htmlspecialchars($theme, ENT_QUOTES);
         <div class="row">
           <div class="col-lg-12">
             <h1 class="page-header">
-              <img class="logo" src="img/raspAP-logo.png" width="45" height="45">LokiAP
+              <img class="logo" src="img/raspAP-logo.png" width="45" height="45">LabyrinthAP
             </h1>
           </div>
         </div><!-- /.row -->
